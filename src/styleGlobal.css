@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root{
+    --var-lilas: #EB1CE4;
+    --var-background: #000;
+    --var-txt-lilas: #A40C9F;
+}
+
+body{
+    background-color: var(--var-background);
+}
