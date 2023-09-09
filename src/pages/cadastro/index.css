@@ -44,6 +44,20 @@
     margin-bottom: 5%;
 }
 
+.form p{
+    color: white;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.form p a{
+    color: white;
+}
+
+.form p a:hover{
+    color: var(--var-txt-lilas);
+}
+
 .form #person-icon{
     width: 50px;
     height: 40px;
