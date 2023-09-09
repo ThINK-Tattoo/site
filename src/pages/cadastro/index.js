@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
 import iconPerson from '../../assets/icon-person.png';
@@ -39,6 +40,7 @@ export default function Cadastro(){
                             
                             <input type="password" id="senha" name="senha" placeholder="Senha" required />
                         </div>
+                        <p>Já possui conta? Faça <Link to="/"><strong>Login</strong></Link></p>
                     </div>
                     
                     <button type="submit" class="btn-cadastrar">Cadastrar</button>
