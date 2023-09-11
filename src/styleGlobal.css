@@ -9,8 +9,70 @@
     --var-lilas: #EB1CE4;
     --var-background: #000;
     --var-txt-lilas: #A40C9F;
+    --var-forms-background: #262626;
 }
 
 body{
     background-color: var(--var-background);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.txt-white{
+    color: #fff;
+}
+
+.btn {
+    background-color: #6B036B;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 20%;
+    margin-top: 5%;
+    height: 50px;
+}
+
+.btn:hover{
+    background-color: #990799;
+    transition: ease-in-out 0.2s;
+}
+
+.input {
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #262626;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 300px;
+    height: 50px;
+    color: white;
+}
+
+/*Banner com a imagem e o título de cada página ex: FlashTatto, Cadastro etc*/
+.header-image{
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.header-image h1{
+    color: white;
+    font-size: 3.2rem;
+}
+
+.span-color{
+    color: var(--var-txt-lilas);
 }

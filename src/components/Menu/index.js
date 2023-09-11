@@ -48,7 +48,7 @@ export default function Menu(){
                     <ul>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/">Portfólio</Link></li>
-                        <li><Link to="/">FlashTattoo</Link></li>
+                        <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                         <li><Link to="/">Agenda</Link></li>
                         <li><Link to="/">Orçamento</Link></li>
                         <li><Link to="/">Contato</Link></li>
