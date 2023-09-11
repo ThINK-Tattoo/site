@@ -52,7 +52,7 @@ export default function Menu(){
                         <li><Link to="/">Agenda</Link></li>
                         <li><Link to="/">Orçamento</Link></li>
                         <li><Link to="/">Contato</Link></li>
-                        <li><Link to="/">Login</Link></li>
+                        <li><Link to="/signin">Login</Link></li>
                         <li><Link to="/signup">Cadastro</Link></li>
                     </ul>
                 </div>

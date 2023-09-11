@@ -1,0 +1,162 @@
+.login-tittle{
+    background-image: url("../../assets/login-image.png");
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-tittle h1{
+    color: white;
+    font-size: 3.2rem;
+}
+
+.login-tittle h1 span{
+    color: var(--var-txt-lilas);
+}
+
+.conteiner{
+    text-align: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: 600px;
+    max-width: 900px;
+    margin: 5% auto;
+    padding: 20px;
+    background-color: #262626;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 100px;
+    border: 1px solid rgb(177, 177, 177);
+}
+
+.form h4{
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+
+.form p{
+    color: white;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.form p a{
+    color: white;
+}
+
+.form p a:hover{
+    color: var(--var-txt-lilas);
+}
+
+.form #person-icon{
+    width: 50px;
+    height: 40px;
+    margin-top: 5%;
+}
+
+.conteiner-form-group{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+}
+
+label {
+    color: white;
+    margin-bottom: 5px;
+}
+
+input{
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #262626;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 300px;
+    height: 50px;
+    color: white;
+}
+
+.btn-entrar{
+    background-color: #6b036b;
+    border: none;
+    color:white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40%;
+    margin-top: 5%;
+    height: 50px;
+}
+
+.btn-entrar:hover{
+    background-color: #990799;
+    transition: ease-in-out 0.2;
+}
+
+@media(max-width: 768px){
+    .form {
+        max-width: 100%;
+    }
+
+    .login-tittle h1{
+        font-size: 2.2rem;
+    }
+    
+    .form h4{
+        font-size: 1.5rem;
+    }
+
+    .form #person-icon{
+        width: 40px;
+        height: 30px;
+    }
+
+    .conteiner-form-group{
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+
+    input{
+        width: 40px;
+    }
+
+    .btn-entrar{
+        width: 40%;
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px){
+    .form{
+        max-width: 900px;
+        margin: 5% auto;
+    }
+
+    .conteiner-form-group{
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+    }
+}
+
+
+
