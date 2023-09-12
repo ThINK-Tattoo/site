@@ -40,7 +40,7 @@ export default function Cadastro(){
                             
                             <input className="input" type="password" id="senha" name="senha" placeholder="Senha" required />
                         </div>
-                        <p>Já possui conta? Faça <Link to="/"><strong>Login</strong></Link></p>
+                        <p>Já possui conta? Faça <Link to="/signin"><strong>Login</strong></Link></p>
                     </div>
                     
                     <button type="submit" class="btn btn-cadastrar">Cadastrar</button>
