@@ -50,8 +50,8 @@ export default function Menu(){
                         <li><Link to="/portfolio">Portfólio</Link></li>
                         <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                         <li><Link to="/">Agenda</Link></li>
-                        <li><Link to="/">Orçamento</Link></li>
-                        <li><Link to="/">Contato</Link></li>
+                        <li><Link to="/orcamento">Orçamento</Link></li>
+                        <li><Link to="/contato">Contato</Link></li>
                         <li><Link to="/signin">Login</Link></li>
                         <li><Link to="/signup">Cadastro</Link></li>
                     </ul>
@@ -77,7 +77,7 @@ export default function Menu(){
                             <li><Link to="/portfolio">Portfólio</Link></li>
                             <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                             <li><Link to="/">Agenda</Link></li>
-                            <li><Link to="/">Orçamento</Link></li>
+                            <li><Link to="/orcamento">Orçamento</Link></li>
                             <li><Link to="/contato">Contato</Link></li>
                             <li><Link to="/signin">Login</Link></li>
                             <li><Link to="/signup">Cadastro</Link></li>

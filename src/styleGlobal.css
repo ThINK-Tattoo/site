@@ -56,6 +56,10 @@ body{
     height: 50px;
     color: white;
 }
+.input:focus{
+    border: 2px solid var(--var-lilas);
+    outline: none;
+}
 
 /*Banner com a imagem e o título de cada página ex: FlashTatto, Cadastro etc*/
 .header-image{

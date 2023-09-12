@@ -6,6 +6,7 @@ import Login from './pages/login';
 import FlashTattoo from './pages/flashtattoo';
 import Portfolio from "./pages/portfolio";
 import Contato from "./pages/contato";
+import Orcamento from "./pages/orcamento";
 
 export default function Router(){
     return (
@@ -17,6 +18,7 @@ export default function Router(){
                 <Route path="/flashtattoo" element={<FlashTattoo />} />
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/contato" element={<Contato />} />
+                <Route path="/orcamento" element={<Orcamento />} />
             </Routes>
         </BrowserRouter>
       );

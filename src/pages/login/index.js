@@ -23,11 +23,11 @@ export default function Login(){
                     <div className="conteiner-form-group">
                         <div class="form-group">
 
-                            <input type="email" id="login" name="email" placeholder="Login" required />
+                            <input className="input" type="email" id="login" name="email" placeholder="Login" required />
                         </div>
 
                         <div class="form-group">
-                            <input type="password" id="senha" name="senha" placeholder="Senha" required />
+                            <input className="input" type="password" id="senha" name="senha" placeholder="Senha" required />
                         </div>
                         <p> <Link to="/signup"><strong>Esqueceu a senha?</strong></Link> </p>
 
