@@ -47,11 +47,11 @@ export default function Menu(){
                 <div id="menu-normal">      
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/">Portfólio</Link></li>
+                        <li><Link to="/portfolio">Portfólio</Link></li>
                         <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                         <li><Link to="/">Agenda</Link></li>
                         <li><Link to="/">Orçamento</Link></li>
-                        <li><Link to="/">Contato</Link></li>
+                        <li><Link to="/contato">Contato</Link></li>
                         <li><Link to="/">Login</Link></li>
                         <li><Link to="/signup">Cadastro</Link></li>
                     </ul>
@@ -74,12 +74,13 @@ export default function Menu(){
                         {menuOpen && (
                         <>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/">Portfólio</Link></li>
-                            <li><Link to="/">FlashTattoo</Link></li>
+                            <li><Link to="/portfolio">Portfólio</Link></li>
+                            <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                             <li><Link to="/">Agenda</Link></li>
                             <li><Link to="/">Orçamento</Link></li>
-                            <li><Link to="/">Contato</Link></li>
+                            <li><Link to="/contato">Contato</Link></li>
                             <li><Link to="/">Login</Link></li>
+                            <li><Link to="/signup">Cadastro</Link></li>
                         </>
                         )}
                     </ul>
