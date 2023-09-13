@@ -150,7 +150,7 @@
         grid-template-columns: repeat(3, 1fr);
     }
     #modal-container{
-        width: 90%;
+        width: 90% !important;
     }
 }
 
@@ -160,7 +160,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
     #modal-container{
-        width: 90%;
+        width: 90% !important;
     }
 
 }
@@ -203,6 +203,9 @@
     .flashtattoo {
         grid-template-columns: repeat(2, 1fr);
     }
+    #modal-container{
+        width: 80% !important;
+    }
 
     .tattoo-item {
         margin-bottom: 16px;
@@ -224,6 +227,8 @@
     .valores-tattoo .btn-valor {
         margin-bottom: 8px;
     }
+    
+   
 }
 
 @media (max-width: 675px) {
@@ -254,7 +259,7 @@
     }
     
     #modal-container {
-        width:90%;
+        width: 90% !important;
     }
 
     .modal-tattoo {
@@ -266,12 +271,12 @@
 
     #modal-info {
         display: flex;
-        flex-direction: column;
+        flex-direction: column !important;
         margin-top: 5%;
     }
 
     #modal-info img {
-        width: 100%;
+        width: 80%;
     }
 
     .modal-close-button {

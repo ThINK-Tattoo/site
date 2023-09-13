@@ -80,3 +80,10 @@ body{
 .span-color{
     color: var(--var-txt-lilas);
 }
+
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}

@@ -146,7 +146,7 @@ export default function Portfolio(){
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
-                id="modal-container"
+                id="modal-container-portfolio"
                 contentLabel="Detalhes da Tatuagem"
                 style={{
                     overlay: {
@@ -155,6 +155,7 @@ export default function Portfolio(){
                     content: {
                         top: '50%', 
                         left: '50%', 
+                        height: '60%',
                         transform: 'translate(-50%, -50%)', 
                         backgroundColor: '#000'
                     },
@@ -165,7 +166,7 @@ export default function Portfolio(){
                 </button>
                 {selectedPortfolio && (
                     <div className="modal-tattoo">
-                        <div id="modal-info">
+                        <div id="modal-info-portfolio">
                             <img src={selectedPortfolio.imagem} alt={selectedPortfolio.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedPortfolio.nome}</h3>

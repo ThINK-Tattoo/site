@@ -63,7 +63,7 @@
     width: 60%;
 }
 
-#modal-container {
+#modal-container-portfolio {
     width: 45%;
 }
 
@@ -74,12 +74,38 @@
     align-items: center;
 }
 
-#modal-info {
+#modal-info-portfolio {
     display: flex;
     margin-top: 5%;
 }
 
-#modal-info img {
+.modal-info-description-portfolio {
+    width: 100%;
+    max-width: 280px;
+}
+
+
+.modal-info-description-portfolio .h3,
+.modal-info-description-portfolio .description {
+    padding: 20px;
+    background-color: #1d1d1d;
+    margin-left: 15%;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+
+.modal-info-description-portfolio .description h3 {
+    margin-bottom: 12%;
+}
+
+.modal-info-description-portfolio .description p {
+    margin-top: 3%;
+    font-size: 0.9rem;
+}
+
+#modal-info-portfolio img {
     width: 45%;
 }
 
@@ -93,13 +119,13 @@
     cursor: pointer;
 }
 
-.modal-info-description {
+.modal-info-portfolio-description {
     width: 100%;
     max-width: 280px;
 }
 
-.modal-info-description .h3,
-.modal-info-description .description {
+.modal-info-portfolio-description .h3,
+.modal-info-portfolio-description .description {
     padding: 20px;
     background-color: #1d1d1d;
     margin-left: 15%;
@@ -108,11 +134,11 @@
     margin-top: 2%;
 }
 
-.modal-info-description .description h3 {
+.modal-info-portfolio-description .description h3 {
     margin-bottom: 12%;
 }
 
-.modal-info-description .description p {
+.modal-info-portfolio-description .description p {
     margin-top: 3%;
     font-size: 0.9rem;
 }
@@ -157,7 +183,7 @@
     .portfolio {
         grid-template-columns: repeat(3, 1fr);
     }
-    #modal-container{
+    #modal-container-portfolio{
         width: 90%;
     }
 }
@@ -167,7 +193,7 @@
     .portfolio {
         grid-template-columns: repeat(2, 1fr);
     }
-    #modal-container{
+    #modal-container-portfolio{
         width: 90%;
     }
 
@@ -223,7 +249,7 @@
         flex-direction: column;
     }
 
-    #modal-info img {
+    #modal-info-portfolio img {
         width: 100%;
     }
 
@@ -242,7 +268,9 @@
         display: flex;
         flex-direction: column;
     }
-
+    #modal-container-portfolio{
+        height: 80% !important;
+    }
     .p-info{
         width: 70%;
         font-size: 0.8rem;
@@ -264,7 +292,7 @@
         margin-top: 10%;
     }
     
-    #modal-container {
+    #modal-container-portfolio {
         width:90%;
     }
 
@@ -275,13 +303,13 @@
         align-items: center;
     }
 
-    #modal-info {
+    #modal-info-portfolio {
         display: flex;
         flex-direction: column;
         margin-top: 5%;
     }
 
-    #modal-info img {
+    #modal-info-portfolio img {
         width: 100%;
     }
 
@@ -289,25 +317,25 @@
         font-size: 1.5rem;
     }
 
-    .modal-info-description {
+    .modal-info-portfolio-description {
         width: 100%;
         
     }
 
-    .modal-info-description .h3,
-    .modal-info-description .description {
+    .modal-info-portfolio-description .h3,
+    .modal-info-portfolio-description .description {
         padding: 10px;
         margin-left: 0%;
         margin-top: 2%;
         font-size: 0.8rem;
     }
 
-    .modal-info-description .description h3 {
+    .modal-info-portfolio-description .description h3 {
         margin-bottom: 12%;
         font-size: 0.8rem;
     }
 
-    .modal-info-description .description p {
+    .modal-info-portfolio-description .description p {
         margin-top: 3%;
         font-size: 0.8rem;
     }

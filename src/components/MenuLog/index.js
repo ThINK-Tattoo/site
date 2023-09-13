@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/logo-removebg-preview 1.png';
 import '../../styleGlobal.css';
 import './index.css';
@@ -8,6 +10,7 @@ import './index.css';
 export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [mostrarDropdown, setMostrarDropdown] = useState(false);
 
     const increaseFontSize = () => {
       setFontSize((prevSize) => prevSize + 2); 
@@ -25,6 +28,13 @@ export default function Menu(){
     const toggleMenu = () => {
       setMenuOpen(!menuOpen);
     };
+
+
+    
+
+  const toggleDropdown = () => {
+    setMostrarDropdown(!mostrarDropdown);
+  };
 
     return(
         <div className='menu-container'>
@@ -51,8 +61,16 @@ export default function Menu(){
                         <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                         <li><Link to="/">Agenda</Link></li>
                         <li><Link to="/contato">Contato</Link></li>
-                        <li><Link to="/signin">Login</Link></li>
-                        <li><Link to="/signup">Cadastro</Link></li>
+                        <li><Link to="/meuPerfil">Meu Perfil</Link></li>
+                        <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+                        <FontAwesomeIcon className="config" color="white" icon={faCog} />
+                        {mostrarDropdown && (
+                            <div className="drop-down-settings">
+                            <li><button>Excluir Conta</button></li>
+                            <li><button>Sair</button></li>
+                            </div>
+                        )}
+                        </li>
                     </ul>
                 </div>
 
@@ -77,9 +95,9 @@ export default function Menu(){
                             <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                             <li><Link to="/">Agenda</Link></li>
                             <li><Link to="/contato">Contato</Link></li>
-                            <li><Link to="/signin">Login</Link></li>
-                            <li><Link to="/signup">Cadastro</Link></li>
-
+                            <li><Link to="/meuPerfil">Meu Perfil</Link></li>
+                            <li><Link to="/">Excluir Conta</Link></li>
+                            <li><Link to="/">Sair</Link></li>
                         </>
                         )}
                     </ul>

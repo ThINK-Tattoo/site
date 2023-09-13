@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import Menu from '../../components/Menu';
+import Menu from '../../components/MenuLog';
 import Footer from '../../components/Footer';
 
 import tatt1 from '../../assets/tattoo.png';
