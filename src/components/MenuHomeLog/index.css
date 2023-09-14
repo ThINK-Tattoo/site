@@ -144,19 +144,21 @@
     color: white;
   }
   
-  .menu-list.open {
+
+  .menu-list.open{
     flex-direction: column;
-    position: absolute;
+    display: flex;
     top: 104px; 
     right: -20%;
     background-color: var(--var-background);
     width: 50%;
     border-radius: 20px;
-    height: 50%;
     padding: 40px;
     text-align: left;
-    display: block;
     z-index: 1;
+    color: white;
+    position: absolute;
+
   }
   
   .menu-list li {
@@ -181,10 +183,6 @@
   @media (max-width: 788px) {
     .menu-list {
       display: none;
-    }
-
-    .menu-list li {
-        display: none;
     }
 
     .menu-icon {

@@ -24,9 +24,9 @@ export default function Menu(){
 
 
     const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
+        setMenuOpen(!menuOpen);
     };
-
+      
     const toggleSubMenu = () => {
         setIsSubMenuOpen(!isSubMenuOpen);
     };
@@ -98,6 +98,7 @@ export default function Menu(){
                             <li><Link to="/agenda">Agenda</Link></li>
                             <li><Link to="/contato">Contato</Link></li>
                             <li><Link to="/">Sobre Nós</Link></li>
+                            <br></br>
                             <li>Meu Perfil</li>
                             <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                             <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
