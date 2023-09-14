@@ -1,0 +1,51 @@
+.containerPrincipal {
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    display: inline-block;
+    position: relative;
+}
+
+.imagemPrincipal{
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+    position: absolute;
+}
+
+.itensContainer {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: inherit;
+}
+
+.itensContainer h1{
+    font-size: 128px;
+    font-weight:900;    
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: -2%;
+}
+
+.itensContainer p{
+    display: flex;
+    justify-content: center;
+}
+
+.itensContainer button {
+    font-weight: 700;
+    width: 60%;
+    display: flex;
+    margin-right: 40%;
+    margin-left: 40%;
+    justify-content: center;
+}
+
+.btn-agendeJa{
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+}
