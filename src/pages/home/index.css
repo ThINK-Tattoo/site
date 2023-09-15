@@ -55,7 +55,89 @@
     margin-bottom: 10%;
 }
 
-.gridContainer{
-    display: grid;
+.divisao{
+    height: 5%;
+    background-color: black;
+}
+
+.grid{
+    display: flex;
     color: #FFF;
+}
+
+.grid div{
+    display: flex;
+    justify-content: center;
+}
+
+.grid div h2{
+    margin-top: 45%;
+    margin-bottom: 45%;
+}
+
+#grid1{
+    background-image: url("../../assets/grid1.png");
+    height: 480px;
+    width: 100%;
+    max-width: 640px;
+}
+#grid2{
+    background-image: url("../../assets/grid2.png");
+    height: 480px;
+    width: 100%;
+    max-width: 640px;
+}
+#grid3{
+    background-image: url("../../assets/grid3.png");
+    height: 480px;
+    width: 100%;
+    max-width: 640px;
+}
+
+.projeto{
+    background-color: white;
+    height: 850px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tituloProjeto{
+    text-align: center;
+}
+
+#paragrafoProjeto{
+    margin-top: 3%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+}
+
+.topicosGeral{
+    align-items: center;
+    display: flex;
+}
+
+.topicos{
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.topicoProjetoDireita{
+    margin-right: 10%;
+    text-align: right;
+}
+
+.topicoProjetoEsquerda{
+    margin-left: 10%;
+    text-align: left;
+}
+
+.imagemProjeto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
