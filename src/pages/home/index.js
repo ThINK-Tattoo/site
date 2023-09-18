@@ -98,25 +98,25 @@ export default function Home(){
                 <div className="cuidados">
                     <img className="iconCoracao" src={iconCoracao} alt="Icone de um coração"></img>
                     <h1 className="txt-white h1-info" id="tituloProjeto">Cuidados</h1>
-                    <p>Confira quais os cuidados você precisa ter após a realização da sua tattoo:</p>
+                    <p className="descricao">Confira quais os cuidados você precisa ter após a realização da sua tattoo:</p>
                     <div className="cuidadosTopicosGeral">
                         <div className="cuidadosTopicos">
                             <div className="cuidadosItem">
-                                <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda"></img>
+                                <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
                                 <p>Não tirar casquinhas</p>
                             </div>
                             <div className="cuidadosItem">
-                                <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda"></img>
+                                <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
                                 <p>Hidratar o local da tatuagem</p>
                             </div>
                         </div>
                         <div className="cuidadosTopicos">
                             <div className="cuidadosItem">
-                                    <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda"></img>
+                                    <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
                                     <p>Não expor a tattoo ao sol</p>
                                 </div>
                                 <div className="cuidadosItem">
-                                    <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda"></img>
+                                    <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
                                     <p>Não entrar no mar ou piscina</p>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@ export default function Home(){
                         <img src={iconEmail} alt="Icone de um coração"></img>
                     </div>
                     <h1 className="txt-white h1-info" id="tituloProjeto">Fale Conosco</h1>
-                    <p>Para mais informações entre em contato com a gente!</p>
+                    <p className="descricao">Para mais informações entre em contato com a gente!</p>
                     <div>
                         <div className="mensagemFormGeral">
                         <div className="mensagemForm">

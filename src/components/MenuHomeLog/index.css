@@ -41,10 +41,13 @@
     z-index: 1;
     background: none;
   }
-#menu-drop-down{
-    display: none;
+
+@media (min-width: 801px){
+  #menu-drop-down{
+    display: block;
+  }
 }
-  
+
   .logo-menu {
     width: 180px;
     height: 84px;
@@ -57,7 +60,7 @@
     padding: 0;
     margin: 0;
     margin-left: -18%;
-    margin-right: 18%;
+
   }
   
 .menuHome ul li {
@@ -169,6 +172,12 @@
     display: none;
   }
 
+  @media (max-width: 1124px) {
+    .logo-menu{
+      margin-left: 10%;
+    }
+  }
+
   @media (max-width: 888px) {
     .logo-menu {
         margin-left: 10%;
@@ -180,7 +189,7 @@
       }
   }
  
-  @media (max-width: 788px) {
+  @media (max-width: 816px) {
     .menu-list {
       display: none;
     }
@@ -202,7 +211,7 @@
     }
 
     #menu-drop-down{
-        display: flex;
+      display: flex !important;
     }
   }
 
