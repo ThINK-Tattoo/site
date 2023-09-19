@@ -131,18 +131,18 @@ export default function Home(){
                     <div>
                         <div className="mensagemFormGeral">
                         <div className="mensagemForm">
-                            <div className="mensagemForm">
+                            <div className="mensagemFormItem">
                                 <input className="input" type="text" id="nome" name="nome" placeholder="Nome" required/>
                             </div>
-                            <div className="mensagemForm">
+                            <div className="mensagemFormItem">
                                 <input className="input" type="tel" id="telefone" name="telefone" placeholder="WhatsApp" required/>
                             </div>
                         </div>
                         <div className="mensagemForm">
-                            <div className="mensagemForm">
+                            <div className="mensagemFormItem">
                                 <input className="input" type="email" id="email" name="email" placeholder="E-mail" required/>
                             </div>
-                            <div className="mensagemForm">
+                            <div className="mensagemFormItem">
                                 <select id="tipoTattoo" name="Tipo de Tattoo">
                                     <option disabled selected>Tipo de Tattoo</option>
                                     <option value="Blackout">Blackout</option>
