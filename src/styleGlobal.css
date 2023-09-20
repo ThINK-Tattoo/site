@@ -90,3 +90,29 @@ body{
     align-items: center;
     width: 100%;
 }
+
+/*barra de rolagem da pagina*/
+::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 5%;
+  }
+  
+  ::-webkit-scrollbar-track{
+    background-color: var(--var-forms-background);
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background-color: var(--var-txt-lilas);
+  }
+  
+  @keyframes entering{
+    from {
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

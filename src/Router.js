@@ -9,6 +9,14 @@ import Contato from "./pages/cliente/contato";
 import MinhasInformacoes from "./pages/cliente/perfil/informacoes";
 import MeusAgendamentos from "./pages/cliente/perfil/agendamentos";
 
+import CRUDadmins from './pages/admin/crudAdmin';
+import CRUDportfolio from './pages/admin/crudPortfolio';
+import CRUDflashTattoo from './pages/admin/crudFlashTattoo';
+import CRUDagenda from './pages/admin/crudAgenda';
+import CRUDestoque from './pages/admin/crudEstoque';
+import CRUDclientes from './pages/admin/crudClientes';
+import Dashboard from './pages/admin/homeDashboard';
+
 export default function Router(){
     return (
         <BrowserRouter>
@@ -22,6 +30,13 @@ export default function Router(){
                 <Route path="/perfil/informacoes" element={<MinhasInformacoes />} />
                 <Route path="/perfil/agendamentos" element={<MeusAgendamentos />} />
 
+                <Route path="/dashboard/administradores" element={<CRUDadmins/>}/>
+                <Route path="/dashboard/portfolio" element={<CRUDportfolio/>}/>
+                <Route path="/dashboard/flashTattoo" element={<CRUDflashTattoo/>}/>
+                <Route path="/dashboard/agendamentos" element={<CRUDagenda/>}/>
+                <Route path="/dashboard/estoque" element={<CRUDestoque/>}/>
+                <Route path="/dashboard/clientes" element={<CRUDclientes/>}/>
+                <Route path="/dashboard" element={<Dashboard/>}/>
             </Routes>
         </BrowserRouter>
       );
