@@ -10,6 +10,7 @@ import './index.css';
 export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const [mostrarDropdown, setMostrarDropdown] = useState(false);
 
     const increaseFontSize = () => {
@@ -29,12 +30,13 @@ export default function Menu(){
       setMenuOpen(!menuOpen);
     };
 
+    const toggleSubMenu = () => {
+        setIsSubMenuOpen(!isSubMenuOpen);
+    };
 
-    
-
-  const toggleDropdown = () => {
-    setMostrarDropdown(!mostrarDropdown);
-  };
+    const toggleDropdown = () => {
+        setMostrarDropdown(!mostrarDropdown);
+    };
 
     return(
         <div className='menu-container'>
@@ -61,7 +63,15 @@ export default function Menu(){
                         <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                         <li><Link to="/">Agenda</Link></li>
                         <li><Link to="/contato">Contato</Link></li>
-                        <li><Link to="/meuPerfil">Meu Perfil</Link></li>
+                        <li className="submenu-parent" onMouseEnter={toggleSubMenu} onMouseLeave={toggleSubMenu}>Meu Perfil {isSubMenuOpen && (
+                            <ul className="submenu">
+                                <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
+                                <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
+                                <li><Link to="/sair">Sair</Link></li>
+                            </ul>
+                            )}
+                        </li>
+                        
                         <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
                         <FontAwesomeIcon className="config" color="white" icon={faCog} />
                         {mostrarDropdown && (
@@ -95,7 +105,10 @@ export default function Menu(){
                             <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                             <li><Link to="/">Agenda</Link></li>
                             <li><Link to="/contato">Contato</Link></li>
-                            <li><Link to="/meuPerfil">Meu Perfil</Link></li>
+                            <br></br>
+                            <li>Meu Perfil</li>
+                            <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
+                            <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
                             <li><Link to="/">Excluir Conta</Link></li>
                             <li><Link to="/">Sair</Link></li>
                         </>

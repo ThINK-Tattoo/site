@@ -6,7 +6,8 @@ import Login from './pages/login';
 import FlashTattoo from './pages/flashtattoo';
 import Portfolio from "./pages/portfolio";
 import Contato from "./pages/contato";
-import MeuPerfil from "./pages/meu-perfil";
+import MinhasInformacoes from "./pages/perfil/informacoes";
+import MeusAgendamentos from "./pages/perfil/agendamentos";
 
 export default function Router(){
     return (
@@ -18,7 +19,9 @@ export default function Router(){
                 <Route path="/flashtattoo" element={<FlashTattoo />} />
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/contato" element={<Contato />} />
-                <Route path="/meuPerfil" element={<MeuPerfil />} />
+                <Route path="/perfil/informacoes" element={<MinhasInformacoes />} />
+                <Route path="/perfil/agendamentos" element={<MeusAgendamentos />} />
+
             </Routes>
         </BrowserRouter>
       );

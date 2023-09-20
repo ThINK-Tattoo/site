@@ -135,6 +135,28 @@
     z-index: 1;
   }
 
+  .submenu-parent {
+    cursor: pointer;
+    position: relative;
+    color: white;
+    font-weight: 800;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 4px;
+    padding: 8px;
+    list-style: none;
+    z-index: 1;
+  }
+  
+  .submenu-parent:hover .submenu {
+    display: block;
+  }
+
   .drop-down-settings {
     display: none;
     flex-direction: column;
