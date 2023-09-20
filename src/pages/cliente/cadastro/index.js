@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Menu from '../../components/visitante/MenuVisitante';
-import Footer from '../../components/Footer';
-import iconPerson from '../../assets/icones/icon-person.png';
+import Menu from '../../../components/visitante/MenuVisitante';
+import Footer from '../../../components/Footer';
+import iconPerson from '../../../assets/icones/icon-person.png';
 
-import '../../styleGlobal.css';
+import '../../../styleGlobal.css';
 import './index.css'
 
 export default function Cadastro(){

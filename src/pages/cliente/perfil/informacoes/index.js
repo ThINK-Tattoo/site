@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import Modal from 'react-modal';
-import Menu from '../../../components/usuarioLogado/MenuLog';
-import Footer from '../../../components/Footer';
+import Menu from '../../../../components/usuarioLogado/MenuLog';
+import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
-import iconPerson from '../../../assets/icones/icon-person.png';
+import iconPerson from '../../../../assets/icones/icon-person.png';
 
-import '../../../styleGlobal.css';
+import '../../../../styleGlobal.css';
 import './index.css';
 
 export default function MinhasInformacoes(){

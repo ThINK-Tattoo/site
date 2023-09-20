@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import Menu from "../../../components/usuarioLogado/MenuLog";
-import Footer from "../../../components/Footer";
+import Menu from "../../../../components/usuarioLogado/MenuLog";
+import Footer from "../../../../components/Footer";
 
-import '../../../styleGlobal.css';
+import '../../../../styleGlobal.css';
 import './index.css';
 
 export default function MeusAgendamentos(){

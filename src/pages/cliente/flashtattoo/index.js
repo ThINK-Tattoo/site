@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import Menu from '../../components/usuarioLogado/MenuLog';
-import Footer from '../../components/Footer';
+import Menu from '../../../components/usuarioLogado/MenuLog';
+import Footer from '../../../components/Footer';
 
-import tatt1 from '../../assets/flashTattoo/tattoo.png';
-import tatt2 from '../../assets/flashTattoo/tattoo-2.png';
-import tatt3 from '../../assets/flashTattoo/tattoo-3.png';
-import tatt4 from '../../assets/flashTattoo/tattoo-4.png';
-import tatt5 from '../../assets/flashTattoo/tattoo-5.png';
-import tatt6 from '../../assets/flashTattoo/tattoo-6.png';
-import tatt7 from '../../assets/flashTattoo/tattoo-7.png';
-import tatt8 from '../../assets/flashTattoo/tattoo-8.png';
-import '../../styleGlobal.css';
+import tatt1 from '../../../assets/flashTattoo/tattoo.png';
+import tatt2 from '../../../assets/flashTattoo/tattoo-2.png';
+import tatt3 from '../../../assets/flashTattoo/tattoo-3.png';
+import tatt4 from '../../../assets/flashTattoo/tattoo-4.png';
+import tatt5 from '../../../assets/flashTattoo/tattoo-5.png';
+import tatt6 from '../../../assets/flashTattoo/tattoo-6.png';
+import tatt7 from '../../../assets/flashTattoo/tattoo-7.png';
+import tatt8 from '../../../assets/flashTattoo/tattoo-8.png';
+import '../../../styleGlobal.css';
 import './index.css';
 
 export default function FlashTattoo(){

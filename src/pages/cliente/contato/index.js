@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Menu from '../../components/visitante/MenuVisitante';
-import Footer from '../../components/Footer';
-import iconEnvelop from '../../assets/icones/icon-envelop-close.png';
+import Menu from '../../../components/visitante/MenuVisitante';
+import Footer from '../../../components/Footer';
+import iconEnvelop from '../../../assets/icones/icon-envelop-close.png';
 
-import '../../styleGlobal.css';
+import '../../../styleGlobal.css';
 import './index.css'
 
 export default function Contato(){
