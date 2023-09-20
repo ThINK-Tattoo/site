@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo-removebg-preview 1.png';
-import '../../styleGlobal.css';
+import logo from '../../../assets/icones/logo-removebg-preview 1.png';
+import '../../../styleGlobal.css';
 import './index.css';
 
 
@@ -42,7 +42,9 @@ export default function Menu(){
             </div>
 
             <nav className="menu">
-                <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
+                <Link to="/">
+                    <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
+                </Link>
                 
                 <div id="menu-normal">      
                     <ul>

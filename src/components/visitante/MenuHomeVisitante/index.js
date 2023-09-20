@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo-removebg-preview 1.png';
-import '../../styleGlobal.css';
+import logo from '../../../assets/icones/logo-removebg-preview 1.png';
+import '../../../styleGlobal.css';
 import './index.css';
 
 
@@ -23,8 +23,10 @@ export default function Menu(){
 
 
     const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
+        setMenuOpen(!menuOpen);
     };
+      
+
 
     return(
         <div className='menu-container'>
@@ -41,7 +43,7 @@ export default function Menu(){
                 </button>
             </div>
 
-            <nav className="menu">
+            <nav className="menuHome">
                 
                 
                 <div id="menu-normal">      
@@ -51,12 +53,14 @@ export default function Menu(){
                     </ul>
                 </div>
                 <div>
+                    <Link to="/">
                     <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
+                    </Link>
                 </div>
-                <div>
+                <div id="menu-normal">
                     <ul>
-                        <li><Link to="/signup">Cadastro</Link></li>
-                        <li><Link to="/signin">Login</Link></li>
+                        <li><Link to="/cadastro">Cadastro</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>
 
@@ -78,8 +82,8 @@ export default function Menu(){
                         <>
                             <li><Link to="/portfolio">Portfólio</Link></li>
                             <li><Link to="/contato">Contato</Link></li>
-                            <li><Link to="/signup">Cadastro</Link></li>
-                            <li><Link to="/signin">Login</Link></li>
+                            <li><Link to="/cadastro">Cadastro</Link></li>
+                            <li><Link to="/login">Login</Link></li>
                         </>
                         )}
                     </ul>

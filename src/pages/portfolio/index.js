@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import Menu from '../../components/Menu';
+import Menu from '../../components/visitante/MenuVisitante';
 import Footer from '../../components/Footer';
 
-import tatt1 from '../../assets/portfolio.png';
-import tatt2 from '../../assets/portfolio-2.png';
-import tatt3 from '../../assets/portfolio-3.png';
-import tatt4 from '../../assets/portfolio-4.png';
-import tatt5 from '../../assets/portfolio-5.png';
-import tatt6 from '../../assets/portfolio-6.png';
-import tatt7 from '../../assets/portfolio-7.png';
-import tatt8 from '../../assets/portfolio-8.png';
+import tatt1 from '../../assets/portfolio/portfolio.png';
+import tatt2 from '../../assets/portfolio/portfolio-2.png';
+import tatt3 from '../../assets/portfolio/portfolio-3.png';
+import tatt4 from '../../assets/portfolio/portfolio-4.png';
+import tatt5 from '../../assets/portfolio/portfolio-5.png';
+import tatt6 from '../../assets/portfolio/portfolio-6.png';
+import tatt7 from '../../assets/portfolio/portfolio-7.png';
+import tatt8 from '../../assets/portfolio/portfolio-8.png';
 import '../../styleGlobal.css';
 import './index.css';
 
@@ -131,9 +131,8 @@ export default function Portfolio(){
             <div className="header-image portfolio-tittle">
                 <h1>Portfó<span className="span-color">lio</span></h1>
             </div>
-            <h3 className="txt-white">CONHEÇA UM POUCO DO NOSSO TRABALHO</h3>
-
-            <h2 className="txt-white h2-info">MENU DE TATUAG<span className="span-color">ENS</span></h2>
+            <h3 className="txt-white">Conheça um pouco do nosso trabalho</h3>
+            <h1 className="txt-white h2-info">Menu de Tatuagens</h1>
             <section className="flashtattoo">
                 {portfolio.map((portfolio) => (
                     <div key={portfolio.id} className="portfolio-item">

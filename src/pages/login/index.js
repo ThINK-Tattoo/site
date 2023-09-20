@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Menu from "../../components/Menu";
+import Menu from "../../components/visitante/MenuVisitante";
 import Footer from "../../components/Footer";
-import iconPerson from '../../assets/icon-person.png';
+import iconPerson from '../../assets/icones/icon-person.png';
 
 import '../../styleGlobal.css';
 import './index.css'
@@ -12,7 +12,7 @@ export default function Login(){
         <div>
             <Menu/>
             <div className="login-tittle">
-                <h1>Lo<span>gin</span></h1>
+                <h1>Lo<span className="span-color">gin</span></h1>
             </div>
 
             <section className="form-conteiner">
@@ -23,7 +23,7 @@ export default function Login(){
                     <div className="conteiner-form-group">
                         <div class="form-group">
 
-                            <input className="input" type="email" id="login" name="email" placeholder="Login" required />
+                            <input className="input" type="email" id="login" name="email" placeholder="E-mail" required />
                         </div>
 
                         <div class="form-group">

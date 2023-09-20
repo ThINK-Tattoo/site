@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from '../../assets/logo-removebg-preview 1.png';
-import iconEnv from '../../assets/icon-envelope.png';
-import iconPhone from '../../assets/icon-phone.png';
-import iconClock from '../../assets/icon-clock.png';
+import Logo from '../../assets/icones/logo-removebg-preview 1.png';
+import iconEnv from '../../assets/icones/icon-envelope.png';
+import iconPhone from '../../assets/icones/icon-phone.png';
+import iconClock from '../../assets/icones/icon-clock.png';
 
 import '../../styleGlobal.css';
 import './index.css';

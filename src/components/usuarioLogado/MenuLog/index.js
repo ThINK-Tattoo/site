@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo-removebg-preview 1.png';
-import '../../styleGlobal.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import logo from '../../../assets/icones/logo-removebg-preview 1.png';
+import '../../../styleGlobal.css';
 import './index.css';
 
 
@@ -24,9 +26,9 @@ export default function Menu(){
 
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+      setMenuOpen(!menuOpen);
     };
-      
+
     const toggleSubMenu = () => {
         setIsSubMenuOpen(!isSubMenuOpen);
     };
@@ -47,30 +49,22 @@ export default function Menu(){
                 </button>
             </div>
 
-            <nav className="menuHome">
-                
+            <nav className="menu">
+                <Link to="/"><img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/></Link>
                 
                 <div id="menu-normal">      
                     <ul>
+                        <li><Link to="/">Home</Link></li>
                         <li><Link to="/portfolio">Portfólio</Link></li>
-                        <li><Link to="/flashtattoo">Flash Tattoo</Link></li>
-                        <li><Link to="/agenda">Agenda</Link></li>
-                    </ul>
-                </div>
-                <div>
-                    <Link to="/">
-                    <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
-                    </Link>
-                </div>
-                <div id="menu-normal">
-                    <ul>
+                        <li><Link to="/flashtattoo">FlashTattoo</Link></li>
+                        <li><Link to="/">Agenda</Link></li>
                         <li><Link to="/contato">Contato</Link></li>
-                        <li><Link to="/">Sobre Nós</Link></li>
                         <li className="submenu-parent" onMouseEnter={toggleSubMenu} onMouseLeave={toggleSubMenu}>Meu Perfil {isSubMenuOpen && (
                             <ul className="submenu">
                                 <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                                 <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
-                                <li><Link to="/sair">Sair</Link></li>
+                                <li><button>Excluir Conta</button></li>
+                                <li><button>Sair</button></li>
                             </ul>
                             )}
                         </li>
@@ -102,7 +96,8 @@ export default function Menu(){
                             <li>Meu Perfil</li>
                             <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                             <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
-                            <li><Link to="/sair">Sair</Link></li>
+                            <li><button>Excluir Conta</button></li>
+                            <li><button>Sair</button></li>
                         </>
                         )}
                     </ul>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo-removebg-preview 1.png';
-import '../../styleGlobal.css';
+import logo from '../../../assets/icones/logo-removebg-preview 1.png';
+import '../../../styleGlobal.css';
 import './index.css';
 
 
 export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
     const increaseFontSize = () => {
       setFontSize((prevSize) => prevSize + 2); 
@@ -23,8 +24,13 @@ export default function Menu(){
 
 
     const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
+        setMenuOpen(!menuOpen);
     };
+      
+    const toggleSubMenu = () => {
+        setIsSubMenuOpen(!isSubMenuOpen);
+    };
+    
 
     return(
         <div className='menu-container'>
@@ -41,21 +47,36 @@ export default function Menu(){
                 </button>
             </div>
 
-            <nav className="menu">
-                <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
+            <nav className="menuHome">
+                
                 
                 <div id="menu-normal">      
                     <ul>
-                        <li><Link to="/">Home</Link></li>
                         <li><Link to="/portfolio">Portfólio</Link></li>
-                        <li><Link to="/flashtattoo">FlashTattoo</Link></li>
-                        <li><Link to="/">Agenda</Link></li>
-                        <li><Link to="/contato">Contato</Link></li>
-                        <li><Link to="/signin">Login</Link></li>
-                        <li><Link to="/signup">Cadastro</Link></li>
+                        <li><Link to="/flashtattoo">Flash Tattoo</Link></li>
+                        <li><Link to="/agenda">Agenda</Link></li>
                     </ul>
                 </div>
-
+                <div>
+                    <Link to="/">
+                    <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
+                    </Link>
+                </div>
+                <div id="menu-normal">
+                    <ul>
+                        <li><Link to="/contato">Contato</Link></li>
+                        <li><Link to="/">Sobre Nós</Link></li>
+                        <li className="submenu-parent" onMouseEnter={toggleSubMenu} onMouseLeave={toggleSubMenu}>Meu Perfil {isSubMenuOpen && (
+                            <ul className="submenu">
+                                <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
+                                <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
+                                <li><button>Excluir Conta</button></li>
+                                <li><button>Sair</button></li>
+                            </ul>
+                            )}
+                        </li>
+                    </ul>
+                </div>
                 <div id="menu-drop-down">
                     <div className="menu-header">
                         <button className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
@@ -72,14 +93,17 @@ export default function Menu(){
                     <ul className={`menu-list ${menuOpen ? 'open' : ''}`}>
                         {menuOpen && (
                         <>
-                            <li><Link to="/">Home</Link></li>
                             <li><Link to="/portfolio">Portfólio</Link></li>
-                            <li><Link to="/flashtattoo">FlashTattoo</Link></li>
-                            <li><Link to="/">Agenda</Link></li>
+                            <li><Link to="/flashtattoo">Flash Tattoo</Link></li>
+                            <li><Link to="/agenda">Agenda</Link></li>
                             <li><Link to="/contato">Contato</Link></li>
-                            <li><Link to="/signin">Login</Link></li>
-                            <li><Link to="/signup">Cadastro</Link></li>
-
+                            <li><Link to="/">Sobre Nós</Link></li>
+                            <br></br>
+                            <li>Meu Perfil</li>
+                            <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
+                            <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
+                            <li><button>Excluir Conta</button></li>
+                            <li><button>Sair</button></li>
                         </>
                         )}
                     </ul>

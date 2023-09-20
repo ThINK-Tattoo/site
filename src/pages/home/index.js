@@ -1,15 +1,15 @@
 import React from "react";
-import Menu from '../../components/MenuHomeLog';
+import Menu from '../../components/visitante/MenuHomeVisitante';
 import Footer from '../../components/Footer';
 
 import '../../styleGlobal.css';
 import './index.css'
 
-import iconMaq from '../../assets/icon-maq.png';
-import imagemProjeto from '../../assets/imagemProjeto.png';
-import iconCoracao from '../../assets/icon-heart.png';
-import iconEmail from '../../assets/icon-envelope.png'
-import setaCuidados from '../../assets/icon-seta.png'
+import iconMaq from '../../assets/icones/icon-maq.png';
+import imagemProjeto from '../../assets/home/imagemProjeto.png';
+import iconCoracao from '../../assets/icones/icon-heart.png';
+import iconEmail from '../../assets/icones/icon-envelope.png'
+import setaCuidados from '../../assets/icones/icon-seta.png'
 
 export default function Home(){
     return (
@@ -86,7 +86,7 @@ export default function Home(){
             </div>
             <div className="portfolioHome">
                 <div className="portfolioConteudo">
-                    <h1 className="txt-white h1-info" id="tituloProjeto">Portfó<span className="span-color">lio</span></h1>
+                    <h1 className="txt-white h1-info" id="tituloProjeto">Portfólio</h1>
                     <p>Conheça nosso trabalho.</p>
                     <div>
                             <button className="btn">Confira!</button>

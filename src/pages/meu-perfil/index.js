@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import Modal from 'react-modal';
-import Menu from '../../components/MenuLog';
+import Menu from '../../components/usuarioLogado/MenuLog';
 import Footer from '../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
-import iconPerson from '../../assets/icon-person.png';
+import iconPerson from '../../assets/icones/icon-person.png';
 
 import '../../styleGlobal.css';
 import './index.css';
@@ -104,7 +104,7 @@ export default function MeuPerfil(){
             </Modal>
 
             <div className="header-image perfil-tittle">
-                <h1>Minhas informa<span className="span-color">ções</span></h1>
+                <h1>Minhas informaç<span className="span-color">ões</span></h1>
             </div>
 
             <section className="form-container">

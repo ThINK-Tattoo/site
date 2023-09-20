@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Menu from '../../components/Menu';
+import Menu from '../../components/visitante/MenuVisitante';
 import Footer from '../../components/Footer';
-import iconPerson from '../../assets/icon-person.png';
+import iconPerson from '../../assets/icones/icon-person.png';
 
 import '../../styleGlobal.css';
 import './index.css'
