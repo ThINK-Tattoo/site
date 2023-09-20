@@ -43,7 +43,7 @@
     display: none;
 }
   
-  .logo-menu {
+  .logo-menuLog {
     width: 180px;
     height: 84px;
     margin-left: -18%;
@@ -185,7 +185,7 @@
   }
 
   @media (max-width: 888px) {
-    .logo-menu {
+    .logo-menuLog {
         margin-left: 10%;
       }
       
@@ -222,7 +222,7 @@
   }
 
   @media (max-width: 400px) {
-    .logo-menu {
+    .logo-menuLog {
         width: 140px;
         height: 64px;
         margin-left: 5%;
@@ -251,7 +251,7 @@
   }
 
   @media (max-width: 367px) {
-    .logo-menu {
+    .logo-menuLog {
         width: 140px;
         height: 64px;
         margin-left: 5%;
@@ -275,7 +275,6 @@
     .menu{
         margin-top: 5%;
     }
-     
   }
   
   

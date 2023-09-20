@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
@@ -50,11 +48,10 @@ export default function Menu(){
             </div>
 
             <nav className="menu">
-                <Link to="/"><img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/></Link>
+                <Link to="/"><img className="logo-menuLog" src={logo} alt="Logo do projeto com o nome ThINK"/></Link>
                 
                 <div id="menu-normal">      
                     <ul>
-                        <li><Link to="/">Home</Link></li>
                         <li><Link to="/portfolio">Portfólio</Link></li>
                         <li><Link to="/flashtattoo">FlashTattoo</Link></li>
                         <li><Link to="/">Agenda</Link></li>

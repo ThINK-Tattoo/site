@@ -49,6 +49,7 @@
   .logo-menu {
     width: 180px;
     height: 84px;
+    margin-left: 18% !important;
   }
   
   .menuHome ul {

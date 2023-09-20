@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/icones/logo-removebg-preview 1.png';
 import iconEnv from '../../assets/icones/icon-envelope.png';
 import iconPhone from '../../assets/icones/icon-phone.png';
@@ -10,7 +11,7 @@ import './index.css';
 export default function Footer(){
     return(
         <div className="footer-container">
-            <img className="logo-footer" src={Logo} alt="Logo do projeto com o nome ThINK"/>
+            <Link to="/"><img className="logo-footer" src={Logo} alt="Logo do projeto com o nome ThINK"/></Link>
 
             <div className="info-think">
                 <div className="info-element">
