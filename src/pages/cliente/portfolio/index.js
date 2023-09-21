@@ -131,8 +131,8 @@ export default function Portfolio(){
             <div className="header-image portfolio-tittle">
                 <h1>Portfó<span className="span-color">lio</span></h1>
             </div>
-            <h3 className="txt-white">Conheça um pouco do nosso trabalho</h3>
-            <h1 className="txt-white h2-info">Menu de Tatuagens</h1>
+            <h3 className="txt-white">Conheça um pouco do nosso trabalho!</h3>
+            <br></br>
             <section className="flashtattoo">
                 {portfolio.map((portfolio) => (
                     <div key={portfolio.id} className="portfolio-item">

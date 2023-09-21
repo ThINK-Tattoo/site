@@ -95,24 +95,31 @@ body{
 ::-webkit-scrollbar{
     width: 8px;
     border-radius: 5%;
-  }
-  
-  ::-webkit-scrollbar-track{
+}
+
+::-webkit-scrollbar-track{
     background-color: var(--var-forms-background);
-  }
-  
-  ::-webkit-scrollbar-thumb{
+}
+
+::-webkit-scrollbar-thumb{
     background-color: var(--var-txt-lilas);
-  }
-  
-  @keyframes entering{
+}
+
+@keyframes entering{
     from {
-      opacity: 0;
-      transform: translateY(-200px);
+        opacity: 0;
+        transform: translateY(-200px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
+}
+
+/*Dashboard*/
+.tituloDashboard{
+}
+
+.span-color-dashboard{
+    color: var(--var-txt-lilas);
+}

@@ -7,7 +7,13 @@ import './index.css'
 export default function homeDashboard(){
     return (
         <div>
-            <Menu/>
+            <Menu />
+        <section>
+            <div className="tituloDashboard">
+                <h1>Página Inic<span className="span-color-dashboard">ial</span></h1>
+            </div>
+        </section>
         </div>
+        
     )
 }

@@ -1,6 +1,7 @@
 import React from "react";
-import Menu from '../../components/visitante/MenuHomeVisitante';
+import Menu from '../../components/admin/menuHome';
 import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
 
 import '../../styleGlobal.css';
 import './index.css'
@@ -22,7 +23,7 @@ export default function Home(){
                     <h1>ThINK</h1>
                     <p>Uma nova maneira de Pensar e Tatuar</p>
                     <div className="btn-agendeJa">
-                        <button className="btn">Agende já!</button>
+                        <button className="btn"><Link to="/agenda"><a>Agende já!</a></Link></button>
                     </div> 
                 </div> 
                     {/*<img src={imagemPrincipal} className="imagemPrincipal"></img>*/}

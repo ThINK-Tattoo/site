@@ -47,6 +47,11 @@
     justify-content: center;
 }
 
+.itensContainer button a {
+    color: white;
+    text-decoration: none;
+}
+
 .btn-agendeJa{
     display: flex;
     justify-content: center;
