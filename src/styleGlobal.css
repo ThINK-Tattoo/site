@@ -115,4 +115,10 @@ body{
       transform: translateY(0);
     }
   }
+
+  .btnAdicionar{
+    margin-top:20%;
+    margin-left: 50%;
+    position: absolute;
+  }
   

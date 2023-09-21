@@ -131,7 +131,7 @@ export default function FlashTattoo(){
             <div className="header-image flashtattoo-tittle">
                 <h1>Flash Tat<span className="span-color">too</span></h1>
             </div>
-            <h3 className="txt-white">O QUE SÃO E COMO <span className="span-color">FUNCIONA</span>?</h3>
+            <h3 className="txt-white">O QUE SÃO E COMO FUNCIONA?</h3>
 
             <div id='info-flashtattoo'>
                 <p className="txt-white">Flash tattoos são tatuagens rápidas geralmente oferecidas pelos artistas por um valor mais em conta para divulgação do trabalho, criação de portfólio e captação de novos cli entes. Normalmente não são feitas sob encomenda, então o artista cria e a pessoa não pode pedir nenhuma alteração.
@@ -140,7 +140,6 @@ export default function FlashTattoo(){
 
             <p className="txt-white p-info">Você escolherá a Flash Tattoo que temos em nossa galeria e irá fazer o agendamento.</p>
 
-            <h2 className="txt-white h2-info">MENU DE FLASH TAT<span className="span-color">TOO</span></h2>
             <section className="flashtattoo">
                 {flashtatto.map((tattoo) => (
                     <div key={tattoo.id} className="tattoo-item">

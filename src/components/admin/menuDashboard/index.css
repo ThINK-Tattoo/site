@@ -45,6 +45,7 @@
     margin-top: 3%;
     width: 240px;
     background-color: transparent;
+    top: 0;
 }
 
 .sidebar.active{
@@ -59,7 +60,7 @@
     position: relative;
     list-style: none;
     height: 50px;
-    margin-left:10%;
+    margin-left:20%;
     font-weight: 700;
     font-size: 15px;
 }
