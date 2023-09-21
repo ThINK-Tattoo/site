@@ -3,7 +3,7 @@
     justify-content: space-between;
     width: 80%;
     margin-left: 20%;
-    margin-top: 12%;
+    margin-top: 3%;
     color: white;
     text-align: center;
 }
@@ -29,7 +29,7 @@
     display: flex;
 }
 
-.container-form-group{
+.container-admin-modal-group{
     display: flex;
     flex-direction: column;
 }
@@ -39,10 +39,28 @@
     margin-top: 10%;
 }
 
-.modal-form h4{
+.modal-admin h4{
     margin-bottom: 13%;
 }
 
 input{
     width: 400px;
+}
+
+/*RESPONSIVIDADE*/
+@media (max-width: 1024px){
+    .perfis{
+        margin-left: 30%;
+        width: 65%;
+    }
+}
+
+@media (max-width: 768px){
+    .perfis{
+        margin-left: 35%;
+        width: 65%;
+    }
+    .btn{
+        margin-left: 58% !important;
+    }
 }

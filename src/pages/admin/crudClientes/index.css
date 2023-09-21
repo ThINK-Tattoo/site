@@ -1,0 +1,83 @@
+.crudClientes {
+    text-align: center;
+    margin: 20px;
+    color: white;
+    width: 80%;
+    margin-left: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #262626;
+    border-radius: 10px; 
+}
+
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+table thead {
+    background-color: #A40C9F;
+    color: #fff; 
+    font-weight: bold;
+}
+
+td .icone{
+    justify-content: center;
+    display: flex;
+    cursor: pointer; 
+}
+
+.iconeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-left: -50%;
+}
+
+@media (max-width: 1350px){
+    .crudClientes{
+        width: 80%;
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 1260px){
+    .crudClientes{
+        width: 75%;
+        margin-left: 24%;
+    }
+}
+
+@media (max-width: 1024px){
+    .crudClientes{
+        width: 66%;
+        margin-left: 29%;
+    }
+}
+
+@media (max-width:800px){
+    .crudClientes{
+        width: 60%;
+        margin-left: 35%;
+    }
+}
+
+@media (max-width: 768px){
+    .crudClientes{
+        margin-left: 36%;
+    }
+}

@@ -1,27 +1,17 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, {useState} from "react";
 import Modal from 'react-modal';
->>>>>>> 1d71fc04819b39e0dedca49f4267a8c8ca3069e1
 import Menu from '../../../components/admin/menuDashboard';
 
 import '../../../styleGlobal.css';
 import './index.css'
 
-<<<<<<< HEAD
-
-export default function Home(){
-    return (
-        <div>
-            <Menu />
-=======
 import Admin1 from "../../../assets/crudAdmin/admin1.png";
 import Admin2 from "../../../assets/crudAdmin/admin2.png";
 import Admin3 from "../../../assets/crudAdmin/admin3.png";
 
 
 export default function CrudAdmin(){
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = (e) => {
@@ -37,6 +27,9 @@ export default function CrudAdmin(){
     return (
         <div>
             <Menu/>
+            <div className="tituloDashboard">
+                <h1>Administrado<span className="span-color-dashboard">res</span></h1>
+            </div>
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
@@ -57,9 +50,9 @@ export default function CrudAdmin(){
                 }}
             >
                 
-                <form class="form modal-form">
+                <form class="form modal-admin">
                     <h4>Adicionar administrador</h4>
-                    <div className="container-form-group">
+                    <div className="container-admin-modal-group">
                         <div class="form-group">
                             <label>Nome:</label>
                             <input type="text" id="nome" name="nome" placeholder="Nome" />
@@ -102,7 +95,6 @@ export default function CrudAdmin(){
             <div className="btnAdicionar">
                 <button onClick={(e) => openModal(e)} className="btn">Adicionar</button>
             </div>
->>>>>>> 1d71fc04819b39e0dedca49f4267a8c8ca3069e1
         </div>
     )
 }

@@ -117,6 +117,28 @@ body{
 }
 
 /*Dashboard*/
+.tituloDashboard{
+    color: white;
+    margin-left: 20%;
+    margin-top: 4.5%;
+}
+
+@media (max-width: 1260px){
+    .tituloDashboard{
+        margin-left: 25%;
+    }
+}
+@media (max-width: 1024px){
+    .tituloDashboard{
+        margin-left: 30%;
+    }
+}
+
+@media (max-width: 768px){
+    .tituloDashboard{
+        margin-left: 35%;
+    }
+}
 
 .span-color-dashboard{
     color: var(--var-txt-lilas);

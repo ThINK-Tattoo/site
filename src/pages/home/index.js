@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from '../../components/admin/menuHome';
+import Menu from '../../components/visitante/MenuHomeVisitante';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 
