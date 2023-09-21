@@ -178,9 +178,9 @@ export default function Portfolio(){
                                     <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.Tipo}</p>
                                     <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.Cores}</p>
                                 </div>
-                              
+                        
                             </div>
-                           
+                        
                         </div>
                         
                     </div>

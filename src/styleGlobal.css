@@ -117,9 +117,13 @@ body{
 }
 
 /*Dashboard*/
-.tituloDashboard{
-}
 
 .span-color-dashboard{
     color: var(--var-txt-lilas);
+}
+
+.btnAdicionar{
+    margin-top:20%;
+    margin-left: 50%;
+    position: absolute;
 }
