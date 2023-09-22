@@ -518,6 +518,11 @@ option{
         margin-left: 30%;
     }
 }
+@media (max-width: 686px){
+    .imagemProjeto {
+        margin: 5% 20% 5% 12% !important;
+    }
+}
 
 @media (max-width: 675px){
     .imagemProjeto {

@@ -123,6 +123,34 @@ body{
     margin-top: 4.5%;
 }
 
+.span-color-dashboard{
+    color: var(--var-txt-lilas);
+}
+
+.btnAdicionar{
+    margin-top:20%;
+    margin-left: 50%;
+    position: absolute;
+}
+
+.btnCrud {
+    background-color: #6B036B;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5%;
+    height: 50px;
+}
+
+.btnCrud:hover{
+    background-color: #990799;
+    transition: ease-in-out 0.2s;
+}
+
 @media (max-width: 1260px){
     .tituloDashboard{
         margin-left: 25%;
@@ -140,12 +168,3 @@ body{
     }
 }
 
-.span-color-dashboard{
-    color: var(--var-txt-lilas);
-}
-
-.btnAdicionar{
-    margin-top:20%;
-    margin-left: 50%;
-    position: absolute;
-}

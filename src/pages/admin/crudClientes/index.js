@@ -8,10 +8,10 @@ import './index.css'
 
 function App() {
       // clientes de exemplo
-    const [clientes, setClientes] = useState([
-    { id: 1, nome: 'Cliente 1', email: 'cliente1@example.com', telefone: '(12) 93456-7890', selecionado: false },
-    { id: 2, nome: 'Cliente 2', email: 'cliente2@example.com', telefone: '(98) 97654-3210', selecionado: false },
-    ]);
+      const [clientes, setClientes] = useState([
+        { id: 1, nome: 'Cliente 1', email: 'cliente1@example.com', telefone: '(12) 93456-7890', selecionado: false },
+        { id: 2, nome: 'Cliente 2', email: 'cliente2@example.com', telefone: '(98) 97654-3210', selecionado: false },
+        ]);
 
     const [ordenarPorNome, setOrdenarPorNome] = useState(null);
     const [termoPesquisa, setTermoPesquisa] = useState('');
@@ -70,6 +70,7 @@ function App() {
             onChange={handlePesquisaGeral}
             />
         </div>
+        <br></br>
         <table>
             <thead>
             <tr>

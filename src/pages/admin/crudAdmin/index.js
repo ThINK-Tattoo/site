@@ -93,7 +93,7 @@ export default function CrudAdmin(){
                 </div>
             </div>
             <div className="btnAdicionar">
-                <button onClick={(e) => openModal(e)} className="btn">Adicionar</button>
+                <button onClick={(e) => openModal(e)} className="btnCrud">Adicionar</button>
             </div>
         </div>
     )
