@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
@@ -19,6 +19,7 @@ export default function Menu(){
                         <li><Link to="/dashboard/portfolio"><a>Porfolio</a></Link></li>
                         <li><Link to="/dashboard/flashTattoo"><a>FlashTattoo</a></Link></li>
                         <li><Link to="/dashboard/agendamentos"><a>Agendamentos</a></Link></li>
+                        <li><Link to="/dashboard/solicitacoes"><a>Solicitações</a></Link></li>
                         <li><Link to="/dashboard/estoque"><a>Estoque</a></Link></li>
                     </ul>
                 </div>

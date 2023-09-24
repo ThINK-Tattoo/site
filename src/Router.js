@@ -16,6 +16,7 @@ import CRUDflashTattoo from './pages/admin/crudFlashTattoo';
 import CRUDagenda from './pages/admin/crudAgenda';
 import CRUDestoque from './pages/admin/crudEstoque';
 import CRUDclientes from './pages/admin/crudClientes';
+import CRUDsolicitacoes from './pages/admin/crudSolicitacoes';
 import Dashboard from './pages/admin/homeDashboard';
 
 export default function Router(){
@@ -38,6 +39,7 @@ export default function Router(){
                 <Route path="/dashboard/agendamentos" element={<CRUDagenda/>}/>
                 <Route path="/dashboard/estoque" element={<CRUDestoque/>}/>
                 <Route path="/dashboard/clientes" element={<CRUDclientes/>}/>
+                <Route path="/dashboard/solicitacoes" element={<CRUDsolicitacoes/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
             </Routes>
         </BrowserRouter>

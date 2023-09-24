@@ -1,0 +1,27 @@
+.info-solicitacoes {
+    padding: 20px;
+    background-color: #1d1d1d;
+    margin-left:8%;
+    margin-inline: 5%;
+    border-radius: 10px;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.info-solicitacoes p {
+    margin-top: 3%;
+    margin-right: 4%;
+    text-align: left;
+}
+
+.solicitacoes-conteiner{
+    width:85%;
+    margin-left: 15%;
+}
+
+@media (max-width: 768px){
+    .info-solicitacoes p{
+        max-width: 100%;
+        font-size: 1rem;
+    }
+}

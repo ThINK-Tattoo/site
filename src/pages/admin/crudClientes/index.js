@@ -44,65 +44,57 @@ function App() {
         cliente.telefone.includes(termoPesquisa)
     );
 
-    const renderSetaOrdenacao = () => {
-        if (ordenarPorNome === 'asc') {
-        return ' ▲'; // Setinha para cima (Unicode)
-        } else if (ordenarPorNome === 'desc') {
-        return ' ▼'; // Setinha para baixo (Unicode)
-        } else {
-        return ''; // Nenhum ícone (não ordenado)
-        }
-    };
-
     return (
         <div>
             <Menu />
+            <section>
             <div className="tituloDashboard">
                 <h1>Clien<span className="span-color-dashboard">tes</span></h1>
             </div>
-        <div className="crudClientes">
-        <div className="barraPesquisa">
-        <FontAwesomeIcon icon={faSearch} style={{color: "#e40ce4",}} />
-            <input
-            type="text"
-            placeholder="Pesquisar"
-            value={termoPesquisa}
-            onChange={handlePesquisaGeral}
-            />
-        </div>
-        <br></br>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>
-                Nome
-                <button onClick={ordenarClientesPorNome} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
-                    {ordenarPorNome === 'asc' ? '▲' : '▼'}
-                </button>
-                </th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>ㅤ</th>
-            </tr>
-            </thead>
-            <tbody>
-            {clientesFiltrados.map((cliente) => (
-                <tr key={cliente.id}>
-                <td>{cliente.id}</td>
-                <td>{cliente.nome}</td>
-                <td>{cliente.email}</td>
-                <td>{cliente.telefone}</td>
-                <td>
-                    <div className="iconeContainer">
-                    <button onClick={() => handleExcluirCliente(cliente.id)}><FontAwesomeIcon className="icone" icon={faTrash} style={{color: "#eb1cea",}} /></button>
-                    </div>
-                </td>
+            <div className="crudClientes">
+            <div className="barraPesquisa">
+            <FontAwesomeIcon icon={faSearch} style={{color: "#e40ce4",}} />
+                <input
+                type="text"
+                placeholder="Pesquisar"
+                value={termoPesquisa}
+                onChange={handlePesquisaGeral}
+                />
+            </div>
+            <br></br>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>
+                    Nome
+                    <button onClick={ordenarClientesPorNome} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
+                        {ordenarPorNome === 'asc' ? '▲' : '▼'}
+                    </button>
+                    </th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>ㅤ</th>
                 </tr>
-            ))}
-            </tbody>
-        </table>
-        </div>
+                </thead>
+                <tbody>
+                {clientesFiltrados.map((cliente) => (
+                    <tr key={cliente.id}>
+                    <td>{cliente.id}</td>
+                    <td>{cliente.nome}</td>
+                    <td>{cliente.email}</td>
+                    <td>{cliente.telefone}</td>
+                    <td>
+                        <div className="iconeContainer">
+                        <button onClick={() => handleExcluirCliente(cliente.id)}><FontAwesomeIcon className="icone" icon={faTrash} style={{color: "#eb1cea",}} /></button>
+                        </div>
+                    </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+            </div>
+            </section> 
         </div>
     );
 }
