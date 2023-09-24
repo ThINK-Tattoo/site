@@ -1,3 +1,7 @@
+.section{
+    margin-left: 10%;
+}
+
 .perfis{
     display: flex;
     justify-content: space-between;
@@ -40,11 +44,7 @@
 }
 
 .modal-admin h4{
-    margin-bottom: 13%;
-}
-
-input{
-    width: 400px;
+    margin-bottom: 13% !important;
 }
 
 /*RESPONSIVIDADE*/
@@ -53,6 +53,17 @@ input{
         margin-left: 30%;
         width: 65%;
     }
+    .modal-admin{
+        max-width: 100%; 
+        margin-top: 0% !important;
+        margin-bottom: 5% !important;
+        margin-left: 5%;
+      }
+
+      .form-group{
+        margin-left: 5%;
+        margin-right: -3%;
+      }
 }
 
 @media (max-width: 768px){
@@ -63,4 +74,13 @@ input{
     .btnCrud{
         margin-left: 58% !important;
     }
+    .modal-admin{
+        max-width: 100%; 
+        margin-top: 0% !important;
+        margin-bottom: 5% !important;
+        margin-left: 39%;
+      }
+
+
+  
 }

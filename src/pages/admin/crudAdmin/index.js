@@ -27,6 +27,7 @@ export default function CrudAdmin(){
     return (
         <div>
             <Menu/>
+            <section>
             <div className="tituloDashboard">
                 <h1>Administrado<span className="span-color-dashboard">res</span></h1>
             </div>
@@ -55,15 +56,15 @@ export default function CrudAdmin(){
                     <div className="container-admin-modal-group">
                         <div class="form-group">
                             <label>Nome:</label>
-                            <input type="text" id="nome" name="nome" placeholder="Nome" />
+                            <input className="inputAdmin" type="text" id="nome" name="nome" placeholder="Nome" />
                         </div>
                         <div class="form-group">
                             <label>Email:</label>
-                            <input type="email" id="email" name="email" placeholder="example@email.com"/>
+                            <input  className="inputAdmin" type="email" id="email" name="email" placeholder="example@email.com"/>
                         </div>
                         <div class="form-group">
                             <label>Foto:</label>
-                            <input type="file"></input>
+                            <input  className="inputAdmin" type="file"></input>
                         </div>
                     </div>
                     
@@ -76,17 +77,17 @@ export default function CrudAdmin(){
             <div className="perfis">
                 <div className="perfil">
                     <div className="perfilAdmin">
-                        <img src={Admin1} className="iconeAdmin"></img>
+                        <img src={Admin1} className="iconeAdmin" alt="ícone de administrador"></img>
                         <h2>Skye</h2>
                         <p>Tatuadora</p>
                     </div>
                     <div className="perfilAdmin">
-                        <img src={Admin2} className="iconeAdmin"></img>
+                        <img src={Admin2} className="iconeAdmin" alt="ícone de administrador"></img>
                         <h2>Dom</h2>
                         <p>Tatuador</p>
                     </div> 
                     <div className="perfilAdmin">
-                        <img src={Admin3} className="iconeAdmin"></img>
+                        <img src={Admin3} className="iconeAdmin" alt="ícone de administrador"></img>
                         <h2>Mia</h2>
                         <p>Tatuadora</p>
                     </div> 
@@ -95,6 +96,7 @@ export default function CrudAdmin(){
             <div className="btnAdicionar">
                 <button onClick={(e) => openModal(e)} className="btnCrud">Adicionar</button>
             </div>
+            </section>
         </div>
     )
 }
