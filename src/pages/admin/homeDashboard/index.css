@@ -1,0 +1,38 @@
+.homeDash{
+    width: 80%;
+    max-width: 450px;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+@media (max-width: 1440px){
+    .homeDash{
+        max-width: 420px;
+    }
+
+    .imagem{
+        margin-left: 13%;
+    }
+}
+
+@media(max-width: 1024){
+    .homeDash{
+        max-width: 386px;
+    }
+
+}
+@media (max-width: 768px){
+    .homeDash{
+        max-width: 305px;
+        margin-top: 15%;
+        margin-left: 21%;
+    }
+
+}
