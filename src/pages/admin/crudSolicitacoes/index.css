@@ -19,9 +19,71 @@
     margin-left: 15%;
 }
 
-@media (max-width: 768px){
+#modalSolicitacoes{
+    margin-left: 5%;
+    height: auto;
+}
+
+.modal-content{
+    color: white;
+}
+.btn-aceitar, .btn-recusar{
+    width: 40%;
+    margin-top: 15%;
+}
+
+.modal-content h2{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+.modal-content p{
+    margin-top: 8%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media (max-width: 1280px){
+    .solicitacoes-conteiner {
+        margin-left: 17%;
+    }
+}
+
+@media (max-width: 1140px){
+    .solicitacoes-conteiner {
+        margin-left: 18%;
+    }
+}
+
+@media (max-width: 1024px){
+    .solicitacoes-conteiner {
+        width: 76%;
+        margin-left: 24%;
+    }
+}
+@media (max-width: 880px){
+    .solicitacoes-conteiner {
+        width: 70%;
+        margin-left: 27%;
+    }
+}
+@media (max-width: 800px){
     .info-solicitacoes p{
         max-width: 100%;
         font-size: 1rem;
     }
+    .solicitacoes-conteiner {
+        width: 69%;
+        margin-left: 31%;
+        margin-top: 5%;
+    }
+
+    .btn-recusar{
+        margin-top: 0;
+    }
+
+    #modalSolicitacoes {
+        margin-left: 14%;
+        width: 48%;
+    }    
 }

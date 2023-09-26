@@ -23,7 +23,7 @@ export default function Menu(){
                         <li><Link to="/dashboard/estoque"><a>Estoque</a></Link></li>
                     </ul>
                 </div>
-                <div>
+                <div className="liBtn">
                 <li><button className="btn-sair">Sair</button></li>
                 </div>
             </div>

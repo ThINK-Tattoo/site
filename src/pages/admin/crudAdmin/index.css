@@ -2,6 +2,13 @@
     margin-left: 10%;
 }
 
+.modal-admin{
+    width: 70% !important;
+    height: auto;
+    margin-top: 15%;
+    margin-left: 25%;
+  } 
+
 .perfis{
     display: flex;
     justify-content: space-between;
@@ -38,7 +45,7 @@
     flex-direction: column;
 }
 
-.btn-adicionar, .btn-cancelar{
+.btn-adicionar{
     width: 40%;
     margin-top: 10%;
 }
@@ -47,6 +54,30 @@
     margin-bottom: 13% !important;
 }
 
+.fileLabel{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: -2%;
+}
+
+.icon-file{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.iconFile{
+    margin-left: 25%;
+}
+.file p {
+    margin-bottom: 5%;
+    color: var(--var-lilas);
+    margin-right: -80%;
+    margin-left: 0%;
+}
+
+#btns{
+flex-direction: column;
+}
 /*RESPONSIVIDADE*/
 @media (max-width: 1024px){
     .perfis{
@@ -55,18 +86,28 @@
     }
     .modal-admin{
         max-width: 100%; 
-        margin-top: 0% !important;
+        margin-top: 10% !important;
         margin-bottom: 5% !important;
-        margin-left: 5%;
+        margin-left: 24%;
+        height: auto;
+        margin-right: -5%;
+      }
+
+      .form h4{
+        font-size: 1.5rem;
       }
 
       .form-group{
         margin-left: 5%;
         margin-right: -3%;
       }
+
+      .file{
+        margin-left: 5%;
+      }
 }
 
-@media (max-width: 768px){
+@media (max-width: 882px){
     .perfis{
         margin-left: 35%;
         width: 65%;
@@ -76,9 +117,10 @@
     }
     .modal-admin{
         max-width: 100%; 
-        margin-top: 0% !important;
+        margin-top: 10% !important;
         margin-bottom: 5% !important;
-        margin-left: 39%;
+        margin-left: 26%;
+        height: auto;
       }
 
 

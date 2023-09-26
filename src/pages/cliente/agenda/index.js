@@ -233,7 +233,7 @@ const handleSubmit = () =>{
                         </div>
 
                         <div id="obs">
-                            <h3 className='txt-white'>Imagem de Referência</h3>
+                            <h3 className='txt-white'>Observações:</h3>
                             <div class="form-group col-full">
                             
                               <textarea style={{backgroundColor: "#0f0f0f"}} className="input" id="mensagem" name="mensagem" placeholder="Obervação: (Opcional)" required></textarea>

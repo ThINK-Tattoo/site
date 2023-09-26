@@ -34,6 +34,10 @@
     font-size: 15px;
 }
 
+.liBtn{
+    list-style: none;
+}
+
 button{
     background-color: transparent;
     border: none;
