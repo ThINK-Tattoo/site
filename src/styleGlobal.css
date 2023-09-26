@@ -167,7 +167,7 @@ body{
 
 @media (max-width: 768px){
     .tituloDashboard{
-        margin-left: 35%;
+        margin-left: 28%;
     }
     .btnCrud{
         margin-left: 58% !important;

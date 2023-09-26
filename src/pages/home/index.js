@@ -9,8 +9,8 @@ import './index.css'
 import iconMaq from '../../assets/icones/icon-maq.png';
 import imagemProjeto from '../../assets/home/imagemProjeto.png';
 import iconCoracao from '../../assets/icones/icon-heart.png';
-import iconEmail from '../../assets/icones/icon-envelope.png'
-import setaCuidados from '../../assets/icones/icon-seta.png'
+import iconEmail from '../../assets/icones/icon-envelope.png';
+import setaCuidados from '../../assets/icones/icon-seta.png';
 
 export default function Home(){
     return (
@@ -29,7 +29,7 @@ export default function Home(){
                     {/*<img src={imagemPrincipal} className="imagemPrincipal"></img>*/}
                 </div>
             </div>
-            <div className="divisao">.</div>
+            <div className="divisao"></div>
             <div className="grid">
                 <div id="grid1"><h2>Realismo</h2></div>
                 <div id="grid2"><h2>Dotwork</h2></div>
@@ -76,7 +76,8 @@ export default function Home(){
                                 <h4>BlackWork</h4>
                                 <p>Como o próprio nome sugere, trata-se de uma técnica que não utiliza tintas coloridas, apenas a preta.</p>
                             </div>
-                            <br></br>
+                            
+                            
                             <div>
                                 <h4>Geométricos</h4>
                                 <p>No estilo geométrico, como o próprio nome sugere, o desenho é baseado em formas geométricas, linhas retas e precisas, para formar o design desejado</p>

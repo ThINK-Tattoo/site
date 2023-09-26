@@ -71,13 +71,13 @@ td .icone{
 
 @media (max-width:800px){
     .crudClientes{
-        width: 60%;
+        width: 70%;
         margin-left: 35%;
     }
 }
 
 @media (max-width: 768px){
     .crudClientes{
-        margin-left: 36%;
+        margin-left: 27%;
     }
 }

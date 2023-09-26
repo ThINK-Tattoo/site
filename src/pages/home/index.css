@@ -17,6 +17,7 @@
 
 }
 
+
 .itensContainer {
     z-index: 3;
     display: flex;
@@ -450,7 +451,6 @@ option{
         margin-top: 2px;
     }
     .btn{
-        margin-top: -2%;
         margin-bottom: 5%;
     }
     .mensagem{
@@ -500,9 +500,6 @@ option{
     }
     .mensagemFormGeral{
         margin-top: 4%;
-    }
-    .btnEnviar{
-        margin-top: 1%;
     }
     .cuidadosTopicos {
         margin-left: 0;
