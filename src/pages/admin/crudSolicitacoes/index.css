@@ -43,6 +43,15 @@
     margin-right: 5%;
 }
 
+.aviso{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-bottom: 3%;
+}
+.aviso p{
+    color: white;
+}
+
 @media (max-width: 1280px){
     .solicitacoes-conteiner {
         margin-left: 17%;
@@ -85,5 +94,9 @@
     #modalSolicitacoes {
         margin-left: 14%;
         width: 48%;
-    }    
+    } 
+    
+    .aviso{
+        margin-left: 35%;
+    }
 }
