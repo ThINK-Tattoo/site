@@ -160,11 +160,17 @@ body{
     .tituloDashboard{
         margin-left: 30%;
     }
+    .btnCrud{
+        margin-left: 53%;
+    }
 }
 
 @media (max-width: 768px){
     .tituloDashboard{
         margin-left: 35%;
+    }
+    .btnCrud{
+        margin-left: 58% !important;
     }
 }
 

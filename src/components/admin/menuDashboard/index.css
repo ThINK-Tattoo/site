@@ -63,3 +63,12 @@ button{
     color: var(--var-txt-lilas);
 }
 
+@media (max-width: 800px){
+    .sidebar{
+        width: 185px;
+    }
+    .logo-menuAdmin{
+        width: 137px;
+        height: 65px;
+    }
+}

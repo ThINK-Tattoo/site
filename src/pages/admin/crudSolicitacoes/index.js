@@ -49,6 +49,9 @@ export default function CrudSolicitacoes(){
             <div className="tituloDashboard">
                 <h1>Solicitaç<span className="span-color-dashboard">ões</span></h1>
             </div>
+            <div className="aviso">
+                <p>Clique em alguma solitação para visualizar maiores informações.</p>
+            </div>
             <div className= "conteiner solicitacoes-conteiner">
                  {agendamentos.map((reserva)=> (
                     <div key={reserva.id} className="info-solicitacoes"  onClick={() => openModal(reserva)}>
