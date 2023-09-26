@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState, useHistory} from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Menu from "../../components/visitante/MenuVisitante";
 import Footer from "../../components/Footer";
 import iconPerson from '../../assets/icones/icon-person.png';
@@ -8,6 +10,38 @@ import '../../styleGlobal.css';
 import './index.css'
 
 export default function Login(){
+    const [email, setEmail] = useState();
+    const [senha, setSenha] = useState();
+    const [error, setError] = useState();
+    const navigate = useNavigate();
+
+    const handleLogin = async (e) =>{
+        e.preventDefault();
+
+        try{
+            const response = await axios.post("http://localhost:3636/cliente/login", {email, senha});
+            const {auth, token, userType} = response.data;
+
+            if(auth){
+                localStorage.setItem("token", token);
+
+                if(userType === "cliente"){
+                    navigate('/');
+                    setError("cliente")
+                }else if(userType === "admin"){
+                    navigate('/dashboard/administradores');
+                    setError("admin")
+                }
+            }else{
+                setError("Email ou senha incorretos");
+            }
+
+        }catch(err){
+            console.error("Erro ao autenticar login", err);
+            setError("Erro ao efetuar login");
+        }
+    }
+   
     return (
         <div>
             <Menu/>
@@ -16,24 +50,44 @@ export default function Login(){
             </div>
 
             <section className="form-conteiner">
-                <form class="form">
+                <form class="form" onSubmit={handleLogin}>
                     <img id="person-icon" src={iconPerson} alt="Icone de um usuário"></img>
                     <h4>Login</h4>
 
                     <div className="conteiner-form-group">
                         <div class="form-group">
 
-                            <input className="input" type="email" id="login" name="email" placeholder="E-mail" required />
+                            <input 
+                                className="input" 
+                                type="email" 
+                                id="login" 
+                                name="email" 
+                                placeholder="E-mail" 
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                />
                         </div>
 
                         <div class="form-group">
-                            <input className="input" type="password" id="senha" name="senha" placeholder="Senha" required />
+                            <input 
+                                className="input" 
+                                type="password" 
+                                id="senha" 
+                                name="senha" 
+                                placeholder="Senha" 
+                                required 
+                                value={senha}
+                                onChange={(e) => setSenha(e.target.value)}
+                                />
                         </div>
                         <p> <Link to="/signup"><strong>Esqueceu a senha?</strong></Link> </p>
 
                     </div>
 
                     <button type="submit" class="btn-entrar">Entrar</button>
+                    {error && <p className="error-message">{error}</p>}
+                    
                     <p> Não possui conta? <Link to="/signup"><strong>Cadastrar-se</strong></Link> </p>
 
                 </form>
