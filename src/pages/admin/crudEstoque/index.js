@@ -58,6 +58,16 @@ export default function CrudEstoque(){
         },
     ]);
 
+    const [isModalAddOpen, setIsModalAddOpen]= useState(false);
+    const openModal = (e) => {
+        e.preventDefault();
+        setIsModalAddOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalAddOpen(false);
+    }
+
     return (
         <div>
             <Menu/>
@@ -73,13 +83,19 @@ export default function CrudEstoque(){
                             <button className="btn btn-detalhes">Mais detalhes</button>
                         </div>
                     ))}
-                   
                 </section> 
                 <div className="btnAdicionar estoque">
-                        <button className="btnCrud">Adicionar</button>
+                    <button className="btnCrud">Adicionar</button>
                 </div>               
             </div>
+            <Modal>
+                isOpen={isModalAddOpen}
+                onRequestClose={closeModal}
+                id="modalAddEstoque"
+                contentLabel=""
+            </Modal>
             </section>
+
         </div>
     )
 }
