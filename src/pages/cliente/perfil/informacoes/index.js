@@ -1,15 +1,30 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Modal from 'react-modal';
 import Menu from '../../../../components/usuarioLogado/MenuLog';
+import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
 import iconPerson from '../../../../assets/icones/icon-person.png';
 
+import { useNavigate } from "react-router-dom";
+
 import '../../../../styleGlobal.css';
 import './index.css';
 
 export default function MinhasInformacoes(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+      const userType = localStorage.getItem("userType");
+  
+      if(!userType || userType === 'admin'){
+          navigate('/signin');
+      }else if(userType === 'cliente'){
+          setIsUserLoggedIn(userType === "cliente");
+      }
+      
+  }, []);
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [client, setClient] = useState({
@@ -39,7 +54,7 @@ export default function MinhasInformacoes(){
 
     return(
         <div className="container perfil-container">
-            <Menu/>
+             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}

@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
+import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 import iconEnvelop from '../../../assets/icones/icon-envelop-close.png';
 
@@ -8,9 +9,16 @@ import '../../../styleGlobal.css';
 import './index.css'
 
 export default function Contato(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+        setIsUserLoggedIn(userType === "cliente");
+    }, []);
+
     return (
         <div>
-            <Menu/>
+             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image contato-tittle">
                 <h1>Cont<span className="span-color">ato</span></h1>
             </div>

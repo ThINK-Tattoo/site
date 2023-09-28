@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Menu from "../../components/visitante/MenuVisitante";
+import MenuLogado from "../../components/usuarioLogado/MenuLog";
 import Footer from "../../components/Footer";
 import iconPerson from '../../assets/icones/icon-person.png';
 
@@ -20,17 +21,17 @@ export default function Login(){
 
         try{
             const response = await axios.post("http://localhost:3636/cliente/login", {email, senha});
-            const {auth, token, userType} = response.data;
+            const {auth, token, userType, user} = response.data;
 
             if(auth){
                 localStorage.setItem("token", token);
+                localStorage.setItem("user", user);
+                localStorage.setItem("userType", userType);
 
                 if(userType === "cliente"){
                     navigate('/');
-                    setError("cliente")
                 }else if(userType === "admin"){
                     navigate('/dashboard/administradores');
-                    setError("admin")
                 }
             }else{
                 setError("Email ou senha incorretos");
@@ -41,10 +42,12 @@ export default function Login(){
             setError("Erro ao efetuar login");
         }
     }
+
+    const isUserLoggedIn = localStorage.getItem("userType") === "cliente";
    
     return (
         <div>
-            <Menu/>
+           {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="login-tittle">
                 <h1>Lo<span className="span-color">gin</span></h1>
             </div>

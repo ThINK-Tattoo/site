@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/usuarioLogado/MenuLog';
+import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 
 import tatt1 from '../../../assets/flashTattoo/tattoo.png';
@@ -16,6 +17,18 @@ import '../../../styleGlobal.css';
 import './index.css';
 
 export default function FlashTattoo(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+
+        if(!userType || userType === 'admin'){
+            navigate('/signin');
+        }else if(userType === 'cliente'){
+            setIsUserLoggedIn(userType === "cliente");
+        }
+        
+    }, []);
     const [flashtatto, setFlashtatto] = useState([
         {
             id: 1,
@@ -125,9 +138,11 @@ export default function FlashTattoo(){
         }
     };
 
+    
+
     return(
         <div className="container flashtattoo-container">
-            <Menu/>
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image flashtattoo-tittle">
                 <h1>Flash Tat<span className="span-color">too</span></h1>
             </div>

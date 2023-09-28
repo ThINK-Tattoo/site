@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { registerLocale } from 'react-datepicker';
@@ -16,7 +16,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
+import { useNavigate } from 'react-router-dom';
+
 import Menu from '../../../components/usuarioLogado/MenuLog';
+import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 
 import '../../../styleGlobal.css';
@@ -24,6 +27,18 @@ import './index.css';
 
 
 export default function Agenda(){
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const userType = localStorage.getItem("userType");
+
+    if(!userType || userType === 'admin'){
+        navigate('/signin');
+    }else if(userType === 'cliente'){
+        setIsUserLoggedIn(userType === "cliente");
+    }
+    
+}, []);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [time, setTime] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -118,7 +133,7 @@ const handleSubmit = () =>{
 
     return (
         <div className='container'>
-            <Menu/>
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image agenda-tittle">
                 <h1>Age<span className="span-color">nda</span></h1>
             </div>
