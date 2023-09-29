@@ -16,7 +16,7 @@ export default function Cadastro(){
         setIsUserLoggedIn(userType === "cliente");
     }, []);
     return (
-        <div>
+        <div className="container container-cadastro">
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image cadastro-tittle">
                 <h1>Cadas<span className="span-color">tro</span></h1>

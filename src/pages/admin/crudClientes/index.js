@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/admin/menuDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +8,18 @@ import '../../../styleGlobal.css';
 import './index.css'
 
 function App() {
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+
+        if(!userType || userType === 'cliente'){
+            navigate('/signin');
+        }else if(userType === 'admin'){
+            setIsUserLoggedIn(userType === "admin");
+        }
+        
+    }, []);
       // clientes de exemplo
       const [clientes, setClientes] = useState([
         { id: 1, nome: 'Cliente 1', email: 'cliente1@example.com', telefone: '(12) 93456-7890', selecionado: false },

@@ -17,7 +17,7 @@ export default function Contato(){
     }, []);
 
     return (
-        <div>
+        <div className="container container-contato">
              {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image contato-tittle">
                 <h1>Cont<span className="span-color">ato</span></h1>

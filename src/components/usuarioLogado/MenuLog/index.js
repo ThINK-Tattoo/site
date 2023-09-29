@@ -103,7 +103,7 @@ export default function Menu(){
                             <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                             <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
                             <li><button>Excluir Conta</button></li>
-                            <li><button>Sair</button></li>
+                            <li onClick={handleLogout}><button>Sair</button></li>
                         </>
                         )}
                     </ul>

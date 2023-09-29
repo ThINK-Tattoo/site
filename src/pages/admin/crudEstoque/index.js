@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import Menu from '../../../components/admin/menuDashboard';
 
@@ -15,6 +16,19 @@ import estoque7 from '../../../assets/crudEstoque/estoque7.png';
 import estoque8 from '../../../assets/crudEstoque/estoque8.png';
 
 export default function CrudEstoque(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+
+        if(!userType || userType === 'cliente'){
+            navigate('/signin');
+        }else if(userType === 'admin'){
+            setIsUserLoggedIn(userType === "admin");
+        }
+        
+    }, []);
     const [grupoEstoque, setGrupoEstoque] =useState([
         {
             id: 1,
