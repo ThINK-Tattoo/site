@@ -119,10 +119,10 @@ export default function CrudAdmin(){
                     </div> 
                 </div>
             </div>
-            <div className="btnAdicionar">
+            </section>
+            <div className="btnAdicionar admin">
                 <button onClick={(e) => openModal(e)} className="btnCrud">Adicionar</button>
             </div>
-            </section>
         </div>
     )
 }

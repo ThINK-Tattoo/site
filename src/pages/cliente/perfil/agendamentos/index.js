@@ -1,11 +1,25 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import Menu from "../../../../components/usuarioLogado/MenuLog";
+import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from "../../../../components/Footer";
 
 import '../../../../styleGlobal.css';
 import './index.css';
 
 export default function MeusAgendamentos(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+
+        if(!userType || userType === 'admin'){
+            navigate('/signin');
+        }else if(userType === 'cliente'){
+            setIsUserLoggedIn(userType === "cliente");
+        }
+        
+    }, []);
     const [agendamentos, setAgendamentos] = useState([
         {
             id:1,
@@ -30,7 +44,7 @@ export default function MeusAgendamentos(){
 
     return(
         <div className= "conteiner agendado-conteiner">
-            <Menu/>
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image agendamento-tittle">
                 <h1>Meus Agendamen<span className="span-color">tos</span></h1>
                  </div>

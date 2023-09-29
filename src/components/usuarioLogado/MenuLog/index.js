@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
@@ -9,7 +10,8 @@ export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-
+    const navigate = useNavigate();
+    
     const increaseFontSize = () => {
       setFontSize((prevSize) => prevSize + 2); 
     };
@@ -31,6 +33,13 @@ export default function Menu(){
         setIsSubMenuOpen(!isSubMenuOpen);
     };
     
+    const handleLogout = () =>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("userType");
+        navigate('/');
+        window.location.reload();
+    }
 
     return(
         <div className='menu-container'>
@@ -54,14 +63,14 @@ export default function Menu(){
                     <ul>
                         <li><Link to="/portfolio">Portfólio</Link></li>
                         <li><Link to="/flashtattoo">FlashTattoo</Link></li>
-                        <li><Link to="/">Agenda</Link></li>
+                        <li><Link to="/agenda">Agenda</Link></li>
                         <li><Link to="/contato">Contato</Link></li>
                         <li className="submenu-parent" onMouseEnter={toggleSubMenu} onMouseLeave={toggleSubMenu}>Meu Perfil {isSubMenuOpen && (
                             <ul className="submenu">
                                 <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                                 <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
                                 <li><button>Excluir Conta</button></li>
-                                <li><button>Sair</button></li>
+                                <li onClick={handleLogout}><button>Sair</button></li>
                             </ul>
                             )}
                         </li>

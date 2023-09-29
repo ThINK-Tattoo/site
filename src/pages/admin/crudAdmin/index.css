@@ -78,6 +78,10 @@
 #btns{
 flex-direction: column;
 }
+
+.admin{
+    bottom: 0;
+}
 /*RESPONSIVIDADE*/
 @media (max-width: 1024px){
     .perfis{

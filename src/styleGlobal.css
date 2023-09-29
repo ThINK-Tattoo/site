@@ -128,7 +128,7 @@ body{
 }
 
 .btnAdicionar{
-    margin-top:20%;
+    margin-top:2rem;
     margin-left: 50%;
     position: absolute;
 }
@@ -142,8 +142,10 @@ body{
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 4rem;
     height: 50px;
+    margin-left: 3rem;
+    margin-bottom: 5rem;
 }
 
 .btnCrud:hover{

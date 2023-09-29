@@ -4,9 +4,9 @@ import Menu from '../../../components/admin/menuDashboard';
 import '../../../styleGlobal.css';
 import './index.css'
 
-import imagem from '../../../assets/dashboardHome/home.png'
+import imagem from '../../../assets/crudHome/home.png'
 
-export default function homeDashboard(){
+export default function HomeDashboard(){
     return (
         <div>
             <Menu />

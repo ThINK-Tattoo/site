@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
+import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 import iconPerson from '../../../assets/icones/icon-person.png';
 
@@ -8,9 +9,15 @@ import '../../../styleGlobal.css';
 import './index.css'
 
 export default function Cadastro(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+        setIsUserLoggedIn(userType === "cliente");
+    }, []);
     return (
         <div>
-            <Menu/>
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image cadastro-tittle">
                 <h1>Cadas<span className="span-color">tro</span></h1>
             </div>

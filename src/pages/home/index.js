@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import Menu from '../../components/visitante/MenuHomeVisitante';
+import MenuLogado from "../../components/usuarioLogado/MenuHomeLog";
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 
@@ -13,12 +14,19 @@ import iconEmail from '../../assets/icones/icon-envelope.png';
 import setaCuidados from '../../assets/icones/icon-seta.png';
 
 export default function Home(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+        setIsUserLoggedIn(userType === "cliente");
+    }, []);
+
     return (
         <div className="containerHome">
             
             <div className="containerPrincipal">
                 <div id="imagemPrincipal">
-                <Menu/>
+                {isUserLoggedIn ? <MenuLogado /> : <Menu />}
                 <div className="itensContainer">
                     <h1>ThINK</h1>
                     <p>Uma nova maneira de Pensar e Tatuar</p>

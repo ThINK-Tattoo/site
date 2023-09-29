@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/visitante/MenuVisitante';
+import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 
 import tatt1 from '../../../assets/portfolio/portfolio.png';
@@ -16,6 +17,12 @@ import '../../../styleGlobal.css';
 import './index.css';
 
 export default function Portfolio(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+        setIsUserLoggedIn(userType === "cliente");
+    }, []);
     const [portfolio, setPortfolio] = useState([
         {
             id: 1,
@@ -127,7 +134,7 @@ export default function Portfolio(){
 
     return(
         <div className="container portfolio-container">
-            <Menu/>
+             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image portfolio-tittle">
                 <h1>Portfó<span className="span-color">lio</span></h1>
             </div>
