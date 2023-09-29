@@ -88,11 +88,24 @@ export default function CrudEstoque(){
                     <button className="btnCrud">Adicionar</button>
                 </div>               
             </div>
-            <Modal>
+            <Modal
                 isOpen={isModalAddOpen}
                 onRequestClose={closeModal}
                 id="modalAddEstoque"
-                contentLabel=""
+                contentLabel="Adicionar Item"
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+                    },
+                    content: {
+                        top: '50%', 
+                        left: '50%', 
+                        transform: 'translate(-50%, -50%)', 
+                        backgroundColor: '#000',
+                        height: '80%'
+                    },
+                }}
+            >
             </Modal>
             </section>
 
