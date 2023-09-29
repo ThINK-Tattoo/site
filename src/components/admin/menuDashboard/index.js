@@ -1,11 +1,20 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
 
 
 export default function Menu(){
+    const navigate = useNavigate();
+
+    const handleLogout = () =>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("userType");
+        navigate('/');
+    }
     return(
         <div className='menu-container'>
             <div className="sidebar">
@@ -24,7 +33,7 @@ export default function Menu(){
                     </ul>
                 </div>
                 <div className="liBtn">
-                <li><button className="btn-sair">Sair</button></li>
+                <li onClick={handleLogout}><button className="btn-sair">Sair</button></li>
                 </div>
             </div>
             

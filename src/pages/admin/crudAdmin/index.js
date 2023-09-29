@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import Menu from '../../../components/admin/menuDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +14,18 @@ import Admin3 from "../../../assets/crudAdmin/admin3.png";
 
 
 export default function CrudAdmin(){
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+
+        if(!userType || userType === 'cliente'){
+            navigate('/signin');
+        }else if(userType === 'admin'){
+            setIsUserLoggedIn(userType === "admin");
+        }
+        
+    }, []);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);

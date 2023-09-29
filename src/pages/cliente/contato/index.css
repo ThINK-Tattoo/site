@@ -7,6 +7,10 @@
     text-align: center;
 }
 
+.container-contato .logo-menuLog{
+  margin-left: -20%;
+}
+
 .form {
     display: flex;
     flex-direction: column;
