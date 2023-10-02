@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import VLibras from '@djpfs/react-vlibras';
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
@@ -29,9 +30,9 @@ export default function Menu(){
     return(
         <div className='menu-container'>
             <div className="accessibility-bar">
-                <a href="#accessibility" className="accessibility-link">
+                <a href="#accessibility" className="accessibility-link"><Link to="/acessibilidade">
                     Acessibilidade
-                </a>
+                </Link></a>
                 <button className="access-btn high-contrast-button">Alto Contraste</button>
                 <button className="access-btn font-size-button" onClick={increaseFontSize}>
                     A+
@@ -80,7 +81,7 @@ export default function Menu(){
                     </ul>
                 </div>
             </nav>
-            
+            <VLibras />
         </div>
     )
 }

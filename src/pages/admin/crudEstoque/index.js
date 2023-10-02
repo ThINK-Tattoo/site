@@ -120,6 +120,33 @@ export default function CrudEstoque(){
                     },
                 }}
             >
+                <form className="form estoqueAdd">
+                    <div className="form-group-estoque">
+                        <label>Nome:</label>
+                        <input className="inputEstoque" type="text" id="nome" name="nome" placeholder="Nome" />
+                    </div>
+                    <div className="form-group-estoque">
+                        <label>Tipo:</label>
+                        <select id="grupoItem" name="grupoItem">
+                            <option selected disabled>Escolha o grupo a qual o item pertence</option>
+                            <option value="Agulhas">Agulhas</option>
+                            <option value="Biqueiras">Biqueiras</option>
+                            <option value="Esterelizadores">Esterelizadores</option>
+                        </select>
+                    </div>
+                    <div className="form-group-estoque">
+                        <label></label>
+                        <input />
+                    </div>
+                    <div className="form-group-estoque">
+                        <label></label>
+                        <input />
+                    </div>
+                    <div className="form-group-estoque">
+                        <label></label>
+                        <input />
+                    </div>
+                </form>
             </Modal>
             </section>
 

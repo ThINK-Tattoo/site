@@ -138,8 +138,6 @@ export default function FlashTattoo(){
         }
     };
 
-    
-
     return(
         <div className="container flashtattoo-container">
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}

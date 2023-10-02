@@ -13,9 +13,14 @@
 .accessibility-link,
 .high-contrast-button,
 .font-size-button {
-  color: white;
-  text-decoration: none;
+  color: white !important;
+  text-decoration: none !important;
   margin: 0 2%;
+}
+
+.accessibility-bar a{
+  text-decoration: none;
+  color: white;
 }
 
 .accessibility-link:hover,

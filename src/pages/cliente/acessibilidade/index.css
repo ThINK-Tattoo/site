@@ -1,0 +1,14 @@
+.acessibilidade-tittle{
+    background-image: url("../../../assets/header/acessibilidade-image.png");
+}
+
+.acessibilidade-container{
+    margin: 3rem 2rem;
+    color: white;
+}
+.acessibilidade-container a{
+    color: white;
+}
+.tituloAcessibilidade{
+    font-weight: 800;
+}

@@ -9,6 +9,7 @@ import Contato from "./pages/cliente/contato";
 import Agenda from './pages/cliente/agenda';
 import MinhasInformacoes from "./pages/cliente/perfil/informacoes";
 import MeusAgendamentos from "./pages/cliente/perfil/agendamentos";
+import Acessibilidade from "./pages/cliente/acessibilidade";
 
 import CRUDadmins from './pages/admin/crudAdmin';
 import CRUDportfolio from './pages/admin/crudPortfolio';
@@ -32,6 +33,7 @@ export default function Router(){
                 <Route path="/agenda" element={<Agenda />} />
                 <Route path="/perfil/informacoes" element={<MinhasInformacoes />} />
                 <Route path="/perfil/agendamentos" element={<MeusAgendamentos />} />
+                <Route path="/acessibilidade" element={<Acessibilidade />}></Route>
 
                 <Route path="/dashboard/administradores" element={<CRUDadmins/>}/>
                 <Route path="/dashboard/portfolio" element={<CRUDportfolio/>}/>

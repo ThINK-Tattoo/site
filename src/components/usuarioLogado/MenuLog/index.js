@@ -44,9 +44,9 @@ export default function Menu(){
     return(
         <div className='menu-container'>
             <div className="accessibility-bar">
-                <a href="#accessibility" className="accessibility-link">
+                <a href="#accessibility" className="accessibility-link"><Link to="/acessibilidade">
                     Acessibilidade
-                </a>
+                </Link></a>
                 <button className="access-btn high-contrast-button">Alto Contraste</button>
                 <button className="access-btn font-size-button" onClick={increaseFontSize}>
                     A+

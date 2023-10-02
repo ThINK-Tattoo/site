@@ -18,6 +18,11 @@
     margin: 0 2%;
 }
 
+.accessibility-bar a{
+  text-decoration: none;
+  color: white;
+}
+
 .accessibility-link:hover,
 .high-contrast-button:hover,
 .font-size-button:hover {
