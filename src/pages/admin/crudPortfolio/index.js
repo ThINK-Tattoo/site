@@ -117,6 +117,7 @@ function CrudPortfolio() {
     const [isModalOpen3, setIsModalOpen3] = useState(false);
     const [open3, setOpen3] = useState(false);
     
+    const navigate = useNavigate();
 
     const openModal = (portfolio) => {
         setSelectedPortfolio(portfolio);
