@@ -7,6 +7,7 @@
     background-size: cover;
     width: 100%;
     background-image: url("../../assets/home/image\ 1.png");
+    background-position: center;
 }
 
 .itensContainer {
@@ -54,16 +55,18 @@ margin-bottom: 8rem;
 #grid1{
     background-image: url("../../assets/home/grid1.png");
     max-height: 480px;
+    background-position: center;
 
 }
 #grid2{
     background-image: url("../../assets/home/grid2.png");
     max-height: 480px;
-
+    background-position: center;
 }
 #grid3{
     background-image: url("../../assets/home/grid3.png");
     max-height: 480px;
+    background-position: center;
 }
 
 .projeto{
@@ -132,6 +135,7 @@ margin-bottom: 8rem;
 
 .portfolioHome{
     background-image: url('../../assets/home/tattoo1.png');
+    background-position: center;
     background-size: cover;
     width: 100%;
     height: 342px;
@@ -160,6 +164,7 @@ margin-bottom: 8rem;
 
 .cuidados{
     background-image: url('../../assets/home/tattoo2.png');
+    background-position: center;
     background-size: cover;
     width: 100%;
     height: 429px;
@@ -197,6 +202,7 @@ margin-bottom: 8rem;
 }
 .mensagem{
     background-image: url('../../assets/home/tattoo3.png');
+    background-position: center;
     width: 100%;
     height: 429px;
     display: flex;
