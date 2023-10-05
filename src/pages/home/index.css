@@ -1,80 +1,51 @@
-.containerHome{
-    position: relative;
-}
 .containerPrincipal {
     width: 100%;
-    height: 100%;
     color: #FFF;
-    display: inline-block;
-    position: relative;
 }
 
 #imagemPrincipal{
     background-size: cover;
     width: 100%;
-    height: 100%;
     background-image: url("../../assets/home/image\ 1.png");
-
 }
-
 
 .itensContainer {
     z-index: 3;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    position: inherit;
+    align-items: center;
+    padding: 5vw;
 }
 
 .itensContainer h1{
-    font-size: 128px;
+    font-size: 11vw;
     font-weight:900;    
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-}
-
-.itensContainer p{
-    display: flex;
-    justify-content: center;
-}
-
-.itensContainer button {
-    font-weight: 700;
-    width: 60%;
-    display: flex;
-    margin-right: 40%;
-    margin-left: 40%;
-    justify-content: center;
+    margin-top: 4rem;
 }
 
 .itensContainer button a {
     color: white;
     text-decoration: none;
+    font-weight: 700;
 }
 
-.btn-agendeJa{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10%;
+.agende{
+width: 10rem !important;
+margin-bottom: 8rem;
 }
 
 .divisao{
-    height: 5%;
+    height: 1rem;
     background-color: black;
 }
 
-.grid{
-    display: flex;
-    color: #FFF;
-    width: 100%;
-}
-
-.grid div{
-    display: flex;
-    justify-content: center;
-}
-
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+    text-align: center;
+  }
+  
 .grid div h2{
     margin-top: 45%;
     margin-bottom: 45%;
@@ -83,96 +54,80 @@
 #grid1{
     background-image: url("../../assets/home/grid1.png");
     max-height: 480px;
-    width: 100%;
-    height: 100%;
-    max-width: 640px;
+
 }
 #grid2{
     background-image: url("../../assets/home/grid2.png");
     max-height: 480px;
-    width: 100%;
-    height: 100%;
-    max-width: 640px;
+
 }
 #grid3{
     background-image: url("../../assets/home/grid3.png");
     max-height: 480px;
-    width: 100%;
-    max-width: 640px;
-    height: 100%;
 }
 
 .projeto{
     background-color: white;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
+
 }
 
 #tituloProjeto{
     text-align: center;
-    margin-top: 3%;
+    margin-top: 3rem;
 }
 
 #paragrafoProjeto{
-    margin: 3% 15%;
+    margin: 3vw 12vw;
 }
 
 .topicosGeral{
     align-items: center;
     display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
     justify-content: center;
-    margin-bottom: 3%;
+    margin-bottom: 3rem;
 }
 
 .topicos{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-left: 8.25%;
+    margin-left: 10vw;
 }
 
 .topicoProjetoDireita{
-    margin-right: 2%;
     text-align: right;
 }
 
 .topicoProjetoEsquerda{
-    margin-left: 2%;
     text-align: left;
+}
+
+.topicosItem{
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.topicosItem img{
+    max-width: 100px;
+    margin: 1rem 0;
 }
 
 .imagemProjeto{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 3rem;
 }
 
-.iconesDireita{
-    margin-right: 5%;
-}
-
-.iconesDireita img{
-    max-width: 100px;
-    margin-top: 30%;
-    margin-bottom: 30%;
-}
-
-.iconesEsquerda{
-    margin-left: 5%;
-}
-
-.iconesEsquerda img{
-    max-width: 100px;
-    margin-top: 60%;
-    margin-bottom: 60%;
+.imagemProjeto img{
+    width: 28vw;
 }
 
 .topicoProjetoEsquerda p {
-    padding-right: 30%;
+    padding-right: 40%;
 }
 
 .portfolioHome{
@@ -182,25 +137,25 @@
     height: 342px;
     display: flex;
     justify-content: center;
+}
+.portfolioConteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    color: white;
 }
 
 .portfolioConteudo p{
-    text-align: center;
-    color: white;
-    margin-bottom: 30%;
+    margin-bottom: 3vw;
 }
 
-.btn{
-    width: 100%;
-    padding: 10px 20px;
-    justify-content: center;
+.confira{
+    width: 80%;
 }
-
 .cuidadosEmensagem{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .cuidados{
@@ -208,15 +163,10 @@
     background-size: cover;
     width: 100%;
     height: 429px;
-}
-
-.iconCoracao{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 47%;
-    text-align: center;
-    margin-top: 5%;
+    flex-direction: column;
 }
 
 .cuidados p{
@@ -225,23 +175,21 @@
 }
 
 .cuidadosTopicosGeral{
-    display: flex;
-    margin-bottom: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 1.5vw;
+
 }
 
-.cuidadosItem{
+.cuidadosTopicosGeral div{
     display: flex;
-    margin-left: 20%;
-    margin-bottom: 10%;
+    margin: 1rem 1.5rem;
 }
-.cuidadosTopicos {
-    margin: 5%;
-}
-.cuidadosItem p{
-    margin-right: -50%;
+
+.cuidadosTopicosGeral div p{
     display: flex;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 1rem;
 }
 .iconSeta{
     margin-left: 0;
@@ -251,15 +199,15 @@
     background-image: url('../../assets/home/tattoo3.png');
     width: 100%;
     height: 429px;
-}
-
-.mensagem img{
-    text-align: center;
-    margin-top: 5%;
-}
-
-.iconEmail{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mensagemContainer{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -270,17 +218,13 @@
 }
 
 .mensagemFormGeral{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.mensagemFormItem{
-    margin-left: 5%;
-    margin-top: 5%;
-}
-.mensagemForm{
-    margin-right: 5%;
+.mensagemFormGeral div {
+    margin: 1rem;
+    text-align: center;
 }
 
 select {
@@ -305,131 +249,44 @@ option{
     color: white;
 }
 
-.btnEnviar{
-    width: 30%;
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-left: 35%;
-    margin-top: 5%;
-}
-
 /* Estilos para tablets */
 @media (max-width: 1300px){
-    input{
-        width: 90% !important;
-    }
-    select {
-        width: 90%;
-    }
-    .cuidadosTopicos{
-        margin: 3%;
-    }
-    .mensagemForm {
-        margin-right: 2%;
-    }
-}
-
-@media (max-width: 1157px){
-    .cuidadosItem p {
-        margin-left: 3%; 
-    }
-}
-
-@media (max-width: 1142px) {
-    .cuidadosItem p {
-        margin-right: -1%;
-        display: flex;
-        align-items: center;
-        margin-left: 10%;
-    }
     .input {
-        padding: 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #262626;
-        font-size: 16px;
-        background-color: rgba(0, 0, 0, 0.5);
-        width: 195px;
-        height: 50px;
-        color: white;
+        width: 100%;
     }
-
+    select{
+        width: 100%;
+    }
 }
 
 @media (max-width: 1124px) {
-    #grid1{
-        height: 80%;
-    }
-    #grid2{
-        height: 80%;
-    }
-    #grid3{
-        height: 80%;
-    }
-
-    .input{
-        width: 220px;
-    }
-    select{
-        width: 200px;
-    }
-    .mensagemForm {
-        margin-right: 2%;
-        margin-left: 0;
-    }
-    .cuidadosItem{
-        margin-left: 2%;
-    }
-    
-    .cuidadosTopicos {
-        margin-top: 5%;
-        margin-left: 3%;
-    }
-
-    .topicoProjetoEsquerda {
-        margin-left: -14%;
+    .topicoProjetoEsquerda,.topicoProjetoDireita {
         text-align: center;
     }
-    .topicoProjetoDireita {
-        margin-right: 10%;
-        text-align: center;
+    .topicosItem{
+        display: inline;
+    }
+    .topicosItem div{
+        margin: 2rem 0;
+    }
+    .topicosItem img{
+        display: none ;
+    }
+    .topicoProjetoDireita p {
+        padding: 0 15vw;
     }
     .topicoProjetoEsquerda p {
-        padding: 0 21%;
-        text-align: center;
-    }
-    .imagemProjeto {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 5% 25% 5% 25%;
+        padding: 0 15vw;
     }
     .topicos{
         display: inline;
-    }
-    .iconesEsquerda, .iconesDireita{
-        display: none;
-    }
-
-    .cuidadosItem p{
-        margin-left: 2%;
+        margin: 0;
     }
 }
 
 @media (max-width: 1020px) {
-    .cuidadosTopicosGeral {
-        display: inline-block;
-    }
     .iconSeta{
-        max-width: 25px;
-    }
-    .cuidadosItem {
-        margin-left: 40%;
-    }
-    .cuidadosItem p {
-        margin-right: -95%;
+        max-width: 35px;
     }
     .descricao{
         margin-left: 5%;
@@ -437,143 +294,76 @@ option{
     }
 }
 
-
 @media (max-width: 875px) {
-    #tituloProjeto {
-        margin-top: 6%;
-    }
-
     .mensagemFormGeral{
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
     }
-    .mensagemForm {
-        margin-right: 5%;
-        margin-top: 2px;
+    .mensagemFormGeral div{
+        margin: 0.5rem;
     }
-    .btn{
+    .enviar{
         margin-bottom: 5%;
+        width: 50%;
     }
     .mensagem{
         height: 100%;
     }
     .mensagem img {
-        width: 10%;
-        margin-top: 5%;
-    }
-    #tituloProjeto {
-        margin-top: 0%;
-    }
-    .iconCoracao{
-        width: 10%;
-        margin-top: 4%;
-        margin-left: 45%;
+        margin-top: 0.5rem;
     }
     .cuidados{
-        height: 410px;
-    }
-    .cuidadosEmensagem{
-        flex-direction: column;
+        height: 100%;
     }
     .cuidadosTopicosGeral {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        margin-left: -19%;
     }
 
-    .imagemProjeto{
-        margin: 5% 20% 5% 20%;
-    }
 }
 
 /*Estilos para mobile*/
 @media (max-width: 768px) {
-
+    .mensagemFormGeral{
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .enviar {
+        margin-top: 2rem;
+    }
     .cuidadosTopicosGeral {
-        margin-top: 5%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 1.5vw;
+        margin-bottom: 2rem;
+    }
+    .iconCoracao{
+        margin-top: 2rem;
     }
     .input{
-        height: 40px;
+        width: 300px;
     }
-    .mensagem{
-        height: 429px;
-    }
-    .mensagemFormGeral{
-        margin-top: 4%;
-    }
-    .cuidadosTopicos {
-        margin-left: 0;
-    }
-    select {
-        width: 200px;
-        height: 40px;
-    }
-    .btn {
-        margin-top: 10%;
-    }
-    .cuidadosItem {
-        margin-left: 30%;
-    }
-}
-@media (max-width: 686px){
-    .imagemProjeto {
-        margin: 5% 20% 5% 12% !important;
-    }
-}
-
-@media (max-width: 675px){
-    .imagemProjeto {
-        margin: 5% 12% 5% 12%;
+    .cuidadosEmensagem{
+        display: block;
     }
 }
 
 @media (max-width: 576px){
-    .imagemProjeto {
-        margin: 5% 6% 5% 6%;
-        width: 80% !important;
-    }
-    .itensContainer button {
-        font-weight: 400;
-        margin-right: 30%;
-        margin-left: 30%;
-    } 
-    
-}
-
-@media (max-width: 505px){
-    .mensagemFormItem input{
-        width: 90% !important;
-    }
-    select{
-        width: 90%;
-    }
-    .cuidadosTopicos {
-        margin-left: -15px;
-    }
-    .mensagemForm{
-        margin-right: 0;
-    }
-    .cuidadosItem {
-        margin-left: 26%;
+    .input{
+        width: 100%;
     }
 }
 
 @media (max-width: 450px) {
-    .cuidadosItem p {
-        margin-right: 10%;
-}
-    .btn {
-        margin-top: 30%;
-        margin-bottom: 5%;
-}
     .itensContainer h1 {
     font-size: 90px;
 } 
+}
+
+@media (max-width: 425px) {
     .cuidadosTopicosGeral {
-    margin-left: 7%; 
-    } 
-    .cuidadosItem {
-        margin-left: 2%;
+        display: block;
     }
-    
 }
