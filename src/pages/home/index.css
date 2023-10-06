@@ -78,11 +78,12 @@ margin-bottom: 8rem;
 
 #tituloProjeto{
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 5vw;
 }
 
 #paragrafoProjeto{
     margin: 3vw 12vw;
+    text-align: justify;
 }
 
 .topicosGeral{
@@ -316,7 +317,7 @@ option{
         height: 100%;
     }
     .mensagem img {
-        margin-top: 0.5rem;
+        margin-top: 2rem;
     }
     .cuidados{
         height: 100%;
@@ -326,11 +327,9 @@ option{
         flex-direction: column;
         justify-content: center;
     }
-
-}
-
-/*Estilos para mobile*/
-@media (max-width: 768px) {
+    .cuidadosEmensagem{
+        display: block;
+    }
     .mensagemFormGeral{
         margin-top: 2rem;
         display: grid;
@@ -354,11 +353,29 @@ option{
     .cuidadosEmensagem{
         display: block;
     }
+
 }
 
+/*Estilos para mobile*/
 @media (max-width: 576px){
     .input{
         width: 100%;
+    }
+    .mensagemFormGeral{
+        margin-top: 0.5rem;
+        display: inline-block;
+    }
+    .enviar {
+        margin-top: 1rem;
+    }
+    .mensagem img {
+        margin-top: 1rem;
+    }
+    .iconCoracao{
+        margin-top: 2rem;
+    }
+    .mensagem{
+        height: 496px;
     }
 }
 

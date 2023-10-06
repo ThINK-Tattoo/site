@@ -64,6 +64,12 @@
     text-align: center;
   }
 
+  @media (max-width: 1078px){
+    .info-think{
+      flex-direction: column;
+    }
+  }
+
   @media (max-width: 768px) {
     .info-element {
       width: 50%; 
