@@ -53,7 +53,9 @@
 .logo-menu {
   width: 180px;
   height: 84px;
-  margin-left: 8vw;
+}
+.menu-container {
+  text-align: center;
 }
 
 .menuHome ul {

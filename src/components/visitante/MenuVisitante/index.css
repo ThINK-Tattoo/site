@@ -47,11 +47,13 @@
 #menu-drop-down{
     display: none;
 }
+.menu-container {
+  text-align: center;
+}
   
   .logo-menu {
     width: 180px;
     height: 84px;
-    margin-left: 8vw;
   }
   
   .menu ul {
