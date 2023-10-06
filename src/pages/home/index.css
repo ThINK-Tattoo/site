@@ -158,6 +158,11 @@ margin-bottom: 8rem;
 .confira{
     width: 80%;
 }
+
+.confira a{
+    color: white;
+    text-decoration: none;
+}
 .cuidadosEmensagem{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

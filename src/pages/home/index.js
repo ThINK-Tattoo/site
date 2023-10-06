@@ -107,7 +107,7 @@ export default function Home(){
                 <div className="portfolioConteudo">
                     <h1 className="txt-white h1-info">Portfólio</h1>
                     <p>Conheça nosso trabalho.</p>
-                    <button className="btn confira">Confira!</button>
+                    <button className="btn confira"><Link to="/portfolio"><a>Confira</a></Link></button>
                 </div>
             </div>
             <div className="divisao">.</div>

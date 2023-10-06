@@ -17,7 +17,7 @@ import estoque8 from '../../../assets/crudEstoque/estoque8.png';
 
 export default function CrudEstoque(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-    const navigate = useNavigate();
+    /*const navigate = useNavigate();
     
     useEffect(() => {
         const userType = localStorage.getItem("userType");
@@ -28,7 +28,7 @@ export default function CrudEstoque(){
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []);
+    }, []);*/
     const [grupoEstoque, setGrupoEstoque] =useState([
         {
             id: 1,

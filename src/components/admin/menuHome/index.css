@@ -211,29 +211,42 @@
   }
  
   @media (max-width: 816px) {
-    .menu-listAdmin {
+    .menu-list {
       display: none;
     }
-
-    .menu-icon {
-      display: flex;
-    }
   
-    .menu-listAdmin.open {
+    .menu-icon {
       display: flex;
     }
   
     .menu-icon.open {
       font-size: 24px;
     }
-
+  
     #menu-normal{
         display: none;
     }
-
+  
     #menu-drop-down{
       display: flex !important;
     }
+  
+    .menuHome ul li a{
+      margin-left: 0;
+    }
+  
+    .menu-list.open {
+      width: 35vw !important;
+      right: -10%;
+      display: flex;
+    }
+    
+    .menu-icon .icon-close {
+      right: 3vw;
+      top: 15vw;
+      padding-top: 2vw;
+    }
+    
   }
 
   @media (max-width: 400px) {
@@ -291,4 +304,10 @@
         margin-top: 5%;
     }
      
+  }
+
+  @media (max-width: 320px){
+    .menuHome ul li a {
+        margin-left: -15px;
+    }
   }

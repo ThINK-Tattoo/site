@@ -156,6 +156,21 @@
         margin-right: 10%;
       }
   }
+
+  @media (max-width: 816px){
+    .menuHome ul li a{
+      margin-left: 0;
+    }
+    .menu-list.open {
+      width: 35vw !important;
+      right: -10%;
+      display: flex;
+    }
+    .menu-icon .icon-close {
+      right: 3vw;
+      top: 15vw;
+    }
+  }
  
   @media (max-width: 788px) {
     .menu-list {
@@ -181,6 +196,9 @@
     #menu-drop-down{
         display: flex;
     }
+  }
+  @media (max-width: 764px){
+
   }
 
   @media (max-width: 400px) {
@@ -238,4 +256,9 @@
         margin-top: 5%;
     }
      
+  }
+  @media (max-width: 320px){
+    .menuHome ul li a {
+        margin-left: -15px;
+    }
   }
