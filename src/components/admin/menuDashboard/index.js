@@ -16,7 +16,7 @@ export default function Menu(){
         navigate('/');
     }
     return(
-        <div className='menu-container'>
+        <div className='menu-containerCrud'>
             <div className="sidebar">
                 <Link to="/"><img className="logo-menuAdmin" src={logo} alt="Logo do projeto com o nome ThINK"/></Link>
                 

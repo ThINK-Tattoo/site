@@ -28,7 +28,7 @@ function CrudPortfolio() {
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []); 
+    }, []);
     
     const [portfolio, setPortfolio] = useState([
         {

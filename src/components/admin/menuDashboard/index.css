@@ -22,7 +22,7 @@
 }
 
 .nav-links{
-    margin-top: 40%;
+    margin-top: 5rem;
 }
 
 .nav-links li{
@@ -49,9 +49,11 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30% 50% 50% 40%;
+    margin: 10% 40% 10% 40%;
     font-weight: 700;
     font-size: 20px;
+    position: absolute;
+    bottom: 0;
 }
 
 .nav-links li a{
@@ -62,6 +64,11 @@ button{
 .nav-links li a:hover{
     color: var(--var-txt-lilas);
 }
+
+.menu-containerCrud {
+    text-align: left;
+}
+
 
 @media (max-width: 800px){
     .sidebar{

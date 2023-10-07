@@ -1,9 +1,11 @@
 .grupoEstoque {
-    display: grid;
-    margin-left: 15rem;
+    justify-content: center;
+    display: flex;
+    margin-left: 15vw;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
     padding: 16px;
+    margin-top: 1rem;
 }
 
 .grupoEstoque-item {
@@ -11,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 16px;
+    padding: 10px;
 }
 
 .grupoEstoque-item img {
@@ -21,5 +23,133 @@
 }
 
 .btn-detalhes {
-    width: 60%;
+    width: 70%;
+}
+
+.estoqueAdd{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group-estoque input, select{
+    background-color: var(--var-forms-background);
+    width: 100%;
+}
+
+.form-group-estoque {
+    margin: 1rem;
+}
+
+.btn-modal{
+    padding-inline: 10%;
+    margin-top: 1vw;
+}
+
+#modalAddEstoque{
+    margin-left: 8vw;
+}
+
+.tituloModal{
+    color: white;
+    margin: 1.5vw;
+}
+
+.headerEstoque{
+    display: flex;
+    gap: 50vw;
+}
+
+.visualizacao{
+    color: white;
+    display: flex;
+    gap: 2rem;
+    margin-top: 4.5%;
+    font-size: 0.9rem;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    font-size: 1.8rem;
+}
+
+
+.accordion-item {
+    width: 100%;
+    background-color: var(--var-forms-background);
+    border-radius: 10px;
+}
+.accordion-item button{
+    padding: 1vw;
+}
+
+.accordion-button.active {
+    background-color: var(--var-txt-lilas);
+    width: 100%;
+    text-align: left;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.accordion-button.active a {
+    font-weight: 700;
+}
+
+.accordion-content {
+    display: none;
+}
+
+.accordion-content.show {
+    display: block;
+    background-color: var(--var-lilas);
+    padding: 1vw;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+}
+.accordion-button-icon {
+    margin-left: 24vw;
+}
+    
+
+@media (max-width: 1300px){
+    .headerEstoque{
+        gap: 40vw;
+    }
+}
+
+@media (max-width: 1280px){
+    .grupoEstoque{
+        margin-left: 18vw;
+    }
+}
+
+@media (max-width: 1140px){
+    .grupoEstoque{
+        margin-left: 22vw;
+    }
+}
+
+@media (max-width: 1024px){
+    .grupoEstoque{
+        margin-left: 24vw;
+    }
+    .headerEstoque {
+        gap: 30vw;
+    }
+}
+
+@media (max-width: 880px){
+    .grupoEstoque{
+        margin-left: 30vw;
+    }
+
+    .headerEstoque {
+        gap: 50vw;
+    }
+
+    .headerEstoque h2 {
+        display: none;
+    }
 }
