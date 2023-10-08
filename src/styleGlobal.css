@@ -153,6 +153,30 @@ body{
     transition: ease-in-out 0.2s;
 }
 
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #262626;
+    border-radius: 10px; 
+}
+
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table thead {
+    background-color: #A40C9F;
+    color: #fff; 
+    font-weight: bold;
+}
+
+td .icone{
+    justify-content: center;
+    display: flex;
+    cursor: pointer; 
+}
 @media (max-width: 1300px){
     .tituloDashboard{
         margin-left: 25vw;

@@ -111,6 +111,17 @@
 .accordion-button-icon {
     margin-left: 24vw;
 }
+
+.tabelaEstoque {
+    margin-left: 18vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+    color: white;
+}
+
+.barraPesquisa{
+    margin-bottom: 2vw;
+}
     
 
 @media (max-width: 1300px){

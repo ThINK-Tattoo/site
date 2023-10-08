@@ -75,7 +75,7 @@ function App() {
                 />
             </div>
             <br></br>
-            <table>
+            <table className="table Cliente">
                 <thead>
                 <tr>
                     <th>ID</th>
