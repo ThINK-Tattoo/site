@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import Menu from '../../../components/admin/menuDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartGantt, faBorderAll, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faChartGantt, faBorderAll, faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 import '../../../styleGlobal.css';
 import './index.css'
@@ -209,6 +209,25 @@ export default function CrudEstoque(){
 
     const [searchText, setSearchText] = useState("");
 
+    const [ordenacao, setOrdenacao] = useState(null);
+    const [direcaoOrdenacao, setDirecaoOrdenacao] = useState('asc');
+
+    const ordenarPorColuna = (coluna) => {
+        if (ordenacao === coluna) {
+            const novaDirecao = direcaoOrdenacao === 'asc' ? 'desc' : 'asc';
+            setItensEstoque([...itensEstoque].sort((a, b) => {
+            const resultado = a[coluna].localeCompare(b[coluna]);
+            return direcaoOrdenacao === 'asc' ? resultado : -resultado;
+            }));
+            setDirecaoOrdenacao(novaDirecao);
+        } else {
+            setItensEstoque([...itensEstoque].sort((a, b) => a[coluna].localeCompare(b[coluna])));
+            setOrdenacao(coluna);
+            setDirecaoOrdenacao('asc');
+        }
+    };
+
+
     return (
         <div>
             <Menu/>
@@ -271,15 +290,39 @@ export default function CrudEstoque(){
                         onChange={(e) => setSearchText(e.target.value)}
                         />
                     </div>
-                    <table className="table Estoque">
+                    <table className="table tableEstoque">
                         <thead>
                             <tr>
-                                <th>ㅤ</th>
-                                <th>Grupo</th>
-                                <th>Nome</th>
-                                <th>Quantidade</th>
-                                <th>Validade</th>
-                                <th>última movimentação</th> 
+                                <th style={{ width: '50px', textAlign: 'center' }}>
+                                <button onClick={() => ordenarPorColuna('grupo')} style={{ border: 'none', background: 'none', marginLeft: '-15px' }}>
+                                {direcaoOrdenacao === 'asc' ? '▲' : '▼'}
+                                </button>
+                                </th>
+                                <th style={{ width: '20px', textAlign: 'center'  }}>
+                                Grupo
+                                <button onClick={() => ordenarPorColuna('grupo')} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
+                                {direcaoOrdenacao === 'asc' ? '▲' : '▼'}
+                                </button>
+                                </th>
+                                <th style={{ width: '350px' }}onClick={() => ordenarPorColuna('nome') }>
+                                Nome
+                                <button onClick={() => ordenarPorColuna('nome')} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
+                                {direcaoOrdenacao === 'asc' ? '▲' : '▼'}
+                                </button>
+                                </th>
+                                <th style={{ width: '100px', textAlign: 'center' }}>Quantidade</th>
+                                <th style={{ width: '150px', textAlign: 'center' }}>
+                                Validade
+                                <button onClick={() => ordenarPorColuna('validade')} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
+                                {direcaoOrdenacao === 'asc' ? '▲' : '▼'}
+                                </button>
+                                </th>
+                                <th style={{ width: '150px', textAlign: 'center' }}>
+                                Última movimentação
+                                <button onClick={() => ordenarPorColuna('movimentacao')} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
+                                {direcaoOrdenacao === 'asc' ? '▲' : '▼'}
+                                </button>
+                                </th> 
                             </tr>
                         </thead>
                         <tbody>
@@ -293,13 +336,20 @@ export default function CrudEstoque(){
                         )
 
                         .map((item, index) => (
-                            <tr key={index}>
-                                <td>ㅤ</td>
-                                <td>{item.grupo}</td>
+                            <tr key={index} className={index % 2 === 0 ? 'cor1' : 'cor2'}>
+                                <td style={{ textAlign: 'center' }}>
+                                {itensEstoque.quantidade > 0 ? (
+                                    <FontAwesomeIcon icon={faArrowDown} style={{ color: 'red' }} />
+                                ) : (
+                                    <FontAwesomeIcon icon={faArrowUp} style={{ color: 'green' }} />
+                                    
+                                )}
+                                ㅤ</td>
+                                <td style={{ textAlign: 'center' }}>{item.grupo}</td>
                                 <td>{item.nome}</td>
-                                <td>{item.quantidade}</td>
-                                <td>{item.validade}</td>
-                                <td>{item.movimentacao}</td>
+                                <td style={{ textAlign: 'center' }}>{item.quantidade}</td>
+                                <td style={{ textAlign: 'center' }}>{item.validade}</td>
+                                <td style={{ textAlign: 'center' }}>{item.movimentacao}</td>
                             </tr>
                             ))}
                         </tbody>

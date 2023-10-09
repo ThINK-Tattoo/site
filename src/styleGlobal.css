@@ -12,6 +12,7 @@
     --var-background: #000;
     --var-txt-lilas: #A40C9F;
     --var-forms-background: #262626;
+    --var-table-line-one: #3c3c3c;
 }
 
 body{
@@ -170,6 +171,14 @@ th, td {
     background-color: #A40C9F;
     color: #fff; 
     font-weight: bold;
+}
+
+.cor1 {
+    background: var(--var-forms-background);
+}
+
+.cor2 {
+    background: var(--var-table-line-one); 
 }
 
 td .icone{
