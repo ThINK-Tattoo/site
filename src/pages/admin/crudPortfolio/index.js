@@ -18,18 +18,18 @@ import './index.css'
 
 function CrudPortfolio() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-    
-    useEffect(() => {
-        const userType = localStorage.getItem("userType");
 
-        if(!userType || userType === 'cliente'){
-            navigate('/signin');
-        } else if(userType === 'admin'){
-            setIsUserLoggedIn(userType === "admin");
-        }
-        
-    }, []);
-    
+    /* useEffect(() => {
+         const userType = localStorage.getItem("userType");
+ 
+         if(!userType || userType === 'cliente'){
+             navigate('/signin');
+         } else if(userType === 'admin'){
+             setIsUserLoggedIn(userType === "admin");
+         }
+         
+     }, []); */
+
     const [portfolio, setPortfolio] = useState([
         {
             id: 1,
@@ -103,20 +103,20 @@ function CrudPortfolio() {
             Cores: "Preto e branco",
             imagem: tatt8
         },
-        
+
     ]);
-    
+
 
     const [selectedPortfolio, setSelectedPortfolio] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [isModalOpen2, setIsModalOpen2] = useState(false);
+    const [isModalOpenEdit, setIsModalEdit] = useState(false);
     const [open2, setOpen2] = useState(false);
-    const [isModalOpen3, setIsModalOpen3] = useState(false);
+    const [isModalOpenAdd, setIsModalAdd] = useState(false);
     const [open3, setOpen3] = useState(false);
-    
+
     const navigate = useNavigate();
 
     const openModal = (portfolio) => {
@@ -128,7 +128,7 @@ function CrudPortfolio() {
             Tipo: portfolio.Tipo,
             Cores: portfolio.Cores,
             imagem: portfolio.imagem,
-          });
+        });
         setIsModalOpen(true);
     };
     const [open, setOpen] = useState(false);
@@ -139,35 +139,35 @@ function CrudPortfolio() {
         setIsModalOpen(false);
     };
 
-    const openModal2 = () => {
-        setIsModalOpen2(true);
+    const openModalEdit = () => {
+        setIsModalEdit(true);
         setIsModalOpen(false);
     };
-    
-    const closeModal2 = () => {
-        setIsModalOpen2(false);
+
+    const closeModalEdit = () => {
+        setIsModalEdit(false);
         setIsModalOpen(true);
     };
 
-    const openModal3 = () => {
-        setIsModalOpen3(true);
-        
-    };
-    
-    const closeModal3 = () => {
-        setIsModalOpen3(false);
+    const openModalAdd = () => {
+        setIsModalAdd(true);
+
     };
 
-    
+    const closeModalAdd = () => {
+        setIsModalAdd(false);
+    };
+
+
     const handleImageSelect = (e) => {
         const file = e.target.files[0];
         if (file) {
-          setSelectedImage(file);
+            setSelectedImage(file);
         }
-      };
-      return(
+    };
+    return (
         <div>
-            <Menu/>
+            <Menu />
             <section>
                 <div className="tituloDashboard">
                     <h1>Portfo<span className="span-color-dashboard">lio</span></h1>
@@ -176,183 +176,186 @@ function CrudPortfolio() {
                     {portfolio.map((portfolio) => (
                         <div key={portfolio.id} className="portifolio-item">
                             <img id="img-port" onClick={() => openModal(portfolio)}
-                            src={portfolio.imagem} alt={portfolio.nome} />
+                                src={portfolio.imagem} alt={portfolio.nome} />
                         </div>
                     ))}
                 </section>
                 <div className="btnAdicionar">
-                        <button onClick={openModal3} className="btnCrud">Adicionar</button>
+                    <button onClick={openModalAdd} className="btnCrud">Adicionar</button>
                 </div>
-            <Modal isOpen={isModalOpen} onRequestClose={closeModal}                 
-            id="modal-container-portfolio"
-            contentLabel="Detalhes da Tatuagem"
-            style={{
-                overlay:{ backgroundColor:'rgba(0,0,0,0.5)',},
-                content:{
-                    top: '50%',
-                    left:'50%',
-                    height:'70%',
-                    transform: 'translate(-40%, -50%)',
-                    backgroundColor:'#000'
-                },
-            }}>
-            <button className="modal-close-button" onClick={closeModal}> 
-            X 
-            </button>
+                <Modal isOpen={isModalOpen} onRequestClose={closeModal}
+                    id="modal-container-portfolio"
+                    contentLabel="Detalhes da Tatuagem"
+                    style={{
+                        overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
+                        content: {
+                            top: '50%',
+                            left: '50%',
+                            height: '70%',
+                            transform: 'translate(-40%, -50%)',
+                            backgroundColor: '#000'
+                        },
+                    }}>
+                    <button className="modal-close-button" onClick={closeModal}>
+                        X
+                    </button>
 
-            {selectedPortfolio && (
-                <div className="modal-tatto">
-                    <div id="modal-info-portfolio">
-                        <img src={selectedPortfolio.imagem} alt={selectedPortfolio.nome} />
-                        <div className="modal-info-description">
-                            <div className="description">
-                                <h3 className="txt-white" >{selectedPortfolio.nome}</h3>
+                    {selectedPortfolio && (
+                        <div className="modal-tatto">
+                            <div id="modal-info-portfolio">
+                                <img src={selectedPortfolio.imagem} alt={selectedPortfolio.nome} />
+                                <div className="modal-info-description">
+                                    <div className="description">
+                                        <h3 className="txt-white" >{selectedPortfolio.nome}</h3>
+                                    </div>
+                                    <div className="description">
+                                        <h3 className="txt-white">Descrição</h3>
+                                        <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedPortfolio.tamanho}</p>
+                                        <p className="txt-white"><strong>Local: </strong>{selectedPortfolio.local}</p>
+                                        <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.Tipo}</p>
+                                        <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.Cores}</p>
+                                    </div>
+
+
                                 </div>
-                                <div className="description">
-                                <h3 className="txt-white">Descrição</h3>
-                                    <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedPortfolio.tamanho}</p>
-                                    <p className="txt-white"><strong>Local: </strong>{selectedPortfolio.local}</p>
-                                    <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.Tipo}</p>
-                                    <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.Cores}</p>
-                                </div>
-                            
-                            
-                        </div>
-                    </div>
+                            </div>
                             <div className="btn-modal">
-                                <button onClick={openModal2} className="btn btn-editar">Editar</button>
+                                <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
                                 <button onClick={closeModal} className="btn btn-cancelar">Cancelar</button>
 
                             </div>
-                </div>
-            )}
-            </Modal>
+                        </div>
+                    )}
+                </Modal>
 
-            <Modal isOpen={isModalOpen2} onRequestClose={closeModal2}
-            id="modal-edit-portfolio"
-            contentLabel="Editando a Tatuagem"
-            style={{
-                overlay:{ backgroundColor:'rgba(0,0,0,0.5)',},
-                content:{
-                    top: '50%',
-                    left:'50%',
-                    height:'80%',
-                    transform: 'translate(-40%, -50%)',
-                    backgroundColor:'#000'
-                },
-            }}>
-            <button className="modal-close-button" onClick={closeModal2}> 
-            X 
-            </button>
+                <Modal isOpen={isModalOpenEdit} onRequestClose={closeModalEdit}
+                    id="modal-edit-portfolio"
+                    contentLabel="Editando a Tatuagem"
+                    style={{
+                        overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
+                        content: {
+                            top: '50%',
+                            left: '50%',
+                            height: '80%',
+                            transform: 'translate(-40%, -50%)',
+                            backgroundColor: '#000'
+                        },
+                    }}>
+                    <button className="modal-close-button" onClick={closeModalEdit}>
+                        X
+                    </button>
 
-            <div className="modal-tatto">
-                <div id="modal-edit-tatto">
-                <input
-                              type="file"
-                              accept="image/*"
-                              onChange={handleImageSelect}
-                              style={{ display: 'none' }}
-                              id="imageInpute"
-                            />
-                            <label htmlFor="imageInpute">                    
-                            <img src={image} alt="Upload de imagem"/>
-                            </label>
-                    <div className="modal-info-description">
-                            <div className="description">
-                                <input className="inputp" type="text" id="nome" 
-                            onChange={(e) => setPortfolio({ ...portfolio, nome: e.target.value })}
-                            name="nome" value={portfolio.nome} required />
-                            
-                            </div>
-                                <div className="description">
-                                <h3 className="txt-white">Descrição</h3>
-                                <input className="inputp" type="text" id="nome" 
-                            onChange={(e) => setPortfolio({ ...portfolio, tamanho: e.target.value })}
-                            name="nome" value={selectedSize} required />
-
-                                <input className="inputp" type="text" id="nome" 
-                            onChange={(e) => setPortfolio({ ...portfolio, local: e.target.value })}
-                            name="nome" value={portfolio.local} required />
-
-                                <input className="inputp" type="text" id="nome" 
-                            onChange={(e) => setPortfolio({ ...portfolio, Tipo: e.target.value })}
-                            name="nome" value={portfolio.Tipo} required />
-
-                                <input className="inputp" type="text" id="nome" 
-                            onChange={(e) => setPortfolio({ ...portfolio, cores: e.target.value })}
-                            name="nome" value={portfolio.Cores} required />
-
-                              </div>
-                              
-                    </div>
-                </div>
-                            <div className="btn-modal">
-                                <button onClick={closeModal2} className="btn btn-adicionar">Adicionar</button>
-                                <button onClick={closeModal2} className="btn btn-cancelar">Cancelar</button>
-
-                            </div>
-            </div>
-            </Modal>
-
-            <Modal isOpen={isModalOpen3} onRequestClose={closeModal3}                
-            id="modal-add-portfolio"
-             contentLabel="Adicionando a Tatuagem"
-            style={{
-                overlay:{ backgroundColor:'rgba(0,0,0,0.5)',},
-                content:{
-                    top: '50%',
-                    left:'50%',
-                    height:'80%',
-                    transform: 'translate(-40%, -50%)',
-                    backgroundColor:'#000'
-                },
-            }}>
-            <button className="modal-close-button" onClick={closeModal3}> 
-            X 
-            </button>
-
-            <div className="modal-tatto">
-                <div id="modal-add-tatto">
-                <div className=' file'>
+                    {selectedPortfolio && (
+                        <div className="modal-tatto">
+                        <div id="modal-edit-tatto">
                             <input
-                              type="file"
-                              accept="image/*"
-                              onChange={handleImageSelect}
-                              style={{ display: 'none' }}
-                              id="imageInputp"
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageSelect}
+                                style={{ display: 'none' }}
+                                id="imageInpute"
                             />
-                            <label htmlFor="imageInputp">                    
-                            <img src={image} alt="Upload de imagem"/>
+                            <label htmlFor="imageInpute">
+                                <img src={selectedPortfolio.imagem} alt="Upload de imagem" />
                             </label>
-                            
-                          </div>
-                    <div className="modal-info-description">
-                            <div className="description">
-                                <input className="inputp" type="text" id="nome" name="nome" placeholder="Nome"/>
+                            <div className="modal-info-description">
+                                <div className="description">
+                                    <input className="inputp" type="text" id="nome"
+                                        onChange={(e) => ({ ...selectedPortfolio, nome: e.target.value })}
+                                        name="nome" value={selectedPortfolio.nome} required
+                                    />
+
                                 </div>
                                 <div className="description">
-                                <h3 className="txt-white">Descrição</h3>
-                                <input className="inputp" type="text" id="tamanho" name="tamanho" placeholder="Nome"/>
-                                <input className="inputp" type="text" id="local" name="local" placeholder="Local"/>
-                                <input className="inputp" type="text" id="tipo" name="tipo" placeholder="Tipo"/>
-                                <input className="inputp" type="text" id="cores" name="cores" placeholder="Cores"/>
+                                    <h3 className="txt-white">Descrição</h3>
+                                    <input className="inputp" type="text" id="tamanho"
+                                        onChange={(e) => ({ ...selectedPortfolio, tamanho: e.target.value})}
+                                        name="tamaho" value={selectedPortfolio.tamanho} required />
 
-                              </div>
-                    </div>      
-                    
-                </div>
-                    <div className="btn-modal">
-                                <button onClick={closeModal3} className="btn btn-cadastrar">Adicionar</button>
-                                <button onClick={closeModal3} className="btn btn-cancelar">Cancelar</button>
+                                    <input className="inputp" type="text" id="local"
+                                        onChange={(e) => ({ ...selectedPortfolio, local: e.target.value })}
+                                        name="local" value={selectedPortfolio.local} required />
 
+                                    <input className="inputp" type="text" id="Tipo"
+                                        onChange={(e) => ({ ...selectedPortfolio, Tipo: e.target.value })}
+                                        name="Tipo" value={selectedPortfolio.Tipo} required />
+
+                                    <input className="inputp" type="text" id="cores"
+                                        onChange={(e) => ({ ...selectedPortfolio, cores: e.target.value })}
+                                        name="cores" value={selectedPortfolio.Cores} required />
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="btn-modal">
+                            <button onClick={closeModalEdit} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
+
+                        </div>
                     </div>
-            </div>
-            </Modal>
+                    )}
+
+                    
+                </Modal>
+
+                <Modal isOpen={isModalOpenAdd} onRequestClose={closeModalAdd}
+                    id="modal-add-portfolio"
+                    contentLabel="Adicionando a Tatuagem"
+                    style={{
+                        overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
+                        content: {
+                            top: '50%',
+                            left: '50%',
+                            height: '80%',
+                            transform: 'translate(-40%, -50%)',
+                            backgroundColor: '#000'
+                        },
+                    }}>
+                    <button className="modal-close-button" onClick={closeModalAdd}>
+                        X
+                    </button>
+
+                    <div className="modal-tatto">
+                        <div id="modal-add-tatto">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageSelect}
+                                    style={{ display: 'none' }}
+                                    id="imageInputp"
+                                />
+                                <label htmlFor="imageInputp">
+                                    <img src={image} alt="Upload de imagem" />
+                                </label>
+
+                           
+                            <div className="modal-info-description">
+                                <div className="description">
+                                    <input className="inputp" type="text" id="nome" name="nome" placeholder="Nome" />
+                                </div>
+                                <div className="description">
+                                    <h3 className="txt-white">Descrição</h3>
+                                    <input className="inputp" type="text" id="tamanho" name="tamanho" placeholder="Nome" />
+                                    <input className="inputp" type="text" id="local" name="local" placeholder="Local" />
+                                    <input className="inputp" type="text" id="tipo" name="tipo" placeholder="Tipo" />
+                                    <input className="inputp" type="text" id="cores" name="cores" placeholder="Cores" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="btn-modal">
+                            <button onClick={closeModalAdd} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </Modal>
             </section>
 
         </div>
-      )
+    )
 
-      
+
 }
 export default CrudPortfolio;

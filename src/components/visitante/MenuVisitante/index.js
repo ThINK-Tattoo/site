@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import VLibras from '@djpfs/react-vlibras';
+//import VLibras from '@djpfs/react-vlibras';
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
-
 
 export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
@@ -81,7 +80,7 @@ export default function Menu(){
                     </ul>
                 </div>
             </nav>
-            <VLibras />
+            
         </div>
     )
 }
