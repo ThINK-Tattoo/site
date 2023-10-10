@@ -10,14 +10,11 @@
     margin-top: 5%;
 }
 
-.flashtattoo{
-    margin-left: 15vw;
-}
 
 #info-flashtattoo {
     background-color: var(--var-forms-background);
     width: 80%;
-    padding: 20%;
+    /*padding: 20%;*/
     text-align: justify;
     align-self: center;
     border-radius: 10px;
