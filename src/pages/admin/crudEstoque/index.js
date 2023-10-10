@@ -21,7 +21,7 @@ import { set } from "date-fns";
 export default function CrudEstoque(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
      const navigate = useNavigate();
-    
+    /*
     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
@@ -31,7 +31,7 @@ export default function CrudEstoque(){
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []);
+    }, []);*/
     const [grupoEstoque, setGrupoEstoque] =useState([
         {
             id: 1,
@@ -187,8 +187,8 @@ export default function CrudEstoque(){
                     <p>Quantidade: {item.quantidade}</p>
                     <p>Data de compra: {item.dataCompra}</p>
                     <p>Validade: {item.validade}</p>
-                    <div>
-                    <button className="btn btn-editar">Editar</button>
+                    <div className="btnEditarAccordion">
+                    <button className="btn btn-adicionar">Editar</button>
                     </div>
                 </div>
             </div>
@@ -237,7 +237,7 @@ export default function CrudEstoque(){
                         <h1>Esto<span className="span-color-dashboard">que</span></h1>
                     </div>
                     <button onClick={alternarVisualizacao}  className="visualizacao">
-                    <FontAwesomeIcon icon={iconeVisualizacao} className="icon" style={{color: "#e40ce4",}} />
+                    <FontAwesomeIcon icon={iconeVisualizacao} className="iconeVisualizacao" style={{color: "#e40ce4",}} />
                         <h2>Alterar Visualização</h2></button>
                 </div>
             

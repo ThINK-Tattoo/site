@@ -70,8 +70,9 @@
     justify-content: center;
     align-items: center;
 }
-.icon{
+.iconeVisualizacao{
     font-size: 1.8rem;
+    cursor: pointer;
 }
 
 
@@ -108,6 +109,13 @@
     border-bottom-left-radius: 10px;
     color: white;
 }
+
+.btnEditarAccordion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .accordion-button-icon {
     margin-left: 24vw;
 }
