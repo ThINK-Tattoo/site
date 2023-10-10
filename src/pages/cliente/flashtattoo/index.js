@@ -28,7 +28,7 @@ export default function FlashTattoo(){
             setIsUserLoggedIn(userType === "cliente");
         }
         
-    }, []);*/
+    }, []);
     const [flashtatto, setFlashtatto] = useState([
         {
             id: 1,

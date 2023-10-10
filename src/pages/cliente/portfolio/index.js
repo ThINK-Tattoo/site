@@ -19,10 +19,10 @@ import './index.css';
 export default function Portfolio(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-   /* useEffect(() => {
+    useEffect(() => {
         const userType = localStorage.getItem("userType");
         setIsUserLoggedIn(userType === "cliente");
-    }, []); */
+    }, []); 
     const [portfolio, setPortfolio] = useState([
         {
             id: 1,
