@@ -108,7 +108,7 @@ export default function CrudFlashTattoo() {
     ]);
 
 
-    const [selectedflashtattoo, setSelectedflashtattoo] = useState(null);
+    const [selectedCrudFlashtattoo, setSelectedCrudFlashtattoo] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
@@ -118,22 +118,22 @@ export default function CrudFlashTattoo() {
 
     const navigate = useNavigate();
 
-    const openModal = (flashtattoo) => {
-        setSelectedflashtattoo(flashtattoo);
+    const openModal = ( CrudFlashtattoo) => {
+        setSelectedCrudFlashtattoo( CrudFlashtattoo);
         setModalData({
-            nome: flashtattoo.nome,
+            nome:  CrudFlashtattoo.nome,
             tamanho: selectedSize,
-            local: flashtattoo.local,
-            Tipo: flashtattoo.Tipo,
-            Cores: flashtattoo.Cores,
-            imagem: flashtattoo.imagem,
+            local:  CrudFlashtattoo.local,
+            Tipo:  CrudFlashtattoo.Tipo,
+            Cores:  CrudFlashtattoo.Cores,
+            imagem:  CrudFlashtattoo.imagem,
         });
         setIsModalOpen(true);
     };
     const [open, setOpen] = useState(false);
 
     const closeModal = () => {
-        setSelectedflashtattoo(null);
+        setSelectedCrudFlashtattoo(null);
         setModalData(null);
         setIsModalOpen(false);
     };
@@ -171,11 +171,11 @@ export default function CrudFlashTattoo() {
                 <div className="tituloDashboard">
                 <h1>Flash Tat<span className="span-color-dashboard">too</span></h1>
                 </div>
-                <section className="flashtattoo">
-                    {flashtatto.map((flashtattoo) => (
-                        <div key={flashtattoo.id} className="portifolio-item">
-                            <img id="img-flash" onClick={() => openModal(flashtattoo)}
-                                src={flashtattoo.imagem} alt={flashtattoo.nome} />
+                <section className="CrudFlashtattoo">
+                    {flashtatto.map(( CrudFlashtattoo) => (
+                        <div key={ CrudFlashtattoo.id} className="portifolio-item">
+                            <img id="img-flash" onClick={() => openModal( CrudFlashtattoo)}
+                                src={ CrudFlashtattoo.imagem} alt={ CrudFlashtattoo.nome} />
                         </div>
                     ))}
                 </section>
@@ -183,7 +183,7 @@ export default function CrudFlashTattoo() {
                     <button onClick={openModalAdd} className="btnCrud">Adicionar</button>
                 </div>
                 <Modal isOpen={isModalOpen} onRequestClose={closeModal}
-                    id="modal-container-flashtattoo"
+                    id="modal-container-flashtatto"
                     contentLabel="Detalhes da Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -199,20 +199,20 @@ export default function CrudFlashTattoo() {
                         X
                     </button>
 
-                    {selectedflashtattoo && (
+                    {selectedCrudFlashtattoo && (
                         <div className="modal-tattoo">
-                            <div id="modal-info-flashtattoo">
-                                <img src={selectedflashtattoo.imagem} alt={selectedflashtattoo.nome} />
+                            <div id="modal-info-tatto">
+                                <img src={selectedCrudFlashtattoo.imagem} alt={selectedCrudFlashtattoo.nome} />
                                 <div className="modal-info-description">
                                     <div className="description">
-                                        <h3 className="txt-white" >{selectedflashtattoo.nome}</h3>
+                                        <h3 className="txt-white" >{selectedCrudFlashtattoo.nome}</h3>
                                     </div>
                                     <div className="description">
                                         <h3 className="txt-white">Descrição:</h3>
-                                        <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedflashtattoo.tamanho}</p>
-                                        <p className="txt-white"><strong>Local: </strong>{selectedflashtattoo.local}</p>
-                                        <p className="txt-white"><strong>Tipo: </strong> {selectedflashtattoo.Tipo}</p>
-                                        <p className="txt-white"><strong>Cores: </strong> {selectedflashtattoo.Cores}</p>
+                                        <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedCrudFlashtattoo.tamanho}</p>
+                                        <p className="txt-white"><strong>Local: </strong>{selectedCrudFlashtattoo.local}</p>
+                                        <p className="txt-white"><strong>Tipo: </strong> {selectedCrudFlashtattoo.Tipo}</p>
+                                        <p className="txt-white"><strong>Cores: </strong> {selectedCrudFlashtattoo.Cores}</p>
                                     </div>
 
 
@@ -222,7 +222,7 @@ export default function CrudFlashTattoo() {
                             <div className="tamanho-info">
                             <h3 className="txt-white ">Tamanho e valores</h3>
                             <div className="valores-tattoo">
-                                <div id="first-info">
+                                <div id="first-inf">
                                     <button 
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('5cm')}
@@ -231,7 +231,7 @@ export default function CrudFlashTattoo() {
                                     </button>
                                     <p className="txt-white">R$ 200.00</p>
                                 </div>
-                                <div id="second-info">
+                                <div id="second-inf">
                                     <button 
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('10cm')}
@@ -240,7 +240,7 @@ export default function CrudFlashTattoo() {
                                     </button>
                                     <p className="txt-white">R$ 290.00</p>
                                 </div>
-                                <div id="third-info">
+                                <div id="third-inf">
                                     <button 
                                         className="btn btn-valor" 
                                         onClick={() => setSelectedSize('15cm')}
@@ -249,20 +249,22 @@ export default function CrudFlashTattoo() {
                                     </button>
                                     <p className="txt-white">R$ 350.00</p>
                                 </div>
-                            </div>
-                        </div>
-
-                            <div className="btn-modal">
+                            </div><div className="btn-modal">
                                 <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
                                 <button onClick={closeModal} className="btn btn-cancelar">Cancelar</button>
 
                             </div>
                         </div>
+
+                            
+                        </div>
+
+                        
                     )}
                 </Modal>
 
                 <Modal isOpen={isModalOpenEdit} onRequestClose={closeModalEdit}
-                    id="modal-edit-flashtattoo"
+                    id="modal-edit-flashtatto"
                     contentLabel="Editando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -278,7 +280,7 @@ export default function CrudFlashTattoo() {
                         X
                     </button>
 
-                    {selectedflashtattoo && (
+                    {selectedCrudFlashtattoo && (
                         <div className="modal-tatto">
                         <div id="modal-edit-tatto">
                             <input
@@ -289,7 +291,7 @@ export default function CrudFlashTattoo() {
                                 id="imageInpute"
                             />
                             <label htmlFor="imageInpute">
-                                <img src={selectedImage ? URL.createObjectURL(selectedImage): selectedflashtattoo.imagem} 
+                                <img src={selectedImage ? URL.createObjectURL(selectedImage): selectedCrudFlashtattoo.imagem} 
                                 alt="Upload de imagem" 
                                 style={{ maxWidth: '270px', maxHeight: '268px' }}
 
@@ -298,28 +300,28 @@ export default function CrudFlashTattoo() {
                             <div className="modal-info-description">
                                 <div className="description">
                                     <input className="inputp" type="text" id="nome"
-                                        onChange={(e) => ({ ...selectedflashtattoo, nome: e.target.value })}
-                                        name="nome" value={selectedflashtattoo.nome} required
+                                        onChange={(e) => ({ ...selectedCrudFlashtattoo, nome: e.target.value })}
+                                        name="nome" value={selectedCrudFlashtattoo.nome} required
                                     />
 
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
                                     <input className="inputp" type="text" id="tamanho"
-                                        onChange={(e) => ({ ...selectedflashtattoo, tamanho: e.target.value})}
-                                        name="tamaho" value={selectedflashtattoo.tamanho} required />
+                                        onChange={(e) => ({ ...selectedCrudFlashtattoo, tamanho: e.target.value})}
+                                        name="tamaho" value={selectedCrudFlashtattoo.tamanho} required />
 
                                     <input className="inputp" type="text" id="local"
-                                        onChange={(e) => ({ ...selectedflashtattoo, local: e.target.value })}
-                                        name="local" value={selectedflashtattoo.local} required />
+                                        onChange={(e) => ({ ...selectedCrudFlashtattoo, local: e.target.value })}
+                                        name="local" value={selectedCrudFlashtattoo.local} required />
 
                                     <input className="inputp" type="text" id="Tipo"
-                                        onChange={(e) => ({ ...selectedflashtattoo, Tipo: e.target.value })}
-                                        name="Tipo" value={selectedflashtattoo.Tipo} required />
+                                        onChange={(e) => ({ ...selectedCrudFlashtattoo, Tipo: e.target.value })}
+                                        name="Tipo" value={selectedCrudFlashtattoo.Tipo} required />
 
                                     <input className="inputp" type="text" id="cores"
-                                        onChange={(e) => ({ ...selectedflashtattoo, cores: e.target.value })}
-                                        name="cores" value={selectedflashtattoo.Cores} required />
+                                        onChange={(e) => ({ ...selectedCrudFlashtattoo, cores: e.target.value })}
+                                        name="cores" value={selectedCrudFlashtattoo.Cores} required />
 
                                 </div>
 
@@ -329,7 +331,7 @@ export default function CrudFlashTattoo() {
                         <div className="tamanho-info">
                             <h3 className="txt-white ">Tamanho e valores</h3>
                             <div className="valores-tattoo">
-                                <div id="first-info">
+                                <div id="first-inf">
                                     <button 
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('5cm')}
@@ -337,9 +339,9 @@ export default function CrudFlashTattoo() {
                                         5 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" id="tamanhop" name="tamanhop" placeholder="R$" />
+                                    <input className="inputv" type="number" id="tamanhope" name="tamanhope" placeholder="R$" />
                                 </div>
-                                <div id="second-info">
+                                <div id="second-inf">
                                     <button 
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('10cm')}
@@ -347,9 +349,9 @@ export default function CrudFlashTattoo() {
                                         10 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" id="tamanhom" name="tamanhom" placeholder="R$" />
+                                    <input className="inputv" type="number" id="tamanhome" name="tamanhome" placeholder="R$" />
                                 </div>
-                                <div id="third-info">
+                                <div id="third-inf">
                                     <button 
                                         className="btn btn-valor" 
                                         onClick={() => setSelectedSize('15cm')}
@@ -357,7 +359,7 @@ export default function CrudFlashTattoo() {
                                         15 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" id="tamanhog" name="tamanhog" placeholder="R$" />
+                                    <input className="inputv" type="number" id="tamanhoge" name="tamanhoge" placeholder="R$" />
                                 </div>
                             </div>
                         </div>
@@ -374,7 +376,7 @@ export default function CrudFlashTattoo() {
                 </Modal>
 
                 <Modal isOpen={isModalOpenAdd} onRequestClose={closeModalAdd}
-                    id="modal-add-flashtattoo"
+                    id="modal-add-flashtatto"
                     contentLabel="Adicionando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -397,13 +399,13 @@ export default function CrudFlashTattoo() {
                                     accept="image/*"
                                     onChange={handleImageSelect}
                                     style={{ display: 'none' }}
-                                    id="imageInputp"
+                                    id="imageInpute"
                                 />
                                
                                 <label htmlFor="imageInputp">
                                     <img src={selectedImage ? URL.createObjectURL(selectedImage): image} 
                                     alt="Upload de imagem" 
-                                    id="imagePreview"
+                                    id="imagePreviw"
                                     style={{ maxWidth: '270px', maxHeight: '268px' }}
                                     />
                                 
@@ -430,7 +432,7 @@ export default function CrudFlashTattoo() {
                         <div className="tamanho-info">
                             <h3 className="txt-white ">Tamanho e valores</h3>
                             <div className="valores-tattoo">
-                                <div id="first-info">
+                                <div id="first-inf">
                                     <button 
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('5cm')}
@@ -438,9 +440,9 @@ export default function CrudFlashTattoo() {
                                         5 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" id="tamanhop" name="tamanhop" placeholder="R$" />
+                                    <input className="inputv" type="number" id="tamanhopa" name="tamanhopa" placeholder="R$" />
                                 </div>
-                                <div id="second-info">
+                                <div id="second-inf">
                                     <button 
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('10cm')}
@@ -448,9 +450,9 @@ export default function CrudFlashTattoo() {
                                         10 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" id="tamanhom" name="tamanhom" placeholder="R$" />
+                                    <input className="inputv" type="number" id="tamanhoma" name="tamanhoma" placeholder="R$" />
                                 </div>
-                                <div id="third-info">
+                                <div id="third-inf">
                                     <button 
                                         className="btn btn-valor" 
                                         onClick={() => setSelectedSize('15cm')}
@@ -458,7 +460,7 @@ export default function CrudFlashTattoo() {
                                         15 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" id="tamanhog" name="tamanhog" placeholder="R$" />
+                                    <input className="inputv" type="number" id="tamanhoga" name="tamanhoga" placeholder="R$" />
                                 </div>
                             </div>
                         </div>
