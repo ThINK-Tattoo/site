@@ -19,7 +19,7 @@ import './index.css';
 export default function FlashTattoo(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-   /* useEffect(() => {
+    useEffect(() => {
         const userType = localStorage.getItem("userType");
 
         if(!userType || userType === 'admin'){

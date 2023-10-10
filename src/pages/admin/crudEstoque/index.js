@@ -21,7 +21,7 @@ import { set } from "date-fns";
 export default function CrudEstoque(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
      const navigate = useNavigate();
-    
+    /*
     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
@@ -31,7 +31,7 @@ export default function CrudEstoque(){
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []);
+    }, []);*/
     const [grupoEstoque, setGrupoEstoque] =useState([
         {
             id: 1,
@@ -110,19 +110,19 @@ export default function CrudEstoque(){
         { grupo: "Biqueiras", nome: "Biqueiras Descartáveis", quantidade: 58, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-19-09" },
 
 
-        { grupo: "Esterilizadores", nome: "Esterilizador", quantidade: 3, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-20-09" },
+        { grupo: "Esterelizador", nome: "Esterilizador", quantidade: 3, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-20-09" },
 
 
-        { grupo: "Máquinas de Tatuagem", nome: "Máquina de Tatuagem", quantidade: 2, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-21-09" },
+        { grupo: "Máquinas", nome: "Máquina de Tatuagem", quantidade: 2, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-21-09" },
 
 
-        { grupo: "Luvas Látex", nome: "Luva Látex", quantidade: 220, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-21-09" },
+        { grupo: "Luvas", nome: "Luva Látex", quantidade: 220, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-21-09" },
 
 
-        { grupo: "Toalhas Descartáveis", nome: "Toalha Descartável", quantidade: 356, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-22-09" },
+        { grupo: "Papel", nome: "Toalha Descartável", quantidade: 356, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-22-09" },
 
 
-        { grupo: "Copos Descartáveis", nome: "Copos Descartáveis", quantidade: 210, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-22-09" },
+        { grupo: "Copos", nome: "Copos Descartáveis", quantidade: 210, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-22-09" },
 
 
         { grupo: "Tintas", nome: "Tinta Easy Glow Raven Black - 240ml", quantidade: 111, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
@@ -187,8 +187,8 @@ export default function CrudEstoque(){
                     <p>Quantidade: {item.quantidade}</p>
                     <p>Data de compra: {item.dataCompra}</p>
                     <p>Validade: {item.validade}</p>
-                    <div>
-                    <button className="btn btn-editar">Editar</button>
+                    <div className="btnEditarAccordion">
+                    <button className="btn btn-adicionar">Editar</button>
                     </div>
                 </div>
             </div>
@@ -237,7 +237,7 @@ export default function CrudEstoque(){
                         <h1>Esto<span className="span-color-dashboard">que</span></h1>
                     </div>
                     <button onClick={alternarVisualizacao}  className="visualizacao">
-                    <FontAwesomeIcon icon={iconeVisualizacao} className="icon" style={{color: "#e40ce4",}} />
+                    <FontAwesomeIcon icon={iconeVisualizacao} className="iconeVisualizacao" style={{color: "#e40ce4",}} />
                         <h2>Alterar Visualização</h2></button>
                 </div>
             

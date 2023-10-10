@@ -10,10 +10,11 @@
     margin-top: 5%;
 }
 
+
 #info-CrudFlashtattoo {
     background-color: var(--var-forms-background);
     width: 80%;
-    padding: 20%;
+    /*padding: 20%;*/
     text-align: justify;
     align-self: center;
     border-radius: 10px;
@@ -29,7 +30,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     padding: 16px;
-    padding-left: 20%;
+    /*padding-left: 20%;*/
 }
 
 .CrudFlashtattoo img {

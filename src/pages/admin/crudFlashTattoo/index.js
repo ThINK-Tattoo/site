@@ -21,7 +21,7 @@ import './index.css'
 export default function CrudFlashTattoo() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-    useEffect(() => {
+    /*useEffect(() => {
          const userType = localStorage.getItem("userType");
  
          if(!userType || userType === 'cliente'){
@@ -30,7 +30,7 @@ export default function CrudFlashTattoo() {
              setIsUserLoggedIn(userType === "admin");
          }
          
-     }, []); 
+     }, []); */
      const [flashtatto, setFlashtatto] = useState([
         {
             id: 1,

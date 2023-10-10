@@ -18,7 +18,7 @@ import './index.css'
 
 export default function CrudPortfolio() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
+/*
      useEffect(() => {
          const userType = localStorage.getItem("userType");
  
@@ -28,14 +28,14 @@ export default function CrudPortfolio() {
              setIsUserLoggedIn(userType === "admin");
          }
          
-     }, []); 
+     }, []); */
 
     const [portfolio, setPortfolio] = useState([
         {
             id: 1,
             nome: "Girassóis",
             tamanho: "35cm",
-            local: "Perna direira",
+            local: "Perna direita",
             Tipo: "Realista",
             Cores: "Preto e branco",
             imagem: tatt4
