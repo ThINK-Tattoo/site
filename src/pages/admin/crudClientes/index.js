@@ -10,6 +10,7 @@ import './index.css'
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
+
     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
@@ -19,11 +20,13 @@ function App() {
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []);
+    }, []); 
+    
       // clientes de exemplo
       const [clientes, setClientes] = useState([
         { id: 1, nome: 'Cliente 1', email: 'cliente1@example.com', telefone: '(12) 93456-7890', selecionado: false },
         { id: 2, nome: 'Cliente 2', email: 'cliente2@example.com', telefone: '(98) 97654-3210', selecionado: false },
+        { id: 3, nome: 'Cliente 3', email: 'cliente3@example.com', telefone: '(11) 96589-3246', selecionado: false },
         ]);
 
     const [ordenarPorNome, setOrdenarPorNome] = useState(null);
@@ -78,21 +81,21 @@ function App() {
             <table className="table Cliente">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>
+                    <th style={{ width: '50px' }}>ID</th>
+                    <th style={{ width: '200px' }}>
                     Nome
                     <button onClick={ordenarClientesPorNome} style={{ border: 'none', background: 'none', marginLeft: '5px' }}>
                         {ordenarPorNome === 'asc' ? '▲' : '▼'}
                     </button>
                     </th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>ㅤ</th>
+                    <th style={{ width: '150px' }}>Email</th>
+                    <th style={{ width: '150px' }}>Telefone</th>
+                    <th style={{ width: '50px' }}>ㅤ</th>
                 </tr>
                 </thead>
                 <tbody>
                 {clientesFiltrados.map((cliente) => (
-                    <tr key={cliente.id}>
+                    <tr key={cliente.id} className={cliente.id % 2 === 0 ? 'cor1' : 'cor2'}>
                     <td>{cliente.id}</td>
                     <td>{cliente.nome}</td>
                     <td>{cliente.email}</td>

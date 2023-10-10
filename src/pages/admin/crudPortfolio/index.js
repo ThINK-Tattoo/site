@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/admin/menuDashboard';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 import image from '../../../assets/icones/Upload_Image.png';
 import tatt1 from '../../../assets/portfolio/portfolio.png';
@@ -13,13 +12,14 @@ import tatt5 from '../../../assets/portfolio/portfolio-5.png';
 import tatt6 from '../../../assets/portfolio/portfolio-6.png';
 import tatt7 from '../../../assets/portfolio/portfolio-7.png';
 import tatt8 from '../../../assets/portfolio/portfolio-8.png';
+
 import '../../../styleGlobal.css';
 import './index.css'
 
 function CrudPortfolio() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-    /* useEffect(() => {
+     useEffect(() => {
          const userType = localStorage.getItem("userType");
  
          if(!userType || userType === 'cliente'){
@@ -28,7 +28,7 @@ function CrudPortfolio() {
              setIsUserLoggedIn(userType === "admin");
          }
          
-     }, []); */
+     }, []); 
 
     const [portfolio, setPortfolio] = useState([
         {
@@ -113,9 +113,7 @@ function CrudPortfolio() {
     const [selectedSize, setSelectedSize] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isModalOpenEdit, setIsModalEdit] = useState(false);
-    const [open2, setOpen2] = useState(false);
     const [isModalOpenAdd, setIsModalAdd] = useState(false);
-    const [open3, setOpen3] = useState(false);
 
     const navigate = useNavigate();
 
@@ -256,7 +254,11 @@ function CrudPortfolio() {
                                 id="imageInpute"
                             />
                             <label htmlFor="imageInpute">
-                                <img src={selectedPortfolio.imagem} alt="Upload de imagem" />
+                                <img src={selectedImage ? URL.createObjectURL(selectedImage): selectedPortfolio.imagem} 
+                                alt="Upload de imagem" 
+                                style={{ maxWidth: '270px', maxHeight: '268px' }}
+
+                                />
                             </label>
                             <div className="modal-info-description">
                                 <div className="description">
@@ -325,10 +327,17 @@ function CrudPortfolio() {
                                     style={{ display: 'none' }}
                                     id="imageInputp"
                                 />
+                               
                                 <label htmlFor="imageInputp">
-                                    <img src={image} alt="Upload de imagem" />
+                                    <img src={selectedImage ? URL.createObjectURL(selectedImage): image} 
+                                    alt="Upload de imagem" 
+                                    id="imagePreview"
+                                    style={{ maxWidth: '270px', maxHeight: '268px' }}
+                                    />
+                                
+                                
                                 </label>
-
+                              
                            
                             <div className="modal-info-description">
                                 <div className="description">

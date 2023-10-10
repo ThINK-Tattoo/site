@@ -22,7 +22,7 @@ export default function Portfolio(){
     useEffect(() => {
         const userType = localStorage.getItem("userType");
         setIsUserLoggedIn(userType === "cliente");
-    }, []);
+    }, []); 
     const [portfolio, setPortfolio] = useState([
         {
             id: 1,
