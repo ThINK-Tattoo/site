@@ -10,6 +10,10 @@
     margin-top: 5%;
 }
 
+.flashtattoo{
+    margin-left: 15vw;
+}
+
 #info-flashtattoo {
     background-color: var(--var-forms-background);
     width: 80%;
@@ -29,7 +33,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     padding: 16px;
-    padding-left: 20%;
+    /*padding-left: 20%;*/
 }
 
 .flashtattoo img {

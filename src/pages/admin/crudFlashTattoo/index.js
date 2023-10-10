@@ -21,7 +21,7 @@ import './index.css'
 export default function CrudFlashTattoo() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-    useEffect(() => {
+    /*useEffect(() => {
          const userType = localStorage.getItem("userType");
  
          if(!userType || userType === 'cliente'){
@@ -30,7 +30,7 @@ export default function CrudFlashTattoo() {
              setIsUserLoggedIn(userType === "admin");
          }
          
-     }, []); 
+     }, []); */
      const [flashtatto, setFlashtatto] = useState([
         {
             id: 1,
@@ -171,7 +171,7 @@ export default function CrudFlashTattoo() {
                 <div className="tituloDashboard">
                 <h1>Flash Tat<span className="span-color-dashboard">too</span></h1>
                 </div>
-                <section className="flashtattoo">
+                <section className="flashtattoo-crud">
                     {flashtatto.map((flashtattoo) => (
                         <div key={flashtattoo.id} className="portifolio-item">
                             <img id="img-flash" onClick={() => openModal(flashtattoo)}
@@ -201,7 +201,7 @@ export default function CrudFlashTattoo() {
 
                     {selectedflashtattoo && (
                         <div className="modal-tattoo">
-                            <div id="modal-info-flashtattoo">
+                            <div id="modal-info-flashtattoo-crud">
                                 <img src={selectedflashtattoo.imagem} alt={selectedflashtattoo.nome} />
                                 <div className="modal-info-description">
                                     <div className="description">
