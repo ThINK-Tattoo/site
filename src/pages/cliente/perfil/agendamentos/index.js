@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from "../../../../components/Footer";
-import ReactModal from "react-modal";
 
 import '../../../../styleGlobal.css';
 import './index.css';
@@ -21,7 +20,6 @@ export default function MeusAgendamentos(){
         }
         
     }, []);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [agendamentos, setAgendamentos] = useState([
         {
             id:1,

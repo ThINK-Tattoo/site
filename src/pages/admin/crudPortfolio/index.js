@@ -16,7 +16,7 @@ import tatt8 from '../../../assets/portfolio/portfolio-8.png';
 import '../../../styleGlobal.css';
 import './index.css'
 
-function CrudPortfolio() {
+export default function CrudPortfolio() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
      useEffect(() => {
@@ -367,4 +367,4 @@ function CrudPortfolio() {
 
 
 }
-export default CrudPortfolio;
+;

@@ -15,24 +15,23 @@ import tatt8 from '../../../assets/flashTattoo/tattoo-8.png';
 import '../../../styleGlobal.css';
 import './index.css';
 
+import '../../../styleGlobal.css';
+import './index.css'
 
 export default function CrudFlashTattoo() {
-
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
-        const userType = localStorage.getItem("userType");
-
-        if(!userType || userType === 'cliente'){
-            navigate('/signin');
-        }else if(userType === 'admin'){
-            setIsUserLoggedIn(userType === "admin");
-        }
-        
-    }, []);
-
-    const [flashtatto, setFlashtatto] = useState([
+         const userType = localStorage.getItem("userType");
+ 
+         if(!userType || userType === 'cliente'){
+             navigate('/signin');
+         } else if(userType === 'admin'){
+             setIsUserLoggedIn(userType === "admin");
+         }
+         
+     }, []); 
+     const [flashtatto, setFlashtatto] = useState([
         {
             id: 1,
             nome: "Caveira Borboleta",
@@ -42,7 +41,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt4
         },
-
         {
             id: 2,
             nome: "Coração teia de aranha",
@@ -52,7 +50,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt1
         },
-
         {
             id: 3,
             nome: "Coração de arabescos",
@@ -62,7 +59,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt2
         },
-
         {
             id: 4,
             nome: "Onça",
@@ -72,7 +68,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt3
         },
-
         {
             id: 5,
             nome: "Olhos de mar e lua",
@@ -82,7 +77,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt5
         },
-
         {
             id: 6,
             nome: "Pantera",
@@ -92,7 +86,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt6
         },
-
         {
             id: 7,
             nome: "Coração asas de morcego",
@@ -102,7 +95,6 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt7
         },
-
         {
             id: 8,
             nome: "Cogumelos",
@@ -112,71 +104,38 @@ export default function CrudFlashTattoo() {
             Cores: "Preto e branco",
             imagem: tatt8
         },
+        
     ]);
 
-    const [selectedTattoo, setSelectedTattoo] = useState(null);
+
+    const [selectedflashtattoo, setSelectedflashtattoo] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isModalOpenEdit, setIsModalEdit] = useState(false);
+    const [isModalOpenAdd, setIsModalAdd] = useState(false);
 
-    const openModal = (tattoo) => {
-        setSelectedTattoo(tattoo);
+    const navigate = useNavigate();
+
+    const openModal = (flashtattoo) => {
+        setSelectedflashtattoo(flashtattoo);
         setModalData({
-
-            nome: tattoo.nome,
+            nome: flashtattoo.nome,
             tamanho: selectedSize,
-            local: tattoo.local,
-            Tipo: tattoo.Tipo,
-            Cores: tattoo.Cores,
-            imagem: tattoo.imagem,
+            local: flashtattoo.local,
+            Tipo: flashtattoo.Tipo,
+            Cores: flashtattoo.Cores,
+            imagem: flashtattoo.imagem,
         });
         setIsModalOpen(true);
     };
+    const [open, setOpen] = useState(false);
 
     const closeModal = () => {
-
-        setSelectedTattoo(null);
+        setSelectedflashtattoo(null);
         setModalData(null);
         setIsModalOpen(false);
-    };
-
-
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [newTattooData, setNewTattooData] = useState({
-        nome: "",
-        tamanho: "",
-        local: "",
-        Tipo: "",
-        Cores: "",
-        imagem: "",
-        valor: ""
-    });
-
-    const openAddModal = () => {
-        setIsAddModalOpen(true);
-    };
-
-    const closeAddModal = () => {
-        setIsAddModalOpen(false);
-    };
-
-    const handleAddTattoo = () => {
-        closeAddModal();
-    };
-
-    const clearForm = () => {
-        setNewTattooData({
-            nome: '',
-            tamanho: '',
-            valor: '',
-            imagem: null,
-            local: '',
-            Tipo: '',
-            Cores: '',
-            descricao: '',
-        });
     };
 
     const openModalEdit = () => {
@@ -189,20 +148,16 @@ export default function CrudFlashTattoo() {
         setIsModalOpen(true);
     };
 
-    const clearFormAndCloseModal = () => {
-        clearForm();
-        closeAddModal();
+    const openModalAdd = () => {
+        setIsModalAdd(true);
 
     };
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setNewTattooData({ ...newTattooData, [name]: value });
+    const closeModalAdd = () => {
+        setIsModalAdd(false);
     };
 
 
-
-    
     const handleImageSelect = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -210,172 +165,104 @@ export default function CrudFlashTattoo() {
         }
     };
     return (
-        <div >
+        <div>
             <Menu />
             <section>
                 <div className="tituloDashboard">
-                    <h1>Flash Tat<span className="span-color-dashboard">too</span></h1>
+                <h1>Flash Tat<span className="span-color-dashboard">too</span></h1>
                 </div>
-            
-            <div  className="admin-flashtattoo-container">
-                <section className="flashtattoo ">
-
-                    {flashtatto.map((tattoo) => (
-
-                        <div key={tattoo.id} className="tattoo-item">
-
-                            <img src={tattoo.imagem} alt={tattoo.nome} />
-
-                            <button className="btn btn-tattoo" onClick={() => openModal(tattoo)}>
-
-                                Ver
-
-                            </button>
-
+                <section className="flashtattoo">
+                    {flashtatto.map((flashtattoo) => (
+                        <div key={flashtattoo.id} className="portifolio-item">
+                            <img id="img-flash" onClick={() => openModal(flashtattoo)}
+                                src={flashtattoo.imagem} alt={flashtattoo.nome} />
                         </div>
-
                     ))}
-
                 </section>
-         
-                    <div className="btnAdicionar">
-                    <button onClick={openAddModal} className="btnCrud">Adicionar</button>
-                     </div>
-                    
-            </div>
-           
-            
-            <Modal
-                isOpen={isModalOpen}
-                onRequestClose={closeModal}
-                id="modal-container"
-                contentLabel="Detalhes da Tatuagem"
-                style={{
-                    overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    },
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        backgroundColor: '#000',
-                        height: '80%'
-                    },
+                <div className="btnAdicionar">
+                    <button onClick={openModalAdd} className="btnCrud">Adicionar</button>
+                </div>
+                <Modal isOpen={isModalOpen} onRequestClose={closeModal}
+                    id="modal-container-flashtattoo"
+                    contentLabel="Detalhes da Tatuagem"
+                    style={{
+                        overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
+                        content: {
+                            top: '50%',
+                            left: '50%',
+                            height: '80%',
+                            transform: 'translate(-40%, -50%)',
+                            backgroundColor: '#000'
+                        },
+                    }}>
+                    <button className="modal-close-button" onClick={closeModal}>
+                        X
+                    </button>
 
+                    {selectedflashtattoo && (
+                        <div className="modal-tattoo">
+                            <div id="modal-info-flashtattoo">
+                                <img src={selectedflashtattoo.imagem} alt={selectedflashtattoo.nome} />
+                                <div className="modal-info-description">
+                                    <div className="description">
+                                        <h3 className="txt-white" >{selectedflashtattoo.nome}</h3>
+                                    </div>
+                                    <div className="description">
+                                        <h3 className="txt-white">Descrição:</h3>
+                                        <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedflashtattoo.tamanho}</p>
+                                        <p className="txt-white"><strong>Local: </strong>{selectedflashtattoo.local}</p>
+                                        <p className="txt-white"><strong>Tipo: </strong> {selectedflashtattoo.Tipo}</p>
+                                        <p className="txt-white"><strong>Cores: </strong> {selectedflashtattoo.Cores}</p>
+                                    </div>
 
-
-                }}
-            >
-                <button className="modal-close-button" onClick={closeModal}>
-                    X
-                </button>
-                
-                {selectedTattoo && (
-
-                    <div className="modal-tattoo">
-                        <div id="modal-info">
-                            <img src={selectedTattoo.imagem} alt={selectedTattoo.nome} />
-                            <div className="modal-info-description">
-                                <h3 className="txt-white h3">{selectedTattoo.nome}</h3>
-
-                                <div className="description">
-
-                                    <h3 className="txt-white ">Descrição:</h3>
-
-                                    <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedTattoo.tamanho}</p>
-
-                                    <p className="txt-white"><strong>Local: </strong>{selectedTattoo.local}</p>
-
-                                    <p className="txt-white"><strong>Tipo: </strong> {selectedTattoo.Tipo}</p>
-
-                                    <p className="txt-white"><strong>Cores: </strong> {selectedTattoo.Cores}</p>
 
                                 </div>
-
                             </div>
 
-                        </div>
-
-                        <div className="tamanho-info">
-
+                            <div className="tamanho-info">
                             <h3 className="txt-white ">Tamanho e valores</h3>
-
                             <div className="valores-tattoo">
-
                                 <div id="first-info">
-
-                                    <button
-
+                                    <button 
                                         className="btn btn-valor"
-
                                         onClick={() => setSelectedSize('5cm')}
-
                                     >
-
                                         5 cm
-
                                     </button>
-
                                     <p className="txt-white">R$ 200.00</p>
-
                                 </div>
-
                                 <div id="second-info">
-
-                                    <button
-
+                                    <button 
                                         className="btn btn-valor"
-
                                         onClick={() => setSelectedSize('10cm')}
-
                                     >
-
                                         10 cm
-
                                     </button>
-
                                     <p className="txt-white">R$ 290.00</p>
-
                                 </div>
-
                                 <div id="third-info">
-
-                                    <button
-
-                                        className="btn btn-valor"
-
+                                    <button 
+                                        className="btn btn-valor" 
                                         onClick={() => setSelectedSize('15cm')}
-
                                     >
-
                                         15 cm
-
                                     </button>
-
                                     <p className="txt-white">R$ 350.00</p>
-
                                 </div>
+                            </div>
+                        </div>
+
+                            <div className="btn-modal">
+                                <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
+                                <button onClick={closeModal} className="btn btn-cancelar">Cancelar</button>
 
                             </div>
-
                         </div>
+                    )}
+                </Modal>
 
-                        <div className="button-container">
-
-                        <button onClick={openModalEdit} className="btn btn-EditarExcluir" >Editar</button>
-
-                            <button className="btn btn-EditarExcluir" >Excluir</button>
-
-                        </div>
-
-                    </div>
-
-                )}
-
-            </Modal>
-
-            <Modal isOpen={isModalOpenEdit} onRequestClose={closeModalEdit}
-                    id="modal-edit-portfolio"
+                <Modal isOpen={isModalOpenEdit} onRequestClose={closeModalEdit}
+                    id="modal-edit-flashtattoo"
                     contentLabel="Editando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -391,18 +278,18 @@ export default function CrudFlashTattoo() {
                         X
                     </button>
 
-                    {selectedTattoo && (
+                    {selectedflashtattoo && (
                         <div className="modal-tatto">
                         <div id="modal-edit-tatto">
-                            <input 
+                            <input
                                 type="file"
                                 accept="image/*"
                                 onChange={handleImageSelect}
                                 style={{ display: 'none' }}
                                 id="imageInpute"
                             />
-                           <label htmlFor="imageInpute">
-                                <img src={selectedImage ? URL.createObjectURL(selectedImage): selectedTattoo.imagem} 
+                            <label htmlFor="imageInpute">
+                                <img src={selectedImage ? URL.createObjectURL(selectedImage): selectedflashtattoo.imagem} 
                                 alt="Upload de imagem" 
                                 style={{ maxWidth: '270px', maxHeight: '268px' }}
 
@@ -411,127 +298,99 @@ export default function CrudFlashTattoo() {
                             <div className="modal-info-description">
                                 <div className="description">
                                     <input className="inputp" type="text" id="nome"
-                                        onChange={(e) => ({ ...selectedTattoo, nome: e.target.value })}
-                                        name="nome" value={selectedTattoo.nome} required
+                                        onChange={(e) => ({ ...selectedflashtattoo, nome: e.target.value })}
+                                        name="nome" value={selectedflashtattoo.nome} required
                                     />
 
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
                                     <input className="inputp" type="text" id="tamanho"
-                                        onChange={(e) => ({ ...selectedTattoo, tamanho: e.target.value})}
-                                        name="tamaho" value={selectedTattoo.tamanho} required />
+                                        onChange={(e) => ({ ...selectedflashtattoo, tamanho: e.target.value})}
+                                        name="tamaho" value={selectedflashtattoo.tamanho} required />
 
                                     <input className="inputp" type="text" id="local"
-                                        onChange={(e) => ({ ...selectedTattoo, local: e.target.value })}
-                                        name="local" value={selectedTattoo.local} required />
+                                        onChange={(e) => ({ ...selectedflashtattoo, local: e.target.value })}
+                                        name="local" value={selectedflashtattoo.local} required />
 
                                     <input className="inputp" type="text" id="Tipo"
-                                        onChange={(e) => ({ ...selectedTattoo, Tipo: e.target.value })}
-                                        name="Tipo" value={selectedTattoo.Tipo} required />
+                                        onChange={(e) => ({ ...selectedflashtattoo, Tipo: e.target.value })}
+                                        name="Tipo" value={selectedflashtattoo.Tipo} required />
 
                                     <input className="inputp" type="text" id="cores"
-                                        onChange={(e) => ({ ...selectedTattoo, cores: e.target.value })}
-                                        name="cores" value={selectedTattoo.Cores} required />
+                                        onChange={(e) => ({ ...selectedflashtattoo, cores: e.target.value })}
+                                        name="cores" value={selectedflashtattoo.Cores} required />
 
                                 </div>
 
                             </div>
-                            
                         </div>
-                        
+
                         <div className="tamanho-info">
-
                             <h3 className="txt-white ">Tamanho e valores</h3>
-
                             <div className="valores-tattoo">
-
                                 <div id="first-info">
-
-                                    <button
-
+                                    <button 
                                         className="btn btn-valor"
-
                                         onClick={() => setSelectedSize('5cm')}
-
                                     >
-
                                         5 cm
-
                                     </button>
-
-                                    <p className="txt-white">R$ xx,xx</p>
-
+                                    <p></p>
+                                    <input className="inputv" type="number" id="tamanhop" name="tamanhop" placeholder="R$" />
                                 </div>
-
                                 <div id="second-info">
-
-                                    <button
-
+                                    <button 
                                         className="btn btn-valor"
-
                                         onClick={() => setSelectedSize('10cm')}
-
                                     >
-
                                         10 cm
-
                                     </button>
-
-                                    <p className="txt-white">R$ xx,xx</p>
-
+                                    <p></p>
+                                    <input className="inputv" type="number" id="tamanhom" name="tamanhom" placeholder="R$" />
                                 </div>
-
                                 <div id="third-info">
-
-                                    <button
-
-                                        className="btn btn-valor"
-
+                                    <button 
+                                        className="btn btn-valor" 
                                         onClick={() => setSelectedSize('15cm')}
-
                                     >
-
                                         15 cm
-
                                     </button>
-
-                                    <p className="txt-white">R$ xx,xx</p>
-
+                                    <p></p>
+                                    <input className="inputv" type="number" id="tamanhog" name="tamanhog" placeholder="R$" />
                                 </div>
-
                             </div>
-
                         </div>
+
                         <div className="btn-modal">
-                            <button onClick={openModalEdit} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={closeModalEdit} className="btn btn-adicionar">Adicionar</button>
                             <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
 
                         </div>
                     </div>
                     )}
-            </Modal>
-            <Modal
-                isOpen={isAddModalOpen}
-                onRequestClose={closeAddModal}
-                id="modal-container"
-                contentLabel="Adicionar Tatuagem"
-                style={{
-                    overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        height: '80%',
-                        transform: 'translate(-40%, -50%)',
-                        backgroundColor: '#000'
-                    },
-                }}>
 
-                <button className="modal-close-button" onClick={closeAddModal}>
-                    X
-                </button>
+                    
+                </Modal>
 
-                <div className="modal-tatto">
+                <Modal isOpen={isModalOpenAdd} onRequestClose={closeModalAdd}
+                    id="modal-add-flashtattoo"
+                    contentLabel="Adicionando a Tatuagem"
+                    style={{
+                        overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
+                        content: {
+                            top: '50%',
+                            left: '50%',
+                            height: '80%',
+                            transform: 'translate(-40%, -50%)',
+                            backgroundColor: '#000'
+                        },
+                    }}>
+                    <button className="modal-close-button" onClick={closeModalAdd}>
+                        X
+                    </button>
+
+                    <div className="modal-tatto">
                         <div id="modal-add-tatto">
                                 <input
                                     type="file"
@@ -540,14 +399,17 @@ export default function CrudFlashTattoo() {
                                     style={{ display: 'none' }}
                                     id="imageInputp"
                                 />
-                                <label htmlFor="imageInpute">
-                                <img src={selectedImage ? URL.createObjectURL(selectedImage): image} 
-                                alt="Upload de imagem" 
-                                style={{ maxWidth: '270px', maxHeight: '268px' }}
-
-                                />
-                            </label>
-
+                               
+                                <label htmlFor="imageInputp">
+                                    <img src={selectedImage ? URL.createObjectURL(selectedImage): image} 
+                                    alt="Upload de imagem" 
+                                    id="imagePreview"
+                                    style={{ maxWidth: '270px', maxHeight: '268px' }}
+                                    />
+                                
+                                
+                                </label>
+                              
                            
                             <div className="modal-info-description">
                                 <div className="description">
@@ -563,85 +425,55 @@ export default function CrudFlashTattoo() {
                                 </div>
                             </div>
 
-                    </div>
-                    <div className="tamanho-info">
-
-                        <h3 className="txt-white ">Tamanho e valores</h3>
-
-                        <div className="valores-tattoo">
-
-                        <div id="first-info">
-    <button
-        className="btn btn-valor"
-        onClick={() => setSelectedSize('5cm')}
-    >
-        5 cm
-    </button>
-    <p className="txt-white ">
-        <input
-            type="text"
-            placeholder="R$"
-            name="valor5cm" // Nome diferente para 5 cm
-            value={newTattooData.valor5cm}
-            onChange={handleInputChange}
-            style={{ textAlign: 'center' }}
-        />
-    </p>
-</div>
-
-<div id="second-info">
-    <button
-        className="btn btn-valor"
-        onClick={() => setSelectedSize('10cm')}
-    >
-        10 cm
-    </button>
-    <p className="txt-white ">
-        <input
-            type="text"
-            placeholder="R$"
-            name="valor10cm" // Nome diferente para 10 cm
-            value={newTattooData.valor10cm}
-            onChange={handleInputChange}
-            style={{ textAlign: 'center' }}
-        />
-    </p>
-</div>
-
-<div id="third-info">
-    <button
-        className="btn btn-valor"
-        onClick={() => setSelectedSize('15cm')}
-    >
-        15 cm
-    </button>
-    <input
-        type="text"
-        placeholder="R$"
-        name="valor15cm" // Nome diferente para 15 cm
-        value={newTattooData.valor15cm}
-        onChange={handleInputChange}
-        style={{ textAlign: 'center' }}
-    />
-</div>
-
-
                         </div>
 
+                        <div className="tamanho-info">
+                            <h3 className="txt-white ">Tamanho e valores</h3>
+                            <div className="valores-tattoo">
+                                <div id="first-info">
+                                    <button 
+                                        className="btn btn-valor"
+                                        onClick={() => setSelectedSize('5cm')}
+                                    >
+                                        5 cm
+                                    </button>
+                                    <p></p>
+                                    <input className="inputv" type="number" id="tamanhop" name="tamanhop" placeholder="R$" />
+                                </div>
+                                <div id="second-info">
+                                    <button 
+                                        className="btn btn-valor"
+                                        onClick={() => setSelectedSize('10cm')}
+                                    >
+                                        10 cm
+                                    </button>
+                                    <p></p>
+                                    <input className="inputv" type="number" id="tamanhom" name="tamanhom" placeholder="R$" />
+                                </div>
+                                <div id="third-info">
+                                    <button 
+                                        className="btn btn-valor" 
+                                        onClick={() => setSelectedSize('15cm')}
+                                    >
+                                        15 cm
+                                    </button>
+                                    <p></p>
+                                    <input className="inputv" type="number" id="tamanhog" name="tamanhog" placeholder="R$" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="btn-modal">
+                            <button onClick={closeModalAdd} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
+                        </div>
                     </div>
-
-                    <div className="button-container">
-
-                        <button className="btn btn-EditarExcluir" onClick={handleAddTattoo}> Adicionar </button>
-
-                        <button className="btn btn-EditarExcluir" onClick={clearFormAndCloseModal}>Cancelar</button>
-
-                    </div>
-
-                </div>
-
-            </Modal>
+                </Modal>
             </section>
+
         </div>
-    );
+    )
+
+
 }
+;

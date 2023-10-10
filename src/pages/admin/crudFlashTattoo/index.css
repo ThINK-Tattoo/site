@@ -1,91 +1,73 @@
-/* Estilos padrão para desktop */
-
-input[type="text"] {
-
-    width: 240px;
-    /* Ajuste o valor de acordo com o tamanho desejado */
-
-    display: grid;
-
-}
-
-.flashtattoo-tittle {
-
-    background-image: url("../../../assets/header/flashtattoo-image.png");
-
-}
-
 
 .flashtattoo-container h3 {
-
     margin-top: 2%;
-
-    margin-bottom: 5%;
-
+    margin-bottom: 2%;
+    
 }
-
-
 
 .flashtattoo-container h2 {
-
     margin-bottom: 2%;
-
     margin-top: 5%;
-
 }
-
-
 
 #info-flashtattoo {
-
     background-color: var(--var-forms-background);
-
     width: 80%;
-
-    padding: 20px;
-
+    padding: 20%;
     text-align: justify;
-
     align-self: center;
-
     border-radius: 10px;
-
     margin-bottom: 3%;
-
 }
-
-
 
 #info-flashtattoo p {
-
     opacity: 0.7;
-
 }
 
-
-
 .flashtattoo {
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     padding: 16px;
-    padding-left: 15%;
+    padding-left: 20%;
+}
+
+.flashtattoo img {
+    max-width: 80%;
+    height: auto;
+    padding: 0px;
+    border: none;}
+
+#img-port{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#img-port:hover{
+    transform: scale(1.1);
 }
 
 
+#modal-container-flashtattoo
+{
+    width: 50%;
+}
 
-.tattoo-item {
-
+.modal-port.flashtattoo {
     display: flex;
-
     flex-direction: column;
-
+    justify-content: center;
     align-items: center;
+}
 
-    text-align: center;
+#modal-info-flashtattoo {
+    display: flex;
+    margin-top: 5%;
+}
 
-    padding: 1px;
+.modal-info-description {
+    width: 100%;
+    max-width: 300px;
 
 }
 
@@ -94,679 +76,357 @@ input[type="text"] {
     margin-top: 5%;
 }
 
-.tattoo-item img {
-
-    max-width: 80%;
-
-    height: auto;
-
-    padding: 0px;
-
-    border: 1px solid #eee;
-
-}
-
-
-
-.btn-tattoo {
-
-    width: 60%;
-
-}
-
-.btn-add-tattoo-centered {
-
-    position: absolute;
-
-    margin-left: 800px;
-
-    bottom: -15px;
-    /* Ajuste este valor para cima ou para baixo conforme necessário */
-
-    width: 200px;
-
-    height: 50px;
-
-}
-
-#modal-container {
-
-    width: 50% !important;
-
-    height: 60%;
-
-}
-
-
-
-.modal-tattoo {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-}
-
-
-
 #modal-edit-tatto{
-    width:60%;
-    margin-left: 13%; 
-}
-
-#modal-info {
-
     display: flex;
+    margin-top: 5%;   
+}
 
-    margin-top: 5%;
+.btn-modal{
+    display: flex;
+    padding-inline: 20%;
+    justify-content:space-between;
+    align-items: first baseline;
+    
+}
+
+.inputp{
+    margin-top: 10px;
+    width: 100%;
 
 }
 
-
-
-#modal-info img {
-
-    width: 45%;
-
-}
-
-
-
-.modal-close-button {
-
+.inputv {
+    padding: 20px;
     border: none;
-
-    outline: none;
-
-    background-color: transparent;
-
+    border-radius: 5px;
+    background-color: #fff;
+    color: #262626;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    height: 50px;
     color: white;
 
-    float: right;
-
-    font-size: 2rem;
-
-    cursor: pointer;
-
+}
+#imageInputp{
+    margin-top: 50%;
 }
 
-
-
-.modal-info-description {
-
-    width: 100%;
-
-    max-width: 280px;
-
-}
-
-
-
-.modal-info-description .h3,
-
-
-
-.modal-info-description .description {
-
+.modal-info-description-flashtattoo .h3,
+.modal-info-description-flashtattoo .description {
     padding: 20px;
-
     background-color: #1d1d1d;
-
     margin-left: 15%;
-
     width: 100%;
-
     border-radius: 5px;
-
     margin-top: 2%;
-
 }
 
 
-
-.modal-info-description .description h3 {
-
+.modal-info-description-flashtattoo .description h3 {
     margin-bottom: 12%;
-
 }
 
-
-
-.modal-info-description .description p {
-
+.modal-info-description-flashtattoo .description p {
     margin-top: 3%;
-
     font-size: 0.9rem;
-
 }
 
+#modal-info-flashtattoo img {
+    width: 45%;
+}
 
+.modal-close-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-info-flashtattoo-description {
+    width: 100%;
+    max-width: 280px;
+}
+
+.modal-info-flashtattoo-description .h3,
+.modal-info-flashtattoo-description .description {
+    padding: 30px;
+    background-color: #1d1d1d;
+    margin-left: 15%;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+.modal-info-flashtattoo-description .description h3 {
+    margin-bottom: 12%;
+}
+
+.modal-info-flashtattoo-description .description p {
+    margin-top: 3%;
+    font-size: 0.9rem;
+}
 
 .tamanho-info {
-
     text-align: center;
-
     width: 100%;
-
 }
-
-
 
 .tamanho-info h3 {
-
-    padding: 10px;
-
+    padding: 20px;
     background-color: #1d1d1d;
-
     border-radius: 5px;
-
     margin-top: 2%;
-
     width: 50%;
-
     margin: 5% 25%;
-
     align-self: center;
-
 }
 
-
-
-.valores-tattoo {
-
+.valores-port.flashtattoo {
     display: flex;
-
     width: 100%;
-
     justify-content: space-around;
-
 }
 
-
-
-.valores-tattoo .btn-valor {
-
+.valores-port.flashtattoo .btn-valor {
     background-color: #1d1d1d;
-
     width: 60px;
-
     height: 40px;
-
     padding: 2px;
-
     margin-bottom: 15%;
-
 }
 
-
-
-.valores-tattoo .btn-valor:hover {
-
+.valores-port.flashtattoo .btn-valor:hover {
     background-color: transparent;
-
     border: 1px solid white;
-
-
-
 }
-
-
-
-.btn-EditarExcluir {
-
-    width: 100px;
-
-    height: 50px;
-
-    padding: 10px 20px;
-
-    font-size: 0.9rem;
-
-    margin-right: 90px;
-
-    margin-top: 50px;
-
-}
-
-
-.button-container {
-
-    display: flex;
-
-    margin-left: 110px;
-
-}
-
-
-
 
 
 /* Estilos para tablets */
-
-
-
 @media (max-width: 1124px) {
-
     .flashtattoo {
-
         grid-template-columns: repeat(3, 1fr);
-
     }
-
-
-
-    #modal-container {
-
-        width: 90% !important;
-
+    #modal-container-flashtattoo{
+        width: 70%;
+        margin-left: 5%; 
     }
-
+    #modal-edit-flashtattoo{
+            width: 70%;
+            margin-left: 5%;
+    }
+    #modal-add-flashtattoo{
+        width: 70%;
+        margin-left: 5%;
+    }
 }
-
 
 
 @media (max-width: 875px) {
-
     .flashtattoo {
-
         grid-template-columns: repeat(2, 1fr);
         padding-left: 30%;
     }
-
-
-
-    #modal-container {
-
-        width: 90% !important;
-
+    #modal-container-flashtattoo{
+        width: 72%;
+        margin-left: 5%;
+    }
+    #modal-edit-flashtattoo{
+        width: 72%;
+        margin-left: 5%;
+    }
+    #modal-add-flashtattoo{
+        width: 72%;
+        margin-left: 5%;
     }
 
 }
-
-
 
 @media (max-width: 800px) {
 
 
-
-    .valores-tattoo {
-
+    .valores-port.flashtattoo {
         display: grid;
-
         grid-template-columns: repeat(2, 1fr);
-
         gap: 20px;
-
         width: 100%;
-
         justify-content: center;
-
         align-items: center;
-
     }
 
 
-
-    .valores-tattoo .btn-valor {
-
-        width: 80%;
-
+    .valores-port.flashtattoo p{
+    
         font-size: 0.9rem;
-
     }
-
-
-
-    .valores-tattoo p {
-
-        font-size: 0.9rem;
-
-    }
-
-
-
-    .btn-EditarExcluir {
-
-        width: 100px;
-
-        height: 50px;
-
-        padding: 10px 20px;
-
-        font-size: 0.9rem;
-
-        margin-right: 90px;
-
-        margin-top: 50px;
-
-    }
-
-
-
-    .button-container {
-
-        display: flex;
-
-        margin-left: 110px;
-
-    }
+    
 
 }
 
-
-
 /*Estilo para mobile*/
-
-
-
 @media (max-width: 768px) {
-
+    .flashtattoo-container h3 {
+        font-size: 0.9rem;
+    }
     .flashtattoo {
-
         grid-template-columns: repeat(2, 1fr);
         padding-left: 28%;
     }
 
-
-
-    #modal-container {
-
-        width: 80% !important;
-
-    }
-
-
-
-    .tattoo-item {
-
+    .flashtattoo {
         margin-bottom: 16px;
-
     }
 
-
-
-    .modal-tattoo {
-
+    .modal-port.flashtattoo {
         flex-direction: column;
-
     }
 
-
-
-    #modal-info img {
-
+    #modal-info-flashtattoo img {
         width: 100%;
-
     }
 
-
-
-    .valores-tattoo {
-
+    .valores-port.flashtattoo {
         flex-direction: column;
-
         align-items: center;
-
     }
 
-
-
-    .valores-tattoo .btn-valor {
-
+    .valores-port.flashtattoo .btn-valor {
         margin-bottom: 8px;
-
     }
-
 }
 
-
-
 @media (max-width: 675px) {
-
-
-
     .flashtattoo {
-
         display: flex;
-
         flex-direction: column;
-
+        margin-left: 10%;
     }
-
-
-
-    .p-info {
-
+    #modal-container-flashtattoo{
+        height: 70% !important;
+    }
+    #modal-edit-flashtattoo{
+        height: 70%;
+    }
+    #modal-add-flashtattoo{
+        height: 70%;
+    }
+    .p-info{
         width: 70%;
-
         font-size: 0.8rem;
-
         text-align: center;
-
         margin-bottom: 10%;
-
         align-self: center;
-
     }
-
-
-
     #info-flashtattoo {
-
-        margin-bottom: 10%;
-
-        margin-top: 10%;
-
-    }
-
-
-
-    #info-flashtattoo p {
-
-        font-size: 0.8rem;
-
-    }
-
-
-
-    .h2-info {
-
-        font-size: 1.5rem;
-
-        margin-top: 10%;
-
-    }
-
-
-
-    #modal-container {
-
-        width: 90% !important;
-
+       margin-bottom: 10%;
+       margin-top: 10%;
     }
     
+    #info-flashtattoo p {
+        font-size: 0.8rem;
+        
+    }
+    .h2-info{
+        font-size: 1.5rem;
+        margin-top: 10%;
+    }
+    
+    #modal-container-flashtattoo {
+        width:60%;
+        margin-left: 13%;
+    }
+    #modal-edit-flashtattoo {
+        width:60%;
+        margin-left: 13%;
+    }
+    #modal-add-flashtattoo {
+        width:60%;
+        margin-left: 13%;
+    }
 
-
-
-    .modal-tattoo {
-
+    .modal-port.flashtattoo {
         display: flex;
-
         flex-direction: column;
-
         justify-content: center;
-
         align-items: center;
-
     }
 
-
-
-    #modal-info {
-
+    #modal-info-flashtattoo {
         display: flex;
-
-        flex-direction: column !important;
-
+        flex-direction: column;
         margin-top: 5%;
-
     }
 
-
-
-    #modal-info img {
-
-
-
-        width: 80%;
-
-
-
+    #modal-info-flashtattoo img {
+        width: 100%;
     }
-
-
 
     .modal-close-button {
-
         font-size: 1.5rem;
-
     }
 
-
-
-    .modal-info-description {
-
+    .modal-info-flashtattoo-description {
         width: 100%;
-
+        
     }
 
-
-
-    .modal-info-description .h3,
-
-
-
-    .modal-info-description .description {
-
+    .modal-info-flashtattoo-description .h3,
+    .modal-info-flashtattoo-description .description {
         padding: 10px;
-
         margin-left: 0%;
-
         margin-top: 2%;
-
         font-size: 0.8rem;
-
     }
 
-
-
-    .modal-info-description .description h3 {
-
+    .modal-info-flashtattoo-description .description h3 {
         margin-bottom: 12%;
-
         font-size: 0.8rem;
-
     }
 
-
-
-    .modal-info-description .description p {
-
+    .modal-info-flashtattoo-description .description p {
         margin-top: 3%;
-
         font-size: 0.8rem;
-
     }
-
-
 
     .tamanho-info {
-
         text-align: center;
-
         width: 100%;
-
     }
-
-
 
     .tamanho-info h3 {
-
         padding: 10px;
-
         margin-top: 2%;
-
         width: 100%;
-
         margin: 5% 0%;
-
         font-size: 0.8rem;
-
     }
 
-    .valores-tattoo {
-
+    .valores-port.flashtattoo {
         display: grid;
-
         grid-template-columns: repeat(2, 1fr);
-
         gap: 20px;
-
         width: 100%;
-
         justify-content: center;
-
         align-items: center;
-
     }
 
 
-
-    .valores-tattoo .btn-valor {
-
+    .valores-port.flashtattoo .btn-valor {
         width: 80%;
-
         font-size: 0.9rem;
-
     }
 
-
-
-    .valores-tattoo p {
-
+    
+    .valores-port.flashtattoo p{
+       
         font-size: 0.9rem;
-
     }
-
-
-
-    .btn-EditarExcluir {
-
-        width: 100px;
-
-        height: 50px;
-
-        padding: 10px 20px;
-
-        font-size: 0.9rem;
-
-        margin-right: 90px;
-
-        margin-top: 50px;
-
-    }
-
-
-    .button-container {
-
-        display: flex;
-
-        margin-left: 110px;
-
-    }
-
+    
+    .btn-modal{
+    width: 150%;
+    flex-direction: column;    
+}
 }

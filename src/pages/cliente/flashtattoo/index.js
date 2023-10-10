@@ -185,6 +185,7 @@ export default function FlashTattoo(){
                 <button className="modal-close-button" onClick={closeModal}>
                 X
                 </button>
+                
                 {selectedTattoo && (
                     <div className="modal-tattoo">
                         <div id="modal-info">
