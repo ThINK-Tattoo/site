@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/admin/menuDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 import '../../../styleGlobal.css';
 import './index.css'
@@ -18,23 +19,25 @@ function App() {
             navigate('/signin');
         }else if(userType === 'admin'){
             setIsUserLoggedIn(userType === "admin");
+            axios.get('http://localhost:3636/cliente/selectclientes')
+                .then(response => setClientes(response.data))
+                .catch(error => console.error('Erro ao buscar clientes:', error));
+        
         }
         
-    }, []); 
+    }, [navigate]); 
     
-      // clientes de exemplo
-      const [clientes, setClientes] = useState([
-        { id: 1, nome: 'Cliente 1', email: 'cliente1@example.com', telefone: '(12) 93456-7890', selecionado: false },
-        { id: 2, nome: 'Cliente 2', email: 'cliente2@example.com', telefone: '(98) 97654-3210', selecionado: false },
-        { id: 3, nome: 'Cliente 3', email: 'cliente3@example.com', telefone: '(11) 96589-3246', selecionado: false },
-        ]);
+    const [clientes, setClientes] = useState([]);
 
     const [ordenarPorNome, setOrdenarPorNome] = useState(null);
     const [termoPesquisa, setTermoPesquisa] = useState('');
 
-    const handleExcluirCliente = (id) => {
-        const novosClientes = clientes.filter((cliente) => cliente.id !== id);
-        setClientes(novosClientes);
+    const handleExcluirCliente = async (id) => {
+        await axios.delete(`http://localhost:3636/cliente/deleteclientes/${id}`)
+        .then(response => {
+            setClientes(clientes.filter(cliente => cliente.id !== id));
+        })
+        .catch(err => console.log("Erro ao excluir clientes", err));
     };
 
     const ordenarClientesPorNome = () => {

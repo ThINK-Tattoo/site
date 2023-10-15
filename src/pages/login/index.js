@@ -24,9 +24,9 @@ export default function Login(){
             const {auth, token, userType, user} = response.data;
 
             if(auth){
-                localStorage.setItem("token", token);
-                localStorage.setItem("user", user);
-                localStorage.setItem("userType", userType);
+                await localStorage.setItem("token", token);
+                await localStorage.setItem("user", JSON.stringify(user));
+                await localStorage.setItem("userType", userType);
 
                 if(userType === "cliente"){
                     navigate('/');

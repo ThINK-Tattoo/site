@@ -25,6 +25,13 @@ body{
     justify-content: center;
 }
 
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+  }
+
 .txt-white{
     color: #fff;
 }
