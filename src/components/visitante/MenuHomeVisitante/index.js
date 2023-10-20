@@ -4,6 +4,8 @@ import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
 
+import VLibras from '@moreiraste/react-vlibras';
+
 
 export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
@@ -30,6 +32,7 @@ export default function Menu(){
 
     return(
         <div className='menu-container'>
+            <VLibras forceOnload={true} />
             <div className="accessibility-bar">
                 <a href="#accessibility" className="accessibility-link"><Link to="/acessibilidade">
                     Acessibilidade
