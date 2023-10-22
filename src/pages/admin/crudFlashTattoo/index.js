@@ -419,7 +419,7 @@ export default function CrudFlashTattoo() {
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
-                                    <input className="inputp" type="text" id="tamanho" name="tamanho" placeholder="Nome" />
+                                    <input className="inputp" type="text" id="tamanho" name="tamanho" placeholder="Tamanho" />
                                     <input className="inputp" type="text" id="local" name="local" placeholder="Local" />
                                     <input className="inputp" type="text" id="tipo" name="tipo" placeholder="Tipo" />
                                     <input className="inputp" type="text" id="cores" name="cores" placeholder="Cores" />

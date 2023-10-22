@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
-
+import axios from 'axios';
 import tatt1 from '../../../assets/portfolio/portfolio.png';
 import tatt2 from '../../../assets/portfolio/portfolio-2.png';
 import tatt3 from '../../../assets/portfolio/portfolio-3.png';
@@ -22,82 +22,15 @@ export default function Portfolio(){
     useEffect(() => {
         const userType = localStorage.getItem("userType");
         setIsUserLoggedIn(userType === "cliente");
+        axios.get('http://localhost:3636/cliente/selectPortfolio')
+            .then(response => {
+              setPortfolio(response.data); 
+            })
+            .catch(error => {
+              console.error('Erro ao obter dados do portfólio:', error);
+            });
     }, []); 
-    const [portfolio, setPortfolio] = useState([
-        {
-            id: 1,
-            nome: "Girassóis",
-            tamanho: "35cm",
-            local: "Perna direira",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt4
-        },
-        {
-            id: 2,
-            nome: "Dragão Floral",
-            tamanho: "45cm",
-            local: "Perna esquerda",
-            Tipo: "Realista",
-            Cores: "Marrom, vermelho, Rosa e Preto",
-            imagem: tatt1
-        },
-        {
-            id: 3,
-            nome: "Medusa",
-            tamanho: "50cm",
-            local: "Braço direito",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt2
-        },
-        {
-            id: 4,
-            nome: "Mulher e Lobo",
-            tamanho: "50cm",
-            local: "Braço direito",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt3
-        },
-        {
-            id: 5,
-            nome: "Olhos de mar e lua",
-            tamanho: "35cm",
-            local: "Perna esquerda",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt5
-        },
-        {
-            id: 6,
-            nome: "Mulher fragmentada",
-            tamanho: "50cm",
-            local: "Braço esquerdo",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt6
-        },
-        {
-            id: 7,
-            nome: "Mulher floral",
-            tamanho: "25cm",
-            local: "Antebraço",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt7
-        },
-        {
-            id: 8,
-            nome: "Leão floral",
-            tamanho: "50cm",
-            local: "Braço direito",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt8
-        },
-        
-    ]);
+    const [portfolio, setPortfolio] = useState([]);
 
     const [selectedPortfolio, setSelectedPortfolio] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -143,7 +76,7 @@ export default function Portfolio(){
             <section className="flashtattoo">
                 {portfolio.map((portfolio) => (
                     <div key={portfolio.id} className="portfolio-item">
-                        <img id="img-port" onClick={() => openModal(portfolio)} src={portfolio.imagem} alt={portfolio.nome} />
+                        <img id="img-port" onClick={() => openModal(portfolio)}  src={`http://localhost:3636/src/temp/${portfolio.imagem}`} alt={portfolio.nome} />
                         
                     </div>
                 ))}
@@ -173,7 +106,7 @@ export default function Portfolio(){
                 {selectedPortfolio && (
                     <div className="modal-tattoo">
                         <div id="modal-info-portfolio">
-                            <img src={selectedPortfolio.imagem} alt={selectedPortfolio.nome} />
+                            <img id="imgSelectPortfolio" src={`http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedPortfolio.nome}</h3>
 
@@ -182,8 +115,8 @@ export default function Portfolio(){
                                     
                                     <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedPortfolio.tamanho}</p>
                                     <p className="txt-white"><strong>Local: </strong>{selectedPortfolio.local}</p>
-                                    <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.Tipo}</p>
-                                    <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.Cores}</p>
+                                    <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.tipo}</p>
+                                    <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.cores}</p>
                                 </div>
                         
                             </div>

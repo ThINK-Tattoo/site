@@ -27,7 +27,9 @@
 #info-portfolio p {
     opacity: 0.7;
 }
-
+#imgSelectPortfolio{
+    width: 30vw !important;
+}
 .portfolio {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
