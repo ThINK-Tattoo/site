@@ -5,6 +5,8 @@ import '../../../styleGlobal.css';
 import './index.css';
 import { useNavigate } from 'react-router-dom';
 
+import VLibras from '@moreiraste/react-vlibras';
+
 export default function Menu(){
     const [fontSize, setFontSize] = useState(16);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -42,6 +44,7 @@ export default function Menu(){
 
     return(
         <div className='menu-container'>
+            <VLibras forceOnload={true} />
             <div className="accessibility-bar">
                 <a href="#accessibility" className="accessibility-link"><Link to="/acessibilidade">
                     Acessibilidade
