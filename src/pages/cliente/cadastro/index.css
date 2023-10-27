@@ -70,10 +70,42 @@ label {
     margin-bottom: 5px;
 }
 
-
-
 .btn-cadastrar {
     width: 40%;
+}
+
+.alto-contraste .cadastro-tittle{
+  background-image: none; 
+}
+
+.alto-contraste .cadastro-tittle h1 span{
+  text-shadow: none;
+  color: white;
+}
+
+.alto-contraste .form{
+  background-color: transparent;
+}
+
+.alto-contraste .form #person-icon{
+  color: yellow;
+}
+
+.alto-contraste .form p a:hover{
+  color: yellow;
+}
+
+.alto-contraste .btn-cadastrar{
+  background-color: transparent;
+  border: 1px solid white;
+  font-weight: 900;
+}
+
+.alto-contraste .btn-cadastrar:hover{
+  background-color: yellow;
+  border: none;
+  font-weight: 900;
+  color: black;
 }
 
 

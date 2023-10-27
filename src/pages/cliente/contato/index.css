@@ -47,10 +47,12 @@
     color: var(--var-txt-lilas);
 }
 
-.form #person-icon{
-    width: 50px;
-    height: 40px;
-    margin-top: 5%;
+.form #envelope{
+  width: 50px;
+  height: 50px;
+  margin-top: 5%;
+  color: var(--var-txt-lilas);
+  margin-bottom: 1rem;
 }
 
 .container-form-group {
@@ -73,6 +75,7 @@
   .col-full #mensagem {
     width: 100%;
     height: 100px;
+    resize: none;
   }
 
 label {
@@ -80,12 +83,43 @@ label {
     margin-bottom: 5px;
 }
 
-
-
-.btn-cadastrar {
+.btn-contato {
     width: 40%;
 }
 
+.alto-contraste .contato-tittle{
+  background-image: none; 
+}
+
+.alto-contraste .contato-tittle h1 span{
+  text-shadow: none;
+  color: white;
+}
+
+.alto-contraste .form{
+  background-color: transparent;
+}
+
+.alto-contraste .form #envelope{
+  color: yellow;
+}
+
+.alto-contraste .form p a:hover{
+  color: yellow;
+}
+
+.alto-contraste .btn-contato{
+  background-color: transparent;
+  border: 1px solid white;
+  font-weight: 900;
+}
+
+.alto-contraste .btn-contato:hover{
+  background-color: yellow;
+  border: none;
+  font-weight: 900;
+  color: black;
+}
 
 
 @media (max-width: 768px) {
@@ -106,12 +140,12 @@ label {
       width: 100%;
     }
   
-    .form #person-icon {
+    .form #envelope {
       width: 40px;
       height: 30px;
     }
   
-    .btn-cadastrar {
+    .btn-contato{
       width: 60%; 
       margin-top: 10px;
       font-size: 14px;

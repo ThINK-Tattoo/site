@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import '../../styleGlobal.css';
 import './index.css'
 
+import setaCuidados from '../../assets/icones/icon-seta.svg';
 import iconMaq from '../../assets/icones/icon-maq.png';
 import imagemProjeto from '../../assets/home/imagemProjeto.png';
 import iconCoracao from '../../assets/icones/icon-heart.png';
 import iconEmail from '../../assets/icones/icon-envelope.png';
-import setaCuidados from '../../assets/icones/icon-seta.png';
 
 export default function Home(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -30,7 +30,7 @@ export default function Home(){
                 <div className="itensContainer">
                     <h1>ThINK</h1>
                     <p>Uma nova maneira de Pensar e Tatuar</p>
-                    <button className="btn agende"><Link to="/agenda"><a>Agende já!</a></Link></button>
+                    <Link to="/agenda"><button className="btn agende">Agende já!</button></Link>
                 </div> 
                 </div>
             </div>
@@ -107,7 +107,7 @@ export default function Home(){
                 <div className="portfolioConteudo">
                     <h1 className="txt-white h1-info">Portfólio</h1>
                     <p>Conheça nosso trabalho.</p>
-                    <button className="btn confira"><Link to="/portfolio"><a>Confira</a></Link></button>
+                    <Link to="/portfolio"><button className="btn confira">Confira</button></Link>
                 </div>
             </div>
             <div className="divisao">.</div>
@@ -118,7 +118,7 @@ export default function Home(){
                     <p className="descricao">Confira quais os cuidados você precisa ter após a realização da sua tattoo:</p>
                     <div className="cuidadosTopicosGeral">
                             <div>
-                                <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
+                            <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
                                 <p>Não tirar casquinhas</p>
                             </div>
                             <div>

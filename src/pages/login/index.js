@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import Menu from "../../components/visitante/MenuVisitante";
 import MenuLogado from "../../components/usuarioLogado/MenuLog";
 import Footer from "../../components/Footer";
-import iconPerson from '../../assets/icones/icon-person.png';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import '../../styleGlobal.css';
-import './index.css'
+import './index.css';
 
 export default function Login(){
     const [email, setEmail] = useState();
@@ -54,7 +56,7 @@ export default function Login(){
 
             <section className="form-conteiner">
                 <form class="form" onSubmit={handleLogin}>
-                    <img id="person-icon" src={iconPerson} alt="Icone de um usuário"></img>
+                <FontAwesomeIcon icon={faUser} id="person-icon" />
                     <h4>Login</h4>
 
                     <div className="conteiner-form-group">

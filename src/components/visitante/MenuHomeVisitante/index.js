@@ -3,26 +3,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/icones/logo-removebg-preview 1.png';
 import '../../../styleGlobal.css';
 import './index.css';
-
-import VLibras from '@moreiraste/react-vlibras';
-
+import BarraAcessibilidade from "../../barraAcessibilidade";
 
 export default function Menu(){
-    const [fontSize, setFontSize] = useState(16);
     const [menuOpen, setMenuOpen] = useState(false);
-
-    const increaseFontSize = () => {
-      setFontSize((prevSize) => prevSize + 2); 
-    };
-
-    const decreaseFontSize = () => {
-      setFontSize((prevSize) => prevSize - 2); 
-    };
-  
-    useEffect(() => {
-      document.body.style.fontSize = `${fontSize}px`;
-    }, [fontSize]);
-
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -32,23 +16,8 @@ export default function Menu(){
 
     return(
         <div className='menu-container'>
-            <VLibras forceOnload={true} />
-            <div className="accessibility-bar">
-                <a href="#accessibility" className="accessibility-link"><Link to="/acessibilidade">
-                    Acessibilidade
-                </Link></a>
-                <button className="access-btn high-contrast-button">Alto Contraste</button>
-                <button className="access-btn font-size-button" onClick={increaseFontSize}>
-                    A+
-                </button>
-                <button className="access-btn font-size-button" onClick={decreaseFontSize}>
-                    A-
-                </button>
-            </div>
-
+             <BarraAcessibilidade />
             <nav className="menuHome">
-                
-                
                 <div id="menu-normal">      
                     <ul>
                         <li><Link to="/portfolio">Portfólio</Link></li>

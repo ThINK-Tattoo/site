@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
-import iconPerson from '../../../assets/icones/icon-person.png';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import '../../../styleGlobal.css';
 import './index.css'
@@ -24,11 +26,11 @@ export default function Cadastro(){
 
             <section className="form-container">
                 <form class="form">
-                    <img id="person-icon" src={iconPerson} alt="Icon de usuário"/>
+                <FontAwesomeIcon icon={faUser} id="person-icon" />
                     <h4>Cadastro</h4>
                     <div className="container-form-group">
                         <div class="form-group">
-                           
+                        
                             <input className="input" type="text" id="nome" name="nome" placeholder="Nome" required />
                         </div>
                         <div class="form-group">
@@ -36,11 +38,11 @@ export default function Cadastro(){
                             <input className="input" type="email" id="email" name="email" placeholder="E-mail" required />
                         </div>
                         <div class="form-group">
-                           
+                        
                             <input className="input" type="tel" id="telefone" name="telefone" placeholder="Telefone" required />
                         </div>
                         <div class="form-group">
-                           
+                        
                             <input className="input" type="number" id="idade" name="idade" placeholder="Idade" required />
                         </div>
                         <div class="form-group">
@@ -55,5 +57,5 @@ export default function Cadastro(){
             </section>
             <Footer/>
         </div>
-      );
+        );
 }

@@ -156,13 +156,9 @@ margin-bottom: 8rem;
 }
 
 .confira{
-    width: 80%;
+    width: 100%;
 }
 
-.confira a{
-    color: white;
-    text-decoration: none;
-}
 .cuidadosEmensagem{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -231,7 +227,7 @@ margin-bottom: 8rem;
 
 .mensagemFormGeral{
     display: grid;
-  grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .mensagemFormGeral div {
@@ -260,6 +256,12 @@ option{
     height: 50px;
     color: white;
 }
+
+.alto-contraste .projeto {
+    background-color: black;
+    color: white;
+}
+
 
 /* Estilos para tablets */
 @media (max-width: 1300px){

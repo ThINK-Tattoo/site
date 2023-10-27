@@ -179,6 +179,15 @@
     border: 1px solid white;
 }
 
+.alto-contraste .portfolio-tittle{
+    background-image: none; 
+  }
+  
+  .alto-contraste .portfolio-tittle h1 span{
+    text-shadow: none;
+    color: white;
+  }
+
 
 /* Estilos para tablets */
 @media (max-width: 1124px) {

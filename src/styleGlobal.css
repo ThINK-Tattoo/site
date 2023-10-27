@@ -54,11 +54,24 @@ body{
     transition: ease-in-out 0.2s;
 }
 
+.alto-contraste .btn {
+    background-color: transparent;
+    border: 1px solid white;
+    font-weight: 900;
+}
+
+.alto-contraste .btn:hover{
+    background-color: yellow;
+    border: none;
+    font-weight: 900;
+    color: black !important;
+}
+  
+
 .input {
     padding: 20px;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
     color: #262626;
     font-size: 16px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -70,6 +83,16 @@ body{
     border: 2px solid var(--var-lilas);
     outline: none;
 }
+
+.alto-contraste .input {
+    background-color: transparent;
+    border: 1px solid white;
+} 
+
+.alto-contraste .input:focus {
+    border: 2px solid yellow;
+} 
+
 
 /*Banner com a imagem e o título de cada página ex: FlashTatto, Cadastro etc*/
 .header-image{
@@ -90,6 +113,11 @@ body{
 .span-color{
     color: var(--var-txt-lilas);
     text-shadow: 2px 2px 0px white, 1px 2px 0px white;
+}
+
+.alto-contraste .span-color{
+    color: white;
+    text-shadow: none;
 }
 
 .flex{
@@ -224,4 +252,3 @@ td .icone{
         margin-left: 58% !important;
     }
 }
-
