@@ -92,7 +92,7 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="nome">Nome:</label>
                             <input
-                                className="input-info"
+                                className="input-info input"
                                 type="text"
                                 id="nome"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, nome: e.target.value }))}
@@ -102,7 +102,7 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="email">Email:</label>
                             <input
-                                className="input-info"
+                                className="input-info input"
                                 type="text"
                                 id="email"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, email: e.target.value }))}
@@ -112,7 +112,7 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="telefone">Telefone:</label>
                             <input
-                                className="input-info"
+                                className="input-info input"
                                 type="text"
                                 id="telefone"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, telefone: e.target.value }))}
@@ -122,7 +122,7 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="idade">Idade:</label>
                             <input
-                                className="input-info"
+                                className="input-info input"
                                 type="number"
                                 id="idade"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, idade: e.target.value }))}
@@ -150,19 +150,19 @@ export default function MinhasInformacoes(){
                     <div class="container-form-group info-container">
                         <div class="form-group info-perfil">
                             <label for="nome">Nome:</label>
-                            <input className="input-info" type="text" id="nome"  value={client.nome} readOnly />
+                            <input className="input-info input" type="text" id="nome"  value={client.nome} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="email">Email:</label>
-                            <input className="input-info" type="text" id="email"  value={client.email} readOnly />
+                            <input className="input-info input" type="text" id="email"  value={client.email} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="telefone">Telefone:</label>
-                            <input className="input-info" type="text" id="telefone"  value={client.telefone} readOnly />
+                            <input className="input-info input" type="text" id="telefone"  value={client.telefone} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="idade">Idade:</label>
-                            <input className="input-info" type="text" id="idade" value={client.idade} readOnly />
+                            <input className="input-info input" type="text" id="idade" value={client.idade} readOnly />
                         </div>
                        
                     </div>

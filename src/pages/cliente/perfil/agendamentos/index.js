@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from "../../../../components/Footer";
+import Modal from 'react-modal';
 
 import '../../../../styleGlobal.css';
 import './index.css';
@@ -20,6 +21,8 @@ export default function MeusAgendamentos(){
         }
         
     }, []);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedAgendamento, setSelectedAgendamento] = useState(null);
     const [agendamentos, setAgendamentos] = useState([
         {
             id:1,
@@ -42,6 +45,16 @@ export default function MeusAgendamentos(){
         }
     ]);
 
+    const openModal = (agendamento) => {
+        setSelectedAgendamento(agendamento);
+        setModalIsOpen(true);
+      };
+      const closeModal = () => {
+        setSelectedAgendamento(null);
+        setModalIsOpen(false);
+      };
+        
+
     return(
         <div className= "conteiner agendado-conteiner">
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
@@ -50,7 +63,7 @@ export default function MeusAgendamentos(){
                  </div>
                  
                  {agendamentos.map((reserva)=> (
-                    <div key={reserva.id} className="info-agendados">
+                    <div key={reserva.id} className="info-agendados" onClick={() => openModal(reserva)}>
                         <div className="text-info">
                         <p className="txt-dia"><strong>Dia </strong>{reserva.dia}</p>
                         <p className="txt-white"><strong>Status: </strong>{reserva.status}</p>
@@ -60,7 +73,34 @@ export default function MeusAgendamentos(){
 
                     </div>
                  ))}
-        
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                id="modalSolicitacoes"
+                contentLabel="Detalhes da Solicitação"
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+                    },
+                    content: {
+                        top: '50%', 
+                        left: '50%', 
+                        height: '60%',
+                        transform: 'translate(-50%, -50%)', 
+                        backgroundColor: '#000'
+                    },
+                }}
+                >
+                    <button className="modal-close-button" onClick={closeModal}>X</button>
+                    {selectedAgendamento && (
+                    <div className="modal-content">
+                    <h2><strong>Dia </strong>{selectedAgendamento.dia}</h2>
+                    <p><strong>Status: </strong>{selectedAgendamento.status}</p>
+                    <p><strong>Detalhes: </strong>{selectedAgendamento.descricao}</p>
+                    
+                    </div>
+                )}
+            </Modal>
             <Footer/>
        </div>
     );

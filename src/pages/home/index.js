@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import '../../styleGlobal.css';
 import './index.css'
 
-import setaCuidados from '../../assets/icones/icon-seta.svg';
+import setaCuidados from '../../assets/icones/icon-seta.png';
 import iconMaq from '../../assets/icones/icon-maq.png';
 import imagemProjeto from '../../assets/home/imagemProjeto.png';
 import iconCoracao from '../../assets/icones/icon-heart.png';

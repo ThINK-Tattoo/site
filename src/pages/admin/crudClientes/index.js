@@ -75,6 +75,7 @@ function App() {
             <FontAwesomeIcon icon={faSearch} style={{color: "#e40ce4",}} />
                 <input
                 type="text"
+                className="input"
                 placeholder="Pesquisar"
                 value={termoPesquisa}
                 onChange={handlePesquisaGeral}

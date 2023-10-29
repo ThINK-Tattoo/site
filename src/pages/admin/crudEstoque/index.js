@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import Menu from '../../../components/admin/menuDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartGantt, faBorderAll, faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 import '../../../styleGlobal.css';
 import './index.css'
@@ -21,7 +22,22 @@ import { set } from "date-fns";
 export default function CrudEstoque(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
      const navigate = useNavigate();
-    /*
+     const [formData, setFormData] = useState({
+        nome: '',
+        grupoItem: '', 
+        quantidade: 0,
+        dataCompra: '',
+        dataValidade: '',
+    });
+    
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+    
+        
     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
@@ -31,7 +47,7 @@ export default function CrudEstoque(){
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []);*/
+    }, []);
     const [grupoEstoque, setGrupoEstoque] =useState([
         {
             id: 1,
@@ -84,67 +100,7 @@ export default function CrudEstoque(){
         setIsModalAddOpen(false);
     }
 
-    const [itensEstoque, setItensEstoque] = useState([
-        { grupo: "Agulhas", nome: "Agulha RL Round Liner - 1003", quantidade: 10, validade: "2026-04-06", movimentacao: "2023-10-06", dataCompra: "2023-10-09" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Liner - 1005", quantidade: 5, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-10-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Liner - 1007", quantidade: 7, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-12-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Liner - 1009", quantidade: 6, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-14-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Liner - 1011", quantidade: 9, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-16-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Shader - 1205", quantidade: 5, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra:"2023-12-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Shader - 1207", quantidade: 8, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra:"2023-11-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Shader - 1209", quantidade: 9, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra:"2023-13-07" },
-        { grupo: "Agulhas", nome: "Agulha RS Round Shader - 1211", quantidade: 4, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra:"2023-13-07" },
-        { grupo: "Agulhas", nome: "Agulha M1 Flat Alternada ou Magnum Trançada - 1009", quantidade: 7, validade: "2026-20-06", movimentacao: "2023-10-08", dataCompra: "2023-11-07" },
-        { grupo: "Agulhas", nome: "Agulha M1 Flat Alternada ou Magnum Trançada - 1011", quantidade: 9, validade: "2026-20-06", movimentacao: "2023-10-08",dataCompra: "2023-11-07" },
-        { grupo: "Agulhas", nome: "Agulha M1 Flat Alternada ou Magnum Trançada - 1013", quantidade: 8, validade: "2026-21-06", movimentacao: "2023-10-08", dataCompra: "2023-12-07" },
-        { grupo: "Agulhas", nome: "Agulha M1 Flat Alternada ou Magnum Trançada - 1015", quantidade: 6, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-13-07" },
-        { grupo: "Agulhas", nome: "Agulha M1 Flat Alternada ou Magnum Trançada - 1205", quantidade: 9, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-13-07" },
-        { grupo: "Agulhas", nome: "Agulha RM - Magnum Trançada Curvada ou Round Magnum - 1207", quantidade: 6, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-14-07" },
-        { grupo: "Agulhas", nome: "Agulha RM - Magnum Trançada Curvada ou Round Magnum - 1209", quantidade: 5, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-14-07" },
-        { grupo: "Agulhas", nome: "Agulha RM - Magnum Trançada Curvada ou Round Magnum - 1211", quantidade: 7, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-15-07" },
-        { grupo: "Agulhas", nome: "Agulha RM - Magnum Trançada Curvada ou Round Magnum - 1213", quantidade: 7, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-15-07" },
-        { grupo: "Agulhas", nome: "Agulha RM - Magnum Trançada Curvada ou Round Magnum - 1215", quantidade: 6, validade: "2026-22-06", movimentacao: "2023-10-08", dataCompra: "2023-15-07" },
-
-        
-        { grupo: "Biqueiras", nome: "Biqueiras Reutilizáveis", quantidade: 5, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-18-09" },
-        { grupo: "Biqueiras", nome: "Biqueiras Descartáveis", quantidade: 58, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-19-09" },
-
-
-        { grupo: "Esterelizador", nome: "Esterilizador", quantidade: 3, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-20-09" },
-
-
-        { grupo: "Máquinas", nome: "Máquina de Tatuagem", quantidade: 2, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-21-09" },
-
-
-        { grupo: "Luvas", nome: "Luva Látex", quantidade: 220, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-21-09" },
-
-
-        { grupo: "Papel", nome: "Toalha Descartável", quantidade: 356, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-22-09" },
-
-
-        { grupo: "Copos", nome: "Copos Descartáveis", quantidade: 210, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-22-09" },
-
-
-        { grupo: "Tintas", nome: "Tinta Easy Glow Raven Black - 240ml", quantidade: 111, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Pink - 30ml", quantidade: 21, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Deepsest Green - 30ml", quantidade: 15, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Ultra Liner Black - 30ml", quantidade: 98, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Bubblegum - 30ml", quantidade: 20, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Coral - 30ml", quantidade: 12, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow - Sushine Orange - 30ml", quantidade: 11, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Moss Green - 30ml", quantidade: 13, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Rose - 30ml", quantidade: 17, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Walnut - 30ml", quantidade: 10, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Saphire Blue - 30ml", quantidade: 19, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Snake Green - 30ml", quantidade: 9, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Cannary Yellow - 30ml", quantidade: 10, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Shark Grey - 30ml", quantidade: 9, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Mellow Yellow - 30ml", quantidade: 11, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Wine Purple - 30ml", quantidade: 14, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Redish - 30ml", quantidade: 26, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-        { grupo: "Tintas", nome: "Tinta Easy Glow Deep Violet - 30ml", quantidade: 12, validade: "2026-04-06", movimentacao: "2023-10-08", dataCompra: "2023-23-09" },
-    
-    ]);
+    const [itensEstoque, setItensEstoque] = useState([]);
 
     const renderItens = (grupo) => {
         const itensFiltrados = itensEstoque.filter(item => item.grupo === grupo);
@@ -168,7 +124,7 @@ export default function CrudEstoque(){
 
 
     const renderAccordionItems = (grupo) => {
-        const itensDoGrupo = itensEstoque.filter((item) => item.grupo === grupo);
+        const itensDoGrupo = itensEstoque.filter((item) => item.descricaoItem === grupo);
     
         return itensDoGrupo.map((item, index) => (
             <div className="accordion-item" key={index}>
@@ -177,16 +133,16 @@ export default function CrudEstoque(){
                     onClick={() => toggleAccordion(index)}
                 >
                     <a>
-                    {item.nome}
+                    {item.nomeItem}
                     </a>
                     <span className="accordion-button-icon">
                     {activeAccordion === index ? "-" : "+"}
                     </span>
                 </button>
                 <div className={`accordion-content ${activeAccordion === index ? 'show' : ''}`}>
-                    <p>Quantidade: {item.quantidade}</p>
-                    <p>Data de compra: {item.dataCompra}</p>
-                    <p>Validade: {item.validade}</p>
+                    <p>Quantidade: {item.quantidadeItem}</p>
+                    <p>Data de compra: {item.dataCompraItem}</p>
+                    <p>Validade: {item.dataValidadeItem}</p>
                     <div className="btnEditarAccordion">
                     <button className="btn btn-adicionar">Editar</button>
                     </div>
@@ -227,7 +183,49 @@ export default function CrudEstoque(){
         }
     };
 
+    const handleAddItem = async (e) => {
+        e.preventDefault();
+        console.log('Botão clicado!');
+        try {
+            const response = await axios.post('http://localhost:3636/admin/createItemEstoque', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            console.log(response);
+    
+            if (response.status === 201) {
+                const data = response.data;
 
+              
+
+                console.log(data.message);
+                closeModalAdd();
+                window.location.reload();
+            } else {
+                console.error('Erro ao adicionar item ao estoque:', response.data.message);
+            }
+        } catch (error) {
+            console.error('Erro ao enviar requisição:', error);
+        }
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            
+            const response = await axios.get('http://localhost:3636/admin/selectItemEstoque');
+            setItensEstoque(response.data);
+            console.log(itensEstoque);
+          } catch (error) {
+            console.error('Erro ao buscar dados do estoque:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
+    
     return (
         <div>
             <Menu/>
@@ -285,6 +283,7 @@ export default function CrudEstoque(){
                         <FontAwesomeIcon icon={faSearch} style={{color: "#e40ce4",}} />
                         <input
                         type="text"
+                        className="input"
                         placeholder="Pesquisar..."
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
@@ -328,28 +327,28 @@ export default function CrudEstoque(){
                         <tbody>
                         {itensEstoque
                         .filter((item) =>
-                        item.grupo.toLowerCase().includes(searchText.toLowerCase()) ||
-                        item.nome.toLowerCase().includes(searchText.toLowerCase()) ||
-                        item.quantidade.toString().includes(searchText) ||
-                        item.validade.toLowerCase().includes(searchText.toLowerCase()) ||
-                        item.movimentacao.toLowerCase().includes(searchText.toLowerCase())
+                        item.descricaoItem.toLowerCase().includes(searchText.toLowerCase()) ||
+                        item.nomeItem.toLowerCase().includes(searchText.toLowerCase()) ||
+                        item.quantidadeItem.toString().includes(searchText) ||
+                        item.dataValidadeItem.toLowerCase().includes(searchText.toLowerCase()) ||
+                        item.dataHora.toLowerCase().includes(searchText.toLowerCase())
                         )
 
                         .map((item, index) => (
                             <tr key={index} className={index % 2 === 0 ? 'cor1' : 'cor2'}>
                                 <td style={{ textAlign: 'center' }}>
-                                {itensEstoque.quantidade > 0 ? (
+                                {itensEstoque.quantidadeItem > 0 ? (
                                     <FontAwesomeIcon icon={faArrowDown} style={{ color: 'red' }} />
                                 ) : (
                                     <FontAwesomeIcon icon={faArrowUp} style={{ color: 'green' }} />
                                     
                                 )}
                                 ㅤ</td>
-                                <td style={{ textAlign: 'center' }}>{item.grupo}</td>
-                                <td>{item.nome}</td>
-                                <td style={{ textAlign: 'center' }}>{item.quantidade}</td>
-                                <td style={{ textAlign: 'center' }}>{item.validade}</td>
-                                <td style={{ textAlign: 'center' }}>{item.movimentacao}</td>
+                                <td style={{ textAlign: 'center' }}>{item.descricaoItem}</td>
+                                <td>{item.nomeItem}</td>
+                                <td style={{ textAlign: 'center' }}>{item.quantidadeItem}</td>
+                                <td style={{ textAlign: 'center' }}>{item.dataValidade}</td>
+                                <td style={{ textAlign: 'center' }}>{item.dataHora}</td>
                             </tr>
                             ))}
                         </tbody>
@@ -382,12 +381,20 @@ export default function CrudEstoque(){
                 <form className="estoqueAdd">
                     <div className="form-group-estoque">
                         <label>Nome:</label>
-                        <input className="inputEstoque" type="text" id="nome" name="nome"/>
+                        <input
+                            className="inputEstoque input"
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            value={formData.nome}
+                            onChange={handleChange}
+                        />
+
                     </div>
                     <div className="form-group-estoque">
                         <label>Tipo:</label>
-                        <select id="grupoItem" name="grupoItem">
-                            <option selected disabled>Escolha o grupo a qual o item pertence</option>
+                        <select id="grupoItem" name="grupoItem" value={formData.grupoItem} onChange={handleChange}>
+                            <option selected >Escolha o grupo a qual o item pertence</option>
                             <option value="Agulhas">Agulhas</option>
                             <option value="Biqueiras">Biqueiras</option>
                             <option value="Esterelizadores">Esterelizadores</option>
@@ -400,19 +407,28 @@ export default function CrudEstoque(){
                     </div>
                     <div className="form-group-estoque">
                         <label>Quantidade:</label>
-                        <input className="inputEstoque" type="number" id="quantidade" name="quantidade"/>
+                        <input className="inputEstoque input" type="number" id="quantidade" 
+                        value={formData.quantidade}
+                        onChange={handleChange}
+                        name="quantidade"/>
                     </div>
                     <div className="form-group-estoque">
                         <label>Data de compra:</label>
-                        <input className="inputEstoque" type="date" id="dataCompra" name="compra" />
+                        <input className="inputEstoque input" type="date" id="dataCompra" 
+                        value={formData.dataCompra}
+                        onChange={handleChange}
+                        name="dataCompra" />
                     </div>
                     <div className="form-group-estoque">
                         <label>Data de validade:</label>
-                        <input className="inputEstoque" type="date" id="dataValidade" name="validade"/>
+                        <input className="inputEstoque input" type="date" id="dataValidade" 
+                        value={formData.dataValidade}
+                        onChange={handleChange}
+                        name="dataValidade"/>
                     </div>
                 </form>
                 <div className="btn-modal">
-                                <button onClick={closeModalAdd} className="btn btn-cadastrar">Adicionar</button>
+                                <button onClick={handleAddItem} className="btn btn-cadastrar">Adicionar</button>
                                 <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
                 </div>
             </Modal>

@@ -5,14 +5,8 @@ import Menu from '../../../components/usuarioLogado/MenuLog';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 
-import tatt1 from '../../../assets/flashTattoo/tattoo.png';
-import tatt2 from '../../../assets/flashTattoo/tattoo-2.png';
-import tatt3 from '../../../assets/flashTattoo/tattoo-3.png';
-import tatt4 from '../../../assets/flashTattoo/tattoo-4.png';
-import tatt5 from '../../../assets/flashTattoo/tattoo-5.png';
-import tatt6 from '../../../assets/flashTattoo/tattoo-6.png';
-import tatt7 from '../../../assets/flashTattoo/tattoo-7.png';
-import tatt8 from '../../../assets/flashTattoo/tattoo-8.png';
+import axios from "axios";
+
 import '../../../styleGlobal.css';
 import './index.css';
 
@@ -26,84 +20,18 @@ export default function FlashTattoo(){
             navigate('/signin');
         }else if(userType === 'cliente'){
             setIsUserLoggedIn(userType === "cliente");
+            axios.get('http://localhost:3636/admin/selectFlashTattoo')
+            .then(response => {
+                setFlashtatto(response.data);
+            })
+            .catch(error => {
+              console.error('Erro ao obter dados do portfólio:', error);
+            });
         }
         
     }, []);
-    const [flashtatto, setFlashtatto] = useState([
-        {
-            id: 1,
-            nome: "Caveira Borboleta",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt4
-        },
-        {
-            id: 2,
-            nome: "Coração teia de aranha",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt1
-        },
-        {
-            id: 3,
-            nome: "Coração de arabescos",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt2
-        },
-        {
-            id: 4,
-            nome: "Onça",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt3
-        },
-        {
-            id: 5,
-            nome: "Olhos de mar e lua",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt5
-        },
-        {
-            id: 6,
-            nome: "Pantera",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt6
-        },
-        {
-            id: 7,
-            nome: "Coração asas de morcego",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt7
-        },
-        {
-            id: 8,
-            nome: "Cogumelos",
-            tamanho: "A definir",
-            local: "A definir",
-            Tipo: "Realista",
-            Cores: "Preto e branco",
-            imagem: tatt8
-        },
-        
-    ]);
+
+    const [flashtatto, setFlashtatto] = useState([]);
 
     const [selectedTattoo, setSelectedTattoo] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -120,6 +48,9 @@ export default function FlashTattoo(){
             local: tattoo.local,
             Tipo: tattoo.Tipo,
             Cores: tattoo.Cores,
+            valor1: tattoo.valor1,
+            valor2: tattoo.valor2,
+            valor3: tattoo.valor3,
             imagem: tattoo.imagem,
           });
         setIsModalOpen(true);
@@ -156,7 +87,7 @@ export default function FlashTattoo(){
             <section className="flashtattoo">
                 {flashtatto.map((tattoo) => (
                     <div key={tattoo.id} className="tattoo-item">
-                        <img src={tattoo.imagem} alt={tattoo.nome} />
+                        <img src={`http://localhost:3636/src/temp/${tattoo.imagem}`} alt={tattoo.nome} />
                         <button className="btn btn-tattoo" onClick={() => openModal(tattoo)}>
                         Mais detalhes
                         </button>
@@ -189,7 +120,7 @@ export default function FlashTattoo(){
                 {selectedTattoo && (
                     <div className="modal-tattoo">
                         <div id="modal-info">
-                            <img src={selectedTattoo.imagem} alt={selectedTattoo.nome} />
+                            <img src={`http://localhost:3636/src/temp/${selectedTattoo.imagem}`} alt={selectedTattoo.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedTattoo.nome}</h3>
 
@@ -198,8 +129,8 @@ export default function FlashTattoo(){
                                     
                                     <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedTattoo.tamanho}</p>
                                     <p className="txt-white"><strong>Local: </strong>{selectedTattoo.local}</p>
-                                    <p className="txt-white"><strong>Tipo: </strong> {selectedTattoo.Tipo}</p>
-                                    <p className="txt-white"><strong>Cores: </strong> {selectedTattoo.Cores}</p>
+                                    <p className="txt-white"><strong>Tipo: </strong> {selectedTattoo.tipo}</p>
+                                    <p className="txt-white"><strong>Cores: </strong> {selectedTattoo.cores}</p>
                                 </div>
                               
                             </div>
@@ -215,7 +146,7 @@ export default function FlashTattoo(){
                                     >
                                         5 cm
                                     </button>
-                                    <p className="txt-white">R$ 200.00</p>
+                                    <p className="txt-white">R${selectedTattoo.valor1}</p>
                                 </div>
                                 <div id="second-info">
                                     <button 
@@ -224,7 +155,7 @@ export default function FlashTattoo(){
                                     >
                                         10 cm
                                     </button>
-                                    <p className="txt-white">R$ 290.00</p>
+                                    <p className="txt-white">R${selectedTattoo.valor2}</p>
                                 </div>
                                 <div id="third-info">
                                     <button 
@@ -233,7 +164,7 @@ export default function FlashTattoo(){
                                     >
                                         15 cm
                                     </button>
-                                    <p className="txt-white">R$ 350.00</p>
+                                    <p className="txt-white">R${selectedTattoo.valor3}</p>
                                 </div>
                             </div>
                         </div>

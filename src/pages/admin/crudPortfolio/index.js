@@ -252,7 +252,7 @@ export default function CrudPortfolio() {
                             </label>
                             <div className="modal-info-description">
                                 <div className="description">
-                                    <input className="inputp" type="text" id="nome"
+                                    <input className="inputp input" type="text" id="nome"
                                          onChange={(e) => {
                                             setSelectedPortfolio({
                                                 ...selectedPortfolio,
@@ -265,7 +265,7 @@ export default function CrudPortfolio() {
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
-                                    <input className="inputp" type="text" id="tamanho"
+                                    <input className="inputp input" type="text" id="tamanho"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
                                                 ...selectedPortfolio,
@@ -274,7 +274,7 @@ export default function CrudPortfolio() {
                                         }}
                                         name="tamaho" value={selectedPortfolio.tamanho} required />
 
-                                    <input className="inputp" type="text" id="local"
+                                    <input className="inputp input" type="text" id="local"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
                                                 ...selectedPortfolio,
@@ -283,7 +283,7 @@ export default function CrudPortfolio() {
                                         }}
                                         name="local" value={selectedPortfolio.local} required />
 
-                                    <input className="inputp" type="text" id="Tipo"
+                                    <input className="inputp input" type="text" id="Tipo"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
                                                 ...selectedPortfolio,
@@ -292,7 +292,7 @@ export default function CrudPortfolio() {
                                         }}
                                         name="Tipo" value={selectedPortfolio.tipo} required />
 
-                                    <input className="inputp" type="text" id="cores"
+                                    <input className="inputp input" type="text" id="cores"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
                                                 ...selectedPortfolio,
@@ -356,7 +356,7 @@ export default function CrudPortfolio() {
                            
                             <div className="modal-info-description">
                                 <div className="description">
-                                    <input className="inputp" type="text" id="nome" name="nome" placeholder="Nome" />
+                                    <input className="inputp input" type="text" id="nome" name="nome" placeholder="Nome" />
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>

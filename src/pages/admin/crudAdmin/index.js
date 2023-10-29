@@ -159,7 +159,7 @@ export default function CrudAdmin() {
                             <div className="form-group">
                                 <label>Nome:</label>
                                 <input
-                                    className="inputAdmin"
+                                    className="inputAdmin input"
                                     type="text"
                                     id="nome"
                                     name="nome"
@@ -170,7 +170,7 @@ export default function CrudAdmin() {
                             <div className="form-group">
                                 <label>Email:</label>
                                 <input
-                                    className="inputAdmin"
+                                    className="inputAdmin input"
                                     type="email"
                                     id="email"
                                     name="email"
