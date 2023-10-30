@@ -5,11 +5,22 @@ import '../../../styleGlobal.css';
 import './index.css';
 import { useNavigate } from 'react-router-dom';
 import BarraAcessibilidade from "../../barraAcessibilidade";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 export default function Menu(){
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const navigate = useNavigate();
+    const [client, setClient] = useState({
+        id: 0,
+        nome: '',
+        telefone: '',
+        email: '',
+        idade: 0,
+        senha: '',
+    });
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -27,9 +38,58 @@ export default function Menu(){
         window.location.reload();
     }
 
+    const handleDeleteAccount = async (e) => {
+        e.preventDefault();
+    
+        const clienteLog = localStorage.getItem('user');
+        const clientData = clienteLog ? JSON.parse(clienteLog) : null;
+        
+        let idClientToDelete;
+    
+        if (clientData && clientData[0]) {
+            setClient(clientData[0]);
+            idClientToDelete = clientData[0].id;
+    
+            try {
+                const response = await axios.delete(`http://localhost:3636/cliente/deleteclientes/${idClientToDelete}`);
+    
+                if (response.status === 200) {
+                    console.log(response.data);
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user");
+                    localStorage.removeItem("userType");
+    
+                    await toast.success('Conta excluída com sucesso. Lamentamos sua ida, até logo!', {
+                        position: toast.POSITION.TOP_CENTER,
+                        className: 'custom-toast-success',
+                        progressClassName: 'custom-toast-progress-bar',
+                    });
+    
+                    setTimeout(() => {
+                        navigate('/');
+                        window.location.reload();
+                    }, 3000);
+                } else {
+                    console.error('Erro ao excluir usuário:', response.data.message);
+                    toast.error('Erro ao excluir usuário. Tente novamente mais tarde.', {
+                        position: toast.POSITION.TOP_CENTER,
+                    });
+                }
+            } catch (error) {
+                console.log("Erro ao excluir usuário: ", error);
+                toast.error(`Erro ao excluir usuário. Detalhes: ${error.message}`, {
+                    position: toast.POSITION.TOP_CENTER,
+                });
+            }
+        } else {
+            console.error('ID do cliente não encontrado.');
+        }
+    }
+
     return(
         <div className='menu-container'>
             <BarraAcessibilidade />
+            <ToastContainer position="top-center" />
             <nav className="menuHome">
                 <div id="menu-normal">      
                     <ul>
@@ -51,7 +111,7 @@ export default function Menu(){
                             <ul className="submenu">
                                 <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                                 <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
-                                <li><button>Excluir Conta</button></li>
+                                <li onClick={handleDeleteAccount}><button>Excluir Conta</button></li>
                                 <li onClick={handleLogout}><button>Sair</button></li>
 
                             </ul>
@@ -84,7 +144,7 @@ export default function Menu(){
                             <li>Meu Perfil</li>
                             <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
                             <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
-                            <li><button>Excluir Conta</button></li>
+                            <li onClick={handleDeleteAccount}><button>Excluir Conta</button></li>
                             <li><button>Sair</button></li>
                         </>
                         )}

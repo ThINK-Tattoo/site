@@ -9,10 +9,6 @@ import { BallTriangle } from "react-loader-spinner";
 import '../../../styleGlobal.css';
 import './index.css'
 
-import Admin1 from "../../../assets/crudAdmin/admin1.png";
-import Admin2 from "../../../assets/crudAdmin/admin2.png";
-import Admin3 from "../../../assets/crudAdmin/admin3.png";
-
 export default function CrudAdmin() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [admins, setAdmins] = useState([]);

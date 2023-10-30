@@ -10,6 +10,19 @@
     left: 0;
 }
 
+.custom-toast-success {
+  background-color: black; 
+  color: #ffffff !important; 
+}
+
+.custom-toast-icon-success {
+  color: var(--var-txt-lilas) !important; 
+}
+
+.custom-toast-progress-bar {
+  background: var(--var-txt-lilas); 
+}
+
 .accessibility-link,
 .high-contrast-button,
 .font-size-button {
