@@ -14,7 +14,7 @@ import allLocales from '@fullcalendar/core/locales-all';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 
 function CrudAgenda(){
-   {/* const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -26,7 +26,7 @@ function CrudAgenda(){
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []); */}
+    }, []);
 
 
     return (
@@ -69,14 +69,19 @@ function CrudAgenda(){
                       buttonText: 'Dia'
                     }
                   }}
+                  now={new Date()}
                   events={[
                     {
-                      title: 'Evento 1',
-                      date: '2023-10-30'
+                      id: 1,
+                      title: 'Tattoo 1',
+                      start: '2023-10-30T10:00:00', 
+                      end: '2023-10-30T12:00:00' 
                     },
                     {
-                      title: 'Evento 2',
-                      date: '2023-10-31'
+                      id: 2,
+                      title: 'Tattoo 2',
+                      start: '2023-10-31T10:00:00', 
+                      end: '2023-10-31T12:00:00' 
                     }
                   ]}
                   

@@ -1,3 +1,9 @@
+:root{
+    --fc-event-border-color: #A40C9F;
+    --fc-event-bg-color: #A40C9F;
+    --fc-today-bg-color: rgba(235, 28, 228, 0.218);
+}
+
 .custom-calendar{
     color: white;
     width: 1100px;
@@ -6,3 +12,33 @@
     margin-left: 20rem;
     padding-bottom: 2.5rem;
 }
+
+.fc .fc-button-primary:disabled {
+    background-color:var(--var-txt-lilas);
+}
+
+.fc .fc-button-primary:hover, .fc .fc-button-primary:focus {
+    background-color:var(--var-txt-lilas);
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child), .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+    background-color:var(--var-lilas);
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child):hover, .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child):hover {
+    background-color:var(--var-lilas);
+}
+
+
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus, .fc .fc-button-primary:not(:disabled):active:focus {
+    background-color:var(--var-txt-lilas);
+}
+
+.fc .fc-button:not(:disabled) {
+    background-color:var(--var-lilas);
+}
+
+.fc-h-event .fc-event-title-container {
+    background-color:var(--var-txt-lilas);
+}
+

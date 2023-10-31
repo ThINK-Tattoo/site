@@ -38,7 +38,7 @@ export default function CrudEstoque(){
     };
     
         
-    useEffect(() => {
+     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
         if(!userType || userType === 'cliente'){

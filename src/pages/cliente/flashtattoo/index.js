@@ -11,7 +11,7 @@ import '../../../styleGlobal.css';
 import './index.css';
 
 export default function FlashTattoo(){
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useEffect(() => {
         const userType = localStorage.getItem("userType");
