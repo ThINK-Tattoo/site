@@ -7,7 +7,6 @@
     align-items: center;
     width: 100%;
     padding: 40px;
- 
   }
   
   .logo-footer {
@@ -22,7 +21,6 @@
     align-items: center;
     width: 100%;
     margin-top: 20px; 
-   
   }
   
   .info-element {
@@ -39,6 +37,7 @@
   .info-element .icon-footer{
     width: 30px;
     height: 30px;
+    color: var(--var-txt-lilas);
   }
   .info-element .icon-footer.phone{
     width: 25px;
@@ -58,11 +57,15 @@
     justify-content: center;
   }
 
- #dev{
+  #dev{
     margin-top: 2%;
     color: #c4c4c4;
     font-size: 13px;
     text-align: center;
+  }
+
+  .alto-contraste .icon-footer{
+    color: yellow;
   }
 
   @media (max-width: 1078px){

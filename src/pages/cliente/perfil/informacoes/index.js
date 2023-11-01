@@ -4,8 +4,7 @@ import Menu from '../../../../components/usuarioLogado/MenuLog';
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
-import iconPerson from '../../../../assets/icones/icon-person.png';
+import { faEye, faEyeSlash, faEdit, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { useNavigate } from "react-router-dom";
 
@@ -64,7 +63,7 @@ export default function MinhasInformacoes(){
 
     return(
         <div className="container perfil-container">
-             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
+             {/*{isUserLoggedIn ?*/} <MenuLogado /> {/*: <Menu />}*/}
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
@@ -86,7 +85,7 @@ export default function MinhasInformacoes(){
             >
                 
                 <form className="form modal-form">
-                    <img id="person-icon" src={iconPerson} alt="Icon de usuário" />
+                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
                     <h4>Atualizar informações</h4>
                     <div className="container-form-group info-container">
                         <div className="form-group info-perfil">
@@ -145,7 +144,7 @@ export default function MinhasInformacoes(){
 
             <section className="form-container">
                 <form class="form form-info">
-                    <img id="person-icon" src={iconPerson} alt="Icon de usuário"/>
+                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
                     <h4>Informações</h4>
                     <div class="container-form-group info-container">
                         <div class="form-group info-perfil">

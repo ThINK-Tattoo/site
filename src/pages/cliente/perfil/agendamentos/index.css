@@ -37,7 +37,14 @@
     
 }
 
+.alto-contraste .agendamento-tittle{
+    background-image: none; 
+}
 
+.alto-contraste .agendamento-tittle h1 span{
+    text-shadow: none;
+    color: white;
+}
 
 @media (max-width: 768px){
     .info-agendados p{

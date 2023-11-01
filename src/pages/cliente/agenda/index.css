@@ -4,7 +4,6 @@
 }
 .calendar-container{
     width: 40%;
-   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +57,6 @@
     margin-bottom: 5%;
   }
 
-  
   .react-calendar__tile {
     cursor: pointer;
   }
@@ -79,7 +77,7 @@
   }
 
   .react-calendar__navigation__label:hover, 
-   .react-calendar__navigation__arrow:hover{
+  .react-calendar__navigation__arrow:hover{
     background-color: #2e2e2e !important;
   }
 
@@ -94,7 +92,7 @@
   .react-calendar__year-view__years__year--active > abbr {
     color: var(--var-txt-lilas) !important;
   }
- 
+
   .react-calendar__navigation__arrow {
     color: white !important;
   }
@@ -138,7 +136,6 @@
     margin-top: 5% !important;
   }
 
-
   .container-tipos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -158,15 +155,12 @@
   background-color: #262626;
   padding: 20px;
   margin-bottom: 20px;
- 
 }
 
 .section:nth-child(1), .section:nth-child(2){
-    margin-top: 130%;
+    margin-top: 50%;
     justify-self: center; 
 }
-
-
 
 .section:nth-child(3){
     width: 50%;
@@ -179,6 +173,36 @@
 
 .options {
   margin-top: 10px;
+}
+
+.alto-contraste .agenda-tittle{
+  background-image: none; 
+}
+
+.alto-contraste .agenda-tittle h1 span{
+  text-shadow: none;
+  color: white;
+}
+
+.alto-contraste .react-calendar__tile--active, .react-calendar__tile--hover {
+  background-color: yellow !important;
+  color: black !important;
+}
+
+.alto-contraste .btn-hora {
+  border-color: yellow !important;
+}
+
+.alto-contraste .btn-hora:hover{
+  color: yellow !important;
+}
+
+.alto-contraste .css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  color: yellow !important;
+}
+
+.alto-contraste .icon-file{
+  color: yellow;
 }
 
 label {
@@ -214,7 +238,6 @@ input[type="checkbox"] {
     margin-top: -5%;
     margin-bottom: 3%;
 }
-
 
 @media (max-width: 768px) {
     .container-tipos, .flex {

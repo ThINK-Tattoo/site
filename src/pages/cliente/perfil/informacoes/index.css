@@ -78,6 +78,52 @@
     color: white;
 }
 
+.alto-contraste .perfil-tittle{
+    background-image: none; 
+}
+
+.alto-contraste .perfil-tittle h1 span{
+    text-shadow: none;
+    color: white;
+}
+
+.alto-contraste .form{
+    background-color: black;
+}
+
+.alto-contraste .form-info{
+    background-color: transparent;
+    border: 1px !important;
+    border-color: white !important;
+}
+
+.alto-contraste .form #person-icon{
+    color: yellow;
+}
+
+.alto-contraste .form p a:hover{
+    color: yellow;
+}
+
+.alto-contraste .btn-editar, .btn-cancelar, .btn-salvar{
+    background-color: transparent;
+    border: 1px solid white;
+    font-weight: 900;
+    color: yellow;
+}
+
+.alto-contraste .btn-editar:hover, .btn-cancelar:hover, .btn-salvar:hover{
+    background-color: yellow;
+    border: none;
+    font-weight: 900;
+    color: black;
+}
+
+.alto-contraste .input {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
 @media (max-width: 768px) {
     .container-form-group {
         grid-template-columns: 1fr; 

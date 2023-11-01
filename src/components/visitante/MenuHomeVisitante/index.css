@@ -155,6 +155,11 @@
   display: none;
 }
 
+.alto-contraste .menuHome ul li a:hover{
+  color: yellow;
+}
+
+
 @media (max-width: 1124px) {
   .logo-menu{
     margin-left: 10%;

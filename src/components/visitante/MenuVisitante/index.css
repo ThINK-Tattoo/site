@@ -146,6 +146,10 @@
     margin-right: 10px;
   }
 
+  .alto-contraste .menu ul li a:hover{
+    color: yellow;
+  }
+
   @media (max-width: 888px) {
     .logo-menu {
         margin-left: 10%;

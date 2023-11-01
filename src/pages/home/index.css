@@ -164,6 +164,17 @@ margin-bottom: 8rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+.iconEmail, .iconCoracao {
+    color: var(--var-lilas);
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+.iconSeta{
+    color: var(--var-lilas);
+    height: 40px;
+}
+
 .cuidados{
     background-image: url('../../assets/home/tattoo2.png');
     background-position: center;
@@ -185,7 +196,6 @@ margin-bottom: 8rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 1.5vw;
-
 }
 
 .cuidadosTopicosGeral div{
@@ -198,10 +208,7 @@ margin-bottom: 8rem;
     align-items: center;
     margin-left: 1rem;
 }
-.iconSeta{
-    margin-left: 0;
-    max-height: 48px;
-}
+
 .mensagem{
     background-image: url('../../assets/home/tattoo3.png');
     background-position: center;
@@ -262,6 +269,17 @@ option{
     color: white;
 }
 
+.alto-contraste .iconCoracao{
+    color: yellow;
+}
+
+.alto-contraste .iconEmail{
+    color: yellow;
+}
+
+.alto-contraste .iconSeta{
+    color: yellow;
+}
 
 /* Estilos para tablets */
 @media (max-width: 1300px){

@@ -128,6 +128,7 @@
     border-radius: 5px;
     justify-content: center;
     text-align: center;
+    background-color: black;
   }
 
   .submenu li{
@@ -153,6 +154,10 @@
   
   .submenu-parent:hover .submenu {
     display: block;
+  }
+
+  .alto-contraste .menu ul li a:hover{
+    color: yellow;
   }
 
   @media (max-width: 888px) {
