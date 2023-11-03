@@ -129,7 +129,7 @@ body{
 /*barra de rolagem da pagina*/
 ::-webkit-scrollbar{
     width: 8px;
-    border-radius: 5%;
+    border-radius: 50px
 }
 
 ::-webkit-scrollbar-track{

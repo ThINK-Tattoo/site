@@ -209,7 +209,7 @@ export default function CrudPortfolio() {
                             </div>
                             <div className="btn-modal">
                                 <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
-                                <button onClick={closeModal} className="btn btn-cancelar">Cancelar</button>
+                                <button onClick={closeModal} className="btn btn-cancelarAdmin">Cancelar</button>
 
                             </div>
                         </div>
@@ -307,7 +307,7 @@ export default function CrudPortfolio() {
                         </div>
                         <div className="btn-modal">
                             <button onClick={closeModalEdit} className="btn btn-adicionar">Editar</button>
-                            <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
+                            <button onClick={closeModalEdit} className="btn btn-cancelarAdmin">Cancelar</button>
 
                         </div>
                     </div>
@@ -371,7 +371,7 @@ export default function CrudPortfolio() {
                         </div>
                         <div className="btn-modal">
                             <button onClick={handlePortfolioSubmit} className="btn btn-adicionar">Adicionar</button>
-                            <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
+                            <button onClick={closeModalAdd} className="btn btn-cancelarAdmin">Cancelar</button>
                         </div>
                     </div>
                 </Modal>

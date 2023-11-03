@@ -175,6 +175,17 @@
   margin-top: 10px;
 }
 
+.btn-cancelarAdmin{
+  background: transparent;
+  border: 2px solid var(--var-txt-lilas);
+  color: var(--var-lilas);
+  width: 40%;
+}
+
+.btn-cancelarAdmin:hover{
+  color: white;
+}
+
 .alto-contraste .agenda-tittle{
   background-image: none; 
 }

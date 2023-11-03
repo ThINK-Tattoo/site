@@ -429,7 +429,7 @@ export default function CrudEstoque(){
                 </form>
                 <div className="btn-modal">
                                 <button onClick={handleAddItem} className="btn btn-cadastrar">Adicionar</button>
-                                <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
+                                <button onClick={closeModalAdd} className="btn btn-cancelarAdmin">Cancelar</button>
                 </div>
             </Modal>
             </section>

@@ -34,6 +34,7 @@
 .iconeAdmin{
     border-radius: 27px;
     width: 120%;
+    max-width: 170px;
 }
 
 .perfil{

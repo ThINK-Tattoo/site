@@ -24,11 +24,11 @@ export default function CrudAdmin() {
     });
     
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
-        if (!userType || userType === 'cliente') {
+       if (!userType || userType === 'cliente') {
             navigate('/signin');
         } else if (userType === 'admin') {
             setIsUserLoggedIn(userType === "admin");
@@ -36,6 +36,7 @@ export default function CrudAdmin() {
 
         fetchAdmins();
     }, []);
+
 
     const openModal = (e) => {
         e.preventDefault();
@@ -199,7 +200,7 @@ export default function CrudAdmin() {
                     
                         <div className="flex" id="btns">
                             <button type="submit" className="btn btn-adicionar">Adicionar</button>
-                            <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
+                            <button className="btn btn-cancelarAdmin" onClick={closeModal}>Cancelar</button>
                         </div>
                     </form>
                 </Modal>
