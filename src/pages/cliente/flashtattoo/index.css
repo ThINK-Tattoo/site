@@ -143,7 +143,28 @@ H/* Estilos padrão para desktop */
     border: 1px solid white;
 }
 
+.alto-contraste #info-flashtattoo {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
 
+.alto-contraste .modal-info-description .h3, .modal-info-description .description, .tamanho-info h3{
+    border: 1px solid white;
+    background-color: transparent !important;
+}
+
+.alto-contraste .valores-tattoo .btn-valor {
+    background-color: transparent;
+    border: 1px solid white;
+    font-weight: 900;
+}
+.alto-contraste .valores-tattoo .btn-valor:hover {
+    background-color: yellow;
+    border: none;
+    font-weight: 900;
+    color: black !important;
+}
 /* Estilos para tablets */
 @media (max-width: 1124px) {
     .flashtattoo {

@@ -197,6 +197,10 @@
     color: yellow;
   }
   
+  .alto-contraste .submenu li button:hover{
+    color: yellow;
+  }
+
   @media (max-width: 1124px) {
     .logo-menu{
       margin-left: 10%;

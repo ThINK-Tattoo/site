@@ -188,6 +188,9 @@
     color: white;
   }
 
+.alto-contraste .modal-close-button{
+    color: yellow;
+}
 
 /* Estilos para tablets */
 @media (max-width: 1124px) {

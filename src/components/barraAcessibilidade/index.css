@@ -35,3 +35,11 @@
     background-color: transparent;
     outline: none;
 }
+
+.alto-contraste .acessibilidade-tittle{
+    background-image: none;
+}
+
+.alto-contraste .accessibility-link:hover, .high-contrast-button:hover, .font-size-button:hover, .accessibility-bar a:hover{
+    color: yellow !important;
+}

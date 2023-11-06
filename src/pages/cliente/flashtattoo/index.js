@@ -78,7 +78,7 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
             <h3 className="txt-white">O QUE SÃO E COMO FUNCIONA?</h3>
 
             <div id='info-flashtattoo'>
-                <p className="txt-white">Flash tattoos são tatuagens rápidas geralmente oferecidas pelos artistas por um valor mais em conta para divulgação do trabalho, criação de portfólio e captação de novos cli entes. Normalmente não são feitas sob encomenda, então o artista cria e a pessoa não pode pedir nenhuma alteração.
+                <p className="txt-white">Flash tattoos são tatuagens rápidas geralmente oferecidas pelos artistas por um valor mais em conta para divulgação do trabalho, criação de portfólio e captação de novos clientes. Normalmente não são feitas sob encomenda, então o artista cria e a pessoa não pode pedir nenhuma alteração.
                     A vantagem dessa modalidade está na praticidade e no valor reduzido do trabalho, já que os desenhos são mais simples e sem muitos detalhes. Além disso, é perfeita para quem não tem muita criatividade e prefere escolher entre desenhos que já estão prontos.</p>
             </div>
 

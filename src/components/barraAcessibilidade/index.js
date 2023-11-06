@@ -22,7 +22,6 @@ export default function BarraAcessibilidade(){
 
     const [isHighContrast, setIsHighContrast] = useState(false);
     const toggleHighContrast = () => {
-        console.log("Botão de Alto Contraste clicado.");
         document.documentElement.classList.toggle("alto-contraste", isHighContrast);
         setIsHighContrast((prevContrast) => !prevContrast);
     };
