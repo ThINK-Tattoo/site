@@ -25,7 +25,7 @@ export default function Menu(){
                         <li><Link to="/dashboard"><a>Página Inicial</a></Link></li>
                         <li><Link to="/dashboard/administradores"><a>Administradores</a></Link></li>
                         <li><Link to="/dashboard/clientes"><a>Clientes</a></Link></li>
-                        <li><Link to="/dashboard/portfolio"><a>Portfolio</a></Link></li>
+                        <li><Link to="/dashboard/portfolio"><a>Portfólio</a></Link></li>
                         <li><Link to="/dashboard/flashTattoo"><a>FlashTattoo</a></Link></li>
                         <li><Link to="/dashboard/agendamentos"><a>Agendamentos</a></Link></li>
                         <li><Link to="/dashboard/solicitacoes"><a>Solicitações</a></Link></li>

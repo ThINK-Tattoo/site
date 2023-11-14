@@ -51,7 +51,7 @@ const Menu = () => {
         <BarraAcessibilidade />
             <div className="desktop-menuHome">
                 <ul>
-                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                     <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                     <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                 </ul>
@@ -77,7 +77,7 @@ const Menu = () => {
                 </button>
                 {isMobileMenuOpen && (
                     <ul className="mobileHome-menu-list">
-                        <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                        <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                         <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                         <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                         <li className="main-menu-item"><Link to="/">Sobre nós</Link></li>

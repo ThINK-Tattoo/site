@@ -19,6 +19,7 @@ export default function CrudSolicitacoes(){
         }
         
     }, []);
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedAgendamento, setSelectedAgendamento] = useState(null);
     const [agendamentos, setAgendamentos] = useState([
@@ -45,15 +46,15 @@ export default function CrudSolicitacoes(){
             descricao:"Uma borboleta que se pareça com uma caveira em tamanho médio na parte posterior da perna, em preto e branco."
         }
     ]);
+
     const openModal = (agendamento) => {
         setSelectedAgendamento(agendamento);
         setModalIsOpen(true);
-      };
-      const closeModal = () => {
+    };
+    const closeModal = () => {
         setSelectedAgendamento(null);
         setModalIsOpen(false);
-      };
-        
+    };
     
     return (
         <div>
@@ -66,15 +67,15 @@ export default function CrudSolicitacoes(){
                 <p>Clique em alguma solitação para visualizar maiores informações.</p>
             </div>
             <div className= "conteiner solicitacoes-conteiner">
-                 {agendamentos.map((reserva)=> (
+                {agendamentos.map((reserva)=> (
                     <div key={reserva.id} className="info-solicitacoes"  onClick={() => openModal(reserva)}>
                         <div className="text-info">
-                        <p className="txt-dia"><strong>Dia </strong>{reserva.dia}</p>
-                        <p className="txt-white"><strong>Cliente: </strong>{reserva.cliente}</p>
-                        <p className="txt-white"><strong>Status: </strong>{reserva.status}</p>
+                            <p className="txt-dia"><strong>Dia </strong>{reserva.dia}</p>
+                            <p className="txt-white"><strong>Cliente: </strong>{reserva.cliente}</p>
+                            <p className="txt-white"><strong>Status: </strong>{reserva.status}</p>
                         </div>
                         <p className="txt-white"><strong>Detalhes: </strong>{reserva.descricao}</p>
-                 </div>
+                    </div>
                  ))}
             </div>
             <Modal
@@ -98,13 +99,13 @@ export default function CrudSolicitacoes(){
                     <button className="modal-close-button" onClick={closeModal}>X</button>
                     {selectedAgendamento && (
                     <div className="modal-content">
-                    <h2><strong>Dia </strong>{selectedAgendamento.dia}</h2>
-                    <p><strong>Cliente: </strong>{selectedAgendamento.cliente}</p>
-                    <p><strong>Detalhes: </strong>{selectedAgendamento.descricao}</p>
-                    <div className="flex">
-                        <button type="submit" class="btn btn-aceitar">Aceitar</button>
-                        <button class="btn btn-recusar" onClick={closeModal}>Recusar</button>
-                    </div>
+                        <h2><strong>Dia </strong>{selectedAgendamento.dia}</h2>
+                        <p><strong>Cliente: </strong>{selectedAgendamento.cliente}</p>
+                        <p><strong>Detalhes: </strong>{selectedAgendamento.descricao}</p>
+                        <div className="flex">
+                            <button type="submit" class="btn btn-aceitar">Aceitar</button>
+                            <button class="btn btn-recusar" onClick={closeModal}>Recusar</button>
+                        </div>
                     </div>
                 )}
             </Modal>

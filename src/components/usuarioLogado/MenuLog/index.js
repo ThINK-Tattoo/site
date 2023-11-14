@@ -113,7 +113,7 @@ export default function Menu(){
                 <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK" /></Link>
                 <ToastContainer position="top-center" />
                 <ul>
-                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                     <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                     <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                     <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
@@ -140,7 +140,7 @@ export default function Menu(){
                     </button>
                         {isMobileMenuOpen && (
                         <ul className="mobile-menu-list">
-                            <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                            <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                             <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                             <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                             <li className="main-menu-item"><Link to="/contato">Contato</Link></li>

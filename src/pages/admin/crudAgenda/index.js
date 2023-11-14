@@ -17,7 +17,7 @@ function CrudAgenda(){
    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
     
-    /*useEffect(() => {
+    useEffect(() => {
         const userType = localStorage.getItem("userType");
 
         if(!userType || userType === 'cliente'){
@@ -27,9 +27,7 @@ function CrudAgenda(){
         }
         
     }, []);
-
-  */
-
+    
     const calendarRef = useRef(null);
     const handleWindowResize = () => {
       if (calendarRef.current) {

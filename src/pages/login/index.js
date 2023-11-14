@@ -33,7 +33,7 @@ export default function Login(){
                 if(userType === "cliente"){
                     navigate('/');
                 }else if(userType === "admin"){
-                    navigate('/dashboard/administradores');
+                    navigate('/dashboard');
                 }
             }else{
                 setError("Email ou senha incorretos");
@@ -46,10 +46,10 @@ export default function Login(){
     }
 
     const isUserLoggedIn = localStorage.getItem("userType") === "cliente";
-   
+
     return (
         <div>
-           {isUserLoggedIn ? <MenuLogado /> : <Menu />}
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="login-tittle">
                 <h1>Lo<span className="span-color">gin</span></h1>
             </div>

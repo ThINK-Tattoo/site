@@ -34,7 +34,7 @@ const Menu = () => {
         <BarraAcessibilidade />
         <div className="desktop-menuHome">
             <ul>
-                <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                 <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
             </ul>
             <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK" /></Link>
@@ -53,7 +53,7 @@ const Menu = () => {
             </button>
             {isMobileMenuOpen && (
             <ul className="mobileHome-menu-list">
-                <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                 <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
                 <li className="main-menu-item"><Link to="/signin">Login</Link></li>
                 <li className="main-menu-item"><Link to="/signup">Cadastro</Link></li>

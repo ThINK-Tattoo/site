@@ -51,7 +51,7 @@ const Menu = () => {
         <div className="desktop-menu">
             <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK"/></Link>
             <ul>
-                <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                 <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                 <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                 <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
@@ -76,7 +76,7 @@ const Menu = () => {
             </button>
             {isMobileMenuOpen && (
                 <ul className="mobile-menu-list">
-                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                     <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                     <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                     <li className="main-menu-item"><Link to="/contato">Contato</Link></li>

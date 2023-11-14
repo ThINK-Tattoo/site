@@ -109,7 +109,7 @@ export default function Menu(){
             <ToastContainer position="top-center" />
             <div className="desktop-menuHome">
                 <ul>
-                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                     <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                     <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                 </ul>
@@ -138,7 +138,7 @@ export default function Menu(){
                 </button>
                 {isMobileMenuOpen && (
                 <ul className="mobile-menu-list">
-                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
                     <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
                     <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
                     <li className="main-menu-item"><Link to="/contato">Contato</Link></li>

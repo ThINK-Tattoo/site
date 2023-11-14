@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import Menu from '../../../components/admin/menuDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faL } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { BallTriangle } from "react-loader-spinner";
 
 import '../../../styleGlobal.css';
