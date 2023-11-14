@@ -8,6 +8,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000000000;
 }
 
 .accessibility-link,
@@ -17,16 +18,15 @@
     text-decoration: none;
     margin: 0 2%;
     cursor: pointer;
+    font-weight: normal !important;
 }
 
 .accessibility-bar a{
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
-.accessibility-link:hover,
-.high-contrast-button:hover,
-.font-size-button:hover {
+.accessibility-link:hover, .high-contrast-button:hover, .font-size-button:hover, .accessibility-bar a:hover{
     text-decoration: underline;
 }
 
@@ -40,6 +40,10 @@
     background-image: none;
 }
 
-.alto-contraste .accessibility-link:hover, .high-contrast-button:hover, .font-size-button:hover, .accessibility-bar a:hover{
-    color: yellow !important;
+.alto-contraste .high-contrast-button, .alto-contraste .font-size-button, .alto-contraste .accessibility-bar a{
+    color: yellow;
+}
+
+.alto-contraste .high-contrast-button:hover, .alto-contraste .font-size-button:hover, .alto-contraste .accessibility-bar a:hover {
+    color: yellow;
 }

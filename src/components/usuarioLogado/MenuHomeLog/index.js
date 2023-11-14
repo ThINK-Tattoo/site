@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/icones/logo-removebg-preview 1.png';
-import '../../../styleGlobal.css';
-import './index.css';
 import { useNavigate } from 'react-router-dom';
-import BarraAcessibilidade from "../../barraAcessibilidade";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 
+import '../../../styleGlobal.css';
+import './index.css';
+
+import logo from "../../../assets/icones/logo.png";
+import BarraAcessibilidade from "../../barraAcessibilidade";
+
 export default function Menu(){
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+    const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
+
     const [client, setClient] = useState({
         id: 0,
         nome: '',
@@ -22,13 +25,27 @@ export default function Menu(){
         senha: '',
     });
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-    
     const toggleSubMenu = () => {
-        setIsSubMenuOpen(!isSubMenuOpen);
+        setSubMenuOpen(!isSubMenuOpen);
     };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const mobileMenuButtonClass = `menu-icon ${isMobileMenuOpen ? 'open' : ''}`;
+
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', closeMobileMenu);
+        
+        return () => {
+            window.removeEventListener('resize', closeMobileMenu);
+        };
+    }, []);
     
     const handleLogout = () =>{
         localStorage.removeItem("token");
@@ -87,71 +104,57 @@ export default function Menu(){
     }
 
     return(
-        <div className='menu-container'>
+        <div className={`menuHome ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
             <BarraAcessibilidade />
             <ToastContainer position="top-center" />
-            <nav className="menuHome">
-                <div id="menu-normal">      
-                    <ul>
-                        <li><Link to="/portfolio">Portfólio</Link></li>
-                        <li><Link to="/flashtattoo">Flash Tattoo</Link></li>
-                        <li><Link to="/agenda">Agenda</Link></li>
-                    </ul>
-                </div>
-                <div>
-                    <Link to="/">
-                    <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
-                    </Link>
-                </div>
-                <div id="menu-normal">
-                    <ul>
-                        <li><Link to="/contato">Contato</Link></li>
-                        <li><Link to="/">Sobre Nós</Link></li>
-                        <li className="submenu-parent" onMouseEnter={toggleSubMenu} onMouseLeave={toggleSubMenu}>Meu Perfil {isSubMenuOpen && (
-                            <ul className="submenu">
-                                <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
-                                <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
-                                <li onClick={handleDeleteAccount}><button>Excluir Conta</button></li>
-                                <li onClick={handleLogout}><button>Sair</button></li>
-
-                            </ul>
-                            )}
-                        </li>
-                    </ul>
-                </div>
-                <div id="menu-drop-down">
-                    <div className="menu-header">
-                        <button className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-                            {menuOpen ? <span className="icon-close">X</span> : (
-                                <>
-                                    <span className="icon-lines"></span>
-                                    <span className="icon-lines"></span>
-                                    <span className="icon-lines"></span>
-                                </>
-                            )}
-                        </button>
-                    </div>
-
-                    <ul className={`menu-list ${menuOpen ? 'open' : ''}`}>
-                        {menuOpen && (
-                        <>
-                            <li><Link to="/portfolio">Portfólio</Link></li>
-                            <li><Link to="/flashtattoo">Flash Tattoo</Link></li>
-                            <li><Link to="/agenda">Agenda</Link></li>
-                            <li><Link to="/contato">Contato</Link></li>
-                            <li><Link to="/">Sobre Nós</Link></li>
-                            <br></br>
-                            <li>Meu Perfil</li>
-                            <li><Link to="/perfil/informacoes">Minhas Informações</Link></li>
-                            <li><Link to="/perfil/agendamentos">Meus Agendamentos</Link></li>
+            <div className="desktop-menuHome">
+                <ul>
+                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
+                    <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
+                </ul>
+                <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK" /></Link>
+                <ul>
+                    <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
+                    <li className="main-menu-item"><Link to="/">Sobre nós</Link></li>
+                    <li className="main-submenu-item" onClick={toggleSubMenu}><Link to="">Meu perfil</Link>
+                        {isSubMenuOpen && (
+                        <ul className="sub-menuHome">
+                            <li className="sub-menu-item"><Link to="/perfil/informacoes">Minhas informações</Link></li>
+                            <li className="sub-menu-item"><Link to="/perfil/agendamentos">Meus agendamentos</Link></li>
                             <li onClick={handleDeleteAccount}><button>Excluir Conta</button></li>
-                            <li><button>Sair</button></li>
-                        </>
+                            <li onClick={handleLogout}><button>Sair</button></li>
+                        </ul>
                         )}
-                    </ul>
-                </div>
-            </nav>
-            
+                    </li>
+                </ul>
+            </div>
+            <div className="mobile-menu">
+                <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK" /></Link>
+                <button className={mobileMenuButtonClass}  onClick={toggleMobileMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                {isMobileMenuOpen && (
+                <ul className="mobile-menu-list">
+                    <li className="main-menu-item"><Link to="/portfolio">Portfolio</Link></li>
+                    <li className="main-menu-item"><Link to="/flashtattoo">Flash tattoo</Link></li>
+                    <li className="main-menu-item"><Link to="/agenda">Agenda</Link></li>
+                    <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
+                    <li className="main-menu-item"><Link to="/">Sobre nós</Link></li>
+                    <br></br>
+                    <li className="main-menu-item">Meu perfil
+                        <ul className="sub-menu">
+                            <li><Link to="/perfil/informacoes">Minhas informações</Link></li>
+                            <li><Link to="/perfil/agendamentos">Meus agendamentos</Link></li>
+                            <li>Excluir conta</li>
+                            <li onClick={handleLogout}><button>Sair</button></li>
+                        </ul>
+                    </li>
+                </ul>
+                )}
+            </div>
         </div>
     )
 }

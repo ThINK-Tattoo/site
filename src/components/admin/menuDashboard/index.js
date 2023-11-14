@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import logo from '../../../assets/icones/logo-removebg-preview 1.png';
+import logo from '../../../assets/icones/logo.png';
 import '../../../styleGlobal.css';
 import './index.css';
 

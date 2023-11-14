@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import Logo from '../../assets/icones/logo-removebg-preview 1.png';
+import Logo from '../../assets/icones/logo.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faMobile, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -34,7 +34,7 @@ export default function Footer(){
                     <p>SAB : 10:00 - 18:00</p>
                     
                 </div>
-                <p id="dev">Desenvolvido por Beatriz,  Eloisa, Gabriel, Giovanna, Karoline e Priscila.</p>
+                <p id="dev">Desenvolvido por Beatriz, Eloisa, Gabriel, Giovanna, Karoline e Priscila.</p>
             </div>
         </div>
     );
