@@ -5,14 +5,7 @@ import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 import axios from 'axios';
-import tatt1 from '../../../assets/portfolio/portfolio.png';
-import tatt2 from '../../../assets/portfolio/portfolio-2.png';
-import tatt3 from '../../../assets/portfolio/portfolio-3.png';
-import tatt4 from '../../../assets/portfolio/portfolio-4.png';
-import tatt5 from '../../../assets/portfolio/portfolio-5.png';
-import tatt6 from '../../../assets/portfolio/portfolio-6.png';
-import tatt7 from '../../../assets/portfolio/portfolio-7.png';
-import tatt8 from '../../../assets/portfolio/portfolio-8.png';
+
 import '../../../styleGlobal.css';
 import './index.css';
 
@@ -24,12 +17,13 @@ export default function Portfolio(){
         setIsUserLoggedIn(userType === "cliente");
         axios.get('http://localhost:3636/cliente/selectPortfolio')
             .then(response => {
-              setPortfolio(response.data); 
+                setPortfolio(response.data); 
             })
             .catch(error => {
-              console.error('Erro ao obter dados do portfólio:', error);
+                console.error('Erro ao obter dados do portfólio:', error);
             });
     }, []); 
+
     const [portfolio, setPortfolio] = useState([]);
 
     const [selectedPortfolio, setSelectedPortfolio] = useState(null);
@@ -48,7 +42,7 @@ export default function Portfolio(){
             Tipo: portfolio.Tipo,
             Cores: portfolio.Cores,
             imagem: portfolio.imagem,
-          });
+        });
         setIsModalOpen(true);
     };
 
@@ -67,7 +61,7 @@ export default function Portfolio(){
 
     return(
         <div className="container portfolio-container">
-             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image portfolio-tittle">
                 <h1>Portfó<span className="span-color">lio</span></h1>
             </div>
@@ -77,11 +71,9 @@ export default function Portfolio(){
                 {portfolio.map((portfolio) => (
                     <div key={portfolio.id} className="portfolio-item">
                         <img id="img-port" onClick={() => openModal(portfolio)}  src={`http://localhost:3636/src/temp/${portfolio.imagem}`} alt={portfolio.nome} />
-                        
                     </div>
                 ))}
             </section>
-
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
@@ -109,20 +101,15 @@ export default function Portfolio(){
                             <img id="imgSelectPortfolio" src={`http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedPortfolio.nome}</h3>
-
                                 <div className="description">
                                     <h3 className="txt-white ">Descrição:</h3>
-                                    
                                     <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedPortfolio.tamanho}</p>
                                     <p className="txt-white"><strong>Local: </strong>{selectedPortfolio.local}</p>
                                     <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.tipo}</p>
                                     <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.cores}</p>
                                 </div>
-                        
                             </div>
-                        
                         </div>
-                        
                     </div>
                 )}
             </Modal>

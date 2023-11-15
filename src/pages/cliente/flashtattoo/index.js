@@ -25,10 +25,9 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                 setFlashtatto(response.data);
             })
             .catch(error => {
-              console.error('Erro ao obter dados do portfólio:', error);
+                console.error('Erro ao obter dados do portfólio:', error);
             });
         }
-        
     }, []);
 
     const [flashtatto, setFlashtatto] = useState([]);
@@ -52,7 +51,7 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
             valor2: tattoo.valor2,
             valor3: tattoo.valor3,
             imagem: tattoo.imagem,
-          });
+        });
         setIsModalOpen(true);
     };
 
@@ -61,7 +60,6 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
         setModalData(null);
         setIsModalOpen(false);
     };
-
 
     const handleAgendarClick = () => {
         if (modalData) {
@@ -76,12 +74,10 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                 <h1>Flash Tat<span className="span-color">too</span></h1>
             </div>
             <h3 className="txt-white">O QUE SÃO E COMO FUNCIONA?</h3>
-
             <div id='info-flashtattoo'>
                 <p className="txt-white">Flash tattoos são tatuagens rápidas geralmente oferecidas pelos artistas por um valor mais em conta para divulgação do trabalho, criação de portfólio e captação de novos clientes. Normalmente não são feitas sob encomenda, então o artista cria e a pessoa não pode pedir nenhuma alteração.
-                    A vantagem dessa modalidade está na praticidade e no valor reduzido do trabalho, já que os desenhos são mais simples e sem muitos detalhes. Além disso, é perfeita para quem não tem muita criatividade e prefere escolher entre desenhos que já estão prontos.</p>
+                A vantagem dessa modalidade está na praticidade e no valor reduzido do trabalho, já que os desenhos são mais simples e sem muitos detalhes. Além disso, é perfeita para quem não tem muita criatividade e prefere escolher entre desenhos que já estão prontos.</p>
             </div>
-
             <p className="txt-white p-info">Você escolherá a Flash Tattoo que temos em nossa galeria e irá fazer o agendamento.</p>
             <br></br>
             <section className="flashtattoo">
@@ -94,7 +90,6 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                     </div>
                 ))}
             </section>
-
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
@@ -116,25 +111,20 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                 <button className="modal-close-button" onClick={closeModal}>
                 X
                 </button>
-                
                 {selectedTattoo && (
                     <div className="modal-tattoo">
                         <div id="modal-info">
                             <img src={`http://localhost:3636/src/temp/${selectedTattoo.imagem}`} alt={selectedTattoo.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedTattoo.nome}</h3>
-
                                 <div className="description">
                                     <h3 className="txt-white ">Descrição:</h3>
-                                    
                                     <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedTattoo.tamanho}</p>
                                     <p className="txt-white"><strong>Local: </strong>{selectedTattoo.local}</p>
                                     <p className="txt-white"><strong>Tipo: </strong> {selectedTattoo.tipo}</p>
                                     <p className="txt-white"><strong>Cores: </strong> {selectedTattoo.cores}</p>
                                 </div>
-                              
                             </div>
-                           
                         </div>
                         <div className="tamanho-info">
                             <h3 className="txt-white ">Tamanho e valores</h3>
@@ -144,7 +134,7 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('5cm')}
                                     >
-                                        5 cm
+                                    5 cm
                                     </button>
                                     <p className="txt-white">R${selectedTattoo.valor1}</p>
                                 </div>
@@ -153,7 +143,7 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                                         className="btn btn-valor"
                                         onClick={() => setSelectedSize('10cm')}
                                     >
-                                        10 cm
+                                    10 cm
                                     </button>
                                     <p className="txt-white">R${selectedTattoo.valor2}</p>
                                 </div>
@@ -162,7 +152,7 @@ const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
                                         className="btn btn-valor" 
                                         onClick={() => setSelectedSize('15cm')}
                                     >
-                                        15 cm
+                                    15 cm
                                     </button>
                                     <p className="txt-white">R${selectedTattoo.valor3}</p>
                                 </div>

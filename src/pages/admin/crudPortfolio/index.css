@@ -36,7 +36,8 @@
     max-width: 80%;
     height: auto;
     padding: 0px;
-    border: none;}
+    border: none;
+}
 
 #img-port{
     cursor: pointer;
@@ -46,7 +47,6 @@
 #img-port:hover{
     transform: scale(1.1);
 }
-
 
 #modal-container-portfolio
 {
@@ -64,14 +64,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   
     margin-top: 5%;
 }
 
 .modal-info-description {
     width: 100%;
     max-width: 300px;
-
 }
 
 #modal-add-tatto{
@@ -93,14 +91,13 @@
     padding-inline: 20%;
     justify-content:space-between;
     align-items: first baseline;
-    
 }
 
 .inputp{
     margin-top: 10px;
     width: 100%;
-
 }
+
 #imageInputp{
     margin-top: 50%;
 }
@@ -114,7 +111,6 @@
     border-radius: 5px;
     margin-top: 2%;
 }
-
 
 .modal-info-description-portfolio .description h3 {
     margin-bottom: 12%;
@@ -197,7 +193,6 @@
     border: 1px solid white;
 }
 
-
 /* Estilos para tablets */
 @media (max-width: 1124px) {
     .portfolio {
@@ -217,7 +212,6 @@
     }
 }
 
-
 @media (max-width: 875px) {
     .portfolio {
         grid-template-columns: repeat(2, 1fr);
@@ -235,12 +229,9 @@
         width: 72%;
         margin-left: 5%;
     }
-
 }
 
 @media (max-width: 800px) {
-
-
     .valores-port.portfolio {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -249,14 +240,9 @@
         justify-content: center;
         align-items: center;
     }
-
-
     .valores-port.portfolio p{
-    
         font-size: 0.9rem;
     }
-    
-
 }
 
 /*Estilo para mobile*/
@@ -268,24 +254,19 @@
         grid-template-columns: repeat(2, 1fr);
         padding-left: 28%;
     }
-
     .portfolio {
         margin-bottom: 16px;
     }
-
     .modal-port.portfolio {
         flex-direction: column;
     }
-
     #modal-info-portfolio img {
         width: 100%;
     }
-
     .valores-port.portfolio {
         flex-direction: column;
         align-items: center;
     }
-
     .valores-port.portfolio .btn-valor {
         margin-bottom: 8px;
     }
@@ -314,10 +295,9 @@
         align-self: center;
     }
     #info-portfolio {
-       margin-bottom: 10%;
-       margin-top: 10%;
+        margin-bottom: 10%;
+        margin-top: 10%;
     }
-    
     #info-portfolio p {
         font-size: 0.8rem;
         
@@ -326,7 +306,6 @@
         font-size: 1.5rem;
         margin-top: 10%;
     }
-    
     #modal-container-portfolio {
         width:60%;
         margin-left: 13%;
@@ -339,33 +318,26 @@
         width:60%;
         margin-left: 13%;
     }
-
     .modal-port.portfolio {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
     #modal-info-portfolio {
         display: flex;
         flex-direction: column;
         margin-top: 5%;
     }
-
     #modal-info-portfolio img {
         width: 100%;
     }
-
     .modal-close-button {
         font-size: 1.5rem;
     }
-
     .modal-info-portfolio-description {
         width: 100%;
-        
     }
-
     .modal-info-portfolio-description .h3,
     .modal-info-portfolio-description .description {
         padding: 10px;
@@ -373,22 +345,18 @@
         margin-top: 2%;
         font-size: 0.8rem;
     }
-
     .modal-info-portfolio-description .description h3 {
         margin-bottom: 12%;
         font-size: 0.8rem;
     }
-
     .modal-info-portfolio-description .description p {
         margin-top: 3%;
         font-size: 0.8rem;
     }
-
     .tamanho-info {
         text-align: center;
         width: 100%;
     }
-
     .tamanho-info h3 {
         padding: 10px;
         margin-top: 2%;
@@ -396,7 +364,6 @@
         margin: 5% 0%;
         font-size: 0.8rem;
     }
-
     .valores-port.portfolio {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -405,21 +372,15 @@
         justify-content: center;
         align-items: center;
     }
-
-
     .valores-port.portfolio .btn-valor {
         width: 80%;
         font-size: 0.9rem;
     }
-
-    
     .valores-port.portfolio p{
-       
         font-size: 0.9rem;
     }
-    
     .btn-modal{
     width: 150%;
     flex-direction: column;    
-}
+    }
 }

@@ -23,7 +23,6 @@ export default function Home(){
 
     return (
         <div className="containerHome">
-            
             <div className="containerPrincipal">
                 <div id="imagemPrincipal">
                 {isUserLoggedIn ? <MenuLogado /> : <Menu />}

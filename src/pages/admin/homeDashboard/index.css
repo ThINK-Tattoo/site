@@ -12,13 +12,10 @@
     height: 100%;
 }
 
-
-
 @media (max-width: 1440px){
     .homeDash{
         max-width: 420px;
     }
-
     .imagem{
         margin-left: 13%;
     }
@@ -28,13 +25,12 @@
     .homeDash{
         max-width: 386px;
     }
-
 }
+
 @media (max-width: 768px){
     .homeDash{
         max-width: 305px;
         margin-top: 15%;
         margin-left: 21%;
     }
-
 }

@@ -53,15 +53,12 @@ export default function Login(){
             <div className="login-tittle">
                 <h1>Lo<span className="span-color">gin</span></h1>
             </div>
-
             <section className="form-conteiner">
-                <form class="form" onSubmit={handleLogin}>
+                <form class="form login" onSubmit={handleLogin}>
                 <FontAwesomeIcon icon={faUser} id="person-icon" />
                     <h4>Login</h4>
-
                     <div className="conteiner-form-group">
                         <div class="form-group">
-
                             <input 
                                 className="input" 
                                 type="email" 
@@ -73,7 +70,6 @@ export default function Login(){
                                 onChange={(e) => setEmail(e.target.value)}
                                 />
                         </div>
-
                         <div class="form-group">
                             <input 
                                 className="input" 
@@ -87,14 +83,10 @@ export default function Login(){
                                 />
                         </div>
                         <p> <Link to="/signup"><strong>Esqueceu a senha?</strong></Link> </p>
-
                     </div>
-
                     <button type="submit" class="btn-entrar">Entrar</button>
                     {error && <p className="error-message">{error}</p>}
-                    
                     <p> Não possui conta? <Link to="/signup"><strong>Cadastrar-se</strong></Link> </p>
-
                 </form>
             </section>
             <Footer/>

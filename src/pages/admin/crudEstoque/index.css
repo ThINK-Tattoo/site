@@ -70,17 +70,18 @@
     justify-content: center;
     align-items: center;
 }
+
 .iconeVisualizacao{
     font-size: 1.8rem;
     cursor: pointer;
 }
-
 
 .accordion-item {
     width: 100%;
     background-color: var(--var-forms-background);
     border-radius: 10px;
 }
+
 .accordion-item button{
     padding: 1vw;
 }
@@ -133,7 +134,6 @@
 .barraPesquisa{
     margin-bottom: 2vw;
 }
-    
 
 @media (max-width: 1300px){
     .headerEstoque{
@@ -148,7 +148,6 @@
     .grupoEstoque{
         margin-left: 18vw;
     }
-    
 }
 
 @media (max-width: 1140px){
@@ -178,15 +177,12 @@
     .grupoEstoque{
         margin-left: 30vw;
     }
-
     .headerEstoque {
         gap: 50vw;
     }
-
     .headerEstoque h2 {
         display: none;
     }
-
     .tableEstoque {
         margin-left: 11vw;
         width: 85%;
