@@ -1,10 +1,11 @@
-import React, {useState, useHistory} from "react";
+import React, {useState, useHistory, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Menu from "../../components/visitante/MenuVisitante";
 import MenuLogado from "../../components/usuarioLogado/MenuLog";
 import Footer from "../../components/Footer";
+import { hotjar } from "react-hotjar";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +14,10 @@ import '../../styleGlobal.css';
 import './index.css';
 
 export default function Login(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [error, setError] = useState();

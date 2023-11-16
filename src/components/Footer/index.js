@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { hotjar } from "react-hotjar";
 
 import Logo from '../../assets/icones/logo.png';
 
@@ -10,6 +11,10 @@ import '../../styleGlobal.css';
 import './index.css';
 
 export default function Footer(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     return(
         <div className="footer-container">
             <Link to="/"><img className="logo-footer" src={Logo} alt="Logo do projeto com o nome ThINK"/></Link>

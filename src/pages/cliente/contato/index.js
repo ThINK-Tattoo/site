@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
+import { hotjar } from "react-hotjar";
 
 import { BallTriangle } from "react-loader-spinner";
 import Modal from 'react-modal';
@@ -18,6 +19,10 @@ import './index.css'
 import axios from "axios";
 
 export default function Contato(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [isModaLoadlOpen, setModalLoadOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);

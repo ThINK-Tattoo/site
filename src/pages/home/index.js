@@ -3,6 +3,7 @@ import Menu from '../../components/visitante/MenuHomeVisitante';
 import MenuLogado from "../../components/usuarioLogado/MenuHomeLog";
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
+import { hotjar } from "react-hotjar";
 
 import '../../styleGlobal.css';
 import './index.css';
@@ -14,6 +15,10 @@ import iconMaq from '../../assets/icones/icon-maq.png';
 import imagemProjeto from '../../assets/home/imagemProjeto.png';
 
 export default function Home(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useEffect(() => {

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { hotjar } from "react-hotjar";
 
 import '../../../styleGlobal.css';
 import './index.css';
@@ -12,6 +13,10 @@ import logo from "../../../assets/icones/logo.png";
 import BarraAcessibilidade from "../../barraAcessibilidade";
 
 export default function Menu(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [isSubMenuOpen, setSubMenuOpen] = useState(false);
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();

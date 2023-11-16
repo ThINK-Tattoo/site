@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import '../../styleGlobal.css';
 import './index.css';
+import { hotjar } from "react-hotjar";
 
 import VLibras from '@moreiraste/react-vlibras';
 
 export default function BarraAcessibilidade(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     const [fontSize, setFontSize] = useState(16);
 
     const increaseFontSize = () => {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { hotjar } from "react-hotjar";
 
 import axios from 'axios';
 
@@ -13,6 +14,10 @@ import '../../../styleGlobal.css';
 import './index.css';
 
 export default function Menu(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [isSubMenuOpen, setSubMenuOpen] = useState(false);
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 

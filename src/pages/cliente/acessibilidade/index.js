@@ -2,11 +2,16 @@ import React,{useEffect, useState} from "react";
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
+import { hotjar } from "react-hotjar";
 
 import '../../../styleGlobal.css';
 import './index.css'
 
 export default function Acessibilidade(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useEffect(() => {

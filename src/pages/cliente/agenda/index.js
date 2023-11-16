@@ -15,6 +15,7 @@ import Modal from 'react-modal';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { hotjar } from 'react-hotjar';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -27,6 +28,10 @@ import './index.css';
 
 
 export default function Agenda(){
+  useEffect(() => {
+    hotjar.initialize(3738750, 6);
+}, []);
+
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {

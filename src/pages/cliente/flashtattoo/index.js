@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/usuarioLogado/MenuLog';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
+import { hotjar } from "react-hotjar";
 
 import axios from "axios";
 
@@ -11,6 +12,10 @@ import '../../../styleGlobal.css';
 import './index.css';
 
 export default function FlashTattoo(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
 const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useEffect(() => {

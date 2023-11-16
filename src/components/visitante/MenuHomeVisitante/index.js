@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
+import { hotjar } from "react-hotjar";
 
 import logo from "../../../assets/icones/logo.png";
 import BarraAcessibilidade from "../../barraAcessibilidade";
@@ -9,6 +10,10 @@ import "../../../styleGlobal.css";
 import "./index.css";
 
 const Menu = () => {
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const toggleMobileMenu = () => {
