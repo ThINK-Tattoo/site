@@ -147,6 +147,50 @@ export default function CrudPortfolio() {
         }
       };
       
+      const handleUpdate = async (e) => {
+        e.preventDefault();
+
+        console.log('Botão clicado!');
+        try {
+            
+            const response = await axios.put(`http://localhost:3636/cliente/updatePortfolio/${portfolio.id}`, portfolio);
+
+            if (response.status === 200) {
+                alert('Dados atualizados com sucesso!');
+                closeModal(); // Fechar o modal após a atualização
+                setPortfolio(updatedPortfolio => ({ ...updatedPortfolio, ...portfolio }));       
+                const updatedPortfolioData = JSON.stringify([portfolio]);             
+                localStorage.setItem('user', updatedPortfolioData);
+                window.location.reload();            } else {
+                alert(`Erro ao atualizar dados: ${response.data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao atualizar dados:', error);
+            alert('Erro ao atualizar dados. Por favor, tente novamente mais tarde.');
+        }
+    };
+
+    const handleExcluir = async (e) => {
+        try {
+            const response = await axios.delete(`http://localhost:3636/cliente/updatePortfolio/${portfolio.id}`, null);
+    
+            if (response.status === 200) {
+                alert('Item excluído com sucesso!');
+                closeModal();
+                
+                // Atualize o estado ou realize ações necessárias após a exclusão do item no banco de dados.
+                
+                const deletePortfolioData = JSON.stringify([portfolio]);
+                localStorage.setItem('user', deletePortfolioData);
+            } else {
+                alert(`Erro ao excluir o item: ${response.data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao excluir o item:', error);
+            alert('Erro ao excluir o item. Por favor, tente novamente mais tarde.');
+        }
+    };
+    
     return (
         <div>
             <Menu />
@@ -209,7 +253,7 @@ export default function CrudPortfolio() {
                             </div>
                             <div className="btn-modal">
                                 <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
-                                <button onClick={closeModal} className="btn btn-cancelar">Cancelar</button>
+                                <button onClick={handleExcluir} className="btn btn-cancelar">Excluir</button>
 
                             </div>
                         </div>
@@ -306,7 +350,7 @@ export default function CrudPortfolio() {
                             </div>
                         </div>
                         <div className="btn-modal">
-                            <button onClick={closeModalEdit} className="btn btn-adicionar">Editar</button>
+                            <button onClick={handleUpdate} className="btn btn-adicionar">Editar</button>
                             <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
 
                         </div>

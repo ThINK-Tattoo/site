@@ -6,6 +6,7 @@ import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
 import iconPerson from '../../../../assets/icones/icon-person.png';
+import axios from 'axios';
 
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +23,13 @@ export default function MinhasInformacoes(){
         idade: 0,
         senha: '',
     });
-      
+    const [formData, setFormData] = useState({
+        nome: '',
+        email: '',
+        telefone: '',
+        idade: '',
+        senha: '',
+    });
     const navigate = useNavigate();
     useEffect(() => {
       const userType = localStorage.getItem("userType");
@@ -35,6 +42,7 @@ export default function MinhasInformacoes(){
           const clienteLog = localStorage.getItem('user');
           const clientData = clienteLog ? JSON.parse(clienteLog) : null;
 
+          
           if (clientData) {
               setClient(clientData[0]);
           }
@@ -45,11 +53,11 @@ export default function MinhasInformacoes(){
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [senha, setSenha] = useState(client.senha);
-    
 
     const toggleSenha = () => {
         setMostrarSenha(!mostrarSenha);
     };
+
 
     const openModal = (e) => {
         e.preventDefault();
@@ -61,7 +69,31 @@ export default function MinhasInformacoes(){
         setIsModalOpen(false);
     };
     
+    
+    const handleUpdate = async (e) => {
+        e.preventDefault();
 
+        console.log('Botão clicado!');
+        try {
+            
+            const response = await axios.put(`http://localhost:3636/cliente/updateclientes/${client.id}`, client);
+
+            if (response.status === 200) {
+                alert('Dados atualizados com sucesso!');
+                closeModal(); // Fechar o modal após a atualização
+                setClient(updatedClient => ({ ...updatedClient, ...client }));       
+                const updatedClientData = JSON.stringify([client]);             
+                localStorage.setItem('user', updatedClientData);
+                window.location.reload();            } else {
+                alert(`Erro ao atualizar dados: ${response.data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao atualizar dados:', error);
+            alert('Erro ao atualizar dados. Por favor, tente novamente mais tarde.');
+        }
+    };
+
+   
     return(
         <div className="container perfil-container">
              {isUserLoggedIn ? <MenuLogado /> : <Menu />}
@@ -85,7 +117,7 @@ export default function MinhasInformacoes(){
                 }}
             >
                 
-                <form className="form modal-form">
+                <form className="form modal-form" onSubmit={handleUpdate} encType="multipart/form-data">
                     <img id="person-icon" src={iconPerson} alt="Icon de usuário" />
                     <h4>Atualizar informações</h4>
                     <div className="container-form-group info-container">
@@ -132,14 +164,14 @@ export default function MinhasInformacoes(){
                     </div>
 
                     <div className="flex">
-                        <button type="submit" className="btn btn-salvar">Salvar</button>
+                        <button type="submit" onClick={handleUpdate}  className="btn btn-salvar">Salvar</button>
                         <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
                     </div>
                 </form>
 
             </Modal>
 
-            <div className="header-image perfil-tittle">
+            <div className="header-imag3e perfil-tittle">
                 <h1>Minhas informaç<span className="span-color">ões</span></h1>
             </div>
 

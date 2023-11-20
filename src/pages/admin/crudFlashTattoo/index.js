@@ -12,10 +12,9 @@ import './index.css';
 import '../../../styleGlobal.css';
 import './index.css'
 
-export default function CrudFlashTattoo() {
+export default function CrudFlashtattoo() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [idAdmin, setIdAdmin] = useState();
-    
     const [formValues, setFormValues] = useState({
         nome: '',
         tamanho: '',
@@ -62,7 +61,7 @@ export default function CrudFlashTattoo() {
                 setIsUserLoggedIn(userType === "admin");
                 const adminLog = localStorage.getItem('user');
                 const adminData = adminLog ? JSON.parse(adminLog) : null;
-                axios.get('http://localhost:3636/admin/selectFlashTattoo')
+                axios.get('http://localhost:3636/admin/selectFlashtattoo')
                 .then(response => {
                 setFlashtatto(response.data);
                 })
@@ -77,7 +76,7 @@ export default function CrudFlashTattoo() {
          
      }, []); 
 
-     const [flashtatto, setFlashtatto] = useState([]);
+     const [Flashtatto, setFlashtatto] = useState([]);
 
      const [imageLoaded, setImageLoaded] = useState(true);
     const [selectedCrudFlashtattoo, setSelectedCrudFlashtattoo] = useState(null);
@@ -137,7 +136,7 @@ export default function CrudFlashTattoo() {
         }
     };
 
-    const handleFlashTattooSubmit = async (e) => {
+    const handleFlashtattooSubmit = async (e) => {
         e.preventDefault();
         
         const formData = new FormData();
@@ -155,7 +154,7 @@ export default function CrudFlashTattoo() {
 
         
         try {
-          const response = await fetch('http://localhost:3636/admin/createFlashTattoo', {
+          const response = await fetch('http://localhost:3636/admin/createFlashtattoo', {
             method: 'POST',
             body: formData
           });
@@ -173,6 +172,49 @@ export default function CrudFlashTattoo() {
           console.error('Erro ao enviar requisição:', error);
         }
       };
+      const handleUpdate = async (e) => {
+        e.preventDefault();
+
+        console.log('Botão clicado!');
+        try {
+            
+            const response = await axios.put(`http://localhost:3636/cliente/updateFlashtatto/${Flashtatto.id}`, Flashtatto);
+
+            if (response.status === 200) {
+                alert('Dados atualizados com sucesso!');
+                closeModal(); // Fechar o modal após a atualização
+                setFlashtatto(updatedFlashtatto => ({ ...updatedFlashtatto, ...Flashtatto }));       
+                const updatedFlashtattoData = JSON.stringify([Flashtatto]);             
+                localStorage.setItem('user', updatedFlashtattoData);
+                window.location.reload();            } else {
+                alert(`Erro ao atualizar dados: ${response.data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao atualizar dados:', error);
+            alert('Erro ao atualizar dados. Por favor, tente novamente mais tarde.');
+        }
+    };
+
+    const handleExcluir = async (e) => {
+        try {
+            const response = await axios.delete(`http://localhost:3636/cliente/updateFlashtatto/${Flashtatto.id}`, null);
+    
+            if (response.status === 200) {
+                alert('Item excluído com sucesso!');
+                closeModal();
+                
+                // Atualize o estado ou realize ações necessárias após a exclusão do item no banco de dados.
+                
+                const deleteFlashtattoData = JSON.stringify([Flashtatto]);
+                localStorage.setItem('user', deleteFlashtattoData);
+            } else {
+                alert(`Erro ao excluir o item: ${response.data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao excluir o item:', error);
+            alert('Erro ao excluir o item. Por favor, tente novamente mais tarde.');
+        }
+    };
     return (
         <div>
             <Menu />
@@ -181,7 +223,7 @@ export default function CrudFlashTattoo() {
                 <h1>Flash Tat<span className="span-color-dashboard">too</span></h1>
                 </div>
                 <section className="CrudFlashtattoo">
-                    {flashtatto.map(( CrudFlashtattoo) => (
+                    {Flashtatto.map(( CrudFlashtattoo) => (
                         <div key={ CrudFlashtattoo.id} className="portifolio-item">
                             {!imageLoaded ? (
                                 <p>Carregando...</p>
@@ -196,7 +238,7 @@ export default function CrudFlashTattoo() {
                     <button onClick={openModalAdd} className="btnCrud">Adicionar</button>
                 </div>
                 <Modal isOpen={isModalOpen} onRequestClose={closeModal}
-                    id="modal-container-flashtatto"
+                    id="modal-container-Flashtatto"
                     contentLabel="Detalhes da Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -264,7 +306,7 @@ export default function CrudFlashTattoo() {
                                 </div>
                             </div><div className="btn-modal">
                                 <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
-                                <button onClick={closeModal} className="btn btn-cancelar">Cancelar</button>
+                                <button onClick={handleExcluir} className="btn btn-cancelar">Excluir</button>
 
                             </div>
                         </div>
@@ -277,7 +319,7 @@ export default function CrudFlashTattoo() {
                 </Modal>
 
                 <Modal isOpen={isModalOpenEdit} onRequestClose={closeModalEdit}
-                    id="modal-edit-flashtatto"
+                    id="modal-edit-Flashtatto"
                     contentLabel="Editando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -427,7 +469,7 @@ export default function CrudFlashTattoo() {
                         </div>
 
                         <div className="btn-modal">
-                            <button onClick={closeModalEdit} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={handleUpdate} className="btn btn-adicionar">Adicionar</button>
                             <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
 
                         </div>
@@ -438,7 +480,7 @@ export default function CrudFlashTattoo() {
                 </Modal>
 
                 <Modal isOpen={isModalOpenAdd} onRequestClose={closeModalAdd}
-                    id="modal-add-flashtatto"
+                    id="modal-add-Flashtatto"
                     contentLabel="Adicionando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -575,7 +617,7 @@ export default function CrudFlashTattoo() {
                         <p className="txt-white">{formValues.valor2}</p>
                         <p className="txt-white">{formValues.valor3}</p>
                         <div className="btn-modal">
-                            <button onClick={handleFlashTattooSubmit} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={handleFlashtattooSubmit} className="btn btn-adicionar">Adicionar</button>
                             <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
                         </div>
                     </div>

@@ -325,8 +325,7 @@ export default function CrudEstoque(){
                             </tr>
                         </thead>
                         <tbody>
-                        {itensEstoque
-                        .filter((item) =>
+                        {itensEstoque.filter((item) =>
                         item.descricaoItem.toLowerCase().includes(searchText.toLowerCase()) ||
                         item.nomeItem.toLowerCase().includes(searchText.toLowerCase()) ||
                         item.quantidadeItem.toString().includes(searchText) ||
