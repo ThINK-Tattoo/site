@@ -9,12 +9,10 @@ import image from '../../../assets/icones/Upload_Image.png';
 import '../../../styleGlobal.css';
 import './index.css';
 
-import '../../../styleGlobal.css';
-import './index.css'
-
-export default function CrudFlashtattoo() {
+export default function CrudFlashtatto() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [idAdmin, setIdAdmin] = useState();
+    
     const [formValues, setFormValues] = useState({
         nome: '',
         tamanho: '',
@@ -55,31 +53,31 @@ export default function CrudFlashtattoo() {
          useEffect(() => {
             const userType = localStorage.getItem("userType");
     
-            if(!userType || userType === 'cliente'){
-                navigate('/signin');
-            } else if(userType === 'admin'){
-                setIsUserLoggedIn(userType === "admin");
-                const adminLog = localStorage.getItem('user');
-                const adminData = adminLog ? JSON.parse(adminLog) : null;
-                axios.get('http://localhost:3636/admin/selectFlashtattoo')
-                .then(response => {
-                setFlashtatto(response.data);
-                })
-                .catch(error => {
-                console.error('Erro ao obter dados do portfólio:', error);
-                });
-                if (adminData) {
-                    setAdmin(adminData);
-                    setIdAdmin(adminData[0].id);
+        if(!userType || userType === 'cliente'){
+            navigate('/signin');
+        } else if(userType === 'admin'){
+            setIsUserLoggedIn(userType === "admin");
+            const adminLog = localStorage.getItem('user');
+            const adminData = adminLog ? JSON.parse(adminLog) : null;
+            axios.get('http://localhost:3636/admin/selectFlashtatto')
+            .then(response => {
+            setFlashtatto(response.data);
+            })
+            .catch(error => {
+            console.error('Erro ao obter dados do portfólio:', error);
+            });
+            if (adminData) {
+                setAdmin(adminData);
+                setIdAdmin(adminData[0].id);
                 }
             }
          
      }, []); 
 
-     const [Flashtatto, setFlashtatto] = useState([]);
+    const [flashtatto, setFlashtatto] = useState([]);
 
      const [imageLoaded, setImageLoaded] = useState(true);
-    const [selectedCrudFlashtattoo, setSelectedCrudFlashtattoo] = useState(null);
+    const [selectedCrudFlashtatto, setSelectedCrudFlashtatto] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
@@ -89,22 +87,22 @@ export default function CrudFlashtattoo() {
 
     const navigate = useNavigate();
 
-    const openModal = ( CrudFlashtattoo) => {
-        setSelectedCrudFlashtattoo( CrudFlashtattoo);
+    const openModal = ( CrudFlashtatto) => {
+        setSelectedCrudFlashtatto( CrudFlashtatto);
         setModalData({
-            nome:  CrudFlashtattoo.nome,
+            nome:  CrudFlashtatto.nome,
             tamanho: selectedSize,
-            local:  CrudFlashtattoo.local,
-            Tipo:  CrudFlashtattoo.Tipo,
-            Cores:  CrudFlashtattoo.Cores,
-            imagem:  CrudFlashtattoo.imagem,
+            local:  CrudFlashtatto.local,
+            Tipo:  CrudFlashtatto.Tipo,
+            Cores:  CrudFlashtatto.Cores,
+            imagem:  CrudFlashtatto.imagem,
         });
         setIsModalOpen(true);
     };
     const [open, setOpen] = useState(false);
 
     const closeModal = () => {
-        setSelectedCrudFlashtattoo(null);
+        setSelectedCrudFlashtatto(null);
         setModalData(null);
         setIsModalOpen(false);
     };
@@ -136,7 +134,7 @@ export default function CrudFlashtattoo() {
         }
     };
 
-    const handleFlashtattooSubmit = async (e) => {
+    const handleFlashtattoSubmit = async (e) => {
         e.preventDefault();
         
         const formData = new FormData();
@@ -154,7 +152,7 @@ export default function CrudFlashtattoo() {
 
         
         try {
-          const response = await fetch('http://localhost:3636/admin/createFlashtattoo', {
+            const response = await fetch('http://localhost:3636/admin/createFlashtatto', {
             method: 'POST',
             body: formData
           });
@@ -178,13 +176,13 @@ export default function CrudFlashtattoo() {
         console.log('Botão clicado!');
         try {
             
-            const response = await axios.put(`http://localhost:3636/cliente/updateFlashtatto/${Flashtatto.id}`, Flashtatto);
+            const response = await axios.put(`http://localhost:3636/cliente/updateFlashtatto/${Flashtatto.id}`, flashtatto);
 
             if (response.status === 200) {
                 alert('Dados atualizados com sucesso!');
                 closeModal(); // Fechar o modal após a atualização
-                setFlashtatto(updatedFlashtatto => ({ ...updatedFlashtatto, ...Flashtatto }));       
-                const updatedFlashtattoData = JSON.stringify([Flashtatto]);             
+                setFlashtatto(updatedFlashtatto => ({ ...updatedFlashtatto, ...flashtatto }));       
+                const updatedFlashtattoData = JSON.stringify([flashtatto]);             
                 localStorage.setItem('user', updatedFlashtattoData);
                 window.location.reload();            } else {
                 alert(`Erro ao atualizar dados: ${response.data.message}`);
@@ -197,7 +195,7 @@ export default function CrudFlashtattoo() {
 
     const handleExcluir = async (e) => {
         try {
-            const response = await axios.delete(`http://localhost:3636/cliente/updateFlashtatto/${Flashtatto.id}`, null);
+            const response = await axios.delete(`http://localhost:3636/cliente/updateFlashtatto/${flashtatto.id}`, null);
     
             if (response.status === 200) {
                 alert('Item excluído com sucesso!');
@@ -205,7 +203,7 @@ export default function CrudFlashtattoo() {
                 
                 // Atualize o estado ou realize ações necessárias após a exclusão do item no banco de dados.
                 
-                const deleteFlashtattoData = JSON.stringify([Flashtatto]);
+                const deleteFlashtattoData = JSON.stringify([flashtatto]);
                 localStorage.setItem('user', deleteFlashtattoData);
             } else {
                 alert(`Erro ao excluir o item: ${response.data.message}`);
@@ -222,14 +220,14 @@ export default function CrudFlashtattoo() {
                 <div className="tituloDashboard">
                 <h1>Flash Tat<span className="span-color-dashboard">too</span></h1>
                 </div>
-                <section className="CrudFlashtattoo">
-                    {Flashtatto.map(( CrudFlashtattoo) => (
-                        <div key={ CrudFlashtattoo.id} className="portifolio-item">
+                <section className="CrudFlashtatto">
+                    {flashtatto.map(( CrudFlashtatto) => (
+                        <div key={ CrudFlashtatto.id} className="portifolio-item">
                             {!imageLoaded ? (
                                 <p>Carregando...</p>
                             ) : (
-                            <img id="img-flash" onClick={() => openModal( CrudFlashtattoo)}
-                            src={`http://localhost:3636/src/temp/${CrudFlashtattoo.imagem}`} alt={CrudFlashtattoo.nome} />
+                            <img id="img-flash" onClick={() => openModal( CrudFlashtatto)}
+                            src={`http://localhost:3636/src/temp/${CrudFlashtatto.imagem}`} alt={CrudFlashtatto.nome} />
                             )}
                         </div>
                     ))}
@@ -238,7 +236,7 @@ export default function CrudFlashtattoo() {
                     <button onClick={openModalAdd} className="btnCrud">Adicionar</button>
                 </div>
                 <Modal isOpen={isModalOpen} onRequestClose={closeModal}
-                    id="modal-container-Flashtatto"
+                    id="modal-container-flashtatto"
                     contentLabel="Detalhes da Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -254,20 +252,20 @@ export default function CrudFlashtattoo() {
                         X
                     </button>
 
-                    {selectedCrudFlashtattoo && (
+                    {selectedCrudFlashtatto && (
                         <div className="modal-tattoo">
                             <div id="modal-info-tatto">
-                                <img src={`http://localhost:3636/src/temp/${selectedCrudFlashtattoo.imagem}`} alt={selectedCrudFlashtattoo.nome} />
+                                <img src={`http://localhost:3636/src/temp/${selectedCrudFlashtatto.imagem}`} alt={selectedCrudFlashtatto.nome} />
                                 <div className="modal-info-description">
                                     <div className="description">
-                                        <h3 className="txt-white" >{selectedCrudFlashtattoo.nome}</h3>
+                                        <h3 className="txt-white" >{selectedCrudFlashtatto.nome}</h3>
                                     </div>
                                     <div className="description">
                                         <h3 className="txt-white">Descrição:</h3>
-                                        <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedCrudFlashtattoo.tamanho}</p>
-                                        <p className="txt-white"><strong>Local: </strong>{selectedCrudFlashtattoo.local}</p>
-                                        <p className="txt-white"><strong>Tipo: </strong> {selectedCrudFlashtattoo.Tipo}</p>
-                                        <p className="txt-white"><strong>Cores: </strong> {selectedCrudFlashtattoo.Cores}</p>
+                                        <p className="txt-white"><strong>Tamanho: </strong> {selectedSize || selectedCrudFlashtatto.tamanho}</p>
+                                        <p className="txt-white"><strong>Local: </strong>{selectedCrudFlashtatto.local}</p>
+                                        <p className="txt-white"><strong>Tipo: </strong> {selectedCrudFlashtatto.Tipo}</p>
+                                        <p className="txt-white"><strong>Cores: </strong> {selectedCrudFlashtatto.Cores}</p>
                                     </div>
 
 
@@ -284,7 +282,7 @@ export default function CrudFlashtattoo() {
                                     >
                                         5 cm
                                     </button>
-                                    <p className="txt-white">R${selectedCrudFlashtattoo.valor1}</p>
+                                    <p className="txt-white">R${selectedCrudFlashtatto.valor1}</p>
                                 </div>
                                 <div id="second-inf">
                                     <button 
@@ -293,7 +291,7 @@ export default function CrudFlashtattoo() {
                                     >
                                         10 cm
                                     </button>
-                                    <p className="txt-white">R${selectedCrudFlashtattoo.valor2}</p>
+                                    <p className="txt-white">R${selectedCrudFlashtatto.valor2}</p>
                                 </div>
                                 <div id="third-inf">
                                     <button 
@@ -302,7 +300,7 @@ export default function CrudFlashtattoo() {
                                     >
                                         15 cm
                                     </button>
-                                    <p className="txt-white">R${selectedCrudFlashtattoo.valor2}</p>
+                                    <p className="txt-white">R${selectedCrudFlashtatto.valor2}</p>
                                 </div>
                             </div><div className="btn-modal">
                                 <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
@@ -319,7 +317,7 @@ export default function CrudFlashtattoo() {
                 </Modal>
 
                 <Modal isOpen={isModalOpenEdit} onRequestClose={closeModalEdit}
-                    id="modal-edit-Flashtatto"
+                    id="modal-edit-flashtatto"
                     contentLabel="Editando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -335,7 +333,7 @@ export default function CrudFlashtattoo() {
                         X
                     </button>
 
-                    {selectedCrudFlashtattoo && (
+                    {selectedCrudFlashtatto && (
                         <div className="modal-tatto">
                         <div id="modal-edit-tatto">
                             <input
@@ -346,7 +344,7 @@ export default function CrudFlashtattoo() {
                                 id="imageInpute"
                             />
                             <label htmlFor="imageInpute">
-                                <img src={selectedImage ? URL.createObjectURL(selectedImage): `http://localhost:3636/src/temp/${selectedCrudFlashtattoo.imagem}`} 
+                                <img src={selectedImage ? URL.createObjectURL(selectedImage): `http://localhost:3636/src/temp/${selectedCrudFlashtatto.imagem}`} 
                                 alt="Upload de imagem" 
                                 style={{ maxWidth: '270px', maxHeight: '268px' }}
 
@@ -356,12 +354,12 @@ export default function CrudFlashtattoo() {
                                 <div className="description">
                                     <input className="inputp input" type="text" id="nome"
                                         onChange={(e) => {
-                                            setSelectedCrudFlashtattoo({
-                                                ...selectedCrudFlashtattoo,
+                                            setSelectedCrudFlashtatto({
+                                                ...selectedCrudFlashtatto,
                                                 nome: e.target.value
                                             });
                                         }}
-                                        name="nome" value={selectedCrudFlashtattoo.nome} required
+                                        name="nome" value={selectedCrudFlashtatto.nome} required
                                     />
 
                                 </div>
@@ -369,39 +367,39 @@ export default function CrudFlashtattoo() {
                                     <h3 className="txt-white">Descrição</h3>
                                     <input className="inputp input" type="text" id="tamanho"
                                         onChange={(e) => {
-                                            setSelectedCrudFlashtattoo({
-                                                ...selectedCrudFlashtattoo,
+                                            setSelectedCrudFlashtatto({
+                                                ...selectedCrudFlashtatto,
                                                 tamanho: e.target.value
                                             });
                                         }}
-                                        name="tamaho" value={selectedCrudFlashtattoo.tamanho} required />
+                                        name="tamaho" value={selectedCrudFlashtatto.tamanho} required />
 
                                     <input className="inputp input" type="text" id="local"
                                         onChange={(e) => {
-                                            setSelectedCrudFlashtattoo({
-                                                ...selectedCrudFlashtattoo,
+                                            setSelectedCrudFlashtatto({
+                                                ...selectedCrudFlashtatto,
                                                 local: e.target.value
                                             });
                                         }}
-                                        name="local" value={selectedCrudFlashtattoo.local} required />
+                                        name="local" value={selectedCrudFlashtatto.local} required />
 
                                     <input className="inputp input" type="text" id="Tipo"
                                         onChange={(e) => {
-                                            setSelectedCrudFlashtattoo({
-                                                ...selectedCrudFlashtattoo,
+                                            setSelectedCrudFlashtatto({
+                                                ...selectedCrudFlashtatto,
                                                 tipo: e.target.value
                                             });
                                         }}
-                                        name="tipo" value={selectedCrudFlashtattoo.tipo} required />
+                                        name="tipo" value={selectedCrudFlashtatto.tipo} required />
 
                                     <input className="inputp input" type="text" id="cores"
                                         onChange={(e) => {
-                                            setSelectedCrudFlashtattoo({
-                                                ...selectedCrudFlashtattoo,
+                                            setSelectedCrudFlashtatto({
+                                                ...selectedCrudFlashtatto,
                                                 cores: e.target.value
                                             });
                                         }}
-                                        name="cores" value={selectedCrudFlashtattoo.cores} required />
+                                        name="cores" value={selectedCrudFlashtatto.cores} required />
 
                                 </div>
 
@@ -420,10 +418,10 @@ export default function CrudFlashtattoo() {
                                     </button>
                                     <p></p>
                                     <input className="inputv input" type="number" id="tamanhope valor1" 
-                                     value={selectedCrudFlashtattoo.valor1}
+                                     value={selectedCrudFlashtatto.valor1}
                                      onChange={(e) => {
-                                        setSelectedCrudFlashtattoo({
-                                            ...selectedCrudFlashtattoo,
+                                        setSelectedCrudFlashtatto({
+                                            ...selectedCrudFlashtatto,
                                             valor1: e.target.value
                                         });
                                     }}
@@ -438,10 +436,10 @@ export default function CrudFlashtattoo() {
                                     </button>
                                     <p></p>
                                     <input className="inputv input" type="number" id="tamanhome valor2" 
-                                    value={selectedCrudFlashtattoo.valor2} 
+                                    value={selectedCrudFlashtatto.valor2} 
                                     onChange={(e) => {
-                                        setSelectedCrudFlashtattoo({
-                                            ...selectedCrudFlashtattoo,
+                                        setSelectedCrudFlashtatto({
+                                            ...selectedCrudFlashtatto,
                                             valor2: e.target.value
                                         });
                                     }}
@@ -456,10 +454,10 @@ export default function CrudFlashtattoo() {
                                     </button>
                                     <p></p>
                                     <input className="inputv" type="number" 
-                                     value={ selectedCrudFlashtattoo.valor3} 
+                                     value={ selectedCrudFlashtatto.valor3} 
                                      onChange={(e) => {
-                                        setSelectedCrudFlashtattoo({
-                                            ...selectedCrudFlashtattoo,
+                                        setSelectedCrudFlashtatto({
+                                            ...selectedCrudFlashtatto,
                                             valor3: e.target.value
                                         });
                                     }}
@@ -480,7 +478,7 @@ export default function CrudFlashtattoo() {
                 </Modal>
 
                 <Modal isOpen={isModalOpenAdd} onRequestClose={closeModalAdd}
-                    id="modal-add-Flashtatto"
+                    id="modal-add-flashtatto"
                     contentLabel="Adicionando a Tatuagem"
                     style={{
                         overlay: { backgroundColor: 'rgba(0,0,0,0.5)', },
@@ -617,8 +615,8 @@ export default function CrudFlashtattoo() {
                         <p className="txt-white">{formValues.valor2}</p>
                         <p className="txt-white">{formValues.valor3}</p>
                         <div className="btn-modal">
-                            <button onClick={handleFlashtattooSubmit} className="btn btn-adicionar">Adicionar</button>
-                            <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
+                            <button onClick={handleFlashtattoSubmit} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={closeModalAdd} className="btn btn-cancelarAdmin">Cancelar</button>
                         </div>
                     </div>
                 </Modal>

@@ -21,14 +21,14 @@ import { set } from "date-fns";
 
 export default function CrudEstoque(){
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-     const navigate = useNavigate();
-     const [formData, setFormData] = useState({
-        nome: '',
-        grupoItem: '', 
-        quantidade: 0,
-        dataCompra: '',
-        dataValidade: '',
-    });
+        const navigate = useNavigate();
+        const [formData, setFormData] = useState({
+            nome: '',
+            grupoItem: '', 
+            quantidade: 0,
+            dataCompra: '',
+            dataValidade: '',
+        });
     
     const handleChange = (e) => {
         setFormData({
@@ -36,8 +36,7 @@ export default function CrudEstoque(){
             [e.target.name]: e.target.value,
         });
     };
-    
-        
+
     useEffect(() => {
         const userType = localStorage.getItem("userType");
 
@@ -48,6 +47,7 @@ export default function CrudEstoque(){
         }
         
     }, []);
+
     const [grupoEstoque, setGrupoEstoque] =useState([
         {
             id: 1,
@@ -92,6 +92,7 @@ export default function CrudEstoque(){
     ]);
 
     const [isModalAddOpen, setIsModalAddOpen]= useState(false);
+
     const openModalAdd = (e) => {
         setIsModalAddOpen(true);
     }
@@ -107,7 +108,6 @@ export default function CrudEstoque(){
         return itensFiltrados.map((item, index) => (
             <li key={index}>{item.nome} - Quantidade: {item.quantidade}</li>
         ));
-    
     }
 
     const [selectedGrupoEstoque, setSelectedGrupoEstoque] = useState(null);
@@ -121,7 +121,6 @@ export default function CrudEstoque(){
     }
 
     const [activeAccordion, setActiveAccordion] = useState(null);
-
 
     const renderAccordionItems = (grupo) => {
         const itensDoGrupo = itensEstoque.filter((item) => item.descricaoItem === grupo);
@@ -151,7 +150,6 @@ export default function CrudEstoque(){
         ));
     };
 
-    
     const toggleAccordion = (index) => {
         setActiveAccordion((prevIndex) => (prevIndex === index ? null : index));
     };
@@ -160,7 +158,7 @@ export default function CrudEstoque(){
     const [iconeVisualizacao, setIconeVisualizacao] = useState(faChartGantt); 
     const alternarVisualizacao = () => {
         setVisualizacaoGrade(!visualizacaoGrade);
-      setIconeVisualizacao(visualizacaoGrade ? faBorderAll : faChartGantt);
+        setIconeVisualizacao(visualizacaoGrade ? faBorderAll : faChartGantt);
     };
 
     const [searchText, setSearchText] = useState("");
@@ -197,9 +195,6 @@ export default function CrudEstoque(){
     
             if (response.status === 201) {
                 const data = response.data;
-
-              
-
                 console.log(data.message);
                 closeModalAdd();
                 window.location.reload();
@@ -213,18 +208,18 @@ export default function CrudEstoque(){
 
     useEffect(() => {
         const fetchData = async () => {
-          try {
+            try {
             
             const response = await axios.get('http://localhost:3636/admin/selectItemEstoque');
             setItensEstoque(response.data);
             console.log(itensEstoque);
-          } catch (error) {
+            } catch (error) {
             console.error('Erro ao buscar dados do estoque:', error);
-          }
+            }
         };
     
         fetchData();
-      }, []);
+    }, []);
     
     return (
         <div>
@@ -332,7 +327,6 @@ export default function CrudEstoque(){
                         item.dataValidadeItem.toLowerCase().includes(searchText.toLowerCase()) ||
                         item.dataHora.toLowerCase().includes(searchText.toLowerCase())
                         )
-
                         .map((item, index) => (
                             <tr key={index} className={index % 2 === 0 ? 'cor1' : 'cor2'}>
                                 <td style={{ textAlign: 'center' }}>
@@ -388,7 +382,6 @@ export default function CrudEstoque(){
                             value={formData.nome}
                             onChange={handleChange}
                         />
-
                     </div>
                     <div className="form-group-estoque">
                         <label>Tipo:</label>
@@ -427,8 +420,8 @@ export default function CrudEstoque(){
                     </div>
                 </form>
                 <div className="btn-modal">
-                                <button onClick={handleAddItem} className="btn btn-cadastrar">Adicionar</button>
-                                <button onClick={closeModalAdd} className="btn btn-cancelar">Cancelar</button>
+                    <button onClick={handleAddItem} className="btn btn-cadastrar">Adicionar</button>
+                    <button onClick={closeModalAdd} className="btn btn-cancelarAdmin">Cancelar</button>
                 </div>
             </Modal>
             </section>

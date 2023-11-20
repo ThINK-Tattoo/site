@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from "react";
 import Modal from 'react-modal';
-import Menu from '../../../../components/usuarioLogado/MenuLog';
+import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+<<<<<<< HEAD
 import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
 import iconPerson from '../../../../assets/icones/icon-person.png';
 import axios from 'axios';
+=======
+import { faEye, faEyeSlash, faEdit, faUser } from '@fortawesome/free-solid-svg-icons';
+import { hotjar } from "react-hotjar";
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +19,10 @@ import '../../../../styleGlobal.css';
 import './index.css';
 
 export default function MinhasInformacoes(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [client, setClient] = useState({
         id: 0,
@@ -23,6 +32,7 @@ export default function MinhasInformacoes(){
         idade: 0,
         senha: '',
     });
+<<<<<<< HEAD
     const [formData, setFormData] = useState({
         nome: '',
         email: '',
@@ -30,18 +40,26 @@ export default function MinhasInformacoes(){
         idade: '',
         senha: '',
     });
+=======
+    
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
     const navigate = useNavigate();
     useEffect(() => {
-      const userType = localStorage.getItem("userType");
-      
-  
-      if(!userType || userType === 'admin'){
-          navigate('/signin');
-      }else if(userType === 'cliente'){
-          setIsUserLoggedIn(userType === "cliente");
-          const clienteLog = localStorage.getItem('user');
-          const clientData = clienteLog ? JSON.parse(clienteLog) : null;
+        const userType = localStorage.getItem("userType");
+        
+        if(!userType || userType === 'admin'){
+            navigate('/signin');
+        }else if(userType === 'cliente'){
+            setIsUserLoggedIn(userType === "cliente");
+            const clienteLog = localStorage.getItem('user');
+            const clientData = clienteLog ? JSON.parse(clienteLog) : null;
+        if (clientData) {
+            setClient(clientData[0]);
+        }
+        }
+    }, []);
 
+<<<<<<< HEAD
           
           if (clientData) {
               setClient(clientData[0]);
@@ -54,6 +72,12 @@ export default function MinhasInformacoes(){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [senha, setSenha] = useState(client.senha);
 
+=======
+    const [mostrarSenha, setMostrarSenha] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [senha, setSenha] = useState(client.senha);
+    
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
     const toggleSenha = () => {
         setMostrarSenha(!mostrarSenha);
     };
@@ -65,13 +89,15 @@ export default function MinhasInformacoes(){
     };
 
     const closeModal = () => {
-       
         setIsModalOpen(false);
     };
+<<<<<<< HEAD
     
     
     const handleUpdate = async (e) => {
         e.preventDefault();
+=======
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
 
         console.log('Botão clicado!');
         try {
@@ -96,7 +122,7 @@ export default function MinhasInformacoes(){
    
     return(
         <div className="container perfil-container">
-             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
+            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
@@ -115,16 +141,22 @@ export default function MinhasInformacoes(){
                         height: '100%'
                     },
                 }}
+<<<<<<< HEAD
             >
                 
                 <form className="form modal-form" onSubmit={handleUpdate} encType="multipart/form-data">
                     <img id="person-icon" src={iconPerson} alt="Icon de usuário" />
+=======
+            > 
+                <form className="form modal-form">
+                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                     <h4>Atualizar informações</h4>
                     <div className="container-form-group info-container">
                         <div className="form-group info-perfil">
                             <label htmlFor="nome">Nome:</label>
                             <input
-                                className="input-info input"
+                                className="input"
                                 type="text"
                                 id="nome"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, nome: e.target.value }))}
@@ -134,7 +166,7 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="email">Email:</label>
                             <input
-                                className="input-info input"
+                                className="input"
                                 type="text"
                                 id="email"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, email: e.target.value }))}
@@ -144,7 +176,7 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="telefone">Telefone:</label>
                             <input
-                                className="input-info input"
+                                className="input"
                                 type="text"
                                 id="telefone"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, telefone: e.target.value }))}
@@ -154,49 +186,70 @@ export default function MinhasInformacoes(){
                         <div className="form-group info-perfil">
                             <label htmlFor="idade">Idade:</label>
                             <input
-                                className="input-info input"
+                                className="input"
                                 type="number"
                                 id="idade"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, idade: e.target.value }))}
                                 value={client.idade }
                             />
-                        </div>
+                        </div> 
                     </div>
-
                     <div className="flex">
+<<<<<<< HEAD
                         <button type="submit" onClick={handleUpdate}  className="btn btn-salvar">Salvar</button>
                         <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
+=======
+                        <button type="submit" className="btn btn-salvarInfo">Salvar</button>
+                        <button className="btn btn-cancelarInfo" onClick={closeModal}>Cancelar</button>
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                     </div>
                 </form>
-
             </Modal>
+<<<<<<< HEAD
 
             <div className="header-imag3e perfil-tittle">
+=======
+            <div className="header-image perfil-tittle">
+>>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                 <h1>Minhas informaç<span className="span-color">ões</span></h1>
             </div>
-
             <section className="form-container">
                 <form class="form form-info">
-                    <img id="person-icon" src={iconPerson} alt="Icon de usuário"/>
+                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
                     <h4>Informações</h4>
                     <div class="container-form-group info-container">
                         <div class="form-group info-perfil">
                             <label for="nome">Nome:</label>
-                            <input className="input-info input" type="text" id="nome"  value={client.nome} readOnly />
+                            <input className="input" type="text" id="nome"  value={client.nome} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="email">Email:</label>
-                            <input className="input-info input" type="text" id="email"  value={client.email} readOnly />
+                            <input className="input" type="text" id="email"  value={client.email} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="telefone">Telefone:</label>
-                            <input className="input-info input" type="text" id="telefone"  value={client.telefone} readOnly />
+                            <input className="input" type="text" id="telefone"  value={client.telefone} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="idade">Idade:</label>
-                            <input className="input-info input" type="text" id="idade" value={client.idade} readOnly />
+                            <input className="input" type="text" id="idade" value={client.idade} readOnly />
                         </div>
-                       
+                        <div class="form-group info-perfil">
+                            <label for="telefone">Senha:</label>
+                            <div className="input-senha">
+                                <input
+                                    type={mostrarSenha ? 'text' : 'password'}
+                                    id="senha"
+                                    value={senha}
+                                    readonly
+                                />
+                                <FontAwesomeIcon
+                                    icon={mostrarSenha ? faEyeSlash : faEye}
+                                    className="toggle-password"
+                                    onClick={toggleSenha}
+                                />
+                            </div>
+                        </div>
                     </div>
                     <button onClick={(e) => openModal(e)} class="btn btn-editar">
                         <FontAwesomeIcon className="editIcon" icon={faEdit } />

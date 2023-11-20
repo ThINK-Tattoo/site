@@ -10,6 +10,10 @@
     background-position: center;
 }
 
+.alto-contraste #imagemPrincipal{
+    background-image: url("../../assets/home/image\ 1\ -\ alto\ contraste.png");
+}
+
 .itensContainer {
     z-index: 3;
     display: flex;
@@ -33,6 +37,7 @@
 .agende{
 width: 10rem !important;
 margin-bottom: 8rem;
+margin-top: 65%;
 }
 
 .divisao{
@@ -45,8 +50,8 @@ margin-bottom: 8rem;
     grid-template-columns: repeat(3, 1fr);
     color: white;
     text-align: center;
-  }
-  
+}
+
 .grid div h2{
     margin-top: 45%;
     margin-bottom: 45%;
@@ -56,17 +61,30 @@ margin-bottom: 8rem;
     background-image: url("../../assets/home/grid1.png");
     max-height: 480px;
     background-position: center;
-
 }
+
+.alto-contraste #grid1{
+    background-image: url("../../assets/home/grid1\ -\ alto\ contraste.png");
+}
+
 #grid2{
     background-image: url("../../assets/home/grid2.png");
     max-height: 480px;
     background-position: center;
 }
+
+.alto-contraste #grid2{
+    background-image: url("../../assets/home/grid2\ -\ alto\ contraste.png");
+}
+
 #grid3{
     background-image: url("../../assets/home/grid3.png");
     max-height: 480px;
     background-position: center;
+}
+
+.alto-contraste #grid3{
+    background-image: url("../../assets/home/grid3\ -\ alto\ contraste.png");
 }
 
 .projeto{
@@ -143,6 +161,11 @@ margin-bottom: 8rem;
     display: flex;
     justify-content: center;
 }
+
+.alto-contraste .portfolioHome{
+    background-image: url("../../assets/home/tattoo1\ -\ alto\ contraste.png");
+}
+
 .portfolioConteudo {
     display: flex;
     flex-direction: column;
@@ -164,6 +187,17 @@ margin-bottom: 8rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+.iconEmail, .iconCoracao {
+    color: var(--var-lilas);
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+.iconSeta{
+    color: var(--var-lilas);
+    height: 40px;
+}
+
 .cuidados{
     background-image: url('../../assets/home/tattoo2.png');
     background-position: center;
@@ -176,6 +210,10 @@ margin-bottom: 8rem;
     flex-direction: column;
 }
 
+.alto-contraste .cuidados {
+    background-image: url('../../assets/home/tattoo2\ -\ alto\ contraste.png');
+}
+
 .cuidados p{
     color: white;
     text-align: center;
@@ -185,7 +223,6 @@ margin-bottom: 8rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 1.5vw;
-
 }
 
 .cuidadosTopicosGeral div{
@@ -198,10 +235,7 @@ margin-bottom: 8rem;
     align-items: center;
     margin-left: 1rem;
 }
-.iconSeta{
-    margin-left: 0;
-    max-height: 48px;
-}
+
 .mensagem{
     background-image: url('../../assets/home/tattoo3.png');
     background-position: center;
@@ -211,6 +245,10 @@ margin-bottom: 8rem;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.alto-contraste .mensagem{
+    background-image: url('../../assets/home/tattoo3\ -\ alto\ contraste.png');
 }
 
 .mensagemContainer{
@@ -262,7 +300,17 @@ option{
     color: white;
 }
 
+.alto-contraste .iconCoracao{
+    color: yellow;
+}
 
+.alto-contraste .iconEmail{
+    color: yellow;
+}
+
+.alto-contraste .iconSeta{
+    color: yellow;
+}
 /* Estilos para tablets */
 @media (max-width: 1300px){
     .input {
@@ -360,9 +408,7 @@ option{
     .cuidadosEmensagem{
         display: block;
     }
-
 }
-
 /*Estilos para mobile*/
 @media (max-width: 576px){
     .input{
@@ -389,7 +435,7 @@ option{
 @media (max-width: 450px) {
     .itensContainer h1 {
     font-size: 90px;
-} 
+    } 
 }
 
 @media (max-width: 425px) {

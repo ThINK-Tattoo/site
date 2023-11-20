@@ -1,6 +1,4 @@
-H/* Estilos padrão para desktop */
-
-.flashtattoo-tittle {
+.flashtattoo-title {
     background-image: url("../../../assets/header/flashtattoo-image.png");
 }
 
@@ -143,7 +141,33 @@ H/* Estilos padrão para desktop */
     border: 1px solid white;
 }
 
+.alto-contraste .flashtattoo-title{
+    background-image: none;
+}
 
+.alto-contraste #info-flashtattoo {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+.alto-contraste .modal-info-description .h3, .alto-contraste .modal-info-description .description, .alto-contraste .tamanho-info h3{
+    border: 1px solid white;
+    background-color: transparent !important;
+}
+
+.alto-contraste .valores-tattoo .btn-valor {
+    background-color: transparent;
+    border: 1px solid white;
+    font-weight: 900;
+}
+
+.alto-contraste .valores-tattoo .btn-valor:hover {
+    background-color: yellow;
+    border: none;
+    font-weight: 900;
+    color: black !important;
+}
 /* Estilos para tablets */
 @media (max-width: 1124px) {
     .flashtattoo {
@@ -154,7 +178,6 @@ H/* Estilos padrão para desktop */
     }
 }
 
-
 @media (max-width: 875px) {
     .flashtattoo {
         grid-template-columns: repeat(2, 1fr);
@@ -162,12 +185,9 @@ H/* Estilos padrão para desktop */
     #modal-container{
         width: 90% !important;
     }
-
 }
 
 @media (max-width: 800px) {
-
-
     .valores-tattoo {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -176,16 +196,11 @@ H/* Estilos padrão para desktop */
         justify-content: center;
         align-items: center;
     }
-
-
     .valores-tattoo .btn-valor {
         width: 80%;
         font-size: 0.9rem;
     }
-
-
     .valores-tattoo p{
-    
         font-size: 0.9rem;
     }
     .btn-agendar{
@@ -195,9 +210,7 @@ H/* Estilos padrão para desktop */
         height: 40px;
         font-size: 0.9rem;
     }
-
 }
-
 /*Estilo para mobile*/
 @media (max-width: 768px) {
     .flashtattoo {
@@ -206,29 +219,22 @@ H/* Estilos padrão para desktop */
     #modal-container{
         width: 80% !important;
     }
-
     .tattoo-item {
         margin-bottom: 16px;
     }
-
     .modal-tattoo {
         flex-direction: column;
     }
-
     #modal-info img {
         width: 100%;
     }
-
     .valores-tattoo {
         flex-direction: column;
         align-items: center;
     }
-
     .valores-tattoo .btn-valor {
         margin-bottom: 8px;
     }
-    
-   
 }
 
 @media (max-width: 675px) {
@@ -236,7 +242,6 @@ H/* Estilos padrão para desktop */
         display: flex;
         flex-direction: column;
     }
-
     .p-info{
         width: 70%;
         font-size: 0.8rem;
@@ -245,49 +250,39 @@ H/* Estilos padrão para desktop */
         align-self: center;
     }
     #info-flashtattoo {
-       margin-bottom: 10%;
-       margin-top: 10%;
+        margin-bottom: 10%;
+        margin-top: 10%;
     }
-    
     #info-flashtattoo p {
         font-size: 0.8rem;
-        
     }
     .h2-info{
         font-size: 1.5rem;
         margin-top: 10%;
     }
-    
     #modal-container {
         width: 90% !important;
     }
-
     .modal-tattoo {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
     #modal-info {
         display: flex;
         flex-direction: column !important;
         margin-top: 5%;
     }
-
     #modal-info img {
         width: 80%;
     }
-
     .modal-close-button {
         font-size: 1.5rem;
     }
-
     .modal-info-description {
         width: 100%;
-        
     }
-
     .modal-info-description .h3,
     .modal-info-description .description {
         padding: 10px;
@@ -295,22 +290,18 @@ H/* Estilos padrão para desktop */
         margin-top: 2%;
         font-size: 0.8rem;
     }
-
     .modal-info-description .description h3 {
         margin-bottom: 12%;
         font-size: 0.8rem;
     }
-
     .modal-info-description .description p {
         margin-top: 3%;
         font-size: 0.8rem;
     }
-
     .tamanho-info {
         text-align: center;
         width: 100%;
     }
-
     .tamanho-info h3 {
         padding: 10px;
         margin-top: 2%;
@@ -318,7 +309,6 @@ H/* Estilos padrão para desktop */
         margin: 5% 0%;
         font-size: 0.8rem;
     }
-
     .valores-tattoo {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -327,16 +317,11 @@ H/* Estilos padrão para desktop */
         justify-content: center;
         align-items: center;
     }
-
-
     .valores-tattoo .btn-valor {
         width: 80%;
         font-size: 0.9rem;
     }
-
-    
     .valores-tattoo p{
-       
         font-size: 0.9rem;
     }
     .btn-agendar{

@@ -1,79 +1,82 @@
 /* Estilos para o footer */
 .footer-container {
-    background-color: var(--var-background);
-    display: flex;
+  background-color: var(--var-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px;
+}
+
+.logo-footer {
+  width: 180px;
+  height: 84px;
+}
+
+.info-think {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px; 
+}
+
+.info-element {
+  width: 31.33%;
+  text-align: center;
+  margin: 10px; 
+  padding: 10px;
+}
+
+.info-element:nth-child(3){
+  margin-top: 3%;
+}
+
+.info-element .icon-footer{
+  width: 30px;
+  height: 30px;
+  color: var(--var-txt-lilas);
+}
+
+.info-element .icon-footer.phone{
+  width: 25px;
+  height: 40px;
+}
+
+.info-element h4 {
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.info-element p {
+  color: #c4c4c4;
+  padding: 5px;
+  font-size: 13px;
+  justify-content: center;
+}
+
+#dev{
+  margin-top: 2%;
+  color: #c4c4c4;
+  font-size: 13px;
+  text-align: center;
+}
+
+.alto-contraste .icon-footer{
+  color: yellow;
+}
+
+@media (max-width: 1078px){
+  .info-think{
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 40px;
- 
   }
-  
-  .logo-footer {
-    width: 180px;
-    height: 84px;
-  }
-  
-  .info-think {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px; 
-   
-  }
-  
+}
+
+@media (max-width: 768px) {
   .info-element {
-    width: 31.33%;
-    text-align: center;
-    margin: 10px; 
-    padding: 10px;
+    width: 50%; 
   }
-
-  .info-element:nth-child(3){
-    margin-top: 3%;
-  }
-  
-  .info-element .icon-footer{
-    width: 30px;
-    height: 30px;
-  }
-  .info-element .icon-footer.phone{
-    width: 25px;
-    height: 40px;
-  }
-
-  .info-element h4 {
-    color: white;
-    padding: 5px;
-    font-size: 14px;
-  }
-  
-  .info-element p {
-    color: #c4c4c4;
-    padding: 5px;
-    font-size: 13px;
-    justify-content: center;
-  }
-
- #dev{
-    margin-top: 2%;
-    color: #c4c4c4;
-    font-size: 13px;
-    text-align: center;
-  }
-
-  @media (max-width: 1078px){
-    .info-think{
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .info-element {
-      width: 50%; 
-    }
-  }
-  
+}

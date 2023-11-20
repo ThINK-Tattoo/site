@@ -4,11 +4,16 @@ import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from "../../../../components/Footer";
 import Modal from 'react-modal';
+import { hotjar } from "react-hotjar";
 
 import '../../../../styleGlobal.css';
 import './index.css';
 
 export default function MeusAgendamentos(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
@@ -19,8 +24,8 @@ export default function MeusAgendamentos(){
         }else if(userType === 'cliente'){
             setIsUserLoggedIn(userType === "cliente");
         }
-        
     }, []);
+    
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedAgendamento, setSelectedAgendamento] = useState(null);
     const [agendamentos, setAgendamentos] = useState([
@@ -48,11 +53,12 @@ export default function MeusAgendamentos(){
     const openModal = (agendamento) => {
         setSelectedAgendamento(agendamento);
         setModalIsOpen(true);
-      };
-      const closeModal = () => {
+    };
+
+    const closeModal = () => {
         setSelectedAgendamento(null);
         setModalIsOpen(false);
-      };
+    };
         
 
     return(
@@ -60,19 +66,16 @@ export default function MeusAgendamentos(){
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
             <div className="header-image agendamento-tittle">
                 <h1>Meus Agendamen<span className="span-color">tos</span></h1>
-                 </div>
-                 
-                 {agendamentos.map((reserva)=> (
-                    <div key={reserva.id} className="info-agendados" onClick={() => openModal(reserva)}>
-                        <div className="text-info">
+            </div>
+            {agendamentos.map((reserva)=> (
+                <div key={reserva.id} className="info-agendados" onClick={() => openModal(reserva)}>
+                    <div className="text-info">
                         <p className="txt-dia"><strong>Dia </strong>{reserva.dia}</p>
                         <p className="txt-white"><strong>Status: </strong>{reserva.status}</p>
-                        </div>
-                        <p className="txt-white"><strong>Detalhes: </strong>{reserva.descricao}</p>
-
-
                     </div>
-                 ))}
+                    <p className="txt-white"><strong>Detalhes: </strong>{reserva.descricao}</p>
+                </div>
+            ))}
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -94,14 +97,13 @@ export default function MeusAgendamentos(){
                     <button className="modal-close-button" onClick={closeModal}>X</button>
                     {selectedAgendamento && (
                     <div className="modal-content">
-                    <h2><strong>Dia </strong>{selectedAgendamento.dia}</h2>
-                    <p><strong>Status: </strong>{selectedAgendamento.status}</p>
-                    <p><strong>Detalhes: </strong>{selectedAgendamento.descricao}</p>
-                    
-                    </div>
+                        <h2><strong>Dia </strong>{selectedAgendamento.dia}</h2>
+                        <p><strong>Status: </strong>{selectedAgendamento.status}</p>
+                        <p><strong>Detalhes: </strong>{selectedAgendamento.descricao}</p>
+                        </div>
                 )}
             </Modal>
             <Footer/>
-       </div>
+        </div>
     );
 }

@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import '../../styleGlobal.css';
 import './index.css';
+import { hotjar } from "react-hotjar";
 
 import VLibras from '@moreiraste/react-vlibras';
 
 export default function BarraAcessibilidade(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     const [fontSize, setFontSize] = useState(16);
 
     const increaseFontSize = () => {
@@ -22,7 +27,6 @@ export default function BarraAcessibilidade(){
 
     const [isHighContrast, setIsHighContrast] = useState(false);
     const toggleHighContrast = () => {
-        console.log("Botão de Alto Contraste clicado.");
         document.documentElement.classList.toggle("alto-contraste", isHighContrast);
         setIsHighContrast((prevContrast) => !prevContrast);
     };

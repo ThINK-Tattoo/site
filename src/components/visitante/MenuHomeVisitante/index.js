@@ -1,67 +1,71 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import logo from '../../../assets/icones/logo-removebg-preview 1.png';
-import '../../../styleGlobal.css';
-import './index.css';
+import { Link } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { hotjar } from "react-hotjar";
+
+import logo from "../../../assets/icones/logo.png";
 import BarraAcessibilidade from "../../barraAcessibilidade";
 
-export default function Menu(){
-    const [menuOpen, setMenuOpen] = useState(false);
+import "../../../styleGlobal.css";
+import "./index.css";
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+const Menu = () => {
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!isMobileMenuOpen);
     };
-      
 
+    const mobileMenuButtonClass = `menu-icon ${isMobileMenuOpen ? 'open' : ''}`;
 
-    return(
-        <div className='menu-container'>
-             <BarraAcessibilidade />
-            <nav className="menuHome">
-                <div id="menu-normal">      
-                    <ul>
-                        <li><Link to="/portfolio">Portfólio</Link></li>
-                        <li><Link to="/contato">Contato</Link></li>
-                    </ul>
-                </div>
-                <div>
-                    <Link to="/">
-                    <img className="logo-menu" src={logo} alt="Logo do projeto com o nome ThINK"/>
-                    </Link>
-                </div>
-                <div id="menu-normal">
-                    <ul>
-                        <li><Link to="/signup">Cadastro</Link></li>
-                        <li><Link to="/signin">Login</Link></li>
-                    </ul>
-                </div>
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+    };
 
-                <div id="menu-drop-down">
-                    <div className="menu-header">
-                        <button className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-                            {menuOpen ? <span className="icon-close">X</span> : (
-                                <>
-                                    <span className="icon-lines"></span>
-                                    <span className="icon-lines"></span>
-                                    <span className="icon-lines"></span>
-                                </>
-                            )}
-                        </button>
-                    </div>
+    useEffect(() => {
+        window.addEventListener('resize', closeMobileMenu);
+        
+        return () => {
+            window.removeEventListener('resize', closeMobileMenu);
+        };
+    }, []);
 
-                    <ul className={`menu-list ${menuOpen ? 'open' : ''}`}>
-                        {menuOpen && (
-                        <>
-                            <li><Link to="/portfolio">Portfólio</Link></li>
-                            <li><Link to="/contato">Contato</Link></li>
-                            <li><Link to="/cadastro">Cadastro</Link></li>
-                            <li><Link to="/login">Login</Link></li>
-                        </>
-                        )}
-                    </ul>
-                </div>
-            </nav>
-            
+    return (
+        <div className={`menuHome ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+        <BarraAcessibilidade />
+        <div className="desktop-menuHome">
+            <ul>
+                <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
+                <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
+            </ul>
+            <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK" /></Link>
+            <ul>
+                <li className="main-menu-item"><Link to="/signin">Login</Link></li>
+                <li className="main-menu-item"><Link to="/signup">Cadastro</Link></li>
+            </ul>
         </div>
-    )
-}
+
+        <div className="mobileHome-menu">
+            <button className={mobileMenuButtonClass}  onClick={toggleMobileMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            {isMobileMenuOpen && (
+            <ul className="mobileHome-menu-list">
+                <li className="main-menu-item"><Link to="/portfolio">Portfólio</Link></li>
+                <li className="main-menu-item"><Link to="/contato">Contato</Link></li>
+                <li className="main-menu-item"><Link to="/signin">Login</Link></li>
+                <li className="main-menu-item"><Link to="/signup">Cadastro</Link></li>
+            </ul>
+            )}
+        </div>
+        </div>
+    );
+};
+
+export default Menu;

@@ -3,23 +3,25 @@
 }
 
 .form-info{
-    border: none;
+    height: 700px;
 }
 
 .info-perfil{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
+}
+
+#modal-info{
+    overflow: visible !important;
 }
 
 .info-perfil label {
     text-align: left ;
-   align-self: flex-start;
-   margin-left: 5%;
+    align-self: flex-start;
+    margin-left: 5%;
     font-weight: bold;
     white-space: nowrap;
-    
 }
 
 .info-perfil .input-info {
@@ -28,25 +30,31 @@
     outline: none;
     width: 90%; 
     color: #a9a9a9;
-    
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .input-senha{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2c2c2c;
-    width: 90%; 
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
 }
 .input-senha .toggle-password{
-    margin-right: 10%;   
-    margin-left: -15%;    
+margin-right: 5%;
+    margin-left: 15%;
     color: var(--var-lilas);
 }
 
 .input-senha input{
     background: transparent;
     color: #a9a9a9;
+    border: none;
+    padding: 5px;
 }
 
 .btn-editar{
@@ -78,61 +86,106 @@
     color: white;
 }
 
+.input-senha input:focus{
+    border: none;
+}
+
+.alto-contraste .perfil-tittle{
+    background-image: none; 
+}
+
+.alto-contraste .perfil-tittle h1 span{
+    text-shadow: none;
+    color: white;
+}
+
+.alto-contraste .form{
+    background-color: black;
+}
+
+.alto-contraste .form-info{
+    background-color: transparent;
+    border: 1px solid white!important;
+}
+
+.alto-contraste .form #person-icon{
+    color: yellow;
+}
+
+.alto-contraste .form p a:hover{
+    color: yellow;
+}
+
+.alto-contraste .btn-editar, .alto-contraste .btn-cancelar, .alto-contraste .btn-salvar{
+    background-color: transparent;
+    border: 1px solid white;
+    font-weight: 900;
+    color: yellow;
+}
+
+.alto-contraste .btn-editar:hover, .alto-contraste .btn-cancelar:hover, .alto-contraste.btn-salvar:hover{
+    background-color: yellow;
+    border: none;
+    font-weight: 900;
+    color: black;
+}
+
+.alto-contraste .input {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.alto-contraste .input-senha{
+    border: 1px solid white;
+}
+
+.alto-contraste .input-senha input:focus{
+    border: none;
+}
+
+.alto-contraste .input-senha .toggle-password{
+    color: yellow;
+}
+
 @media (max-width: 768px) {
     .container-form-group {
         grid-template-columns: 1fr; 
     }
     .form {
         max-width: 100%; 
-        margin: 5% 10px; 
-      }
-
-      .form-info{
+    }
+    .form-info{
         height: 100%;
-      }
-  
-      .perfil-tittle h1{
-          font-size: 2.2rem;
-      }
-  
-      .form h4{
-          font-size: 1.5rem;
-      }
-  
-      .form #person-icon{
-          width: 40px;
-          height: 30px;
-      }
-    
-      .container-form-group {
+    }
+    .perfil-tittle h1{
+        font-size: 2.2rem;
+    }
+    .form h4{
+        font-size: 1.5rem;
+    }
+    .form #person-icon{
+        width: 40px;
+        height: 30px;
+    }
+    .container-form-group {
         grid-template-columns: 1fr; 
         grid-gap: 10px; 
-      }
-    
-      input {
+    }
+    input {
         width: 100%; 
-      }
-    
-      .btn-editar {
+    }
+    .btn-editar {
         width: 40%;
         margin-top: 10px; 
         font-size: 14px;
         text-align: center;
-      }
-
-      #modal-info{
+    }
+    #modal-info{
         width: 100%;
-      }
-
-      .modal-form{
+    }
+    .modal-form{
         max-width: 369px;
-        width: 369px;
-      }
+        overflow: auto;
+        height: auto;
+    }
 }
-
-
-
-
-
-
-

@@ -3,17 +3,22 @@ import Menu from '../../components/visitante/MenuHomeVisitante';
 import MenuLogado from "../../components/usuarioLogado/MenuHomeLog";
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
+import { hotjar } from "react-hotjar";
 
 import '../../styleGlobal.css';
-import './index.css'
+import './index.css';
 
-import setaCuidados from '../../assets/icones/icon-seta.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelopeOpen, faHeart, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 import iconMaq from '../../assets/icones/icon-maq.png';
 import imagemProjeto from '../../assets/home/imagemProjeto.png';
-import iconCoracao from '../../assets/icones/icon-heart.png';
-import iconEmail from '../../assets/icones/icon-envelope.png';
 
 export default function Home(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+    
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -23,7 +28,6 @@ export default function Home(){
 
     return (
         <div className="containerHome">
-            
             <div className="containerPrincipal">
                 <div id="imagemPrincipal">
                 {isUserLoggedIn ? <MenuLogado /> : <Menu />}
@@ -113,32 +117,30 @@ export default function Home(){
             <div className="divisao">.</div>
             <div className="cuidadosEmensagem">    
                 <div className="cuidados">
-                    <img className="iconCoracao" src={iconCoracao} alt="Icone de um coração"></img>
+                    <FontAwesomeIcon icon={faHeart} className="iconCoracao" alt="Icone de um coração"/>
                     <h1 className="txt-white h1-info">Cuidados</h1>
                     <p className="descricao">Confira quais os cuidados você precisa ter após a realização da sua tattoo:</p>
                     <div className="cuidadosTopicosGeral">
                             <div>
-                            <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
+                                <FontAwesomeIcon icon={faChevronRight} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"/>
                                 <p>Não tirar casquinhas</p>
                             </div>
                             <div>
-                                <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
+                                <FontAwesomeIcon icon={faChevronRight} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"/>
                                 <p>Hidratar o local da tatuagem</p>
                             </div>
                             <div>
-                                    <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
-                                    <p>Não expor a tattoo ao sol</p>
-                                </div>
-                                <div>
-                                    <img src={setaCuidados} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"></img>
-                                    <p>Não entrar no mar ou piscina</p>
-                                </div>
+                                <FontAwesomeIcon icon={faChevronRight} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"/>
+                                <p>Não expor a tattoo ao sol</p>
+                            </div>
+                            <div>
+                                <FontAwesomeIcon icon={faChevronRight} alt="Icone de uma seta direcionada para esquerda" className="iconSeta"/>
+                                <p>Não entrar no mar ou piscina</p>
+                            </div>
                     </div>
                 </div>
                 <div className="mensagem">
-                    <div className="iconEmail">
-                        <img src={iconEmail} alt="Icone de um coração"></img>
-                    </div>
+                    <FontAwesomeIcon icon={faEnvelopeOpen} className="iconEmail" alt="Icone de um envelope"/>
                     <h1 className="txt-white h1-info">Fale Conosco</h1>
                     <p className="descricao">Para mais informações entre em contato com a gente!</p>
                     <div className="mensagemContainer">

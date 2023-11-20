@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
+import { hotjar } from "react-hotjar";
 
 import { BallTriangle } from "react-loader-spinner";
 import Modal from 'react-modal';
@@ -18,6 +19,10 @@ import './index.css'
 import axios from "axios";
 
 export default function Contato(){
+    useEffect(() => {
+        hotjar.initialize(3738750, 6);
+    }, []);
+
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [isModaLoadlOpen, setModalLoadOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,7 +32,6 @@ export default function Contato(){
         telefone: '',
         assunto: '',
         mensagem: '',
-
     });
 
     const handleChange = (e) => {
@@ -64,7 +68,6 @@ export default function Contato(){
     
             console.log(response);
             
-
             if (response.status === 200) {
                 const data = response.data;
                 console.log(data.message);
@@ -76,7 +79,7 @@ export default function Contato(){
                     className: 'custom-toast-success',
                     progressClassName: 'custom-toast-progress-bar',
                     
-                  });
+                });
 
                 setFormData({nome: '',
                             email: '', 
@@ -88,13 +91,13 @@ export default function Contato(){
                 console.error('Erro ao enviar e-mail:', response.data.message);
                 toast.error('Erro ao enviar e-mail. Tente novamente mais tarde.', {
                     position: toast.POSITION.TOP_CENTER,
-                  });
+            });
             }
         } catch (error) {
             console.error('Erro ao enviar requisição:', error);
             toast.error('Erro ao enviar e-mail. Tente novamente mais tarde.', {
                 position: toast.POSITION.TOP_CENTER,
-              });
+        });
         }
     };
 
@@ -104,28 +107,24 @@ export default function Contato(){
             <div className="header-image contato-tittle">
                 <h1>Cont<span className="span-color">ato</span></h1>
             </div>
-
             <section className="form-container">
-                <form class="form">
+                <form class="form contato">
                     <FontAwesomeIcon icon={faEnvelope} id="envelope" />
                     <h4>Contato</h4>
                     <div className="container-form-group">
                         <div class="form-group">
-                        
                             <input className="input" type="text" id="nome" name="nome" 
                             value={formData.nome}
                             onChange={handleChange}
                             placeholder="Nome" required />
                         </div>
                         <div class="form-group">
-                            
                             <input className="input" type="email" id="email" name="email" 
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="E-mail" required />
                         </div>
                         <div class="form-group">
-                        
                             <input className="input" type="tel" id="telefone" name="telefone" 
                             value={formData.telefone}
                             onChange={handleChange}
@@ -144,7 +143,6 @@ export default function Contato(){
                             placeholder="Mensagem" required></textarea>
                         </div>
                     </div>
-                    
                     <button type="submit" onClick={hadnleContato} class="btn btn-contato">Enviar</button>
                     <ToastContainer position="top-center" />
                 </form>
@@ -167,11 +165,11 @@ export default function Contato(){
                             height: '100%'
                         },
                     }}
-                >
-                    <div className="center modal-content">
-                        <BallTriangle color="#ffffff" height={50} width={50} />
-                    </div>
-                </Modal>
+            >
+                <div className="center modal-content">
+                    <BallTriangle color="#ffffff" height={50} width={50} />
+                </div>
+            </Modal>
             <Footer/>
         </div>
     );

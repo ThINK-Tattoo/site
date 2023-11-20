@@ -30,7 +30,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100%; 
-  }
+}
 
 .txt-white{
     color: #fff;
@@ -66,7 +66,6 @@ body{
     font-weight: 900;
     color: black !important;
 }
-  
 
 .input {
     padding: 20px;
@@ -130,7 +129,7 @@ body{
 /*barra de rolagem da pagina*/
 ::-webkit-scrollbar{
     width: 8px;
-    border-radius: 5%;
+    border-radius: 50px
 }
 
 ::-webkit-scrollbar-track{
@@ -139,6 +138,10 @@ body{
 
 ::-webkit-scrollbar-thumb{
     background-color: var(--var-txt-lilas);
+}
+
+.alto-contraste ::-webkit-scrollbar-thumb{
+    background-color: yellow;
 }
 
 @keyframes entering{

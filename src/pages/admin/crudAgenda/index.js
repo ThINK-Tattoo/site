@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import Menu from '../../../components/admin/menuDashboard';
 
@@ -14,7 +14,7 @@ import allLocales from '@fullcalendar/core/locales-all';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 
 function CrudAgenda(){
-   {/* const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -26,8 +26,23 @@ function CrudAgenda(){
             setIsUserLoggedIn(userType === "admin");
         }
         
-    }, []); */}
-
+    }, []);
+    
+    const calendarRef = useRef(null);
+    const handleWindowResize = () => {
+      if (calendarRef.current) {
+        const calendarApi = calendarRef.current.getApi();
+        calendarApi.updateSize();
+      }
+    };
+  
+    useEffect(() => {
+      window.addEventListener("resize", handleWindowResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }, []);
 
     return (
         <div>
@@ -38,8 +53,11 @@ function CrudAgenda(){
             </div>
             <div className="custom-calendar">
             <FullCalendar
+                ref={calendarRef}
                 plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
+                nowIndicator={true}
+                slotLabelFormat={{ hour: "2-digit", minute: "2-digit", hour12: false }}
                 locales={[allLocales, ptBrLocale]}
                 locale="pt-br"
                 headerToolbar={{
@@ -69,14 +87,19 @@ function CrudAgenda(){
                       buttonText: 'Dia'
                     }
                   }}
+                  now={new Date()}
                   events={[
                     {
-                      title: 'Evento 1',
-                      date: '2023-10-30'
+                      id: 1,
+                      title: 'Tattoo 1',
+                      start: '2023-10-30T10:00:00', 
+                      end: '2023-10-30T12:00:00' 
                     },
                     {
-                      title: 'Evento 2',
-                      date: '2023-10-31'
+                      id: 2,
+                      title: 'Tattoo 2',
+                      start: '2023-10-31T10:00:00', 
+                      end: '2023-10-31T12:00:00' 
                     }
                   ]}
                   

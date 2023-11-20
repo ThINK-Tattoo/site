@@ -27,6 +27,7 @@
 .modal-content{
     color: white;
 }
+
 .btn-aceitar, .btn-recusar{
     width: 40%;
     margin-top: 15%;
@@ -37,6 +38,7 @@
     margin-right: 5%;
     margin-top: 5%;
 }
+
 .modal-content p{
     margin-top: 8%;
     margin-left: 5%;
@@ -48,6 +50,7 @@
     margin-left: 20%;
     margin-bottom: 3%;
 }
+
 .aviso p{
     color: white;
 }
@@ -70,12 +73,14 @@
         margin-left: 24%;
     }
 }
+
 @media (max-width: 880px){
     .solicitacoes-conteiner {
         width: 70%;
         margin-left: 27%;
     }
 }
+
 @media (max-width: 800px){
     .info-solicitacoes p{
         max-width: 100%;
@@ -86,16 +91,13 @@
         margin-left: 28%;
         margin-top: 5%;
     }
-
     .btn-recusar{
         margin-top: 0;
     }
-
     #modalSolicitacoes {
         margin-left: 14%;
         width: 48%;
     } 
-    
     .aviso{
         margin-left: 28%;
     }
