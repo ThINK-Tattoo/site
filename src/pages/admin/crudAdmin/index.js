@@ -199,13 +199,8 @@ export default function CrudAdmin() {
                         </div>
                     
                         <div className="flex" id="btns">
-<<<<<<< HEAD
                             <button type="submit" className="btn ">Adicionar</button>
                             <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
-=======
-                            <button type="submit" className="btn btn-adicionar">Adicionar</button>
-                            <button className="btn btn-cancelarAdmin" onClick={closeModal}>Cancelar</button>
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                         </div>
                     </form>
                 </Modal>

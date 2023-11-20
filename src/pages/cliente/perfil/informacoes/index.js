@@ -4,15 +4,9 @@ import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-<<<<<<< HEAD
-import { faEye, faEyeSlash, faEdit   } from '@fortawesome/free-solid-svg-icons';
-import iconPerson from '../../../../assets/icones/icon-person.png';
+import { faEye, faEyeSlash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-=======
-import { faEye, faEyeSlash, faEdit, faUser } from '@fortawesome/free-solid-svg-icons';
 import { hotjar } from "react-hotjar";
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
-
 import { useNavigate } from "react-router-dom";
 
 import '../../../../styleGlobal.css';
@@ -32,7 +26,6 @@ export default function MinhasInformacoes(){
         idade: 0,
         senha: '',
     });
-<<<<<<< HEAD
     const [formData, setFormData] = useState({
         nome: '',
         email: '',
@@ -40,9 +33,6 @@ export default function MinhasInformacoes(){
         idade: '',
         senha: '',
     });
-=======
-    
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
     const navigate = useNavigate();
     useEffect(() => {
         const userType = localStorage.getItem("userType");
@@ -59,25 +49,11 @@ export default function MinhasInformacoes(){
         }
     }, []);
 
-<<<<<<< HEAD
-          
-          if (clientData) {
-              setClient(clientData[0]);
-          }
-      }
-      
-  }, []);
   
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [senha, setSenha] = useState(client.senha);
 
-=======
-    const [mostrarSenha, setMostrarSenha] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [senha, setSenha] = useState(client.senha);
-    
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
     const toggleSenha = () => {
         setMostrarSenha(!mostrarSenha);
     };
@@ -91,13 +67,10 @@ export default function MinhasInformacoes(){
     const closeModal = () => {
         setIsModalOpen(false);
     };
-<<<<<<< HEAD
     
     
     const handleUpdate = async (e) => {
         e.preventDefault();
-=======
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
 
         console.log('Botão clicado!');
         try {
@@ -141,16 +114,9 @@ export default function MinhasInformacoes(){
                         height: '100%'
                     },
                 }}
-<<<<<<< HEAD
             >
                 
                 <form className="form modal-form" onSubmit={handleUpdate} encType="multipart/form-data">
-                    <img id="person-icon" src={iconPerson} alt="Icon de usuário" />
-=======
-            > 
-                <form className="form modal-form">
-                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                     <h4>Atualizar informações</h4>
                     <div className="container-form-group info-container">
                         <div className="form-group info-perfil">
@@ -195,27 +161,18 @@ export default function MinhasInformacoes(){
                         </div> 
                     </div>
                     <div className="flex">
-<<<<<<< HEAD
                         <button type="submit" onClick={handleUpdate}  className="btn btn-salvar">Salvar</button>
                         <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
-=======
-                        <button type="submit" className="btn btn-salvarInfo">Salvar</button>
-                        <button className="btn btn-cancelarInfo" onClick={closeModal}>Cancelar</button>
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                     </div>
                 </form>
             </Modal>
-<<<<<<< HEAD
 
             <div className="header-imag3e perfil-tittle">
-=======
-            <div className="header-image perfil-tittle">
->>>>>>> be607a502f9a7c5e79e46a27289ed8c5768b2bd5
                 <h1>Minhas informaç<span className="span-color">ões</span></h1>
             </div>
             <section className="form-container">
                 <form class="form form-info">
-                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
+                    <FontAwesomeIcon icon={faEye} id="person-icon" alt="Icon de usuário"/>
                     <h4>Informações</h4>
                     <div class="container-form-group info-container">
                         <div class="form-group info-perfil">

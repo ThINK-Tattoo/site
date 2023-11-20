@@ -176,7 +176,7 @@ export default function CrudFlashtatto() {
         console.log('Botão clicado!');
         try {
             
-            const response = await axios.put(`http://localhost:3636/cliente/updateFlashtatto/${Flashtatto.id}`, flashtatto);
+            const response = await axios.put(`http://localhost:3636/cliente/updateFlashtatto/${flashtatto.id}`, flashtatto);
 
             if (response.status === 200) {
                 alert('Dados atualizados com sucesso!');
