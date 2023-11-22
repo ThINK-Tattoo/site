@@ -69,6 +69,63 @@ label {
   margin-bottom: 5px;
 }
 
+form{
+  color: white;
+  text-align: center;
+}
+
+form img{
+  margin-top: 1rem;
+}
+
+form p{
+  margin-top: 2rem;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+form h4{
+  margin-top: 1rem;
+}
+
+.token{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.tokenInside {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.token input{
+  max-width: 60px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: var(--var-forms-background);
+  border: none;
+  color: white;
+}
+
+.reenvio{
+  margin-top: 5rem;
+}
+
+#reenvio2{
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+#reenvio2:hover{
+  color: var(--var-txt-lilas);
+}
+
 .btn-cadastrar {
     width: 40%;
 }
@@ -111,10 +168,21 @@ label {
   color: yellow;
 }
 
+.alto-contraste #reenvio2:hover{
+  color: yellow;
+}
+
+.alto-contraste .tokenInside input:focus{
+  border: 2px solid yellow !important;
+}
+
 @media (max-width: 768px) {
   .form .cadastro{
     max-width: 100%; 
     margin: 5% 10px; 
+  }
+  .cadastro{
+    height: auto !important;
   }
   .cadastro-tittle h1{
     font-size: 2.2rem;
@@ -138,6 +206,12 @@ label {
     margin-top: 10px; 
     font-size: 14px;
     text-align: center;
+  }
+  #modal-cadastro{
+    width: 80%;
+  }
+  .token{
+    gap: 0.5rem;
   }
 }
 
