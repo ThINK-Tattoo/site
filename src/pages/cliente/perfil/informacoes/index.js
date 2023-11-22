@@ -4,9 +4,9 @@ import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faEdit, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 import { hotjar } from "react-hotjar";
-
 import { useNavigate } from "react-router-dom";
 
 import '../../../../styleGlobal.css';
@@ -26,7 +26,13 @@ export default function MinhasInformacoes(){
         idade: 0,
         senha: '',
     });
-    
+    const [formData, setFormData] = useState({
+        nome: '',
+        email: '',
+        telefone: '',
+        idade: '',
+        senha: '',
+    });
     const navigate = useNavigate();
     useEffect(() => {
         const userType = localStorage.getItem("userType");
@@ -43,13 +49,15 @@ export default function MinhasInformacoes(){
         }
     }, []);
 
+  
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [senha, setSenha] = useState(client.senha);
-    
+
     const toggleSenha = () => {
         setMostrarSenha(!mostrarSenha);
     };
+
 
     const openModal = (e) => {
         e.preventDefault();
@@ -59,7 +67,32 @@ export default function MinhasInformacoes(){
     const closeModal = () => {
         setIsModalOpen(false);
     };
+    
+    
+    const handleUpdate = async (e) => {
+        e.preventDefault();
 
+        console.log('Botão clicado!');
+        try {
+            
+            const response = await axios.put(`http://localhost:3636/cliente/updateclientes/${client.id}`, client);
+
+            if (response.status === 200) {
+                alert('Dados atualizados com sucesso!');
+                closeModal(); // Fechar o modal após a atualização
+                setClient(updatedClient => ({ ...updatedClient, ...client }));       
+                const updatedClientData = JSON.stringify([client]);             
+                localStorage.setItem('user', updatedClientData);
+                window.location.reload();            } else {
+                alert(`Erro ao atualizar dados: ${response.data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro ao atualizar dados:', error);
+            alert('Erro ao atualizar dados. Por favor, tente novamente mais tarde.');
+        }
+    };
+
+   
     return(
         <div className="container perfil-container">
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
@@ -81,9 +114,9 @@ export default function MinhasInformacoes(){
                         height: '100%'
                     },
                 }}
-            > 
-                <form className="form modal-form">
-                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
+            >
+                
+                <form className="form modal-form" onSubmit={handleUpdate} encType="multipart/form-data">
                     <h4>Atualizar informações</h4>
                     <div className="container-form-group info-container">
                         <div className="form-group info-perfil">
@@ -128,17 +161,18 @@ export default function MinhasInformacoes(){
                         </div> 
                     </div>
                     <div className="flex">
-                        <button type="submit" className="btn btn-salvarInfo">Salvar</button>
-                        <button className="btn btn-cancelarInfo" onClick={closeModal}>Cancelar</button>
+                        <button type="submit" onClick={handleUpdate}  className="btn btn-salvar">Salvar</button>
+                        <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
                     </div>
                 </form>
             </Modal>
-            <div className="header-image perfil-tittle">
+
+            <div className="header-imag3e perfil-tittle">
                 <h1>Minhas informaç<span className="span-color">ões</span></h1>
             </div>
             <section className="form-container">
                 <form class="form form-info">
-                    <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
+                    <FontAwesomeIcon icon={faEye} id="person-icon" alt="Icon de usuário"/>
                     <h4>Informações</h4>
                     <div class="container-form-group info-container">
                         <div class="form-group info-perfil">
