@@ -1,9 +1,12 @@
-import React,{Suspense, useEffect, useState} from "react";
+import React,{ useEffect, useState} from "react";
 import Menu from '../../components/visitante/MenuHomeVisitante';
 import MenuLogado from "../../components/usuarioLogado/MenuHomeLog";
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import { hotjar } from "react-hotjar";
+import MaskedInput from 'react-input-mask';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 import '../../styleGlobal.css';
 import './index.css';
@@ -25,6 +28,73 @@ export default function Home(){
         const userType = localStorage.getItem("userType");
         setIsUserLoggedIn(userType === "cliente");
     }, []);
+
+    const validationSchema = Yup.object({
+        nome: Yup.string().min(2, "O nome deve ter pelo menos 2 caracteres").required("Campo obrigatório"),
+        email: Yup.string().email("E-mail inválido").required("Campo obrigatório"),
+        telefone: Yup.string().required("Campo obrigatório"),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            nome: "",
+            email: "",
+            telefone: "",
+        },
+        validationSchema: validationSchema,
+    });
+
+    const [showScrollDownButton, setShowScrollDownButton] = useState(false);
+    const [showScrollUpButton, setShowScrollUpButton] = useState(false);
+    const scrollToBottom = () => {
+        console.log('Scrolling to bottom');
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    };
+    
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const scrollThreshold = 100;
+    
+        console.log('Scroll Position:', scrollPosition);
+    
+        setShowScrollDownButton(scrollPosition < scrollThreshold);
+        setShowScrollUpButton(scrollPosition > scrollThreshold);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+    }, []);
+
+    const buttonStyles = {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        backgroundColor: '#A40C9F',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '50%',
+        padding: '10px 20px',
+        fontSize: '20px',
+        cursor: 'pointer',
+        display: showScrollDownButton ? 'block' : 'none',
+    };
+
+    const buttonStylesUp = {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        backgroundColor: '#A40C9F',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '50%',
+        padding: '10px 20px',
+        fontSize: '20px',
+        cursor: 'pointer',
+        display: showScrollUpButton ? 'block' : 'none',
+    };
 
     return (
         <div className="containerHome">
@@ -111,7 +181,7 @@ export default function Home(){
                 <div className="portfolioConteudo">
                     <h1 className="txt-white h1-info">Portfólio</h1>
                     <p>Conheça nosso trabalho.</p>
-                    <Link to="/portfolio"><button className="btn confira">Confira</button></Link>
+                    <Link to="/portfolio"><button className="btn confira" aria-label="Confira o nosso portfólio!">Confira</button></Link>
                 </div>
             </div>
             <div className="divisao">.</div>
@@ -139,20 +209,56 @@ export default function Home(){
                             </div>
                     </div>
                 </div>
-                <div className="mensagem">
+                <div className="mensagem" onSubmit={formik.handleSubmit}>
                     <FontAwesomeIcon icon={faEnvelopeOpen} className="iconEmail" alt="Icone de um envelope"/>
                     <h1 className="txt-white h1-info">Fale Conosco</h1>
                     <p className="descricao">Para mais informações entre em contato com a gente!</p>
                     <div className="mensagemContainer">
                         <div className="mensagemFormGeral">
                             <div>
-                                <input className="input" type="text" id="nome" name="nome" placeholder="Nome" required/>
+                                <input
+                                    className="input inputHome"
+                                    type="text"
+                                    id="nome"
+                                    name="nome"
+                                    placeholder="Nome"
+                                    required
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.nome}
+                                />
+                                {formik.touched.nome && formik.errors.nome ? (
+                                    <div className="avisoHome">{formik.errors.nome}</div>
+                                ) : null}
                             </div>
                             <div>
-                                <input className="input" type="tel" id="telefone" name="telefone" placeholder="WhatsApp" required/>
+                                <MaskedInput className="input inputHome" 
+                                    type="tel" 
+                                    id="telefone" 
+                                    name="telefone" 
+                                    placeholder="WhatsApp"
+                                    mask="(99) 99999-9999"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.telefone}
+                                />
+                                {formik.touched.telefone && formik.errors.telefone ? (
+                                    <div className="avisoHome">{formik.errors.telefone}</div>
+                                ) : null}
                             </div>
                             <div >
-                                <input className="input" type="email" id="email" name="email" placeholder="E-mail" required/>
+                                <input className="input inputHome" 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="E-mail" required
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.email}
+                                />
+                                {formik.touched.email && formik.errors.email ? (
+                                    <div className="avisoHome">{formik.errors.email}</div>
+                                ) : null}  
                             </div>
                             <div>
                                 <select id="tipoTattoo" name="Tipo de Tattoo">
@@ -169,11 +275,25 @@ export default function Home(){
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn enviar">Enviar</button>
+                        <button type="submit" class="btn enviar" aria-label="Enviar formulário">Enviar</button>
                     </div>
-                    
                 </div>
             </div>
+            {showScrollUpButton && (
+                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={buttonStylesUp} id="buttonStylesUp">
+                    &#8593;
+                </button>
+                )}
+            {showScrollDownButton && (
+                <button
+                    onClick={scrollToBottom}
+                    style={buttonStyles}
+                    className="bounce-animation"
+                    id="buttonStyles"
+                >
+                &#8595;
+                </button>
+            )}
             <Footer/>
         </div>
         );

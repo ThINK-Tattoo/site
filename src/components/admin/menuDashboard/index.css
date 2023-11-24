@@ -45,7 +45,7 @@ button{
     text-align: center;
 }
 
-.btn-sair{
+.btn-sairAdmin{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +69,6 @@ button{
     text-align: left;
 }
 
-
 @media (max-width: 800px){
     .sidebar{
         width: 185px;
@@ -77,5 +76,8 @@ button{
     .logo-menuAdmin{
         width: 137px;
         height: 65px;
+    }
+    .nav-links {
+        margin-top: 3rem;
     }
 }

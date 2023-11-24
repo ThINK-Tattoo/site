@@ -1,16 +1,3 @@
-.custom-toast-success {
-  background-color: black; 
-  color: #ffffff !important; 
-}
-
-.custom-toast-icon-success {
-  color: var(--var-txt-lilas) !important; 
-}
-
-.custom-toast-progress-bar {
-  background: var(--var-txt-lilas); 
-}
-
 .menu a {
   color: inherit;
   text-decoration: none;
@@ -271,7 +258,7 @@ button:hover{
   ul.sub-menu {
     padding: 0;
     margin-top: 5px;
-}
+  }
 }
 
 .mobile-menu-open .desktop-menu {

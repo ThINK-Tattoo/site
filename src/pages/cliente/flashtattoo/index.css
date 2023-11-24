@@ -64,13 +64,14 @@
     align-items: center;
 }
 
-#modal-info {
+#modal-info-flashtattoo {
     display: flex;
     margin-top: 5%;
 }
 
-#modal-info img {
-    width: 45%;
+#modal-info-flashtattoo img {
+    width: 50%;
+    max-width: 280px;
 }
 
 .modal-close-button {
@@ -225,7 +226,7 @@
     .modal-tattoo {
         flex-direction: column;
     }
-    #modal-info img {
+    #modal-info-flashtattoo img {
         width: 100%;
     }
     .valores-tattoo {
@@ -269,12 +270,12 @@
         justify-content: center;
         align-items: center;
     }
-    #modal-info {
+    #modal-info-flashtattoo{
         display: flex;
         flex-direction: column !important;
         margin-top: 5%;
     }
-    #modal-info img {
+    #modal-info-flashtattoo img {
         width: 80%;
     }
     .modal-close-button {

@@ -91,7 +91,6 @@ margin-top: 65%;
     background-color: white;
     display: flex;
     flex-direction: column;
-
 }
 
 #tituloProjeto{
@@ -273,6 +272,18 @@ margin-top: 65%;
     text-align: center;
 }
 
+.avisoHome{
+    font-size: smaller;
+    color: red;
+    margin-bottom: -66px !important;
+    word-wrap: break-word;
+    text-align: center;
+    width: 90%;
+    margin-top: 5px !important;
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+}
+
 select {
     padding-left: 10px;
     padding-right: 10px;
@@ -311,9 +322,37 @@ option{
 .alto-contraste .iconSeta{
     color: yellow;
 }
+
+.alto-contraste select {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.alto-contraste #buttonStylesUp, .alto-contraste #buttonStyles {
+    background-color: yellow !important;
+    color: black !important;
+    animation: none;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.bounce-animation {
+    animation: bounce 1s infinite;
+}
+
 /* Estilos para tablets */
 @media (max-width: 1300px){
-    .input {
+    .inputHome {
         width: 100%;
     }
     select{
@@ -402,16 +441,19 @@ option{
     .iconCoracao{
         margin-top: 2rem;
     }
-    .input{
+    .inputHome{
         width: 300px;
     }
     .cuidadosEmensagem{
         display: block;
     }
+    .avisoHome{
+        margin-bottom: 0 !important;
+    }
 }
 /*Estilos para mobile*/
 @media (max-width: 576px){
-    .input{
+    .inputHome{
         width: 100%;
     }
     .mensagemFormGeral{

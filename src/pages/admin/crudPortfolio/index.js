@@ -18,35 +18,29 @@ export default function CrudPortfolio() {
         senha: '',
         fotoPerfil: null
     });
-     useEffect(() => {
-         const userType = localStorage.getItem("userType");
- 
-         if(!userType || userType === 'cliente'){
-             navigate('/signin');
-         } else if(userType === 'admin'){
+    useEffect(() => {
+        const userType = localStorage.getItem("userType");
+        if(!userType || userType === 'cliente'){
+                navigate('/signin');
+        } else if(userType === 'admin'){
             setIsUserLoggedIn(userType === "admin");
             const adminLog = localStorage.getItem('user');
             const adminData = adminLog ? JSON.parse(adminLog) : null;
             axios.get('http://localhost:3636/cliente/selectPortfolio')
             .then(response => {
-              setPortfolio(response.data); 
+                setPortfolio(response.data); 
             })
             .catch(error => {
-              console.error('Erro ao obter dados do portfólio:', error);
+                console.error('Erro ao obter dados do portfólio:', error);
             });
             if (adminData) {
                 setAdmin(adminData);
                 setIdAdmin(adminData[0].id);
             }
-         }
-
-         
-         
-     }, []); 
+        }
+    }, []); 
 
     const [portfolio, setPortfolio] = useState([]);
-
-
     const [selectedPortfolio, setSelectedPortfolio] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
@@ -99,13 +93,11 @@ export default function CrudPortfolio() {
 
     const openModalAdd = () => {
         setIsModalAdd(true);
-
     };
 
     const closeModalAdd = () => {
         setIsModalAdd(false);
     };
-
 
     const handleImageSelect = (e) => {
         const file = e.target.files[0];
@@ -120,7 +112,6 @@ export default function CrudPortfolio() {
         const formData = new FormData();
         formData.append('file', selectedImage);
         formData.append('idAdmin', idAdmin); // Supondo que 'user' seja uma string JSON
-      
         formData.append('nome', document.getElementById('nome').value);
         formData.append('tamanho', document.getElementById('tamanho').value);
         formData.append('local', document.getElementById('local').value);
@@ -128,26 +119,24 @@ export default function CrudPortfolio() {
         formData.append('cores', document.getElementById('cores').value);
         
         try {
-          const response = await fetch('http://localhost:3636/cliente/createPortfolio', {
+            const response = await fetch('http://localhost:3636/cliente/createPortfolio', {
             method: 'POST',
             body: formData
-          });
-          
-          if (response.ok) {
+        });
+        if (response.ok) {
             const data = await response.json();
             console.log(data.message);
             setPortfolio((prevPort) => [...prevPort, { ...data, imageLoaded: false }]);
             closeModalAdd();
             window.location.reload();
-          } else {
+        } else {
             console.error('Erro ao adicionar imagem ao portfólio');
-          }
-        } catch (error) {
-          console.error('Erro ao enviar requisição:', error);
         }
-      };
-      
-      const handleUpdate = async (e) => {
+        } catch (error) {
+            console.error('Erro ao enviar requisição:', error);
+        }
+    };
+    const handleUpdate = async (e) => {
         e.preventDefault();
 
         console.log('Botão clicado!');
@@ -233,7 +222,7 @@ export default function CrudPortfolio() {
 
                     {selectedPortfolio && (
                         <div className="modal-tatto">
-                            <div id="modal-info-portfolio">
+                            <div id="modal-info-portfolioAdmin">
                                 <img src={`http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
                                 <div className="modal-info-description">
                                     <div className="description">
@@ -245,16 +234,12 @@ export default function CrudPortfolio() {
                                         <p className="txt-white"><strong>Local: </strong>{selectedPortfolio.local}</p>
                                         <p className="txt-white"><strong>Tipo: </strong> {selectedPortfolio.tipo}</p>
                                         <p className="txt-white"><strong>Cores: </strong> {selectedPortfolio.cores}</p>
-                                        
                                     </div>
-
-
                                 </div>
                             </div>
                             <div className="btn-modal">
                                 <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
                                 <button onClick={handleExcluir} className="btn btn-cancelar">Excluir</button>
-
                             </div>
                         </div>
                     )}
@@ -291,13 +276,12 @@ export default function CrudPortfolio() {
                                 <img src={selectedImage ? URL.createObjectURL(selectedImage): `http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} 
                                 alt="Upload de imagem" 
                                 style={{ maxWidth: '270px', maxHeight: '268px' }}
-
                                 />
                             </label>
                             <div className="modal-info-description">
                                 <div className="description">
                                     <input className="inputp input" type="text" id="nome"
-                                         onChange={(e) => {
+                                        onChange={(e) => {
                                             setSelectedPortfolio({
                                                 ...selectedPortfolio,
                                                 nome: e.target.value
@@ -305,7 +289,6 @@ export default function CrudPortfolio() {
                                         }}
                                         name="nome" value={selectedPortfolio.nome} required
                                     />
-
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
@@ -317,7 +300,6 @@ export default function CrudPortfolio() {
                                             });
                                         }}
                                         name="tamaho" value={selectedPortfolio.tamanho} required />
-
                                     <input className="inputp input" type="text" id="local"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
@@ -326,7 +308,6 @@ export default function CrudPortfolio() {
                                             });
                                         }}
                                         name="local" value={selectedPortfolio.local} required />
-
                                     <input className="inputp input" type="text" id="Tipo"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
@@ -335,7 +316,6 @@ export default function CrudPortfolio() {
                                             });
                                         }}
                                         name="Tipo" value={selectedPortfolio.tipo} required />
-
                                     <input className="inputp input" type="text" id="cores"
                                         onChange={(e) => {
                                             setSelectedPortfolio({
@@ -345,19 +325,14 @@ export default function CrudPortfolio() {
                                         }}
                                         name="cores" value={selectedPortfolio.cores} required />
                                 </div>
-
-
                             </div>
                         </div>
                         <div className="btn-modal">
                             <button onClick={handleUpdate} className="btn btn-adicionar">Editar</button>
                             <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
-
                         </div>
                     </div>
                     )}
-
-                    
                 </Modal>
 
                 <Modal isOpen={isModalOpenAdd} onRequestClose={closeModalAdd}
@@ -386,18 +361,13 @@ export default function CrudPortfolio() {
                                     style={{ display: 'none' }}
                                     id="imageInputp"
                                 />
-                               
                                 <label htmlFor="imageInputp">
                                     <img src={selectedImage ? URL.createObjectURL(selectedImage): image} 
                                     alt="Upload de imagem" 
                                     id="imagePreview"
                                     style={{ maxWidth: '270px', maxHeight: '268px' }}
                                     />
-                                
-                                
                                 </label>
-                              
-                           
                             <div className="modal-info-description">
                                 <div className="description">
                                     <input className="inputp input" type="text" id="nome" name="nome" placeholder="Nome" />
@@ -408,10 +378,8 @@ export default function CrudPortfolio() {
                                     <input className="inputp" type="text" id="local" name="local" placeholder="Local" />
                                     <input className="inputp" type="text" id="tipo" name="tipo" placeholder="Tipo" />
                                     <input className="inputp" type="text" id="cores" name="cores" placeholder="Cores" />
-
                                 </div>
                             </div>
-
                         </div>
                         <div className="btn-modal">
                             <button onClick={handlePortfolioSubmit} className="btn btn-adicionar">Adicionar</button>
@@ -420,10 +388,6 @@ export default function CrudPortfolio() {
                     </div>
                 </Modal>
             </section>
-
         </div>
     )
-
-
-}
-;
+};

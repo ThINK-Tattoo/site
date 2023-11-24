@@ -1,5 +1,4 @@
 /* Estilos padrão para desktop */
-
 .portfolio-tittle {
     background-image: url("../../../assets/header/portfolio-image.png");
 }
@@ -36,6 +35,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -277,14 +277,14 @@
         margin-top: 10%;
     }
     #info-portfolio p {
-        font-size: 0.8rem;
+        font-size: 0.8rem;  
     }
     .h2-info{
         font-size: 1.5rem;
         margin-top: 10%;
     }
     #modal-container-portfolio {
-        width: 90%;
+        width:90%;
     }
     .modal-port.portfolio {
         display: flex;

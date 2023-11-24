@@ -4,10 +4,13 @@ import Menu from "../../../../components/usuarioLogado/MenuLog";
 import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faEdit, faUser } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { hotjar } from "react-hotjar";
 import { useNavigate } from "react-router-dom";
+import MaskedInput from 'react-input-mask';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 import '../../../../styleGlobal.css';
 import './index.css';
@@ -49,7 +52,6 @@ export default function MinhasInformacoes(){
         }
     }, []);
 
-  
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [senha, setSenha] = useState(client.senha);
@@ -57,7 +59,6 @@ export default function MinhasInformacoes(){
     const toggleSenha = () => {
         setMostrarSenha(!mostrarSenha);
     };
-
 
     const openModal = (e) => {
         e.preventDefault();
@@ -67,7 +68,6 @@ export default function MinhasInformacoes(){
     const closeModal = () => {
         setIsModalOpen(false);
     };
-    
     
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -92,10 +92,30 @@ export default function MinhasInformacoes(){
         }
     };
 
-   
+    const validationSchema = Yup.object({
+        nome: Yup.string().min(2, "O nome deve ter pelo menos 2 caracteres").required("Campo obrigatório"),
+        email: Yup.string().email("E-mail inválido").required("Campo obrigatório"),
+        telefone: Yup.string().required("Campo obrigatório"),
+        idade: Yup.number().min(18, "A idade deve ser igual ou maior que 18").required("Campo obrigatório"),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            nome: client.nome,
+            email: client.email,
+            telefone: client.telefone,
+            idade: client.idade,
+        },
+        validationSchema: validationSchema,
+        onSubmit: values => {
+            console.log('Formulário enviado com os valores:', values);
+            closeModal();
+        },
+    });
+
     return(
         <div className="container perfil-container">
-            {isUserLoggedIn ? <MenuLogado /> : <Menu />}
+            {isUserLoggedIn ? <MenuLogado />: <Menu />}
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
@@ -116,7 +136,8 @@ export default function MinhasInformacoes(){
                 }}
             >
                 
-                <form className="form modal-form" onSubmit={handleUpdate} encType="multipart/form-data">
+                <form className="form modal-form" onSubmit={formik.handleSubmit} encType="multipart/form-data">
+                <FontAwesomeIcon icon={faUser} id="person-icon" alt="Icon de usuário"/>
                     <h4>Atualizar informações</h4>
                     <div className="container-form-group info-container">
                         <div className="form-group info-perfil">
@@ -125,9 +146,14 @@ export default function MinhasInformacoes(){
                                 className="input"
                                 type="text"
                                 id="nome"
+                                name="nome"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, nome: e.target.value }))}
+                                onBlur={formik.handleBlur}
                                 value={client.nome}
                             />
+                            {formik.touched.nome && formik.errors.nome ? (
+                                <div className="avisoForm">{formik.errors.nome}</div>
+                            ) : null}
                         </div>
                         <div className="form-group info-perfil">
                             <label htmlFor="email">Email:</label>
@@ -137,17 +163,27 @@ export default function MinhasInformacoes(){
                                 id="email"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, email: e.target.value }))}
                                 value={client.email}
+                                onBlur={formik.handleBlur}
                             />
+                            {formik.touched.email && formik.errors.email ? (
+                                <div className="avisoForm">{formik.errors.email}</div>
+                            ) : null}
                         </div>
                         <div className="form-group info-perfil">
                             <label htmlFor="telefone">Telefone:</label>
-                            <input
+                            <MaskedInput
                                 className="input"
                                 type="text"
                                 id="telefone"
+                                
+                                mask="(99) 99999-9999"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, telefone: e.target.value }))}
                                 value={client.telefone}
+                                onBlur={formik.handleBlur}
                             />
+                            {formik.touched.telefone && formik.errors.telefone ? (
+                                <div className="avisoForm">{formik.errors.telefone}</div>
+                            ) : null}
                         </div>
                         <div className="form-group info-perfil">
                             <label htmlFor="idade">Idade:</label>
@@ -157,7 +193,11 @@ export default function MinhasInformacoes(){
                                 id="idade"
                                 onChange={(e) => setClient((prevClient) => ({ ...prevClient, idade: e.target.value }))}
                                 value={client.idade }
+                                onBlur={formik.handleBlur}
                             />
+                            {formik.touched.idade && formik.errors.idade ? (
+                                <div className="avisoForm">{formik.errors.idade}</div>
+                            ) : null}
                         </div> 
                     </div>
                     <div className="flex">
@@ -167,7 +207,7 @@ export default function MinhasInformacoes(){
                 </form>
             </Modal>
 
-            <div className="header-imag3e perfil-tittle">
+            <div className="header-image perfil-tittle">
                 <h1>Minhas informaç<span className="span-color">ões</span></h1>
             </div>
             <section className="form-container">
@@ -189,7 +229,7 @@ export default function MinhasInformacoes(){
                         </div>
                         <div class="form-group info-perfil">
                             <label for="idade">Idade:</label>
-                            <input className="input" type="text" id="idade" value={client.idade} readOnly />
+                            <input className="input" type="text" id="idade" value={client.idade + " anos"} readOnly />
                         </div>
                         <div class="form-group info-perfil">
                             <label for="telefone">Senha:</label>

@@ -33,7 +33,7 @@ export default function Menu(){
                     </ul>
                 </div>
                 <div className="liBtn">
-                <li onClick={handleLogout}><button className="btn-sair">Sair</button></li>
+                <li onClick={handleLogout}><button className="btn-sairAdmin">Sair</button></li>
                 </div>
             </div>
             

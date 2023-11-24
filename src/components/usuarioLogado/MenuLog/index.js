@@ -135,7 +135,7 @@ export default function Menu(){
                         )}
                     </li>
                 </ul>
-
+            </div>
                 <div className="mobile-menu">
                     <Link to="/"><img src={logo} alt="Logo do projeto com o nome ThINK" /></Link>
                     <button className={mobileMenuButtonClass}  onClick={toggleMobileMenu}>
@@ -163,7 +163,5 @@ export default function Menu(){
                         )}
                 </div>
             </div>
-            
-        </div>
     )
 }

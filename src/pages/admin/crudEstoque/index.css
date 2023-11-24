@@ -36,15 +36,33 @@
 .form-group-estoque input, select{
     background-color: var(--var-forms-background);
     width: 100%;
+    padding: 8px;
+    border: transparent;
+    border-radius: 5px;
+    color: white;
 }
 
 .form-group-estoque {
     margin: 1rem;
 }
 
-.btn-modal{
+.btn-modalEstoque{
     padding-inline: 10%;
-    margin-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: first baseline;
+}
+
+.btn-cancelarEstoque{
+    background: transparent;
+    border: 2px solid var(--var-txt-lilas);
+    color: var(--var-lilas);
+    width: 100%;
+}
+
+.btn-cadastrarEstoque{
+    width: 100%;
 }
 
 #modalAddEstoque{
@@ -92,6 +110,7 @@
     text-align: left;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    color: white;
 }
 
 .accordion-button.active a {

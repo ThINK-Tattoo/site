@@ -1,14 +1,14 @@
 .agenda-tittle{
-    background-image: url("../../../assets/agenda/agenda-image.png");
-    margin-bottom: 3%;
+  background-image: url("../../../assets/agenda/agenda-image.png");
+  margin-bottom: 3%;
 }
 
 .calendar-container{
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 .custom-calendar-tile {
@@ -34,7 +34,7 @@
 }
 
 .custom-input input {
-  color: white !important;
+  color: white !important; /* Define a cor do texto para branco */
   text-align: center;
 }
 
@@ -105,7 +105,7 @@
 .react-calendar__navigation__arrow:hover {
   background-color: #2e2e2e !important;
 }
-  
+
 .btn-agendamentos{
   width: 20%;
   align-self: center;
@@ -165,12 +165,12 @@
 }
 
 .section:nth-child(1), .section:nth-child(2){
-    margin-top: 50%;
-    justify-self: center; 
+  margin-top: 50%;
+  justify-self: center; 
 }
 
 .section:nth-child(3){
-    width: 50%;
+  width: 50%;
 }
 
 .container-tipos > .section:nth-child(3) {
@@ -183,14 +183,14 @@
   margin-top: 10px;
 }
 
-.btn-cancelarAdmin{
+.btn-voltar{
+  width: 40%;
   background: transparent;
   border: 2px solid var(--var-txt-lilas);
   color: var(--var-lilas);
-  width: 40%;
 }
 
-.btn-cancelarAdmin:hover{
+.btn-voltar:hover{
   color: white;
 }
 
@@ -222,6 +222,20 @@
 
 .alto-contraste .icon-file{
   color: yellow;
+}
+
+.alto-contraste .btn-voltar{
+  background-color: transparent;
+  border: 1px solid white;
+  font-weight: 900;
+  color: yellow;
+}
+
+.alto-contraste .btn-voltar:hover{
+  background-color: yellow;
+  border: none;
+  font-weight: 900;
+  color: black;
 }
 
 label {
@@ -261,16 +275,28 @@ input[type="checkbox"] {
 @media (max-width: 768px) {
   .container-tipos, .flex {
     flex-direction: column; 
+    display: flex;
   }
   .flex button{
     width: 50%;
   }
-  .section {
-    width: 50%; 
+  .section, .section:nth-child(3), #orcamento  {
+    width: 100%; 
   }
   .btn-agendamentos{
     width: 40%;
     align-self: center;
+  }
+  .section:nth-child(1) {
+    margin-top: 35rem;
+    margin-left: 0;
+  }
+  .section:nth-child(2){
+    margin-top: 0;
+    margin-left: 0;
+  }
+  .section:nth-child(3){
+    margin-left: 0;
   }
 }
 

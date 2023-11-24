@@ -185,7 +185,24 @@ margin-right: 5%;
     }
     .modal-form{
         max-width: 369px;
+        width: 100%;
         overflow: auto;
         height: auto;
+    }
+    #modal-info input{
+        width: 250px !important;
+    }
+    #modal-info label {
+        margin-left: 10%;
+    }
+}
+
+@media (min-width: 768px) {
+    #modal-info{
+        height: 700px !important;
+        inset: 50% -370px 40px 50% !important;
+    }
+    .form-group {
+        margin-left: 0 !important;
     }
 }

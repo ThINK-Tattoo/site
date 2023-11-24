@@ -1,4 +1,3 @@
-
 .portfolio-container h3 {
     margin-top: 2%;
     margin-bottom: 2%;
@@ -39,17 +38,16 @@
     border: none;
 }
 
-#img-port{
+#img-port {
     cursor: pointer;
     transition: 0.5s;
 }
 
-#img-port:hover{
+#img-port:hover {
     transform: scale(1.1);
 }
 
-#modal-container-portfolio
-{
+#modal-container-portfolio {
     width: 50%;
 }
 
@@ -60,7 +58,7 @@
     align-items: center;
 }
 
-#modal-info-portfolio {
+#modal-info-portfolioAdmin {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,7 +198,7 @@
     }
     #modal-container-portfolio{
         width: 70%;
-        margin-left: 5%; 
+        margin-left: 5% !important; 
     }
     #modal-edit-portfolio{
             width: 70%;
@@ -242,6 +240,22 @@
     }
     .valores-port.portfolio p{
         font-size: 0.9rem;
+    }
+    #modal-edit-tatto {
+        flex-direction: column;
+        margin-bottom: 2%;
+    }
+    .modal-info-description .description {
+        margin-left: 0;
+    }
+    #modal-info-portfolioAdmin{
+        flex-direction: column;
+    }
+    .modal-info-description .description h3 {
+        margin-bottom: 0;
+    }
+    #modal-add-tatto {
+        flex-direction: column;
     }
 }
 

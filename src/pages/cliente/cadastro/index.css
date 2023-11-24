@@ -10,12 +10,12 @@
   margin-left: -20%;
 }
 
-.form .cadastro{
+.form .cadastro {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 600px;
-  max-width: 700px;
+  max-width: 700px ;
   margin: 5% auto;
   padding: 20px;
   background-color: var(--var-forms-background);
@@ -64,9 +64,28 @@
   margin-bottom: 10px;
 }
 
+.input {
+  width: 340px !important;
+}
+
 label {
   color: white;
   margin-bottom: 5px;
+}
+
+.btn-cadastrar {
+  width: 40%;
+}
+
+.avisoForm {
+  font-size: smaller;
+  color: red;
+  margin-bottom: -35px !important;
+  word-wrap: break-word;
+  text-align: center;
+  width: 90%;
+  margin-left: 2% !important;
+  margin-right: 2% !important;
 }
 
 form{
@@ -126,10 +145,6 @@ form h4{
   color: var(--var-txt-lilas);
 }
 
-.btn-cadastrar {
-    width: 40%;
-}
-
 .alto-contraste .cadastro-tittle{
   background-image: none; 
 }
@@ -139,7 +154,7 @@ form h4{
   color: white;
 }
 
-.alto-contraste .form{
+.alto-contraste .form  {
   background-color: transparent;
 }
 
@@ -177,7 +192,7 @@ form h4{
 }
 
 @media (max-width: 768px) {
-  .form .cadastro{
+  .form .cadastro {
     max-width: 100%; 
     margin: 5% 10px; 
   }
@@ -187,7 +202,7 @@ form h4{
   .cadastro-tittle h1{
     font-size: 2.2rem;
   }
-  .form h4{
+  .form .cadastro  h4{
     font-size: 1.5rem;
   }
   .form #person-icon{
@@ -197,9 +212,11 @@ form h4{
   .container-form-group {
     grid-template-columns: 1fr; 
     grid-gap: 10px; 
+    width: 300px;
   }
-  input {
-    width: 100%; 
+  .input {
+    width: 300px !important; 
+    max-width: 100%;
   }
   .btn-cadastrar {
     width: 40%;
@@ -213,15 +230,25 @@ form h4{
   .token{
     gap: 0.5rem;
   }
+  .avisoForm {
+    margin-bottom: -10px !important;
+    width: 100%;
+  }
+  .form-group {
+    margin: 0 !important;
+  }
 }
 
 @media (min-width: 769px) {
-  .form .cadastro{
+  .form .cadastro  {
     max-width: 900px; 
     margin: 5% auto; 
+  }
+  .cadastro{
+    height: auto !important;
   }
   .container-form-group {
     grid-template-columns: 1fr 1fr; 
     grid-gap: 30px;
-    }
+  }
 }

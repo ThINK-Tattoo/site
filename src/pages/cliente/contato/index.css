@@ -52,11 +52,11 @@
 }
 
 .form p a{
-    color: white;
+  color: white;
 }
 
 .form p a:hover{
-    color: var(--var-txt-lilas);
+  color: var(--var-txt-lilas);
 }
 
 .form #envelope{
@@ -85,7 +85,7 @@
 }
 
 .col-full #mensagem {
-  width: 100%;
+  width: 100% !important;
   height: 100px;
   resize: none;
 }
@@ -163,13 +163,14 @@ label {
   }
 }
 
-  @media (min-width: 769px) {
-    .form {
-      max-width: 900px; 
-      margin: 5% auto; 
-    }
-    .container-form-group {
-      grid-template-columns: 1fr 1fr; 
-      grid-gap: 30px;
-    }
+@media (min-width: 769px) {
+  .form {
+    max-width: 900px; 
+    margin: 5% auto; 
+    height: auto;
   }
+  .container-form-group {
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 30px;
+  }
+}

@@ -59,5 +59,15 @@
 @media (max-width: 800px){
     .custom-calendar{
         margin-left: 13rem;
+        width: 70%;
+    }
+    .fc .fc-toolbar.fc-header-toolbar, .fc .fc-col-header-cell-cushion  {
+        font-size: x-small;
+    }
+    .fc .fc-daygrid-month-start {
+        font-size: smaller;
+    }
+    .fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion, .fc-daygrid-dot-event .fc-event-title {
+        font-size: small;
     }
 }

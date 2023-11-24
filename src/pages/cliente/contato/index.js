@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
 import { hotjar } from "react-hotjar";
+import MaskedInput from 'react-input-mask';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 import { BallTriangle } from "react-loader-spinner";
 import Modal from 'react-modal';
@@ -101,6 +103,25 @@ export default function Contato(){
         }
     };
 
+    const validationSchema = Yup.object({
+        nome: Yup.string().min(2, "O nome deve ter pelo menos 2 caracteres").required("Campo obrigatório"),
+        email: Yup.string().email("E-mail inválido").required("Campo obrigatório"),
+        telefone: Yup.string().required("Campo obrigatório"),
+        assunto: Yup.string().min(10, "O assunto deve ter no mínimo 10 caracteres").required("Campo obrigatório"),
+        mensagem: Yup.string().min(100, "A mensagem deve ter no mínimo 100 caracteres").required("Campo obrigatório"),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            nome: "",
+            email: "",
+            telefone: "",
+            assunto: "",
+            mensagem: "",
+        },
+        validationSchema: validationSchema,
+    });
+
     return (
         <div className="container container-contato">
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
@@ -113,37 +134,82 @@ export default function Contato(){
                     <h4>Contato</h4>
                     <div className="container-form-group">
                         <div class="form-group">
-                            <input className="input" type="text" id="nome" name="nome" 
-                            value={formData.nome}
-                            onChange={handleChange}
-                            placeholder="Nome" required />
+                            <input
+                                className="input"
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Nome"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.nome}
+                            />
+                            {formik.touched.nome && formik.errors.nome ? (
+                                <div className="avisoForm">{formik.errors.nome}</div>
+                            ) : null}   
                         </div>
                         <div class="form-group">
-                            <input className="input" type="email" id="email" name="email" 
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="E-mail" required />
+                            <input
+                                className="input"
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="E-mail"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.email}
+                            />
+                            {formik.touched.email && formik.errors.email ? (
+                                <div className="avisoForm">{formik.errors.email}</div>
+                            ) : null}       
                         </div>
                         <div class="form-group">
-                            <input className="input" type="tel" id="telefone" name="telefone" 
-                            value={formData.telefone}
-                            onChange={handleChange}
-                            placeholder="Telefone" required />
+                            <MaskedInput
+                                className="input"
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                placeholder="Telefone"
+                                mask="(99) 99999-9999"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.telefone}
+                            />
+                            {formik.touched.telefone && formik.errors.telefone ? (
+                                <div className="avisoForm">{formik.errors.telefone}</div>
+                            ) : null}   
                         </div>
                         <div class="form-group">
-                            <input className="input" type="text" id="assunto" name="assunto" 
-                            value={formData.assunto}
-                            onChange={handleChange}
-                            placeholder="Assunto" required />
+                            <input 
+                            className="input" 
+                            type="text" 
+                            id="assunto" 
+                            name="assunto" 
+                            placeholder="Assunto" 
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.assunto} />
+                            {formik.touched.assunto && formik.errors.assunto ? (
+                                <div className="avisoForm">{formik.errors.assunto}</div>
+                            ) : null}   
                         </div>
                         <div class="form-group col-full">
-                            <textarea className="input" id="mensagem" name="mensagem" 
-                            value={formData.mensagem}
-                            onChange={handleChange}
-                            placeholder="Mensagem" required></textarea>
+                        <textarea 
+                                className="input" 
+                                id="mensagem" 
+                                name="mensagem" 
+                                placeholder="Mensagem" 
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.mensagem}
+                                >
+                            </textarea>
+                            {formik.touched.mensagem && formik.errors.mensagem ? (
+                                <div className="avisoForm">{formik.errors.mensagem}</div>
+                            ) : null}   
                         </div>
                     </div>
-                    <button type="submit" onClick={hadnleContato} class="btn btn-contato">Enviar</button>
+                    <button type="submit" onClick={hadnleContato} class="btn btn-cadastrar">Enviar</button>
                     <ToastContainer position="top-center" />
                 </form>
             </section>
