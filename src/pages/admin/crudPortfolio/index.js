@@ -5,6 +5,9 @@ import Menu from '../../../components/admin/menuDashboard';
 import axios from 'axios';
 import image from '../../../assets/icones/Upload_Image.png';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import '../../../styleGlobal.css';
 import './index.css'
 
@@ -99,6 +102,12 @@ export default function CrudPortfolio() {
         setIsModalAdd(false);
     };
 
+    const closeAll = () =>{
+        setIsModalAdd(false);
+        setIsModalEdit(false);
+        setIsModalOpen(false);
+    }
+
     const handleImageSelect = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -136,22 +145,55 @@ export default function CrudPortfolio() {
             console.error('Erro ao enviar requisição:', error);
         }
     };
+
+    //Update
     const handleUpdate = async (e) => {
         e.preventDefault();
 
         console.log('Botão clicado!');
         try {
-            
-            const response = await axios.put(`http://localhost:3636/cliente/updatePortfolio/${portfolio.id}`, portfolio);
+            const formData = new FormData();
+            formData.append('idAdmin', selectedPortfolio.idAdmin);
+            formData.append('nome', selectedPortfolio.nome);
+            formData.append('tamanho', selectedPortfolio.tamanho);
+            formData.append('local', selectedPortfolio.local);
+            formData.append('tipo', selectedPortfolio.tipo);
+            formData.append('cores', selectedPortfolio.cores);
 
-            if (response.status === 200) {
-                alert('Dados atualizados com sucesso!');
-                closeModal(); // Fechar o modal após a atualização
-                setPortfolio(updatedPortfolio => ({ ...updatedPortfolio, ...portfolio }));       
-                const updatedPortfolioData = JSON.stringify([portfolio]);             
-                localStorage.setItem('user', updatedPortfolioData);
-                window.location.reload();            } else {
-                alert(`Erro ao atualizar dados: ${response.data.message}`);
+            if(!selectedImage){
+                formData.append('file', selectedPortfolio.imagem);
+            }else{
+                formData.append('file', selectedImage);
+            }
+           
+
+            const response = await axios.put(`http://localhost:3636/cliente/updatePortfolio/${selectedPortfolio.id}`, formData);
+
+            console.log(response.data);
+                if (response.status === 200) {
+                
+                    closeAll();
+
+                    toast.success('Update do Portfolio feita com sucesso', {
+                        position: toast.POSITION.TOP_CENTER,
+                        className: 'custom-toast-success',
+                        progressClassName: 'custom-toast-progress-bar',
+                    });
+
+                    axios.get('http://localhost:3636/cliente/selectPortfolio')
+                        .then(response => {
+                            setPortfolio(response.data); 
+                        })
+                        .catch(error => {
+                            console.error('Erro ao obter dados do portfólio:', error);
+                        });        
+                } 
+                
+            else {
+                toast.error("Erro ao dar update no Portfolio", {
+                    position: toast.POSITION.TOP_CENTER,
+                  });
+                console.error(`Erro ao atualizar dados: ${response.data.message}`);
             }
         } catch (error) {
             console.error('Erro ao atualizar dados:', error);
@@ -165,7 +207,7 @@ export default function CrudPortfolio() {
     
             if (response.status === 200) {
                 alert('Item excluído com sucesso!');
-                closeModal();
+                closeAll();
                 
                 // Atualize o estado ou realize ações necessárias após a exclusão do item no banco de dados.
                 
@@ -187,6 +229,7 @@ export default function CrudPortfolio() {
                 <div className="tituloDashboard">
                     <h1>Portfo<span className="span-color-dashboard">lio</span></h1>
                 </div>
+                <ToastContainer position="top-center" />
                 <section className="portfolio">
                     {portfolio.map((portfolio) => (
                         <div key={portfolio.id} className="portifolio-item">
@@ -374,10 +417,10 @@ export default function CrudPortfolio() {
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
-                                    <input className="inputp" type="text" id="tamanho" name="tamanho" placeholder="Tamanho" />
-                                    <input className="inputp" type="text" id="local" name="local" placeholder="Local" />
-                                    <input className="inputp" type="text" id="tipo" name="tipo" placeholder="Tipo" />
-                                    <input className="inputp" type="text" id="cores" name="cores" placeholder="Cores" />
+                                    <input className="inputp input" type="text" id="tamanho" name="tamanho" placeholder="Tamanho" />
+                                    <input className="inputp input" type="text" id="local" name="local" placeholder="Local" />
+                                    <input className="inputp input" type="text" id="tipo" name="tipo" placeholder="Tipo" />
+                                    <input className="inputp input" type="text" id="cores" name="cores" placeholder="Cores" />
                                 </div>
                             </div>
                         </div>

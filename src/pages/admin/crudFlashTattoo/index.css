@@ -93,6 +93,7 @@
 
 .inputp{
     margin-top: 10px;
+    max-width: 260px !important;
     width: 100%;
 }
 

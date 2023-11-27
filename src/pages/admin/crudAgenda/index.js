@@ -5,6 +5,8 @@ import Menu from '../../../components/admin/menuDashboard';
 import '../../../styleGlobal.css';
 import './index.css'
 
+import axios from 'axios';
+import { format } from 'date-fns';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -16,6 +18,8 @@ import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 function CrudAgenda(){
    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
+    const [events, setEvents] = useState([]);
+   
     
     useEffect(() => {
         const userType = localStorage.getItem("userType");
@@ -25,8 +29,40 @@ function CrudAgenda(){
         } else if(userType === 'admin'){
             setIsUserLoggedIn(userType === "admin");
         }
+
+       
+        const fetchEventsFromBackend = async () => {
+                try {
+                  const response = await axios.get('http://localhost:3636/agenda/selectAgenda');
+                    const data = response.data;
+                    
+            
+                    // Converta os dados para o formato de evento do FullCalendar
+                    const eventsData = data.map(item => {
+                      const dateTime = item.dataTattoo
+                      const dataFormatada = format(new Date(dateTime), 'yyyyMMdd');
+
+                        return {
+                            id: item.id,
+                            title: item.nomeCliente,
+                            start: dataFormatada + 'T' + item.hTattoo,
+                            end:  dataFormatada + 'T' + item.hTattoo
+                        };
+                    }).filter(event => event !== null); // Remover eventos nulos
+            
+                    setEvents(eventsData);
+                } catch (error) {
+                    console.error('Erro ao buscar as tatuagens marcadas: ', error);
+                }
+            };
+
+      console.log(events);
+      
+        fetchEventsFromBackend();
         
     }, []);
+
+    
     
     const calendarRef = useRef(null);
     const handleWindowResize = () => {
@@ -88,20 +124,7 @@ function CrudAgenda(){
                     }
                   }}
                   now={new Date()}
-                  events={[
-                    {
-                      id: 1,
-                      title: 'Tattoo 1',
-                      start: '2023-10-30T10:00:00', 
-                      end: '2023-10-30T12:00:00' 
-                    },
-                    {
-                      id: 2,
-                      title: 'Tattoo 2',
-                      start: '2023-10-31T10:00:00', 
-                      end: '2023-10-31T12:00:00' 
-                    }
-                  ]}
+                  events={events}
                   
                 />
             </div>

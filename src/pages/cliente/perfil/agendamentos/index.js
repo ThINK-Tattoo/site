@@ -5,9 +5,11 @@ import MenuLogado from "../../../../components/usuarioLogado/MenuLog";
 import Footer from "../../../../components/Footer";
 import Modal from 'react-modal';
 import { hotjar } from "react-hotjar";
-
+import axios from 'axios';
 import '../../../../styleGlobal.css';
 import './index.css';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 export default function MeusAgendamentos(){
     useEffect(() => {
@@ -18,37 +20,33 @@ export default function MeusAgendamentos(){
     const navigate = useNavigate();
     useEffect(() => {
         const userType = localStorage.getItem("userType");
+        const clienteLog = localStorage.getItem('user');
+        const clientData = clienteLog ? JSON.parse(clienteLog) : null;
+        const idCliente = clientData[0].id;
 
         if(!userType || userType === 'admin'){
             navigate('/signin');
         }else if(userType === 'cliente'){
             setIsUserLoggedIn(userType === "cliente");
         }
+
+        const fetchAgendas = async () => {
+            
+            try {
+                const response = await axios.get(`http://localhost:3636/agendaConsulta/selectAgendaCon/${idCliente}`);
+                setAgendamentos(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar as tatuagens marcadas: ', error);
+                // Lide com o erro conforme necessário
+            }
+        };
+
+        fetchAgendas();
     }, []);
     
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedAgendamento, setSelectedAgendamento] = useState(null);
-    const [agendamentos, setAgendamentos] = useState([
-        {
-            id:1,
-            dia:"07 de Abril",
-            status:"Realizada",
-            descricao:"Um dragão chinês em meio á flores, dragão em preto e branco mas as flores e alguns detalhes em vermelho. "
-        },
-        {
-            id:2,
-            dia:"14 de Agosto",
-            status:"Negada",
-            descricao:"something"
-            
-        },
-        {
-            id:3,
-            dia: "01 de setembro",
-            status:"aguardando aprovação",
-            descricao:"Uma borboleta que se pareça com uma caveira em tamanho médio na parte posterior da perna, em preto e branco."
-        }
-    ]);
+    const [agendamentos, setAgendamentos] = useState([]);
 
     const openModal = (agendamento) => {
         setSelectedAgendamento(agendamento);
@@ -59,6 +57,11 @@ export default function MeusAgendamentos(){
         setSelectedAgendamento(null);
         setModalIsOpen(false);
     };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return format(date, 'dd MMMM yyyy', { locale: ptBR });
+      };
         
 
     return(
@@ -70,10 +73,13 @@ export default function MeusAgendamentos(){
             {agendamentos.map((reserva)=> (
                 <div key={reserva.id} className="info-agendados" onClick={() => openModal(reserva)}>
                     <div className="text-info">
-                        <p className="txt-dia"><strong>Dia </strong>{reserva.dia}</p>
+                        <p className="txt-dia"><strong>Dia: </strong>{formatDate(reserva.dataTattoo)}</p>
+                        <p className="txt-white"><strong>Horário: </strong>{reserva.hTattoo}</p>
                         <p className="txt-white"><strong>Status: </strong>{reserva.status}</p>
                     </div>
-                    <p className="txt-white"><strong>Detalhes: </strong>{reserva.descricao}</p>
+                    <p className="txt-white"><strong>Estimativa de Orçamento: </strong>R${reserva.estOrcamento}</p>
+                    <p style={{marginTop: "15px"}} className="txt-white"><strong>Tamanho da Tatuagem: </strong>{reserva.tamanhoTattoo}</p>
+                    <p style={{marginTop: "15px"}} className="txt-white"><strong>Detalhes: </strong>{reserva.observacoes}</p>
                 </div>
             ))}
             <Modal
@@ -97,10 +103,13 @@ export default function MeusAgendamentos(){
                     <button className="modal-close-button" onClick={closeModal}>X</button>
                     {selectedAgendamento && (
                     <div className="modal-content">
-                        <h2><strong>Dia </strong>{selectedAgendamento.dia}</h2>
-                        <p><strong>Status: </strong>{selectedAgendamento.status}</p>
-                        <p><strong>Detalhes: </strong>{selectedAgendamento.descricao}</p>
-                        </div>
+                        <h2><strong>Dia: </strong>{formatDate(selectedAgendamento.dataTattoo)}</h2>
+                        <p className="txt-white"><strong>Horário: </strong>{selectedAgendamento.hTattoo}</p>
+                        <p style={{marginTop: "15px"}} className="txt-white"><strong>Status: </strong>{selectedAgendamento.status}</p>
+                        <p style={{marginTop: "15px"}} className="txt-white"><strong>Estimativa de Orçamento: </strong>{selectedAgendamento.estOrcamento}</p>
+                        <p style={{marginTop: "15px"}} className="txt-white"><strong>Tamanho da Tatuagem: </strong>{selectedAgendamento.tamanhoTattoo}</p>
+                        <p style={{marginTop: "15px"}} className="txt-white"><strong>Detalhes: </strong>{selectedAgendamento.observacoes}</p>
+                    </div>
                 )}
             </Modal>
             <Footer/>

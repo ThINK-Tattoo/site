@@ -87,7 +87,7 @@ export default function Login(){
                                 onChange={(e) => setSenha(e.target.value)}
                                 />
                         </div>
-                        <p> <Link to="/signup"><strong>Esqueceu a senha?</strong></Link> </p>
+                        {/* <p> <Link to="/signup"><strong>Esqueceu a senha?</strong></Link> </p> */}
                     </div>
                     <button type="submit" class="btn-entrar">Entrar</button>
                     {error && <p className="error-message">{error}</p>}
