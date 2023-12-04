@@ -8,6 +8,8 @@ import MaskedInput from 'react-input-mask';
 import logo from "../../../assets/icones/logo.png"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Modal from 'react-modal';
 
@@ -23,6 +25,37 @@ export default function Cadastro(){
     }, []);
 
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const [tokenValues, setTokenValues] = useState(["", "", "", "", "", ""]);
+
+    const handleSignup = async () => {
+        try {
+            const response = await fetch('http://localhost:3636/cliente/createConfirmaCliente', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nome: formik.values.nome,
+                    email: formik.values.email,
+                    telefone: formik.values.telefone,
+                    idade: formik.values.idade,
+                    senha: formik.values.senha,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('Usuário cadastrado com sucesso!');
+                openModal();  // Abra o modal apenas se a chamada à API for bem-sucedida
+            } else {
+                console.error('Erro no cadastro:', data.message);
+            }
+        } catch (error) {
+            console.error('Erro ao chamar a API:', error);
+        }
+    };
+    
 
     useEffect(() => {
         const userType = localStorage.getItem("userType");
@@ -83,12 +116,68 @@ export default function Cadastro(){
             senha: "",
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
-            // Aqui você pode adicionar lógica para enviar os dados do formulário
-            // e abrir o modal se necessário
-            openModal();
+        onSubmit: async (values) => {
+           
+            await handleSignup();
+    
+            // Abrir o modal apenas se a chamada à API for bem-sucedida
+            if (formik.isValid && Object.keys(passwordErrors).every((key) => passwordErrors[key])) {
+                openModal();
+            }
         },
     });
+    
+    const handleTokenChange = (e, index) => {
+        const newTokenValues = [...tokenValues];
+        newTokenValues[index] = e.target.value.toUpperCase();
+        setTokenValues(newTokenValues);
+    };
+    
+    // Adicione uma função para lidar com o envio do formulário do token
+    const handleTokenSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+            const response = await fetch('http://localhost:3636/cliente/verifyTokenConfirmaCliente', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    token: tokenValues.join(""), // Unir os valores do token em uma string
+                }),
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                console.log('Token válido, redirecionando para redefinir senha');
+
+               
+
+                toast.success('Conta cadastrada com sucesso!', {
+                    position: toast.POSITION.TOP_CENTER,
+                    className: 'custom-toast-success',
+                    progressClassName: 'custom-toast-progress-bar',
+                });
+
+                setTimeout(() => {
+                    window.location.href = "/signin";
+                }, 2000);
+            } else {
+                console.error('Erro na verificação do token:', data.message);
+                toast.error('Erro na verificação do token.', {
+                    position: toast.POSITION.TOP_CENTER,
+            });
+            }
+        } catch (error) {
+            console.error('Erro ao chamar a API:', error);
+             toast.error('Erro ao chamar a API.', {
+                    position: toast.POSITION.TOP_CENTER,
+            });
+        }
+    };
+
     
     return (
         <div className="container container-cadastro">
@@ -114,19 +203,22 @@ export default function Cadastro(){
                     },
                 }}
             >
-                <form>
+                <form onSubmit={handleTokenSubmit}>
                     <img src={logo} className="logoModal"/>
                     <h2>Autenticação de dois fatores</h2>
                     <div className="token">
                         <div className="tokenInside">
-                            <input type="text" maxLength={1} minLength={1} style={{textAlign: 'center', fontSize: '20px', textTransform: 'uppercase'}}></input>
-                            <input type="text" maxLength={1} minLength={1} style={{textAlign: 'center', fontSize: '20px', textTransform: 'uppercase'}}></input>
-                            <input type="text" maxLength={1} minLength={1} style={{textAlign: 'center', fontSize: '20px', textTransform: 'uppercase'}}></input>
-                        </div>
-                        <div className="tokenInside">
-                            <input type="text" maxLength={1} minLength={1} style={{textAlign: 'center', fontSize: '20px', textTransform: 'uppercase'}}></input>
-                            <input type="text" maxLength={1} minLength={1} style={{textAlign: 'center', fontSize: '20px', textTransform: 'uppercase'}}></input>
-                            <input type="text" maxLength={1} minLength={1} style={{textAlign: 'center', fontSize: '20px', textTransform: 'uppercase'}}></input>
+                            {Array.from({ length: 6 }).map((_, index) => (
+                                <input
+                                    key={index}
+                                    type="text"
+                                    maxLength={1}
+                                    minLength={1}
+                                    style={{ textAlign: 'center', fontSize: '20px', textTransform: 'uppercase' }}
+                                    value={tokenValues[index]}
+                                    onChange={(e) => handleTokenChange(e, index)}
+                                />
+                            ))}
                         </div>
                     </div>
                     <p>Uma mensagem com um código de verificação foi enviada para seu e-mail. Insira o código para continuar.</p>
@@ -137,9 +229,12 @@ export default function Cadastro(){
                         <h4>Não recebeu um código de verificação?</h4>
                         <h4 id="reenvio2" >Enviar novamente</h4>
                     </div>
+                    <button type="submit">Verificar Token</button>
+                    
                 </form>
             </Modal>
 
+            <ToastContainer position="top-center" />
             <section className="form-container">
                 <form class="form cadastro" onSubmit={formik.handleSubmit}>
                 <FontAwesomeIcon icon={faUser} id="person-icon" />
@@ -242,7 +337,7 @@ export default function Cadastro(){
                         <p>Já possui conta? Faça <Link to="/signin"><strong>Login</strong></Link></p>
                     </div>
                     <button type="submit" class="btn btn-cadastrar" onClick={(e) => {
-                            formik.handleSubmit(); // Validação do formulário
+                            handleSignup(); // Validação do formulário
                             if (formik.isValid && Object.keys(passwordErrors).every((key) => passwordErrors[key])) {
                                 openModal(e); // Abrir o modal se o formulário for válido e a senha atender aos critérios
                             }

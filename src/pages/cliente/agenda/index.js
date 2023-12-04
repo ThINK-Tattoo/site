@@ -17,11 +17,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { hotjar } from 'react-hotjar';
 
+import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 
 import Menu from '../../../components/usuarioLogado/MenuLog';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
 import Footer from '../../../components/Footer';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../../../styleGlobal.css';
 import './index.css';
@@ -115,8 +120,78 @@ export default function Agenda(){
     setIsModalOpen2(true);
   };
 
-  const handleSubmit = () =>{
-    setIsModalOpen3(false);
+  const handleSubmit = async () =>{
+    
+    try {
+        const clienteLog = localStorage.getItem('user');
+        const clientData = clienteLog ? JSON.parse(clienteLog) : null;
+  
+        // Obtendo dados do localStorage
+        const idCliente = clientData[0].id;
+        const nomeCliente = clientData[0].nome;
+        const tellCliente = clientData[0].telefone;
+    
+        // Outros dados necessários
+        const estOrcamento = valorEstimado;
+        const hTattoo = selectedTime;
+        const dataTattoo = selectedDate;
+        const observacoes = descricao;
+        const fotoReferencia = selectedImage;
+        const status = "Pendente";
+        
+        // Lógica para obter o tipo de tatuagem a partir dos checkboxes selecionados
+        const tipoTattoo = {
+          tamanho: selectedCheckboxes.tamanho,
+          estilo: selectedCheckboxes.estilo,
+          cores: selectedCheckboxes.cores,
+        };
+
+        const tamanhoTattoo = tipoTattoo.tamanho;
+    
+        // Construa um objeto com os dados que você deseja enviar
+        const dadosParaEnviar = {
+          idCliente,
+          nomeCliente,
+          tellCliente,
+          tamanhoTattoo,
+          estOrcamento,
+          hTattoo,
+          dataTattoo,
+          observacoes,
+          fotoReferencia,
+          status,
+          tipoTattoo,
+        };
+    
+        // Faça a chamada para o back-end usando axios
+        const resposta = await axios.post('http://localhost:3636/cliente/createAgendaCon', dadosParaEnviar);
+        console.log(resposta)
+        // A resposta do back-end estará em resposta.data
+        console.log(resposta.data);
+  
+        if(resposta.status === 201){
+          setIsModalOpen3(false);
+
+          toast.success('Solicitação de tatuagem feita com sucesso', {
+            position: toast.POSITION.TOP_CENTER,
+            className: 'custom-toast-success',
+            progressClassName: 'custom-toast-progress-bar',
+        });
+        }else {
+          setIsModalOpen3(false);
+          toast.error(resposta.message, {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
+        
+       
+      } catch (erro) {
+        console.error('Erro ao enviar dados para o back-end: ', erro);
+        toast.error('Houve um Erro com o nosso servidor, tente mais tarde.', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        
+      }
   }
 
   registerLocale('pt-BR', ptBR);
@@ -218,6 +293,7 @@ export default function Agenda(){
     return (
         <div className='container'>
             {isUserLoggedIn ? <MenuLogado /> : <Menu />}
+            <ToastContainer position="top-center" />
             <div className="header-image agenda-tittle">
                 <h1>Age<span className="span-color">nda</span></h1>
             </div>

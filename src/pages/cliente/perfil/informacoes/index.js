@@ -231,22 +231,7 @@ export default function MinhasInformacoes(){
                             <label for="idade">Idade:</label>
                             <input className="input" type="text" id="idade" value={client.idade + " anos"} readOnly />
                         </div>
-                        <div class="form-group info-perfil">
-                            <label for="telefone">Senha:</label>
-                            <div className="input-senha">
-                                <input
-                                    type={mostrarSenha ? 'text' : 'password'}
-                                    id="senha"
-                                    value={senha}
-                                    readonly
-                                />
-                                <FontAwesomeIcon
-                                    icon={mostrarSenha ? faEyeSlash : faEye}
-                                    className="toggle-password"
-                                    onClick={toggleSenha}
-                                />
-                            </div>
-                        </div>
+                        
                     </div>
                     <button onClick={(e) => openModal(e)} class="btn btn-editar">
                         <FontAwesomeIcon className="editIcon" icon={faEdit } />

@@ -9,6 +9,9 @@ import axios from 'axios';
 import '../../../styleGlobal.css';
 import './index.css'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import estoque1 from '../../../assets/crudEstoque/estoque1.png';
 import estoque2 from '../../../assets/crudEstoque/estoque2.png';
 import estoque3 from '../../../assets/crudEstoque/estoque3.png';
@@ -122,6 +125,37 @@ export default function CrudEstoque(){
 
     const [activeAccordion, setActiveAccordion] = useState(null);
 
+    const [isModalOpenEdit, setIsModalEdit] = useState(false);
+
+    const closeModalEdit = () =>{
+        setIsModalEdit(false);
+    }
+    let estoque = "";
+
+   
+
+    const [selectedEstoque, setSelectedEstoque] = useState({
+        id: '',
+        nomeItem: '',
+        descricaoItem: '',
+        dataCompraItem:'',
+        dataValidadeItem: '',
+        quantidadeItem: '',
+    });
+
+    const openModalEdit = (item) =>{
+        setIsModalEdit(true);
+       estoque = item
+        setSelectedEstoque(estoque);
+        
+        console.log(selectedEstoque)
+    }
+
+    useEffect(() => {
+        
+        console.log(selectedEstoque)
+    }, [selectedEstoque]); 
+
     const renderAccordionItems = (grupo) => {
         const itensDoGrupo = itensEstoque.filter((item) => item.descricaoItem === grupo);
     
@@ -143,7 +177,7 @@ export default function CrudEstoque(){
                     <p>Data de compra: {item.dataCompraItem}</p>
                     <p>Validade: {item.dataValidadeItem}</p>
                     <div className="btnEditarAccordion">
-                    <button className="btn btn-adicionar">Editar</button>
+                    <button onClick={() => openModalEdit(item)} className="btn btn-adicionar">Editar</button>
                     </div>
                 </div>
             </div>
@@ -206,6 +240,42 @@ export default function CrudEstoque(){
         }
     };
 
+    const handleEditItem = async () => {
+        try{
+            const response = await axios.put(`http://localhost:3636/admin/updateItemEstoque/${selectedEstoque.id}`, selectedEstoque);
+            console.log(response.data);
+
+            if(response.status === 200){
+                closeModalEdit();
+                closeModalAdd();
+
+                toast.success('Update do Estoque feita com sucesso', {
+                    position: toast.POSITION.TOP_CENTER,
+                    className: 'custom-toast-success',
+                    progressClassName: 'custom-toast-progress-bar',
+                });
+
+                const response = await axios.get('http://localhost:3636/admin/selectItemEstoque');
+                setItensEstoque(response.data);
+                
+            }else{
+                closeModalEdit();
+                closeModalAdd();
+
+                toast.error("Erro ao dar update no Estoque", {
+                    position: toast.POSITION.TOP_CENTER,
+                  });
+                console.error(`Erro ao atualizar dados: ${response.data.message}`);
+            }
+
+        }catch(err){
+            toast.error("Erro de API", {
+                position: toast.POSITION.TOP_CENTER,
+              });
+            console.error("Erro ao atualizar dados: ", err);
+        }
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -225,6 +295,7 @@ export default function CrudEstoque(){
         <div>
             <Menu/>
             <section>
+                <ToastContainer position="top-center" />
                 <div className="headerEstoque">
                     <div className="tituloDashboard">
                         <h1>Esto<span className="span-color-dashboard">que</span></h1>
@@ -375,7 +446,7 @@ export default function CrudEstoque(){
                     <div className="form-group-estoque">
                         <label>Nome:</label>
                         <input
-                            className="inputEstoque input"
+                            className="inputEstoque "
                             type="text"
                             id="nome"
                             name="nome"
@@ -399,21 +470,21 @@ export default function CrudEstoque(){
                     </div>
                     <div className="form-group-estoque">
                         <label>Quantidade:</label>
-                        <input className="inputEstoque input" type="number" id="quantidade" 
+                        <input className="inputEstoque " type="number" id="quantidade" 
                         value={formData.quantidade}
                         onChange={handleChange}
                         name="quantidade"/>
                     </div>
                     <div className="form-group-estoque">
                         <label>Data de compra:</label>
-                        <input className="inputEstoque input" type="date" id="dataCompra" 
+                        <input className="inputEstoque " type="date" id="dataCompra" 
                         value={formData.dataCompra}
                         onChange={handleChange}
                         name="dataCompra" />
                     </div>
                     <div className="form-group-estoque">
                         <label>Data de validade:</label>
-                        <input className="inputEstoque input" type="date" id="dataValidade" 
+                        <input className="inputEstoque " type="date" id="dataValidade" 
                         value={formData.dataValidade}
                         onChange={handleChange}
                         name="dataValidade"/>
@@ -421,6 +492,93 @@ export default function CrudEstoque(){
                 </form>
                 <div className="btn-modalEstoque">
                     <button onClick={handleAddItem} className="btn btn-cadastrarEstoque">Adicionar</button>
+                    <button onClick={closeModalAdd} className="btn btn-cancelarEstoque">Cancelar</button>
+                </div>
+            </Modal>
+            <Modal
+                isOpen={isModalOpenEdit}
+                onRequestClose={closeModalEdit}
+                id="modalAddEstoque"
+                contentLabel="Adicionar Item"
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+                    },
+                    content: {
+                        top: '50%', 
+                        left: '50%', 
+                        transform: 'translate(-50%, -50%)', 
+                        backgroundColor: '#000',
+                        height: '80%',
+                        width: '35%',
+                    },
+                }}>
+                <button className="modal-close-button" onClick={closeModalEdit}> X </button>
+                <form className="estoqueAdd">
+                    <div className="form-group-estoque">
+                        <label>Nome:</label>
+                        <input
+                            className="inputEstoque "
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            value={selectedEstoque.nomeItem}
+                            onChange={(e) => setSelectedEstoque({
+                                ...selectedEstoque,
+                                nomeItem: e.target.value
+                            })}
+                        />
+                    </div>
+                    <div className="form-group-estoque">
+                        <label>Tipo:</label>
+                        <select id="grupoItem" name="grupoItem" value={selectedEstoque.descricaoItem} onChange={(e) => setSelectedEstoque({
+                                ...selectedEstoque,
+                                descricaoItem: e.target.value
+                            })}>
+                            <option selected >Escolha o grupo a qual o item pertence</option>
+                            <option value="Agulhas">Agulhas</option>
+                            <option value="Biqueiras">Biqueiras</option>
+                            <option value="Esterelizadores">Esterelizadores</option>
+                            <option value="Máquinas">Máquinas</option>
+                            <option value="Luvas">Luvas</option>
+                            <option value="Papel">Papel</option>
+                            <option value="Copos">Copos</option>
+                            <option value="Tintas">Tintas</option>
+                        </select>
+                    </div>
+                    <div className="form-group-estoque">
+                        <label>Quantidade:</label>
+                        <input className="inputEstoque " type="number" id="quantidade" 
+                        value={selectedEstoque.quantidadeItem}
+                        onChange={(e) => setSelectedEstoque({
+                            ...selectedEstoque,
+                            quantidadeItem: e.target.value
+                        })}
+                        name="quantidade"/>
+                    </div>
+                    <div className="form-group-estoque">
+                        <label>Data de compra:</label>
+                        <input className="inputEstoque input" type="date" id="dataCompra" 
+                        value={selectedEstoque.dataCompraItem}
+                        onChange={(e) => setSelectedEstoque({
+                            ...selectedEstoque,
+                            dataCompraItem: e.target.value
+                        })}
+                        name="dataCompra" />
+                    </div>
+                    <div className="form-group-estoque">
+                        <label>Data de validade:</label>
+                        <input className="inputEstoque " type="date" id="dataValidade" 
+                        value={selectedEstoque.dataValidadeItem}
+                        onChange={(e) => setSelectedEstoque({
+                            ...selectedEstoque,
+                            dataValidadeItem: e.target.value
+                        })}
+                        name="dataValidade"/>
+                    </div>
+                </form>
+                <div className="btn-modalEstoque">
+                    <button onClick={handleEditItem} className="btn btn-cadastrarEstoque">Editar</button>
                     <button onClick={closeModalAdd} className="btn btn-cancelarEstoque">Cancelar</button>
                 </div>
             </Modal>
