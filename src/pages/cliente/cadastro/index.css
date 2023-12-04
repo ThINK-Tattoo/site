@@ -132,17 +132,23 @@ form h4{
 }
 
 .reenvio{
-  margin-top: 5rem;
+  margin-top: 2.5rem;
+  font-size: small;
 }
 
 #reenvio2{
   text-decoration: underline;
   cursor: pointer;
-  margin-top: 1rem;
 }
 
 #reenvio2:hover{
   color: var(--var-txt-lilas);
+}
+
+.btn-prosseguir{
+  width: auto;
+  margin-top: 1rem;
+  margin-bottom: -1rem;
 }
 
 .alto-contraste .cadastro-tittle{

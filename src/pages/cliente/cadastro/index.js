@@ -130,6 +130,9 @@ export default function Cadastro(){
                         </div>
                     </div>
                     <p>Uma mensagem com um código de verificação foi enviada para seu e-mail. Insira o código para continuar.</p>
+                    <div>
+                        <button className="btn btn-prosseguir">Verificar</button>
+                    </div>
                     <div className="reenvio">
                         <h4>Não recebeu um código de verificação?</h4>
                         <h4 id="reenvio2" >Enviar novamente</h4>
