@@ -84,7 +84,29 @@ flex-direction: column;
     bottom: 0;
 }
 
+.btn-cancelarAdmin{
+    background: transparent;
+    border: 2px solid var(--var-txt-lilas);
+    color: var(--var-lilas);
+    width: 70%;
+}
+
+.btn-cancelarAdmin:hover{
+    color: white;
+}
+
+.btn-adicionarADM{
+    width: 70%;
+}
+
 /*RESPONSIVIDADE*/
+@media (max-width: 1196px){
+    .inputAdmin{
+        max-width: 280px;
+        width: 100% !important;
+    }
+}
+
 @media (max-width: 1024px){
     .perfis{
         margin-left: 30%;

@@ -26,7 +26,6 @@ export default function CrudFlashtatto() {
         valor3: null,
     });
     
-   
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setFormValues((prevValues) => ({
@@ -52,7 +51,7 @@ export default function CrudFlashtatto() {
         fotoPerfil: null
     });
 
-         useEffect(() => {
+        useEffect(() => {
             const userType = localStorage.getItem("userType");
     
         if(!userType || userType === 'cliente'){
@@ -355,8 +354,8 @@ export default function CrudFlashtatto() {
                                     <p className="txt-white">R${selectedCrudFlashtatto.valor2}</p>
                                 </div>
                             </div><div className="btn-modal">
-                                <button onClick={openModalEdit} className="btn btn-editar">Editar</button>
-                                <button onClick={handleExcluir} className="btn btn-cancelar">Excluir</button>
+                                <button onClick={openModalEdit} className="btn btn-editarFT">Editar</button>
+                                <button onClick={handleExcluir} className="btn btn-cancelarAdmin">Excluir</button>
 
                             </div>
                         </div>
@@ -469,15 +468,15 @@ export default function CrudFlashtatto() {
                                         5 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv " type="number" id="tamanhope valor1" 
-                                     value={selectedCrudFlashtatto.valor1}
-                                     onChange={(e) => {
+                                    <input className="inputp " type="number" id="tamanhope valor1" 
+                                    value={selectedCrudFlashtatto.valor1}
+                                    onChange={(e) => {
                                         setSelectedCrudFlashtatto({
                                             ...selectedCrudFlashtatto,
                                             valor1: e.target.value
                                         });
                                     }}
-                                     name="tamanhope" placeholder="R$" />
+                                    name="tamanhope" placeholder="R$" />
                                 </div>
                                 <div id="second-inf">
                                     <button 
@@ -487,7 +486,7 @@ export default function CrudFlashtatto() {
                                         10 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv " type="number" id="tamanhome valor2" 
+                                    <input className="inputp " type="number" id="tamanhome valor2" 
                                     value={selectedCrudFlashtatto.valor2} 
                                     onChange={(e) => {
                                         setSelectedCrudFlashtatto({
@@ -505,15 +504,15 @@ export default function CrudFlashtatto() {
                                         15 cm
                                     </button>
                                     <p></p>
-                                    <input className="inputv" type="number" 
-                                     value={ selectedCrudFlashtatto.valor3} 
-                                     onChange={(e) => {
+                                    <input className="inputp" type="number" 
+                                    value={ selectedCrudFlashtatto.valor3} 
+                                    onChange={(e) => {
                                         setSelectedCrudFlashtatto({
                                             ...selectedCrudFlashtatto,
                                             valor3: e.target.value
                                         });
                                     }}
-                                     id="tamanhoge" name="tamanhoge valor3" placeholder="R$" />
+                                    id="tamanhoge" name="tamanhoge valor3" placeholder="R$" />
                                 </div>
                             </div>
                         </div>
@@ -555,25 +554,21 @@ export default function CrudFlashtatto() {
                                     style={{ display: 'none' }}
                                     id="imageInputp"
                                 />
-                               
+                            
                                 <label htmlFor="imageInputp">
                                     <img src={selectedImage ? URL.createObjectURL(selectedImage): image} 
                                     alt="Upload de imagem" 
                                     id="imagePreviw"
                                     style={{ maxWidth: '270px', maxHeight: '268px' }}
                                     />
-                                
-                                
                                 </label>
-                              
-                           
                             <div className="modal-info-description">
                                 <div className="description">
                                     <input className="inputp input" 
                                     type="text" id="nome" name="nome"
                                     value={formValues.nome}
                                     onChange={handleInputChange}
-                                     placeholder="Nome" />
+                                    placeholder="Nome" />
                                 </div>
                                 <div className="description">
                                     <h3 className="txt-white">Descrição</h3>
@@ -615,7 +610,7 @@ export default function CrudFlashtatto() {
                                 </button>
                                 <p></p>
                                 <input
-                                    className="inputv"
+                                    className="inputp"
                                     type="number"
                                     id="tamanhopa"  
                                     name="tamanhopa"
@@ -633,7 +628,7 @@ export default function CrudFlashtatto() {
                                 </button>
                                 <p></p>
                                 <input
-                                    className="inputv"
+                                    className="inputp"
                                     type="number"
                                     id="tamanhoma"
                                     name="tamanhoma"
@@ -651,7 +646,7 @@ export default function CrudFlashtatto() {
                                 </button>
                                 <p></p>
                                 <input
-                                    className="inputv"
+                                    className="inputp"
                                     type="number"
                                     id="tamanhoga"
                                     name="tamanhoga"
@@ -665,16 +660,12 @@ export default function CrudFlashtatto() {
                         </div>
                       
                         <div className="btn-modal">
-                            <button onClick={handleFlashtattoSubmit} className="btn btn-adicionar">Adicionar</button>
+                            <button onClick={handleFlashtattoSubmit} className="btn btn-adicionarADM">Adicionar</button>
                             <button onClick={closeModalAdd} className="btn btn-cancelarAdmin">Cancelar</button>
                         </div>
                     </div>
                 </Modal>
             </section>
-
         </div>
     )
-
-
-}
-;
+};

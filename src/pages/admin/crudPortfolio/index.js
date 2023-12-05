@@ -370,9 +370,9 @@ export default function CrudPortfolio() {
                                 </div>
                             </div>
                         </div>
-                        <div className="btn-modal">
-                            <button onClick={handleUpdate} className="btn btn-adicionar">Editar</button>
-                            <button onClick={closeModalEdit} className="btn btn-cancelar">Cancelar</button>
+                        <div className="btn-modalP">
+                            <button onClick={handleUpdate} className="btn btn-adicionarADM">Editar</button>
+                            <button onClick={closeModalEdit} className="btn btn-cancelarAdmin">Cancelar</button>
                         </div>
                     </div>
                     )}

@@ -353,6 +353,7 @@ export default function CrudEstoque(){
                         placeholder="Pesquisar..."
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
+                        id="barraPesquisa"
                         />
                     </div>
                     <table className="table tableEstoque">

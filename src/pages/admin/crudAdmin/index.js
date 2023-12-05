@@ -146,7 +146,8 @@ export default function CrudAdmin() {
                             transform: 'translate(-50%, -50%)', 
                             border: "none",
                             backgroundColor: "transparent",
-                            height: '100%'
+                            height: '100%',
+                            padding: '0'
                         },
                     }}
                 >
@@ -156,7 +157,7 @@ export default function CrudAdmin() {
                             <div className="form-group">
                                 <label>Nome:</label>
                                 <input
-                                    className="inputAdmin input"
+                                    className="input inputAdmin"
                                     type="text"
                                     id="nome"
                                     name="nome"
@@ -167,11 +168,10 @@ export default function CrudAdmin() {
                             <div className="form-group">
                                 <label>Email:</label>
                                 <input
-                                    className="inputAdmin input"
+                                    className="input inputAdmin"
                                     type="email"
                                     id="email"
-                                    name="email"
-             btn-adicionar                       placeholder="example@email.com"
+                                    name="email"                   placeholder="example@email.com"
                                     onChange={handleEmailChange}
                                 />
                             </div>
@@ -199,7 +199,7 @@ export default function CrudAdmin() {
                         </div>
                     
                         <div className="flex" id="btns">
-                            <button type="submit" className="btn ">Adicionar</button>
+                            <button type="submit" className="btn btn-adicionarADM" onClick={closeModal}>Adicionar</button>
                             <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
                         </div>
                     </form>
