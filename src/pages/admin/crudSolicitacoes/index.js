@@ -69,7 +69,7 @@ export default function CrudSolicitacoes(){
             const confirmaTattoo = res;
             const updatedInfoAgendamento = {
                 ...selectedAgendamento,
-                confirmaTattoo: confirmaTattoo,
+                confirmaTattoo: parseInt(confirmaTattoo),
                 idAdmin: idAdmin
             };
     
