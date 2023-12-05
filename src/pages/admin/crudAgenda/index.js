@@ -44,7 +44,7 @@ function CrudAgenda(){
 
                         return {
                             id: item.id,
-                            title: !item.nomeCliente ? "Priscila" : item.nomeCliente,
+                            title: "Cliente: Priscila",
                             start: dataFormatada + 'T' + item.hTattoo,
                             end:  dataFormatada + 'T' + item.hTattoo
                         };
