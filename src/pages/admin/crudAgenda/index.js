@@ -34,7 +34,19 @@ function CrudAgenda(){
         const fetchEventsFromBackend = async () => {
                 try {
                   const response = await axios.get('https://api-think-tattoo.up.railway.app/agenda/selectAgenda');
-                    const data = response.data;
+                    const data = [{
+                      id: 4,
+                      nomeCliente: 'Priscila',
+                      dataStart: '2023-12-04',
+                      dataEnd: '2023-12-04'
+                    },
+                    {
+                      id: 2,
+                      nomeCliente: 'Deid',
+                      dataStart: '2023-12-05',
+                      dataEnd: '2023-12-05'
+                    }
+                  ];
                     
             
                     // Converta os dados para o formato de evento do FullCalendar
@@ -44,9 +56,9 @@ function CrudAgenda(){
 
                         return {
                             id: item.id,
-                            title: "Cliente: Priscila",
-                            start: dataFormatada + 'T' + item.hTattoo,
-                            end:  dataFormatada + 'T' + item.hTattoo
+                            title: item.nomeCliente,
+                            start: item.dataStart,
+                            end:  item.dataEnd
                         };
                     }).filter(event => event !== null); // Remover eventos nulos
             
