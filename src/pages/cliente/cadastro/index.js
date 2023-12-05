@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Menu from '../../../components/visitante/MenuVisitante';
 import MenuLogado from "../../../components/usuarioLogado/MenuLog";
@@ -132,6 +133,7 @@ export default function Cadastro(){
         newTokenValues[index] = e.target.value.toUpperCase();
         setTokenValues(newTokenValues);
     };
+    const navigate = useNavigate();
     
     // Adicione uma função para lidar com o envio do formulário do token
     const handleTokenSubmit = async (e) => {
@@ -162,7 +164,8 @@ export default function Cadastro(){
                 });
 
                 setTimeout(() => {
-                    window.location.href = "/signin";
+                   
+                    navigate('/signin');
                 }, 2000);
             } else {
                 console.error('Erro na verificação do token:', data.message);

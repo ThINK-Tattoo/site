@@ -166,7 +166,10 @@ export default function CrudFlashtatto() {
             console.log(data.message);
             setFlashtatto((prevFlash) => [...prevFlash, { ...data, imageLoaded: false }]);
             closeModalAdd();
-            window.location.reload();
+            axios.get('https://api-think-tattoo.up.railway.app/admin/selectFlashtattoo')
+            .then(response => {
+            setFlashtatto(response.data);
+            })
           } else {
             console.error('Erro ao adicionar imagem ao portfólio');
           }

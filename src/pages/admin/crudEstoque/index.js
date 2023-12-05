@@ -231,7 +231,18 @@ export default function CrudEstoque(){
                 const data = response.data;
                 console.log(data.message);
                 closeModalAdd();
-                window.location.reload();
+                const fetchData = async () => {
+                    try {
+                    
+                    const response = await axios.get('https://api-production-f446.up.railway.app/admin/selectItemEstoque');
+                    setItensEstoque(response.data);
+                    console.log(itensEstoque);
+                    } catch (error) {
+                    console.error('Erro ao buscar dados do estoque:', error);
+                    }
+                };
+            
+                fetchData();
             } else {
                 console.error('Erro ao adicionar item ao estoque:', response.data.message);
             }

@@ -96,6 +96,7 @@ export default function CrudAdmin() {
                 const data = await response.json();
                 setAdmins((prevAdmins) => [...prevAdmins, { ...data, imageLoaded: false }]);
                 closeModal();
+                setIsLoading(false);
                 fetchAdmins();
 
             } else {

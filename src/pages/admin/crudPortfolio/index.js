@@ -137,7 +137,10 @@ export default function CrudPortfolio() {
             console.log(data.message);
             setPortfolio((prevPort) => [...prevPort, { ...data, imageLoaded: false }]);
             closeModalAdd();
-            window.location.reload();
+            axios.get('https:///api-think-tattoo.up.railway.app/cliente/selectPortfolio')
+            .then(response => {
+                setPortfolio(response.data); 
+            })
         } else {
             console.error('Erro ao adicionar imagem ao portfólio');
         }
