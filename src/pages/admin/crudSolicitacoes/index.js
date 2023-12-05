@@ -84,7 +84,7 @@ export default function CrudSolicitacoes(){
             if(response.status === 201){
                 closeModal();
 
-                toast.success(`Tatuagem ${confirmaTattoo === "Aceitar" ? "Marcada" : "Cancelada"} com Sucesso`, {
+                toast.success(`Tatuagem ${confirmaTattoo === 1 ? "Marcada" : "Cancelada"} com Sucesso`, {
                     position: toast.POSITION.TOP_CENTER,
                     className: 'custom-toast-success',
                     progressClassName: 'custom-toast-progress-bar',
@@ -184,8 +184,8 @@ export default function CrudSolicitacoes(){
                             ) : null}
 
                         <div className="flex">
-                            <button class="btn btn-aceitar" onClick={() => handleAgendamento("Aceitar")}>Aceitar</button>
-                            <button class="btn btn-recusar" onClick={() => handleAgendamento("Recusar")}>Recusar</button>
+                            <button class="btn btn-aceitar" onClick={() => handleAgendamento(1)}>Aceitar</button>
+                            <button class="btn btn-recusar" onClick={() => handleAgendamento(0)}>Recusar</button>
                         </div>
                     </div>
                 )}
