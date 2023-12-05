@@ -164,7 +164,7 @@ export default function Agenda(){
         };
     
         // Faça a chamada para o back-end usando axios
-        const resposta = await axios.post('http://localhost:3636/cliente/createAgendaCon', dadosParaEnviar);
+        const resposta = await axios.post('https://api-think-tattoo.up.railway.app/cliente/createAgendaCon', dadosParaEnviar);
         console.log(resposta)
         // A resposta do back-end estará em resposta.data
         console.log(resposta.data);

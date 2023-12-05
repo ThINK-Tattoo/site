@@ -27,7 +27,7 @@ export default function Login(){
         e.preventDefault();
 
         try{
-            const response = await axios.post("http://localhost:3636/cliente/login", {email, senha});
+            const response = await axios.post("https://api-think-tattoo.up.railway.app/cliente/login", {email, senha});
             const {auth, token, userType, user} = response.data;
 
             if(auth){

@@ -62,7 +62,7 @@ export default function Contato(){
         try {
             setModalLoadOpen(true);
 
-            const response = await axios.post('http://localhost:3636/cliente/contato', formData, {
+            const response = await axios.post('https://api-think-tattoo.up.railway.app/cliente/contato', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

@@ -32,7 +32,7 @@ export default function CrudSolicitacoes(){
 
         const fetchAgendas = async () => {
             try {
-                const response = await axios.get('http://localhost:3636/agendaConsulta/selectAllAgendaCon');
+                const response = await axios.get('https://api-think-tattoo.up.railway.app/agendaConsulta/selectAllAgendaCon');
                 setAgendamentos(response.data);
             } catch (error) {
                 console.error('Erro ao buscar as tatuagens marcadas: ', error);
@@ -76,7 +76,7 @@ export default function CrudSolicitacoes(){
             setInfoAgendamento(updatedInfoAgendamento);
 
 
-            const response = await axios.post(`http://localhost:3636/agenda/createAgenda/${selectedAgendamento.id}`, infoAgendamento);
+            const response = await axios.post(`https://api-think-tattoo.up.railway.app/agenda/createAgenda/${selectedAgendamento.id}`, infoAgendamento);
             console.log(response);
             console.log(confirmaTattoo)
             console.log(infoAgendamento)
@@ -93,7 +93,7 @@ export default function CrudSolicitacoes(){
 
                 const fetchAgendas = async () => {
                     try {
-                        const response = await axios.get('http://localhost:3636/agendaConsulta/selectAllAgendaCon');
+                        const response = await axios.get('https://api-think-tattoo.up.railway.app/agendaConsulta/selectAllAgendaCon');
                         setAgendamentos(response.data);
                     } catch (error) {
                         console.error('Erro ao buscar as tatuagens marcadas: ', error);
@@ -132,7 +132,7 @@ export default function CrudSolicitacoes(){
                         <div className="text-info">
                             {reserva.tipoTattoo === "FlashTattoo" ? (
                                 <img style={{width: "100px", height: "100px"}} 
-                                src={`http://localhost:3636/src/temp/${reserva.fotoReferencia }`} />
+                                src={`https://api-think-tattoo.up.railway.app/src/temp/${reserva.fotoReferencia }`} />
                             ) : null}
                             <p className="txt-dia"><strong>Dia: </strong>{formatDate(reserva.dataTattoo)}</p>
                             <p className="txt-white"><strong>Horário: </strong>{reserva.hTattoo}</p>
@@ -180,7 +180,7 @@ export default function CrudSolicitacoes(){
                         <p style={{marginTop: "15px"}} className="txt-white"><strong>Detalhes: </strong>{selectedAgendamento.observacoes}</p>
                         {selectedAgendamento.tipoTattoo === "FlashTattoo" ? (
                                 <img style={{width: "200px", height: "200px", marginLeft: "5%", marginTop: "2%"}} 
-                                src={`http://localhost:3636/src/temp/${selectedAgendamento.fotoReferencia }`} />
+                                src={`https://api-think-tattoo.up.railway.app/src/temp/${selectedAgendamento.fotoReferencia }`} />
                             ) : null}
 
                         <div className="flex">

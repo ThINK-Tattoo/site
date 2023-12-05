@@ -29,7 +29,7 @@ export default function CrudPortfolio() {
             setIsUserLoggedIn(userType === "admin");
             const adminLog = localStorage.getItem('user');
             const adminData = adminLog ? JSON.parse(adminLog) : null;
-            axios.get('http://localhost:3636/cliente/selectPortfolio')
+            axios.get('https://api-production-f446.up.railway.app/cliente/selectPortfolio')
             .then(response => {
                 setPortfolio(response.data); 
             })
@@ -128,7 +128,7 @@ export default function CrudPortfolio() {
         formData.append('cores', document.getElementById('cores').value);
         
         try {
-            const response = await fetch('http://localhost:3636/cliente/createPortfolio', {
+            const response = await fetch('https://api-production-f446.up.railway.app/cliente/createPortfolio', {
             method: 'POST',
             body: formData
         });
@@ -167,7 +167,7 @@ export default function CrudPortfolio() {
             }
            
 
-            const response = await axios.put(`http://localhost:3636/cliente/updatePortfolio/${selectedPortfolio.id}`, formData);
+            const response = await axios.put(`https://api-production-f446.up.railway.app/cliente/updatePortfolio/${selectedPortfolio.id}`, formData);
 
             console.log(response.data);
                 if (response.status === 200) {
@@ -180,7 +180,7 @@ export default function CrudPortfolio() {
                         progressClassName: 'custom-toast-progress-bar',
                     });
 
-                    axios.get('http://localhost:3636/cliente/selectPortfolio')
+                    axios.get('https://api-production-f446.up.railway.app/cliente/selectPortfolio')
                         .then(response => {
                             setPortfolio(response.data); 
                         })
@@ -203,7 +203,7 @@ export default function CrudPortfolio() {
 
     const handleExcluir = async (e) => {
         try {
-            const response = await axios.delete(`http://localhost:3636/cliente/updatePortfolio/${portfolio.id}`, null);
+            const response = await axios.delete(`hhttps://api-production-f446.up.railway.app/cliente/updatePortfolio/${portfolio.id}`, null);
     
             if (response.status === 200) {
                 alert('Item excluído com sucesso!');
@@ -238,7 +238,7 @@ export default function CrudPortfolio() {
                             ) : (
                             <img id="img-port" onClick={() => openModal(portfolio)}
                             
-                                src={`http://localhost:3636/src/temp/${portfolio.imagem}`} alt={portfolio.nome} />
+                                src={`https://api-production-f446.up.railway.app/src/temp/${portfolio.imagem}`} alt={portfolio.nome} />
                             )}
                         </div>
                     ))}
@@ -266,7 +266,7 @@ export default function CrudPortfolio() {
                     {selectedPortfolio && (
                         <div className="modal-tatto">
                             <div id="modal-info-portfolioAdmin">
-                                <img src={`http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
+                                <img src={`https://api-production-f446.up.railway.app/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
                                 <div className="modal-info-description">
                                     <div className="description">
                                         <h3 className="txt-white" >{selectedPortfolio.nome}</h3>
@@ -316,7 +316,7 @@ export default function CrudPortfolio() {
                                 id="imageInpute"
                             />
                             <label htmlFor="imageInpute">
-                                <img src={selectedImage ? URL.createObjectURL(selectedImage): `http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} 
+                                <img src={selectedImage ? URL.createObjectURL(selectedImage): `https://api-production-f446.up.railway.app/src/temp/${selectedPortfolio.imagem}`} 
                                 alt="Upload de imagem" 
                                 style={{ maxWidth: '270px', maxHeight: '268px' }}
                                 />

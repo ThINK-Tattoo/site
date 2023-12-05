@@ -87,7 +87,7 @@ export default function CrudAdmin() {
         try {
             setIsLoading(true);
             setModalLoadOpen(true);
-            const response = await fetch("http://localhost:3636/admin/createAdmin", {
+            const response = await fetch("https://api-think-tattoo.up.railway.app/admin/createAdmin", {
                 method: "POST",
                 body: updatedFormData,
             });
@@ -110,7 +110,7 @@ export default function CrudAdmin() {
 
     const fetchAdmins = async () => {
         try {
-            const response = await fetch('http://localhost:3636/admin/selectAdmin');
+            const response = await fetch('https://api-think-tattoo.up.railway.app/admin/selectAdmin');
           
             if (!response.ok) {
                 throw new Error(`Erro ao buscar administradores: ${response.statusText}`);
@@ -199,7 +199,7 @@ export default function CrudAdmin() {
                         </div>
                     
                         <div className="flex" id="btns">
-                            <button type="submit" className="btn btn-adicionarADM" onClick={closeModal}>Adicionar</button>
+                            <button type="submit" className="btn btn-adicionarADM" >Adicionar</button>
                             <button className="btn btn-cancelar" onClick={closeModal}>Cancelar</button>
                         </div>
                     </form>
@@ -212,7 +212,7 @@ export default function CrudAdmin() {
                                 <p>Carregando...</p>
                             ) : (
                                 <img
-                                    src={`http://localhost:3636/src/temp/${admin.fotoPerfil}`}
+                                    src={`https://api-think-tattoo.up.railway.app/src/temp/${admin.fotoPerfil}`}
                                     className="iconeAdmin"
                                     alt={`ícone de ${admin.nome}`}
                                 />

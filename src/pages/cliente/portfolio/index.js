@@ -20,7 +20,7 @@ export default function Portfolio(){
     useEffect(() => {
         const userType = localStorage.getItem("userType");
         setIsUserLoggedIn(userType === "cliente");
-        axios.get('http://localhost:3636/cliente/selectPortfolio')
+        axios.get('https://api-think-tattoo.up.railway.app/cliente/selectPortfolio')
             .then(response => {
                 setPortfolio(response.data); 
             })
@@ -75,7 +75,7 @@ export default function Portfolio(){
             <section className="flashtattoo">
                 {portfolio.map((portfolio) => (
                     <div key={portfolio.id} className="portfolio-item">
-                        <img id="img-port" onClick={() => openModal(portfolio)}  src={`http://localhost:3636/src/temp/${portfolio.imagem}`} alt={portfolio.nome} />
+                        <img id="img-port" onClick={() => openModal(portfolio)}  src={`https://api-think-tattoo.up.railway.app/src/temp/${portfolio.imagem}`} alt={portfolio.nome} />
                     </div>
                 ))}
             </section>
@@ -103,7 +103,7 @@ export default function Portfolio(){
                 {selectedPortfolio && (
                     <div className="modal-tattoo">
                         <div id="modal-info-portfolio">
-                            <img id="imgSelectPortfolio" src={`http://localhost:3636/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
+                            <img id="imgSelectPortfolio" src={`https://api-think-tattoo.up.railway.app/src/temp/${selectedPortfolio.imagem}`} alt={selectedPortfolio.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedPortfolio.nome}</h3>
                                 <div className="description">

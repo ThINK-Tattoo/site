@@ -29,7 +29,7 @@ export default function Cadastro(){
 
     const handleSignup = async () => {
         try {
-            const response = await fetch('http://localhost:3636/cliente/createConfirmaCliente', {
+            const response = await fetch('https://api-think-tattoo.up.railway.app/cliente/createConfirmaCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ export default function Cadastro(){
         e.preventDefault();
     
         try {
-            const response = await fetch('http://localhost:3636/cliente/verifyTokenConfirmaCliente', {
+            const response = await fetch('https://api-think-tattoo.up.railway.app/cliente/verifyTokenConfirmaCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

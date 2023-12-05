@@ -75,7 +75,7 @@ export default function MinhasInformacoes(){
         console.log('Botão clicado!');
         try {
             
-            const response = await axios.put(`http://localhost:3636/cliente/updateclientes/${client.id}`, client);
+            const response = await axios.put(`https://api-think-tattoo.up.railway.app/cliente/updateclientes/${client.id}`, client);
 
             if (response.status === 200) {
                 alert('Dados atualizados com sucesso!');

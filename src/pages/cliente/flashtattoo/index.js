@@ -74,7 +74,7 @@ const handleOpenDialog = () => {
             navigate('/signin');
         }else if(userType === 'cliente'){
             setIsUserLoggedIn(userType === "cliente");
-            axios.get('http://localhost:3636/admin/selectFlashTattoo')
+            axios.get('https://api-think-tattoo.up.railway.app/admin/selectFlashTattoo')
             .then(response => {
                 setFlashtatto(response.data);
             })
@@ -185,7 +185,7 @@ const handleOpenDialog = () => {
             console.log(dadosParaEnviar)
         
            
-            const resposta = await axios.post('http://localhost:3636/cliente/createAgendaCon', dadosParaEnviar);
+            const resposta = await axios.post('https://api-think-tattoo.up.railway.app/cliente/createAgendaCon', dadosParaEnviar);
             console.log(resposta)
             
             console.log(resposta.data);
@@ -240,7 +240,7 @@ const handleOpenDialog = () => {
             <section className="flashtattoo">
                 {flashtatto.map((tattoo) => (
                     <div key={tattoo.id} className="tattoo-item">
-                        <img src={`http://localhost:3636/src/temp/${tattoo.imagem}`} alt={tattoo.nome} />
+                        <img src={`https://api-think-tattoo.up.railway.app/src/temp/${tattoo.imagem}`} alt={tattoo.nome} />
                         <button className="btn btn-tattoo" onClick={() => openModal(tattoo)}>
                         Mais detalhes
                         </button>
@@ -271,7 +271,7 @@ const handleOpenDialog = () => {
                 {selectedTattoo && (
                     <div className="modal-tattoo">
                         <div id="modal-info-flashtattoo">
-                            <img src={`http://localhost:3636/src/temp/${selectedTattoo.imagem}`} alt={selectedTattoo.nome} />
+                            <img src={`https://api-think-tattoo.up.railway.app/src/temp/${selectedTattoo.imagem}`} alt={selectedTattoo.nome} />
                             <div className="modal-info-description">
                                 <h3 className="txt-white h3">{selectedTattoo.nome}</h3>
                                 <div className="description">

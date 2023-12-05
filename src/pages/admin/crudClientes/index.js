@@ -19,7 +19,7 @@ function App() {
             navigate('/signin');
         }else if(userType === 'admin'){
             setIsUserLoggedIn(userType === "admin");
-            axios.get('http://localhost:3636/cliente/selectclientes')
+            axios.get('https://api-production-f446.up.railway.app/cliente/selectclientes')
                 .then(response => setClientes(response.data))
                 .catch(error => console.error('Erro ao buscar clientes:', error));
         
@@ -33,7 +33,7 @@ function App() {
     const [termoPesquisa, setTermoPesquisa] = useState('');
 
     const handleExcluirCliente = async (id) => {
-        await axios.delete(`http://localhost:3636/cliente/deleteclientes/${id}`)
+        await axios.delete(`https://api-production-f446.up.railway.app/cliente/deleteclientes/${id}`)
         .then(response => {
             setClientes(clientes.filter(cliente => cliente.id !== id));
         })

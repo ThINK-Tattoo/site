@@ -61,7 +61,7 @@ export default function CrudFlashtatto() {
             const adminLog = localStorage.getItem('user');
             const adminData = adminLog ? JSON.parse(adminLog) : null;
 
-            axios.get('http://localhost:3636/admin/selectFlashtattoo')
+            axios.get('https://api-think-tattoo.up.railway.app/admin/selectFlashtattoo')
             .then(response => {
             setFlashtatto(response.data);
             })
@@ -154,7 +154,7 @@ export default function CrudFlashtatto() {
 
         
         try {
-            const response = await fetch('http://localhost:3636/admin/createFlashTattoo', {
+            const response = await fetch('https://api-think-tattoo.up.railway.app/admin/createFlashTattoo', {
             method: 'POST',
             body: formData
           });
@@ -205,7 +205,7 @@ export default function CrudFlashtatto() {
             }
            
 
-            const response = await axios.put(`http://localhost:3636/cliente/updateFlashTattoo/${selectedCrudFlashtatto.id}`, formData);
+            const response = await axios.put(`https://api-think-tattoo.up.railway.app/cliente/updateFlashTattoo/${selectedCrudFlashtatto.id}`, formData);
 
             console.log(response.data);
                 if (response.status === 200) {
@@ -218,7 +218,7 @@ export default function CrudFlashtatto() {
                         progressClassName: 'custom-toast-progress-bar',
                     });
 
-                    axios.get('http://localhost:3636/admin/selectFlashtattoo')
+                    axios.get('https://api-think-tattoo.up.railway.app/admin/selectFlashtattoo')
                         .then(response => {
                         setFlashtatto(response.data);
                         })
@@ -242,7 +242,7 @@ export default function CrudFlashtatto() {
 
     const handleExcluir = async (e) => {
         try {
-            const response = await axios.delete(`http://localhost:3636/cliente/updateFlashtatto/${flashtatto.id}`, null);
+            const response = await axios.delete(`https://api-think-tattoo.up.railway.app/cliente/updateFlashtatto/${flashtatto.id}`, null);
     
             if (response.status === 200) {
                 alert('Item excluído com sucesso!');
@@ -278,7 +278,7 @@ export default function CrudFlashtatto() {
                             ) : (
                             <img id="img-flash" onClick={() => openModal( CrudFlashtatto)}
                             style={{cursor: "pointer"}}
-                            src={`http://localhost:3636/src/temp/${CrudFlashtatto.imagem}`} alt={CrudFlashtatto.nome} />
+                            src={`https://api-think-tattoo.up.railway.app/src/temp/${CrudFlashtatto.imagem}`} alt={CrudFlashtatto.nome} />
                             )}
                         </div>
                     ))}
@@ -306,7 +306,7 @@ export default function CrudFlashtatto() {
                     {selectedCrudFlashtatto && (
                         <div className="modal-tattoo">
                             <div id="modal-info-tatto">
-                                <img src={`http://localhost:3636/src/temp/${selectedCrudFlashtatto.imagem}`} alt={selectedCrudFlashtatto.nome} />
+                                <img src={`https://api-think-tattoo.up.railway.app/src/temp/${selectedCrudFlashtatto.imagem}`} alt={selectedCrudFlashtatto.nome} />
                                 <div className="modal-info-description">
                                     <div className="description">
                                         <h3 className="txt-white" >{selectedCrudFlashtatto.nome}</h3>
@@ -395,7 +395,7 @@ export default function CrudFlashtatto() {
                                 id="imageInpute"
                             />
                             <label htmlFor="imageInpute">
-                                <img src={selectedImage ? URL.createObjectURL(selectedImage): `http://localhost:3636/src/temp/${selectedCrudFlashtatto.imagem}`} 
+                                <img src={selectedImage ? URL.createObjectURL(selectedImage): `https://api-think-tattoo.up.railway.app/src/temp/${selectedCrudFlashtatto.imagem}`} 
                                 alt="Upload de imagem" 
                                 style={{ maxWidth: '270px', maxHeight: '268px' }}
 

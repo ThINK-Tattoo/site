@@ -33,7 +33,7 @@ export default function MeusAgendamentos(){
         const fetchAgendas = async () => {
             
             try {
-                const response = await axios.get(`http://localhost:3636/agendaConsulta/selectAgendaCon/${idCliente}`);
+                const response = await axios.get(`https://api-think-tattoo.up.railway.app/agendaConsulta/selectAgendaCon/${idCliente}`);
                 setAgendamentos(response.data);
             } catch (error) {
                 console.error('Erro ao buscar as tatuagens marcadas: ', error);

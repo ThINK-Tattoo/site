@@ -33,7 +33,7 @@ function CrudAgenda(){
        
         const fetchEventsFromBackend = async () => {
                 try {
-                  const response = await axios.get('http://localhost:3636/agenda/selectAgenda');
+                  const response = await axios.get('https://api-think-tattoo.up.railway.app/agenda/selectAgenda');
                     const data = response.data;
                     
             
