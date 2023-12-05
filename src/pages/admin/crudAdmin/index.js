@@ -96,7 +96,7 @@ export default function CrudAdmin() {
                 const data = await response.json();
                 setAdmins((prevAdmins) => [...prevAdmins, { ...data, imageLoaded: false }]);
                 closeModal();
-                window.location.reload();
+                fetchAdmins();
 
             } else {
                 throw new Error(`Erro ao criar administrador: ${response.statusText}`);
