@@ -219,7 +219,7 @@ export default function CrudEstoque(){
         e.preventDefault();
         console.log('Botão clicado!');
         try {
-            const response = await axios.post('https://api-production-f446.up.railway.app/admin/createItemEstoque', formData, {
+            const response = await axios.post('https://api-think-tattoo.up.railway.app/admin/createItemEstoque', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -234,7 +234,7 @@ export default function CrudEstoque(){
                 const fetchData = async () => {
                     try {
                     
-                    const response = await axios.get('https://api-production-f446.up.railway.app/admin/selectItemEstoque');
+                    const response = await axios.get('https://api-think-tattoo.up.railway.app/admin/selectItemEstoque');
                     setItensEstoque(response.data);
                     console.log(itensEstoque);
                     } catch (error) {
@@ -253,7 +253,7 @@ export default function CrudEstoque(){
 
     const handleEditItem = async () => {
         try{
-            const response = await axios.put(`https://api-production-f446.up.railway.app/admin/updateItemEstoque/${selectedEstoque.id}`, selectedEstoque);
+            const response = await axios.put(`https://api-think-tattoo.up.railway.app/admin/updateItemEstoque/${selectedEstoque.id}`, selectedEstoque);
             console.log(response.data);
 
             if(response.status === 200){
@@ -266,7 +266,7 @@ export default function CrudEstoque(){
                     progressClassName: 'custom-toast-progress-bar',
                 });
 
-                const response = await axios.get('https://api-production-f446.up.railway.app/admin/selectItemEstoque');
+                const response = await axios.get('https://api-think-tattoo.up.railway.app/admin/selectItemEstoque');
                 setItensEstoque(response.data);
                 
             }else{
@@ -291,7 +291,7 @@ export default function CrudEstoque(){
         const fetchData = async () => {
             try {
             
-            const response = await axios.get('https://api-production-f446.up.railway.app/admin/selectItemEstoque');
+            const response = await axios.get('https://api-think-tattoo.up.railway.app/admin/selectItemEstoque');
             setItensEstoque(response.data);
             console.log(itensEstoque);
             } catch (error) {
