@@ -134,7 +134,7 @@ export default function Agenda(){
         // Outros dados necessários
         const estOrcamento = valorEstimado;
         const hTattoo = selectedTime;
-        const dataTattoo = selectedDate;
+        const dataTattoo = selectedDate.toISOString().slice(0, 19).replace('T', ' ');
         const observacoes = descricao;
         const fotoReferencia = selectedImage;
         const status = "Pendente";
