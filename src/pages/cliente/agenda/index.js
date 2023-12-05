@@ -134,10 +134,12 @@ export default function Agenda(){
         // Outros dados necessários
         const estOrcamento = valorEstimado;
         const hTattoo = selectedTime;
-        const dataTattoo = selectedDate.toISOString().slice(0, 19).replace('T', ' ');
+        const dataTattoo = selectedDate;
         const observacoes = descricao;
         const fotoReferencia = selectedImage;
         const status = "Pendente";
+
+        const formattedDate = selectedDate.toISOString().split('T')[0];
         
         // Lógica para obter o tipo de tatuagem a partir dos checkboxes selecionados
         const tipoTattoo = {
@@ -156,7 +158,7 @@ export default function Agenda(){
           tamanhoTattoo,
           estOrcamento,
           hTattoo,
-          dataTattoo,
+          dataTattoo: formattedDate,
           observacoes,
           fotoReferencia,
           status,
@@ -197,7 +199,7 @@ export default function Agenda(){
   registerLocale('pt-BR', ptBR);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    setSelectedDate(date.toISOString().split('T')[0]);
   };
 
   const handleCellClick = (date) => {
